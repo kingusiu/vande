@@ -85,3 +85,16 @@ class InputDataReader():
 
         return data
 
+
+class CaseInputDataReader( InputDataReader ):
+
+    def read_images( self ):
+        f = h5py.File( self.filename, 'r' )
+        truth = np.asarray(f.get('truth_label')).flatten()
+        jet1 = np.asarray(f.get('j1_images'))[ ..., np.newaxis ]
+        jet2 = np.asarray(f.get('j2_images'))[ ..., np.newaxis ]
+        #qcd_j1, qcd_j2 = filter_arrays_on_value([jet1,jet2],truth,0,operator.eq) # qcd label = 0
+        #grav_j1, grav_j2 = filter_arrays_on_value([jet1,jet2],truth,1,operator.eq) # G -> ZZ label = 1
+        qcd_j1, qcd_j2 = jet1[ truth == 0 ], jet2[ truth == 0 ]
+        grav_j1, grav_j2 = jet1[ truth == 1 ], jet2[ truth == 1 ]
+        return [qcd_j1,qcd_j2,grav_j1,grav_j2]

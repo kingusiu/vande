@@ -61,5 +61,5 @@ def kl_loss_manual(z_mean,z_log_var):
 def compute_loss_of_prediction( input, predicted, z_mean, z_log_var ):
     reco_losses = mse_loss_manual(input, predicted)
     kl_losses = kl_loss_manual(z_mean, z_log_var)
-    total_losses = reco_losses + config['beta']*kl_losses # custom loss = mse_loss + l * kl_loss
+    total_losses = reco_losses + config['beta'] * kl_losses # custom loss = mse_loss + l * kl_loss
     return [ total_losses, reco_losses, kl_losses ]

@@ -112,7 +112,7 @@ class VAE( object ):
 
     def fit( self, x, y, epochs=3, verbose=2 ):
         callbacks = [EarlyStopping(monitor='val_loss', patience=7, verbose=1),ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),TerminateOnNaN()]
-        return self.model.fit( x, y, epochs=epochs, verbose=verbose, callbacks=callbacks )
+        return self.model.fit( x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks )
 
 
     # ***********************************
