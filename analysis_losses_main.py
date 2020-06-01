@@ -1,4 +1,4 @@
-from input_data_reader import *
+from io.input_data_reader import *
 from util_plotting import *
 
 # read in result file

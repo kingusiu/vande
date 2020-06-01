@@ -7,12 +7,13 @@ from config import *
 #                   training losses
 # ********************************************************
 
+### KL
+
 def kl_loss( z_mean, z_log_var ):
     kl = 1. + z_log_var - K.square(z_mean) - K.exp(z_log_var)
     kl = K.sum(kl, axis=-1)
     kl *= -0.5
     return kl
-
 
 # metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
 def kl_loss_for_metric( z_mean, z_log_var ):
@@ -23,6 +24,7 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 
     return loss
 
+### MSE
 
 def mse_loss( inputs, outputs ):
     reconstruction_loss = mse(K.flatten(inputs), K.flatten(outputs))
@@ -37,6 +39,29 @@ def mse_kl_loss( z_mean, z_log_var ):
 
     return loss
 
+### EXPONENTIAL
+
+def log_k_loss(inputs,outputs):
+    log_k = K.log(K.flatten(outputs))
+    return K.sum( log_k )
+
+
+def k_times_x_loss(inputs,outputs):
+    return K.sum(K.flatten(inputs)*K.flatten(outputs)) # keras * operator = element wise
+
+
+# this loss is PER SAMPLE, inputs = 32x32 pixel array, outputs = 32x32 estimates of k of k * e ^-kx
+def exponential_prob_loss(inputs,outputs):
+    # compute negative log likelihood of probability of inputs under learned model
+    return k_times_x_loss(inputs,outputs) - log_k_loss(inputs,outputs)
+
+
+def exponential_prob_kl_loss( z_mean, z_log_var ):
+
+    def loss( inputs, outputs ):
+        return exponential_prob_loss(inputs,outputs) + config['beta'] * kl_loss( z_mean, z_log_var )
+
+    return loss
 
 # ********************************************************
 #                   manual analysis losses

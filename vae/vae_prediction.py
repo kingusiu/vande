@@ -1,7 +1,7 @@
-from input_data_reader import *
+from inout.input_data_reader import *
 from config import *
-from vae_model import *
-from result_writer import *
+from vae.vae_model import *
+from inout.result_writer import *
 
 
 def predict( img_j1, img_j2, di_jet, result_file_name, run = 0 ):

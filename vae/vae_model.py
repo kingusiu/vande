@@ -1,31 +1,35 @@
 import os
+import matplotlib.pyplot as plt
 from keras.layers import Input, Dense, Lambda, Flatten, Conv2D, AveragePooling2D, Reshape, Conv2DTranspose, UpSampling2D
 from keras.models import Model, load_model
-from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TerminateOnNaN
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TerminateOnNaN, TensorBoard
 import keras.losses
 import keras.backend as K
+import pathlib
 from config import *
-from losses import *
+from vae.losses import *
 
 
 class VAE( object ):
 
-    def __init__(self):
+    def __init__(self, run=0):
         # network parameters
         self.input_shape = (config['image_size'], config['image_size'], 1)
         self.batch_size = 128
         self.kernel_size = 3
         self.filter_n = 4
-        self.z_size = 5
+        self.z_size = 10
         self.encoder = None
         self.decoder = None
         self.model = None
+        self.log_dir = './tensorboard/vae_run_' + str(self.run)
+        pathlib.Path(self.log_dir).mkdir(parents=True, exist_ok=True)
 
 
     # adding keras mse as dummy loss, because training loss in function closure not (easily) accessible and model won't load without all custom function references
     def load( self, run = 0 ):
 
-        model_dir = "./models"
+        model_dir = "../models"
         self.encoder = load_model(os.path.join(model_dir, 'encoder_run_' + str(run) + '.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'sampling' : self.sampling})
         self.decoder = load_model(os.path.join(model_dir, 'decoder_run_' + str(run) + '.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss})
         self.model = load_model(os.path.join(model_dir, 'vae_run_' + str(run) + '.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'loss': keras.losses.mse, 'sampling' : self.sampling})
@@ -40,6 +44,7 @@ class VAE( object ):
         # instantiate VAE model
         vae = Model(inputs, outputs, name='vae')
         vae.summary()
+
         vae.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean,self.z_log_var), metrics=[mse_loss,kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
         self.model = vae
 
@@ -63,14 +68,14 @@ class VAE( object ):
         # 3 dense layers
         x = Flatten()(x)
         self.size_convolved = K.int_shape(x)
-        x = Dense(self.size_convolved[1] // 100, activation='relu')(x)  # reduce convolution output
-        x = Dense(self.size_convolved[1] // 200, activation='relu')(x)  # reduce again
-        x = Dense(8, activation='relu')(x)
+        x = Dense(self.size_convolved[1] // 17, activation='relu')(x)  # reduce convolution output
+        x = Dense(self.size_convolved[1] // 42, activation='relu')(x)  # reduce again
+        #x = Dense(8, activation='relu')(x)
 
         # *****************************
-        #           latent space
-
+        #         latent space
         # generate latent vector Q(z|X)
+
         self.z_mean = Dense(self.z_size, name='z_mean')(x)
         self.z_log_var = Dense(self.z_size, name='z_log_var')(x)
 
@@ -90,8 +95,8 @@ class VAE( object ):
     def build_decoder(self):
 
         latent_inputs = Input(shape=(self.z_size,), name='z_sampling')
-        x = Dense(self.size_convolved[1] // 200, activation='relu')(latent_inputs)  # inflate to input-shape/200
-        x = Dense(self.size_convolved[1] // 100, activation='relu')(x)  # double size
+        x = Dense(self.size_convolved[1] // 42, activation='relu')(latent_inputs)  # inflate to input-shape/200
+        x = Dense(self.size_convolved[1] // 17, activation='relu')(x)  # double size
         x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu')(x)
         x = Reshape((self.shape_convolved[1], self.shape_convolved[2], self.shape_convolved[3]))(x)
 
@@ -111,9 +116,14 @@ class VAE( object ):
 
 
     def fit( self, x, y, epochs=3, verbose=2 ):
-        callbacks = [EarlyStopping(monitor='val_loss', patience=7, verbose=1),ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),TerminateOnNaN()]
-        return self.model.fit( x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks )
+        callbacks = [EarlyStopping(monitor='val_loss', patience=7, verbose=1),ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),TerminateOnNaN(),
+                     TensorBoard(log_dir=self.log_dir, histogram_freq=1)]
+        self.history = self.model.fit(x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25,)
+        return self.history
 
+
+    def predict(self, x):
+        return self.model.predict( x, batch_size=self.batch_size )
 
     # ***********************************
     #       reparametrization trick
@@ -144,3 +154,20 @@ class VAE( object ):
         self.decoder.save('models/decoder_run_' + str(run) + '.h5')
         self.model.save('models/vae_run_' + str(run) + '.h5')
 
+
+    def plot_training(self, run=None ):
+        self.fig_dir = os.path.join('fig', 'run_' + str(run), 'analysis_model') if run is not None else None
+        if self.fig_dir:
+            pathlib.Path(self.fig_dir).mkdir(parents=True, exist_ok=True)
+        plt.figure()
+        plt.semilogy(self.history.history['loss'])
+        plt.semilogy(self.history.history['val_loss'])
+        plt.title('training and validation loss')
+        plt.ylabel('loss')
+        plt.xlabel('epoch')
+        plt.legend(['training','validation'], loc='upper right')
+        plt.savefig(os.path.join(self.fig_dir,'loss.png'))
+        plt.close()
+
+    def sample_pixels_from_dist(self,dist):
+        return np.random.exponential(1. / dist)  # numpy exponential dist takes 1/k param instead of k param

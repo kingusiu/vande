@@ -6,3 +6,6 @@ models/
 fig/
 data/
 .sys.v#*
+.idea/
+tensorboard/
+.git-old/

@@ -1,12 +1,16 @@
 config = {
 
     'image_size' : 32,
-    'beta' : 0.00001,
+    'beta' : 0.01,
     'min_pixel' : 0.0,
     'max_pixel' : 1866.1377,
     'mass_cut' : 1100.0,
-    'plot_dir' : 'plots',
-    'result_dir' : 'results',
-    'result_key' : 'results'
+    'result_key' : 'results',
+
+    # input and output directories
+
+    'input_dir' : '/eos/user/k/kiwoznia/data/VAE_data/VAE_check/images',
+    'plot_dir' : 'fig',
+    'result_dir' : '/eos/user/k/kiwoznia/data/VAE_data/outputs/results'
 
 }
