@@ -1,0 +1,221 @@
+setGPU: Setting GPU to: 3
+Using TensorFlow backend.
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/VAE_check/images/qcd_side_new.h5  ===
+read  1200714  jet 1 images and  1200714  jet 2 images
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:4074: The name tf.nn.avg_pool is deprecated. Please use tf.nn.avg_pool2d instead.
+
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      (None, 32, 32, 1)    0                                            
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 30, 30, 6)    60          encoder_input[0][0]              
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 28, 28, 10)   550         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 26, 26, 14)   1274        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+average_pooling2d_1 (AveragePoo (None, 13, 13, 14)   0           conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 2366)         0           average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 139)          329013      flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 56)           7840        dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           570         dense_2[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           570         dense_2[0][0]                    
+__________________________________________________________________________________________________
+z (Lambda)                      (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 339,877
+Trainable params: 339,877
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      (None, 10)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 56)                616       
+_________________________________________________________________
+dense_4 (Dense)              (None, 139)               7923      
+_________________________________________________________________
+dense_5 (Dense)              (None, 2366)              331240    
+_________________________________________________________________
+reshape_1 (Reshape)          (None, 13, 13, 14)        0         
+_________________________________________________________________
+up_sampling2d_1 (UpSampling2 (None, 26, 26, 14)        0         
+_________________________________________________________________
+conv2d_transpose_1 (Conv2DTr (None, 28, 28, 14)        1778      
+_________________________________________________________________
+conv2d_transpose_2 (Conv2DTr (None, 30, 30, 10)        1270      
+_________________________________________________________________
+conv2d_transpose_3 (Conv2DTr (None, 32, 32, 6)         546       
+_________________________________________________________________
+decoder_output (Conv2DTransp (None, 32, 32, 1)         55        
+=================================================================
+Total params: 343,428
+Trainable params: 343,428
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+encoder_input (InputLayer)   (None, 32, 32, 1)         0         
+_________________________________________________________________
+encoder (Model)              [(None, 10), (None, 10),  339877    
+_________________________________________________________________
+decoder (Model)              (None, 32, 32, 1)         343428    
+=================================================================
+Total params: 683,305
+Trainable params: 683,305
+Non-trainable params: 0
+_________________________________________________________________
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1250: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+2020-06-01 16:54:54.035588: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-06-01 16:54:54.083850: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2020-06-01 16:54:54.762337: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x77f11f0 executing computations on platform CUDA. Devices:
+2020-06-01 16:54:54.762402: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-06-01 16:54:54.836808: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200095000 Hz
+2020-06-01 16:54:54.839701: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7ddc180 executing computations on platform Host. Devices:
+2020-06-01 16:54:54.839758: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2020-06-01 16:54:54.844616: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:09:00.0
+2020-06-01 16:54:54.850474: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-06-01 16:54:54.931973: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2020-06-01 16:54:54.972536: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10.0
+2020-06-01 16:54:54.987869: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10.0
+2020-06-01 16:54:55.079606: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10.0
+2020-06-01 16:54:55.138072: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10.0
+2020-06-01 16:54:55.767652: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2020-06-01 16:54:55.785012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2020-06-01 16:54:55.792708: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-06-01 16:54:55.798927: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-01 16:54:55.798952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2020-06-01 16:54:55.798968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2020-06-01 16:54:55.809211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10481 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:09:00.0, compute capability: 6.1)
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:422: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+Train on 1801071 samples, validate on 600357 samples
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/callbacks/tensorboard_v1.py:198: The name tf.summary.histogram is deprecated. Please use tf.compat.v1.summary.histogram instead.
+
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/callbacks/tensorboard_v1.py:200: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/callbacks/tensorboard_v1.py:203: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+
+Epoch 1/100
+2020-06-01 16:55:15.153146: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2020-06-01 16:55:16.162833: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+ - 284s - loss: 0.2571 - mse_loss: 0.2346 - loss_1: 7.7401e-06 - val_loss: 0.2387 - val_mse_loss: 0.2347 - val_loss_1: -8.9407e-08
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/keras/callbacks/tensorboard_v1.py:343: The name tf.Summary is deprecated. Please use tf.compat.v1.Summary instead.
+
+Epoch 2/100
+ - 264s - loss: 0.2368 - mse_loss: 0.2332 - loss_1: 5.5815e-09 - val_loss: 0.2360 - val_mse_loss: 0.2329 - val_loss_1: -2.9802e-08
+Epoch 3/100
+ - 265s - loss: 0.2359 - mse_loss: 0.2329 - loss_1: 3.9032e-09 - val_loss: 0.2363 - val_mse_loss: 0.2336 - val_loss_1: 2.9802e-08
+Epoch 4/100
+ - 263s - loss: 0.2356 - mse_loss: 0.2329 - loss_1: 4.8176e-09 - val_loss: 0.2354 - val_mse_loss: 0.2328 - val_loss_1: 0.0000e+00
+Epoch 5/100
+ - 262s - loss: 0.2353 - mse_loss: 0.2329 - loss_1: 4.1555e-09 - val_loss: 0.2355 - val_mse_loss: 0.2331 - val_loss_1: 8.9407e-08
+Epoch 6/100
+ - 265s - loss: 0.2352 - mse_loss: 0.2329 - loss_1: 4.3075e-09 - val_loss: 0.2350 - val_mse_loss: 0.2328 - val_loss_1: 2.9802e-08
+Epoch 7/100
+ - 269s - loss: 0.2351 - mse_loss: 0.2329 - loss_1: 3.7447e-09 - val_loss: 0.2351 - val_mse_loss: 0.2331 - val_loss_1: 2.9802e-08
+Epoch 8/100
+ - 271s - loss: 0.2349 - mse_loss: 0.2329 - loss_1: 3.4022e-09 - val_loss: 0.2349 - val_mse_loss: 0.2329 - val_loss_1: -2.9802e-08
+Epoch 9/100
+ - 263s - loss: 0.2349 - mse_loss: 0.2329 - loss_1: 3.3507e-09 - val_loss: 0.2349 - val_mse_loss: 0.2329 - val_loss_1: 2.9802e-08
+Epoch 10/100
+ - 265s - loss: 0.2348 - mse_loss: 0.2329 - loss_1: 8.0797e-09 - val_loss: 0.2347 - val_mse_loss: 0.2329 - val_loss_1: 0.0000e+00
+Epoch 11/100
+ - 263s - loss: 0.2348 - mse_loss: 0.2329 - loss_1: 1.7627e-08 - val_loss: 0.2348 - val_mse_loss: 0.2331 - val_loss_1: 0.0000e+00
+Epoch 12/100
+ - 265s - loss: 0.2347 - mse_loss: 0.2329 - loss_1: -3.7407e-09 - val_loss: 0.2349 - val_mse_loss: 0.2332 - val_loss_1: 2.9802e-08
+
+Epoch 00012: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+Epoch 13/100
+ - 267s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 6.8184e-08 - val_loss: 0.2345 - val_mse_loss: 0.2328 - val_loss_1: 2.9802e-08
+Epoch 14/100
+ - 261s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 6.6519e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 1.1921e-07
+Epoch 15/100
+ - 262s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 6.6505e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 2.9802e-08
+
+Epoch 00015: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+Epoch 16/100
+ - 261s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9371e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 17/100
+ - 265s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+
+Epoch 00017: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
+Epoch 18/100
+ - 262s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 19/100
+ - 262s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+
+Epoch 00019: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
+Epoch 20/100
+ - 264s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 21/100
+ - 266s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 22/100
+ - 261s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+
+Epoch 00022: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
+Epoch 23/100
+ - 266s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 24/100
+ - 260s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+
+Epoch 00024: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
+Epoch 25/100
+ - 263s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 26/100
+ - 269s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+
+Epoch 00026: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
+Epoch 27/100
+ - 261s - loss: 0.2343 - mse_loss: 0.2326 - loss_1: 8.9407e-08 - val_loss: 0.2344 - val_mse_loss: 0.2327 - val_loss_1: 8.9407e-08
+Epoch 00027: early stopping
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/VAE_check/images/G_to_WW_narrow_2p5TeV_new.h5  ===
+read  204670  jet 1 images and  204670  jet 2 images
+Traceback (most recent call last):
+  File "main.py", line 76, in <module>
+    img_analysis.analyze( [reco_img_j1, reco_img_j2] )
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/analysis_input/analysis_jet_image.py", line 47, in analyze
+    self.plot_sampled_images( pixel_j1, 'j1')
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/analysis_input/analysis_jet_image.py", line 118, in plot_sampled_images
+    im = ax.pcolormesh(image_stack[i, :, :, :].reshape(image_stack.shape[1], image_stack.shape[2]), norm=colors.SymLogNorm(linthresh=1e-5, vmin=vmin, vmax=vmax))  # drop last dimension of 32x32x1
+IndexError: index 983526 is out of bounds for axis 0 with size 204670

@@ -10,7 +10,7 @@ import analysis_input.analysis_jet_image as aji
 #       runtime params
 # ********************************************************
 
-run_n = 43
+run_n = 44
 
 # ********************************************************
 #       read in data ( jet constituents & jet features )
@@ -29,11 +29,12 @@ np.random.shuffle( training_img )
 #                       build and train
 # *******************************************************
 
-vae = VAE()
+vae = VAE(run_n)
 vae.build()
 
 history = vae.fit( training_img, training_img, epochs=100, verbose=2 )
 vae.plot_training( run=run_n )
+vae.save_model( run_n )
 
 # *******************************************************
 #                       predict
@@ -58,7 +59,7 @@ data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'G_to_WW_n
 test_img_j1, test_img_j2 = data_reader.read_images( )
 
 img_analysis = aji.AnalysisJetImage('G to WW na 2.5TeV', do=['sampled_img', 'avg_img'], run=run_n)
-img_analysis.analyze( [train_img_j1, train_img_j2] )
+img_analysis.analyze( [test_img_j1, test_img_j2] )
 
 # *******************************************************
 #               predict signal

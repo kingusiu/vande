@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from keras.layers import Input, Dense, Lambda, Flatten, Conv2D, AveragePooling2D, Reshape, Conv2DTranspose, UpSampling2D
 from keras.models import Model, load_model
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TerminateOnNaN, TensorBoard
+from tensorflow.keras import regularizers
 import keras.losses
 import keras.backend as K
 import pathlib
@@ -17,11 +18,12 @@ class VAE( object ):
         self.input_shape = (config['image_size'], config['image_size'], 1)
         self.batch_size = 128
         self.kernel_size = 3
-        self.filter_n = 4
+        self.filter_n = 6
         self.z_size = 10
         self.encoder = None
         self.decoder = None
         self.model = None
+        self.run = run
         self.log_dir = './tensorboard/vae_run_' + str(self.run)
         pathlib.Path(self.log_dir).mkdir(parents=True, exist_ok=True)
 
@@ -56,7 +58,7 @@ class VAE( object ):
 
         x = inputs
         for i in range(3):
-            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x)
+            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=regularizers.l2())(x)
             self.filter_n += 4
 
         x = AveragePooling2D()(x)
@@ -68,16 +70,16 @@ class VAE( object ):
         # 3 dense layers
         x = Flatten()(x)
         self.size_convolved = K.int_shape(x)
-        x = Dense(self.size_convolved[1] // 17, activation='relu')(x)  # reduce convolution output
-        x = Dense(self.size_convolved[1] // 42, activation='relu')(x)  # reduce again
+        x = Dense(self.size_convolved[1] // 17, activation='relu',kernel_regularizer=regularizers.l2())(x)  # reduce convolution output
+        x = Dense(self.size_convolved[1] // 42, activation='relu',kernel_regularizer=regularizers.l2())(x)  # reduce again
         #x = Dense(8, activation='relu')(x)
 
         # *****************************
         #         latent space
         # generate latent vector Q(z|X)
 
-        self.z_mean = Dense(self.z_size, name='z_mean')(x)
-        self.z_log_var = Dense(self.z_size, name='z_log_var')(x)
+        self.z_mean = Dense(self.z_size, name='z_mean',kernel_regularizer=regularizers.l2())(x)
+        self.z_log_var = Dense(self.z_size, name='z_log_var',kernel_regularizer=regularizers.l2())(x)
 
         # use reparameterization trick to push the sampling out as input
         z = Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
@@ -95,18 +97,18 @@ class VAE( object ):
     def build_decoder(self):
 
         latent_inputs = Input(shape=(self.z_size,), name='z_sampling')
-        x = Dense(self.size_convolved[1] // 42, activation='relu')(latent_inputs)  # inflate to input-shape/200
-        x = Dense(self.size_convolved[1] // 17, activation='relu')(x)  # double size
-        x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu')(x)
+        x = Dense(self.size_convolved[1] // 42, activation='relu',kernel_regularizer=regularizers.l2())(latent_inputs)  # inflate to input-shape/200
+        x = Dense(self.size_convolved[1] // 17, activation='relu',kernel_regularizer=regularizers.l2())(x)  # double size
+        x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu',kernel_regularizer=regularizers.l2())(x)
         x = Reshape((self.shape_convolved[1], self.shape_convolved[2], self.shape_convolved[3]))(x)
 
         x = UpSampling2D()(x)
 
         for i in range(3):
             self.filter_n -= 4
-            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x)
+            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=regularizers.l2())(x)
 
-        outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu',
+        outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=regularizers.l2(),
                                           padding='same', name='decoder_output')(x)
         # instantiate decoder model
         decoder = Model(latent_inputs, outputs_decoder, name='decoder')
@@ -124,6 +126,13 @@ class VAE( object ):
 
     def predict(self, x):
         return self.model.predict( x, batch_size=self.batch_size )
+
+
+    def predict_with_latent(self,x):
+        z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.batch_size)
+        img_reco = self.decoder.predict(z, batch_size=self.batch_size)
+        return [ z_mean, z_log_var, img_reco ]
+
 
     # ***********************************
     #       reparametrization trick

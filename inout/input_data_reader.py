@@ -1,10 +1,11 @@
 import os
 import h5py
+import pandas as pd
 import numpy as np
 from config import *
 from event_to_image_converter import *
 from di_jet import *
-from util import *
+from util.utility_fun import *
 
 
 class InputDataReader():
@@ -98,3 +99,12 @@ class CaseInputDataReader( InputDataReader ):
         qcd_j1, qcd_j2 = jet1[ truth == 0 ], jet2[ truth == 0 ]
         grav_j1, grav_j2 = jet1[ truth == 1 ], jet2[ truth == 1 ]
         return [qcd_j1,qcd_j2,grav_j1,grav_j2]
+
+
+def read_dijet_features_to_dataframe( path ):
+    data, labels = read_dijet_features( path )
+    return pd.DataFrame( data, columns=labels )
+
+def read_results_to_dataframe( path ):
+    data, labels = read_results( path )
+    return pd.DataFrame(data, columns=labels)
