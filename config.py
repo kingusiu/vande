@@ -9,8 +9,12 @@ config = {
 
     # input and output directories
 
-    'input_dir' : '/eos/user/k/kiwoznia/data/VAE_data/VAE_check/images',
+    #'input_dir' : '/eos/user/k/kiwoznia/data/VAE_data/VAE_check/images',
+    'input_dir' : 'data/images',
     'plot_dir' : 'fig',
-    'result_dir' : '/eos/user/k/kiwoznia/data/VAE_data/outputs/results'
+    #'result_dir' : '/eos/user/k/kiwoznia/data/VAE_data/outputs/results',
+    'result_dir' : 'results',
+    'tensorboard_dir' : 'tensorboard',
+    'model_dir' : 'models'
 
 }

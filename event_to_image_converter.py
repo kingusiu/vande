@@ -13,7 +13,7 @@ def bin_eta_phi( bin_n ):
 """
     convert single jet to image
 """
-def convert_events_to_image( events, imageShape, bin_borders ):
+def bin_eta_phi_pt_to_image( events, imageShape, bin_borders ):
     print('==== converting events to images ====')
     inputBlockShape = (events.shape[0], imageShape[0], imageShape[1], 1)
     images = np.zeros(inputBlockShape, dtype='float32')
@@ -31,9 +31,9 @@ def convert_events_to_image( events, imageShape, bin_borders ):
 """
     convert j1 and j2 to images each
 """
-def convert_events_to_image_j1j2( events_j1, events_j2, bin_n ):
+def convert_events_to_image( events_j1, events_j2, bin_n ):
     bin_borders = bin_eta_phi(bin_n)
-    return [convert_events_to_image(events_j1, (bin_n, bin_n), bin_borders),convert_events_to_image(events_j2, (bin_n, bin_n), bin_borders)]
+    return [bin_eta_phi_pt_to_image(events_j1, (bin_n, bin_n), bin_borders),bin_eta_phi_pt_to_image(events_j2, (bin_n, bin_n), bin_borders)]
 
 
 """
@@ -48,7 +48,11 @@ def normalize_by_max_pixel( images_j1, images_j2 ):
 """
     normalize jet images by pt of jet
 """
-def normalize_by_jet_pt( images_j1, images_j2, di_jet ):
-    images_j1 = np.divide( images_j1, di_jet.pt_j1()[:, None, None, None])
-    images_j2 = np.divide( images_j2, di_jet.pt_j2()[:, None, None, None])
-    return [ images_j1, images_j2 ]
+
+
+def normalize_by_jet_pt( images_j1, images_j2, jet_features, labels ):
+    idx_ptj1 = labels.index('j1Pt')
+    idx_ptj2 = labels.index('j2Pt')
+    images_j1 = np.divide(images_j1, jet_features[:, idx_ptj1, None, None])
+    images_j2 = np.divide(images_j2, jet_features[:, idx_ptj2, None, None])
+    return [images_j1, images_j2]

@@ -7,7 +7,7 @@ from config import *
 
 class AnalysisJetImage( object ):
 
-    def __init__(self, data_name, do=['all_px_hist', 'single_px_hist', 'sampled_img', 'avg_img'], run=None ):
+    def __init__(self, data_name, do=['all_px_hist', 'single_px_hist', 'sampled_img', 'avg_img'], fig_dir=None ):
 
         self.analyses_dict = {
             'all_px_hist': self.plot_pixel_histogram,
