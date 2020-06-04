@@ -44,10 +44,12 @@ class VAE( object ):
         # instantiate VAE model
         vae = Model(inputs, outputs, name='vae')
         vae.summary()
-
-        vae.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean,self.z_log_var), metrics=[mse_loss,kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        self.compile( vae )
         self.model = vae
 
+
+    def compile(self,model):
+        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
     #               encoder
@@ -56,7 +58,7 @@ class VAE( object ):
 
         x = inputs
         for i in range(3):
-            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
+            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same')(x)
             self.filter_n += 4
 
         x = AveragePooling2D()(x)
@@ -100,11 +102,11 @@ class VAE( object ):
         x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu',kernel_regularizer=self.regularizer)(x)
         x = Reshape((self.shape_convolved[1], self.shape_convolved[2], self.shape_convolved[3]))(x)
 
-        x = UpSampling2D()(x)
+        x = UpSampling2D(size=(2,3))(x)
 
         for i in range(3):
             self.filter_n -= 4
-            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer)(x)
+            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer,padding='same')(x)
 
         outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer,
                                           padding='same', name='decoder_output')(x)

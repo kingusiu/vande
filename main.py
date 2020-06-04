@@ -22,7 +22,7 @@ train_img_j1, train_img_j2 = data_reader.read_images( )
 img_analysis = aji.AnalysisJetImage('QCD train', do=['sampled_img', 'avg_img'], run=run_n)
 img_analysis.analyze( [train_img_j1, train_img_j2] )
 
-training_img = np.vstack([train_img_j1,train_img_j2])
+training_evts = np.vstack([train_img_j1,train_img_j2])
 np.random.shuffle( training_img )
 
 # *******************************************************

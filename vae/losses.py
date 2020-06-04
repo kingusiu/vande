@@ -1,3 +1,5 @@
+import tensorflow as tf
+
 import numpy as np
 from keras.losses import mse
 import keras.backend as K
@@ -62,6 +64,25 @@ def exponential_prob_kl_loss( z_mean, z_log_var ):
         return exponential_prob_loss(inputs,outputs) + config['beta'] * kl_loss( z_mean, z_log_var )
 
     return loss
+
+### 3D LOSS
+
+def threeD_loss( inputs, outputs ): #[batch_size x 100 x 3 x 1]
+    expand_inputs = tf.expand_dims(tf.squeeze(inputs,3), 2) # remove channel, add broadcasting dim [batch_size x 100 x 1 x 3]
+    expand_outputs = tf.expand_dims(tf.squeeze(outputs,3), 1) # remove channel, add broadcasting dim [batch_size x 1 x 100 x 3]
+    # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs
+    distances = tf.math.reduce_sum(tf.squared_difference(expand_inputs, expand_outputs), -1)
+    # get min for inputs (min of rows -> [batch_size x 100]) and mit for outputs (min of columns)
+    min_dist_to_inputs = tf.math.reduce_min(distances,1)
+    min_dist_to_outputs = tf.math.reduce_min(distances,2)
+    return tf.math.reduce_sum(min_dist_to_inputs, 1) + tf.math.reduce_sum(min_dist_to_outputs, 1)
+
+
+def threeD_kl_loss( z_mean, z_log_var ):
+    def loss( inputs, outputs ):
+        return threeD_loss( inputs, outputs ) + config['beta'] * kl_loss( z_mean, z_log_var )
+    return loss
+
 
 # ********************************************************
 #                   manual analysis losses
