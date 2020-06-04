@@ -21,7 +21,7 @@ experiment = ex.Experiment( run_n, model_dir=True )
 
 data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'background_small.h5' ))
 train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents( )
-train_evts_j1, train_evts_j2 = train_evts_j1.reshape(train_evts_j1.shape[0],train_evts_j1.shape[1],train_evts_j1.shape[2],1), train_evts_j2.reshape(train_evts_j2.shape[0],train_evts_j2.shape[1],train_evts_j2.shape[2],1) # expand to channel dimension for convolution
+train_evts_j1, train_evts_j2 = np.expand_dims(train_evts_j1,axis=3), np.expand_dims(train_evts_j2,axis=3) # expand to channel dimension for convolution
 
 # ********************************************************
 #       prepare training data

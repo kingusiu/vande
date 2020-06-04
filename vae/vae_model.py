@@ -40,7 +40,7 @@ class VAE( object ):
         inputs = Input(shape=self.input_shape, name='encoder_input')
         self.encoder = self.build_encoder( inputs )
         self.decoder = self.build_decoder( )
-        outputs = self.decoder(self.encoder(inputs)[-1])  # link encoder output to decoder
+        outputs = self.decoder( self.encoder(inputs)[-1] )  # link encoder output to decoder
         # instantiate VAE model
         vae = Model(inputs, outputs, name='vae')
         vae.summary()
@@ -48,7 +48,7 @@ class VAE( object ):
         self.model = vae
 
 
-    def compile(self,model):
+    def compile(self, model):
         model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
@@ -58,7 +58,7 @@ class VAE( object ):
 
         x = inputs
         for i in range(3):
-            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same')(x)
+            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
             self.filter_n += 4
 
         x = AveragePooling2D()(x)
@@ -78,8 +78,8 @@ class VAE( object ):
         #         latent space
         # generate latent vector Q(z|X)
 
-        self.z_mean = Dense(self.z_size, name='z_mean',kernel_regularizer=self.regularizer)(x)
-        self.z_log_var = Dense(self.z_size, name='z_log_var',kernel_regularizer=self.regularizer)(x)
+        self.z_mean = Dense(self.z_size, name='z_mean', kernel_regularizer=self.regularizer)(x)
+        self.z_log_var = Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
         z = Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
@@ -102,14 +102,14 @@ class VAE( object ):
         x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu',kernel_regularizer=self.regularizer)(x)
         x = Reshape((self.shape_convolved[1], self.shape_convolved[2], self.shape_convolved[3]))(x)
 
-        x = UpSampling2D(size=(2,3))(x)
+        x = UpSampling2D()(x)
 
         for i in range(3):
             self.filter_n -= 4
-            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer,padding='same')(x)
+            x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer)(x)
 
-        outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer,
-                                          padding='same', name='decoder_output')(x)
+        outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same', name='decoder_output')(x)
+
         # instantiate decoder model
         decoder = Model(latent_inputs, outputs_decoder, name='decoder')
         decoder.summary()
@@ -159,9 +159,9 @@ class VAE( object ):
 
 
     def save_model( self, run = 0 ):
-        self.encoder.save(os.path.join(self.model_dir, 'run_' + str(run), 'encoder_run_' + str(run) + '.h5'))
-        self.decoder.save(os.path.join(self.model_dir, 'run_' + str(run),'decoder_run_' + str(run) + '.h5'))
-        self.model.save(os.path.join(self.model_dir, 'run_' + str(run),'vae_run_' + str(run) + '.h5'))
+        self.encoder.save(os.path.join(self.model_dir, 'encoder_run_' + str(run) + '.h5'))
+        self.decoder.save(os.path.join(self.model_dir,'decoder_run_' + str(run) + '.h5'))
+        self.model.save(os.path.join(self.model_dir,'vae_run_' + str(run) + '.h5'))
 
 
     def plot_training(self, run=None ):
