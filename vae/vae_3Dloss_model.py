@@ -1,4 +1,6 @@
-from keras.layers import Input, Dense, Lambda, Flatten, Conv2D, AveragePooling2D, Reshape, Conv2DTranspose, UpSampling2D
+import tensorflow as tf
+
+from keras.layers import Input, Dense, Lambda, Flatten, Conv2D, Conv1D, AveragePooling2D, AveragePooling1D, Reshape, Conv2DTranspose, UpSampling1D
 from keras.models import Model, load_model
 
 from vae.vae_model import VAE
@@ -22,13 +24,14 @@ class VAE_3D( VAE ):
     # ***********************************
     def build_encoder(self, inputs):
         x = inputs
-        for i in range(3):
-            x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',
-                       kernel_regularizer=self.regularizer, padding='same')(x)
-            self.filter_n += 4
+        x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
+        x = tf.squeeze(x, axis=2)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
+        self.filter_n += 4
+        x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
+        self.filter_n += 4
+        x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
 
-        x = AveragePooling2D()(x)
-        # x = MaxPooling2D( )( x )
+        x = AveragePooling1D()(x)
 
         # shape info needed to build decoder model
         self.shape_convolved = K.int_shape(x)
@@ -66,8 +69,12 @@ class VAE_3D( VAE ):
         x = Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu', kernel_regularizer=self.regularizer)(x)
         x = Reshape((self.shape_convolved[1], self.shape_convolved[2], self.shape_convolved[3]))(x)
 
-        x = UpSampling2D(size=(2, 3))(x)
+        x = UpSampling1D()(x)
 
+        # todo: implement conv1transpose
+        x = Conv1DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer, padding='same')(x)
+
+        # todo: change to conv1dT, conv2dT
         for i in range(3):
             self.filter_n -= 4
             x = Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same')(x)
