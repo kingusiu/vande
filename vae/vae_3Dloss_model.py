@@ -50,20 +50,22 @@ class VAE_3D( VAE ):
     # ***********************************
     def build_encoder(self, inputs):
         x = inputs
+        # 2D Conv
         x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
+        # Squeeze
         x = Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
+        # 1D Conv * 2
         self.filter_n += 4
         x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]
         self.filter_n += 4
         x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]
-
+        # Pool
         x = AveragePooling1D()(x) # [ B x 47 x 14 ]
-
         # shape info needed to build decoder model
         self.shape_convolved = x.get_shape().as_list()
-
-        # 3 dense layers
+        # Flatten
         x = Flatten()(x)
+        # Dense * 3
         x = Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output
         x = Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again
         # x = Dense(8, activation='relu')(x)
@@ -89,20 +91,24 @@ class VAE_3D( VAE ):
     # ***********************************
     def build_decoder(self):
         latent_inputs = Input(shape=(self.z_size,), name='z_sampling')
+        # Dense * 3
         x = Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
         x = Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size
         x = Dense(np.prod(self.shape_convolved[1:]), activation='relu', kernel_regularizer=self.regularizer)(x)
+        # Reshape
         x = Reshape(tuple(self.shape_convolved[1:]))(x)
-
+        # Upsample
         x = UpSampling1D()(x) # [ B x 94 x 16 ]
-
+        # 1D Conv Transpose * 2
         self.filter_n -= 4
         x = Conv1DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
         self.filter_n -= 4
         x = Conv1DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
-
+        # Expand
         x = Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
+        # 2D Conv Transpose
         outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, name='decoder_output')(x)
+
         # instantiate decoder model
         decoder = Model(latent_inputs, outputs_decoder, name='decoder')
         decoder.summary()
