@@ -1,8 +1,6 @@
 import tensorflow as tf
 
 import numpy as np
-from keras.losses import mse
-import keras.backend as K
 from config import *
 
 # ********************************************************
@@ -12,9 +10,8 @@ from config import *
 ### KL
 
 def kl_loss( z_mean, z_log_var ):
-    kl = 1. + z_log_var - K.square(z_mean) - K.exp(z_log_var)
-    kl = K.sum(kl, axis=-1)
-    kl *= -0.5
+    kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
+    kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
     return kl
 
 # metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
@@ -29,7 +26,7 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 ### MSE
 
 def mse_loss( inputs, outputs ):
-    reconstruction_loss = mse(K.flatten(inputs), K.flatten(outputs))
+    reconstruction_loss = tf.keras.losses.MeanSquaredError(inputs, outputs)
     reconstruction_loss *= config['image_size'] * config['image_size']  # mse returns mean sqr err, so multiply by n
     return reconstruction_loss  # returns scalar (one for each input sample)
 
@@ -44,12 +41,12 @@ def mse_kl_loss( z_mean, z_log_var ):
 ### EXPONENTIAL
 
 def log_k_loss(inputs,outputs):
-    log_k = K.log(K.flatten(outputs))
-    return K.sum( log_k )
+    log_k = tf.log(outputs)
+    return tf.reduce_sum( log_k )
 
 
 def k_times_x_loss(inputs,outputs):
-    return K.sum(K.flatten(inputs)*K.flatten(outputs)) # keras * operator = element wise
+    return tf.reduce_sum(inputs*outputs) # tf * operator = element wise
 
 
 # this loss is PER SAMPLE, inputs = 32x32 pixel array, outputs = 32x32 estimates of k of k * e ^-kx
@@ -98,8 +95,7 @@ def mse_loss_manual(inputs,outputs):
 
 def kl_loss_manual(z_mean,z_log_var):
     kl = 1. + z_log_var - np.square(z_mean) - np.exp(z_log_var)
-    kl = np.sum(kl, axis=-1)
-    kl *= -0.5
+    kl = -0.5 * np.sum(kl, axis=-1)
     return np.array(kl)
 
 
@@ -109,3 +105,7 @@ def compute_loss_of_prediction( input, predicted, z_mean, z_log_var ):
     kl_losses = kl_loss_manual(z_mean, z_log_var)
     total_losses = reco_losses + config['beta'] * kl_losses # custom loss = mse_loss + l * kl_loss
     return [ total_losses, reco_losses, kl_losses ]
+
+
+def threeD_loss_manual(inputs, outputs):
+    pass
