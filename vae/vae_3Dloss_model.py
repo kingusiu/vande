@@ -1,20 +1,17 @@
 import tensorflow as tf
 
-from keras.layers import Input, Dense, Lambda, Flatten, Conv2D, Conv1D, AveragePooling2D, AveragePooling1D, Reshape, Conv2DTranspose, UpSampling1D, Layer
-from keras.models import Model, load_model
-
 from vae.vae_model import VAE
 from vae.losses import *
 
 # custom 1d transposed convolution that expands to 2d output for vae decoder
-class Conv1DTranspose(Layer):
+class Conv1DTranspose(tf.keras.layers.Layer):
 
     def __init__(self, filters, kernel_size, activation):
         super(Conv1DTranspose,self).__init__()
         self.kernel_size = (kernel_size,1) # [ 3 ] -> [ 3 x 1 ]
-        self.ExpandChannel = Lambda(lambda x: tf.expand_dims(x, axis=2))
-        self.ConvTranspose = Conv2DTranspose(filters=filters, kernel_size=self.kernel_size, activation=activation)
-        self.SqueezeChannel = Lambda(lambda x: tf.squeeze(x, axis=2))
+        self.ExpandChannel = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=2))
+        self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=filters, kernel_size=self.kernel_size, activation=activation)
+        self.SqueezeChannel = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))
 
     def call(self, inputs, **kwargs):
         # expand input and kernel to 2D
@@ -51,37 +48,37 @@ class VAE_3D( VAE ):
     def build_encoder(self, inputs):
         x = inputs
         # 2D Conv
-        x = Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
+        x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
         # Squeeze
-        x = Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
+        x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
         # 1D Conv * 2
         self.filter_n += 4
-        x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]
+        x = tf.keras.layers.Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]
         self.filter_n += 4
-        x = Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]
+        x = tf.keras.layers.Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]
         # Pool
-        x = AveragePooling1D()(x) # [ B x 47 x 14 ]
+        x = tf.keras.layers.AveragePooling1D()(x) # [ B x 47 x 14 ]
         # shape info needed to build decoder model
         self.shape_convolved = x.get_shape().as_list()
         # Flatten
-        x = Flatten()(x)
+        x = tf.keras.layers.Flatten()(x)
         # Dense * 3
-        x = Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output
-        x = Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again
+        x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output
+        x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again
         # x = Dense(8, activation='relu')(x)
 
         # *****************************
         #         latent space
         # generate latent vector Q(z|X)
 
-        self.z_mean = Dense(self.z_size, name='z_mean', kernel_regularizer=self.regularizer)(x)
-        self.z_log_var = Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
+        self.z_mean = tf.keras.layers.Dense(self.z_size, name='z_mean', kernel_regularizer=self.regularizer)(x)
+        self.z_log_var = tf.keras.layers.Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
-        z = Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
+        z = tf.keras.layers.Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
 
         # instantiate encoder model
-        encoder = Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')
+        encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')
         encoder.summary()
         # plot_model(encoder, to_file=CONFIG['plotdir']+'vae_cnn_encoder.png', show_shapes=True)
         return encoder
@@ -90,27 +87,27 @@ class VAE_3D( VAE ):
     #           decoder
     # ***********************************
     def build_decoder(self):
-        latent_inputs = Input(shape=(self.z_size,), name='z_sampling')
+        latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), name='z_sampling')
         # Dense * 3
-        x = Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
-        x = Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size
-        x = Dense(np.prod(self.shape_convolved[1:]), activation='relu', kernel_regularizer=self.regularizer)(x)
+        x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
+        x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size
+        x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]), activation='relu', kernel_regularizer=self.regularizer)(x)
         # Reshape
-        x = Reshape(tuple(self.shape_convolved[1:]))(x)
+        x = tf.keras.layers.Reshape(tuple(self.shape_convolved[1:]))(x)
         # Upsample
-        x = UpSampling1D()(x) # [ B x 94 x 16 ]
+        x = tf.keras.layers.UpSampling1D()(x) # [ B x 94 x 16 ]
         # 1D Conv Transpose * 2
         self.filter_n -= 4
         x = Conv1DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
         self.filter_n -= 4
         x = Conv1DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu')(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
         # Expand
-        x = Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
+        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
         # 2D Conv Transpose
-        outputs_decoder = Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, name='decoder_output')(x)
+        outputs_decoder = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, name='decoder_output')(x)
 
         # instantiate decoder model
-        decoder = Model(latent_inputs, outputs_decoder, name='decoder')
+        decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
         decoder.summary()
         # plot_model(decoder, to_file=CONFIG['plotdir'] + 'vae_cnn_decoder.png', show_shapes=True)
         return decoder

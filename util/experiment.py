@@ -11,7 +11,7 @@ class Experiment():
     def setup(self, fig_dir=False, result_dir=False, tensorboard_dir=False, model_dir=False):
 
         if fig_dir:
-            self.fig_dir = os.path.join(config['plot_dir'], 'run_' + str(self.run_n), 'analysis_image')
+            self.fig_dir = os.path.join(config['fig_dir'], 'run_' + str(self.run_n), 'analysis_image')
             pathlib.Path(self.fig_dir).mkdir(parents=True, exist_ok=True)
 
         if result_dir:

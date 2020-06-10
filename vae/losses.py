@@ -26,9 +26,10 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 ### MSE
 
 def mse_loss( inputs, outputs ):
-    reconstruction_loss = tf.keras.losses.MeanSquaredError(inputs, outputs)
-    reconstruction_loss *= config['image_size'] * config['image_size']  # mse returns mean sqr err, so multiply by n
-    return reconstruction_loss  # returns scalar (one for each input sample)
+    mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
+    reco_loss = mse(inputs, outputs)
+    reco_loss *= config['image_size'] * config['image_size']  # mse returns mean sqr err, so multiply by n
+    return reco_loss  # returns scalar (one for each input sample)
 
 
 def mse_kl_loss( z_mean, z_log_var ):

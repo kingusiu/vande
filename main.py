@@ -34,7 +34,7 @@ np.random.shuffle( training_img )
 vae = VAE(run_n)
 vae.build()
 
-history = vae.fit( training_img, training_img, epochs=100, verbose=2 )
+history = vae.fit( training_img, training_img, epochs=10, verbose=2 )
 vae.plot_training( experiment.fig_dir )
 vae.save_model( run_n )
 

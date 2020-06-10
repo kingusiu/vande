@@ -15,7 +15,7 @@ def plot_loss_hist_total_reco_kl( background_loss, signal_loss, title, plotname,
     plot_hist_on_axis(ax3, [bg_kl, sig_kl], 'loss', 'fraction number events', 'KL loss ' + title, ['QCD', signal_label])
     plt.legend()
     plt.tight_layout(rect=(0, 0.05, 1, 1))
-    fig.savefig(os.join.path(config['plot_dir'], plotname + '.png'))
+    fig.savefig(os.join.path(config['fig_dir'], plotname + '.png'))
     plt.close()
 
 

@@ -19,9 +19,7 @@ class AnalysisJetImage( object ):
         self.data_name = data_name
         self.fig_name = data_name.replace(" ","_")
         self.analyses = do #[ self.analyses_dict[analysis] for analysis in do]
-        self.fig_dir = os.path.join(config['plot_dir'],'run_'+str(run),'analysis_image') if run is not None else None
-        if self.fig_dir:
-            pathlib.Path(self.fig_dir).mkdir(parents=True, exist_ok=True)
+        self.fig_dir = fig_dir
 
 
     def update_name(self, new_name):
