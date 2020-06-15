@@ -5,7 +5,7 @@ from config import *
 import util.experiment as ex
 import inout.input_data_reader as idr
 from vae.vae_prediction import *
-import analysis_input.analysis_jet_image as aji
+import analysis_data.analysis_jet_image as aji
 
 # ********************************************************
 #       runtime params
