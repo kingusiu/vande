@@ -33,7 +33,7 @@ class VAE_3D( VAE ):
 
     def __init__(self,**kwargs):
         super(VAE_3D,self).__init__(**kwargs)
-        self.input_shape = (100,3,1)
+        self.input_shape = (100,3)
 
     def load( self, run = 0 ):
         pass
@@ -47,6 +47,8 @@ class VAE_3D( VAE ):
     # ***********************************
     def build_encoder(self, inputs):
         x = inputs
+        # add channel dim
+        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(x) # [B x 100 x 3] => [B x 100 x 3 x 1]
         # 2D Conv
         x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
         # Squeeze
@@ -104,7 +106,8 @@ class VAE_3D( VAE ):
         # Expand
         x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
         # 2D Conv Transpose
-        outputs_decoder = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, name='decoder_output')(x)
+        x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, name='conv_2d_transpose')(x)
+        outputs_decoder = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3), name='decoder_output')(x)
 
         # instantiate decoder model
         decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
