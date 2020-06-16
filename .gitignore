@@ -9,3 +9,4 @@ data/
 .idea/
 tensorboard/
 .git-old/
+*.pyc
