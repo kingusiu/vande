@@ -12,7 +12,7 @@ def plot_hist( data, xlabel, ylabel, title, plotname='', legend=[], ylogscale=Tr
     plt.close()
 
 
-def plot_hist_on_axis( ax, data, xlabel, ylabel, title, legend=[], ylogscale=True ):
+def plot_hist_on_axis( ax, data, xlabel, ylabel='count', title='', legend=[], ylogscale=True ):
     bin_num = 70
     alpha = 0.85
     if ylogscale:
