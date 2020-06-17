@@ -42,8 +42,18 @@ losses_j1 = lo.compute_loss_of_prediction_3D_kl(test_evts_j1, test_evts_j1_reco,
 losses_j2 = lo.compute_loss_of_prediction_3D_kl(test_evts_j2, test_evts_j2_reco, z_mean_j2, z_log_var_j2)
 
 # *******************************************************
+#               add losses to DataSample and save
+# *******************************************************
+
+reco_sample = es.EventSample(test_sample.name + ' reco', particles=[test_evts_j1_reco,test_evts_j2_reco], event_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
+
+for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
+    reco_sample.add_event_feature(label, loss)
+for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
+    reco_sample.add_event_feature(label, loss)
+
+# *******************************************************
 #               write predicted data
 # *******************************************************
 
-reco_sample = es.EventSample(test_sample.name + ' reco', particles=[test_evts_j1_reco,test_evts_j2_reco], particle_feature_names=test_sample.particle_feature_names)
 reco_sample.dump(experiment.result_dir)
