@@ -11,7 +11,7 @@ from vae.vae_3Dloss_model import VAE_3D
 #       runtime params
 # ********************************************************
 
-run_n = 2
+run_n = 5
 experiment = ex.Experiment( run_n, model_dir=True )
 
 
@@ -40,5 +40,5 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-vae.fit( training_evts, training_evts, epochs=10, verbose=2 )
+vae.fit( training_evts, training_evts, epochs=100, verbose=2 )
 vae.save_model( run_n )

@@ -1,4 +1,5 @@
 import tensorflow as tf
+import os
 
 from vae.vae_model import VAE
 from vae.losses import *
@@ -6,11 +7,13 @@ from vae.losses import *
 # custom 1d transposed convolution that expands to 2d output for vae decoder
 class Conv1DTranspose(tf.keras.layers.Layer):
 
-    def __init__(self, filters, kernel_size, activation):
-        super(Conv1DTranspose,self).__init__()
-        self.kernel_size = (kernel_size,1) # [ 3 ] -> [ 3 x 1 ]
+    def __init__(self, filters, kernel_size, activation, **kwargs):
+        super(Conv1DTranspose,self).__init__(**kwargs)
+        self.kernel_size = kernel_size
+        self.filters = filters
+        self.activation = activation
         self.ExpandChannel = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=2))
-        self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=filters, kernel_size=self.kernel_size, activation=activation)
+        self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=self.filters, kernel_size=(self.kernel_size,1), activation=self.activation)
         self.SqueezeChannel = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))
 
     def call(self, inputs, **kwargs):
@@ -24,9 +27,8 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 
     def get_config(self):
         config = super(Conv1DTranspose, self).get_config()
-        config.update({"kernel_size": self.kernel_size})
+        config.update({'kernel_size': self.kernel_size, 'filters': self.filters, 'activation': self.activation})
         return config
-
 
 
 class VAE_3D( VAE ):
@@ -36,11 +38,14 @@ class VAE_3D( VAE ):
         self.input_shape = (100,3)
 
     def load( self, run = 0 ):
-        pass
-        # todo: load with custom 3d loss name
+        self.encoder = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'encoder_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'sampling': self.sampling})
+        self.decoder = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'decoder_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss})
+        self.model = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'vae_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'sampling': self.sampling})
+
 
     def compile(self,model):
         model.compile(optimizer='adam', loss=threeD_kl_loss(self.z_mean, self.z_log_var), metrics=[threeD_loss,kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+
 
     # ***********************************
     #               encoder
