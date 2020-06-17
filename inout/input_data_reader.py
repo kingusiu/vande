@@ -12,7 +12,8 @@ class InputDataReader():
     def __init__( self, path='.' ):
         if not self.check_path(path): return
         self.path = path
-        self.jet_constituents_key = 'jetConstituentsList'
+        self.particles_key = 'jetConstituentsList'
+        self.particles_names_key = 'particleFeatureNames'
         self.jet_features_key = 'eventFeatures'
         self.jet_feature_names_key = 'eventFeatureNames'
 
@@ -46,8 +47,14 @@ class InputDataReader():
         with h5py.File(self.path,'r') as f:
             return np.asarray(f.get(key))
 
-    def read_jet_constituents(self):
-        data = np.asarray(self.read_data( self.jet_constituents_key ), dtype='float32')
+    def read_string_data(self,key):
+        with h5py.File(self.path,'r') as f:
+            return [ n.decode("utf-8") for n in np.asarray(f.get(key)) ]
+
+    def read_jet_constituents(self, with_names=True):
+        data = np.asarray(self.read_data( self.particles_key ), dtype='float32')
+        if with_names:
+            return [data[:, 0, :, :], data[:, 1, :, :]], self.read_string_data(self.particles_names_key)
         return [data[:, 0, :, :], data[:, 1, :, :]]
 
     def read_dijet_feature_names(self):

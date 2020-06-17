@@ -13,7 +13,7 @@ from vae.vae_3Dloss_model import VAE_3D
 # ********************************************************
 
 run_n = 4
-experiment = ex.Experiment(run_n, model_dir=True, fig_dir=True)
+experiment = ex.Experiment(run_n).setup(model_dir=True, fig_dir=True)
 
 
 # ********************************************************

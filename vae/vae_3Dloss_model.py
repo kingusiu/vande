@@ -37,10 +37,10 @@ class VAE_3D( VAE ):
         super(VAE_3D,self).__init__(**kwargs)
         self.input_shape = (100,3)
 
-    def load( self, run = 0 ):
-        self.encoder = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'encoder_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'sampling': self.sampling})
-        self.decoder = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'decoder_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss})
-        self.model = tf.keras.models.load_model(os.path.join(config['model_dir'], 'run_' + str(run), 'vae_run_' + str(run) + '.h5'),custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'sampling': self.sampling})
+    def load( self, path ):
+        self.encoder = tf.keras.models.load_model(os.path.join(path, 'encoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'sampling': self.sampling})
+        self.decoder = tf.keras.models.load_model(os.path.join(path, 'decoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss})
+        self.model = tf.keras.models.load_model(os.path.join(path, 'vae.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'sampling': self.sampling})
 
 
     def compile(self,model):
@@ -60,9 +60,9 @@ class VAE_3D( VAE ):
         x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
         # 1D Conv * 2
         self.filter_n += 4
-        x = tf.keras.layers.Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]
+        x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]
         self.filter_n += 4
-        x = tf.keras.layers.Conv1D(filters=self.filter_n,kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]
+        x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]
         # Pool
         x = tf.keras.layers.AveragePooling1D()(x) # [ B x 47 x 14 ]
         # shape info needed to build decoder model
