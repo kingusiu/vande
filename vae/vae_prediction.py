@@ -25,8 +25,8 @@ def predict( img_j1, img_j2, di_jet, result_file_name, run = 0 ):
 
 
     # compute losses
-    loss_j1 = compute_loss_of_prediction( img_j1, img_reco_j1, z_mean_j1, z_log_var_j1 )
-    loss_j2 = compute_loss_of_prediction( img_j2, img_reco_j2, z_mean_j2, z_log_var_j2 )
+    loss_j1 = compute_loss_of_prediction_mse_kl(img_j1, img_reco_j1, z_mean_j1, z_log_var_j1)
+    loss_j2 = compute_loss_of_prediction_mse_kl(img_j2, img_reco_j2, z_mean_j2, z_log_var_j2)
 
     # write results
     write_results_for_analysis_to_file(di_jet.data, loss_j1, loss_j2, result_file_name)

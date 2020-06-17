@@ -41,8 +41,8 @@ reco_img_j2, z_mean_j2, z_log_var_j2 = vae.predict_with_latent( test_img_j2 )
 #               compute losses
 # *******************************************************
 
-losses_j1 = lo.compute_loss_of_prediction( test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1 )
-losses_j2 = lo.compute_loss_of_prediction( test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2 )
+losses_j1 = lo.compute_loss_of_prediction_mse_kl(test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1)
+losses_j2 = lo.compute_loss_of_prediction_mse_kl(test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2)
 
 # *******************************************************
 #               add losses to DataSample and save

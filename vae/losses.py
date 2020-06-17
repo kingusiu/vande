@@ -101,7 +101,7 @@ def kl_loss_manual(z_mean,z_log_var):
 
 
 # compute losses manually given original data (inputs), predicted data (outputs) and bg_z_mean and z_log var
-def compute_loss_of_prediction( input, predicted, z_mean, z_log_var ):
+def compute_loss_of_prediction_mse_kl(input, predicted, z_mean, z_log_var):
     reco_losses = mse_loss_manual(input, predicted)
     kl_losses = kl_loss_manual(z_mean, z_log_var)
     total_losses = reco_losses + config['beta'] * kl_losses # custom loss = mse_loss + l * kl_loss
@@ -109,4 +109,14 @@ def compute_loss_of_prediction( input, predicted, z_mean, z_log_var ):
 
 
 def threeD_loss_manual(inputs, outputs):
-    pass
+    distances = np.sum((inputs[:,:,np.newaxis,:]-outputs[:,np.newaxis,:,:])**2,axis=-1)
+    min_dist_to_inputs = np.min(distances,axis=1)
+    min_dist_to_outputs = np.min(distances,axis=2)
+    return np.sum(min_dist_to_inputs,axis=1) + np.sum(min_dist_to_outputs,axis=1)
+
+
+def compute_loss_of_prediction_3D_kl(input, predicted, z_mean, z_log_var):
+    reco_losses = threeD_loss_manual(input, predicted)
+    kl_losses = kl_loss_manual(z_mean, z_log_var)
+    total_losses = reco_losses + config['beta'] * kl_losses
+    return [total_losses, reco_losses, kl_losses]

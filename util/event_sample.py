@@ -29,6 +29,9 @@ class EventSample():
     def get_particles(self):
         return [self.particles[0],self.particles[1]]
 
+    def get_event_features(self):
+        return self.jet_features
+
     def dump(self,path):
         path = os.path.join(path,self.file_name)
         particles = np.stack((self.particles[0],self.particles[1]), axis=1) # particles in input files stored as ( N x 2 jets x 100 particles x 3 features )

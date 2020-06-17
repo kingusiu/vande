@@ -12,7 +12,7 @@ import analysis_data.analysis_jet_image as aji
 # ********************************************************
 
 run_n = 1
-experiment = ex.Experiment( run_n, model_dir=True, fig_dir=True )
+experiment = ex.Experiment( run_n ).setup(model_dir=True, fig_dir=True)
 
 # ********************************************************
 #       read in data ( jet constituents & jet features )

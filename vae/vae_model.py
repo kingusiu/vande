@@ -127,8 +127,8 @@ class VAE( object ):
 
     def predict_with_latent(self,x):
         z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.batch_size)
-        img_reco = self.decoder.predict(z, batch_size=self.batch_size)
-        return [ img_reco, z_mean, z_log_var ]
+        reco = self.decoder.predict(z, batch_size=self.batch_size)
+        return [ reco, z_mean, z_log_var ]
 
 
     # ***********************************
