@@ -1,0 +1,204 @@
+setGPU: Setting GPU to: 0
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+WARNING:tensorflow:From /afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3, 1)    0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda[0][0]                     
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_1[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z (Lambda)                      (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 26,631
+Trainable params: 26,631
+Non-trainable params: 0
+__________________________________________________________________________________________________
+WARNING:tensorflow:Entity <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e599dd8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e599dd8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e529518>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e529518>>: AssertionError: Bad argument number for Name: 3, expecting 4
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 15)                165       
+_________________________________________________________________
+dense_3 (Dense)              (None, 38)                608       
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               25662     
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_6 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+decoder_output (Lambda)      (None, 100, 3)            0         
+=================================================================
+Total params: 27,106
+Trainable params: 27,106
+Non-trainable params: 0
+_________________________________________________________________
+WARNING:tensorflow:Entity <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e599dd8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e599dd8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e529518>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv1DTranspose.call of <vae.vae_3Dloss_model.Conv1DTranspose object at 0x7f552e529518>>: AssertionError: Bad argument number for Name: 3, expecting 4
+Model: "vae"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+encoder_input (InputLayer)   [(None, 100, 3)]          0         
+_________________________________________________________________
+encoder (Model)              [(None, 10), (None, 10),  26631     
+_________________________________________________________________
+decoder (Model)              (None, 100, 3)            27106     
+=================================================================
+Total params: 53,737
+Trainable params: 53,737
+Non-trainable params: 0
+_________________________________________________________________
+WARNING:tensorflow:From /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/vae/losses.py:72: The name tf.squared_difference is deprecated. Please use tf.math.squared_difference instead.
+
+Train on 1801071 samples, validate on 600357 samples
+2020-06-18 01:44:13.734320: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-06-18 01:44:13.748042: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2020-06-18 01:44:19.039398: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xb3eec70 executing computations on platform CUDA. Devices:
+2020-06-18 01:44:19.039481: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-06-18 01:44:19.044770: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199840000 Hz
+2020-06-18 01:44:19.052228: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7e30a80 executing computations on platform Host. Devices:
+2020-06-18 01:44:19.052266: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2020-06-18 01:44:19.053973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:04:00.0
+2020-06-18 01:44:19.056667: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-06-18 01:44:19.072494: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2020-06-18 01:44:19.081869: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10.0
+2020-06-18 01:44:19.085412: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10.0
+2020-06-18 01:44:19.104239: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10.0
+2020-06-18 01:44:19.117241: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10.0
+2020-06-18 01:44:19.127913: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2020-06-18 01:44:19.131460: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2020-06-18 01:44:19.131553: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2020-06-18 01:44:19.134743: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-18 01:44:19.134784: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2020-06-18 01:44:19.134808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2020-06-18 01:44:19.138257: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10481 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+Epoch 1/100
+2020-06-18 01:44:20.990835: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2020-06-18 01:44:21.248838: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+1801071/1801071 - 263s - loss: 8486.1754 - threeD_loss: 8471.0410 - loss_1: 1515.0510 - val_loss: 565.6298 - val_threeD_loss: 559.1392 - val_loss_1: 649.0774
+Epoch 2/100
+1801071/1801071 - 259s - loss: 197.1214 - threeD_loss: 192.5226 - loss_1: 459.8923 - val_loss: 115.9182 - val_threeD_loss: 113.0514 - val_loss_1: 286.6759
+Epoch 3/100
+1801071/1801071 - 258s - loss: 93.1933 - threeD_loss: 90.9402 - loss_1: 225.3238 - val_loss: 76.0069 - val_threeD_loss: 74.1400 - val_loss_1: 186.6868
+Epoch 4/100
+1801071/1801071 - 257s - loss: 50.7434 - threeD_loss: 49.0945 - loss_1: 164.9067 - val_loss: 43.0554 - val_threeD_loss: 41.6396 - val_loss_1: 141.5855
+Epoch 5/100
+1801071/1801071 - 259s - loss: 44.6267 - threeD_loss: 43.3116 - loss_1: 131.5150 - val_loss: 39.0929 - val_threeD_loss: 37.8559 - val_loss_1: 123.7009
+Epoch 6/100
+1801071/1801071 - 258s - loss: 39.7610 - threeD_loss: 38.5862 - loss_1: 117.4701 - val_loss: 43.2288 - val_threeD_loss: 42.1295 - val_loss_1: 109.9236
+Epoch 7/100
+
+Epoch 00007: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+1801071/1801071 - 255s - loss: 38.2008 - threeD_loss: 37.1454 - loss_1: 105.5374 - val_loss: 43.0931 - val_threeD_loss: 42.0880 - val_loss_1: 100.5215
+Epoch 8/100
+1801071/1801071 - 255s - loss: 33.2553 - threeD_loss: 32.2650 - loss_1: 99.0313 - val_loss: 32.8426 - val_threeD_loss: 31.8806 - val_loss_1: 96.1995
+Epoch 9/100
+1801071/1801071 - 254s - loss: 32.5815 - threeD_loss: 31.6481 - loss_1: 93.3316 - val_loss: 32.2422 - val_threeD_loss: 31.3316 - val_loss_1: 91.0596
+Epoch 10/100
+1801071/1801071 - 255s - loss: 32.1834 - threeD_loss: 31.2921 - loss_1: 89.1277 - val_loss: 31.9418 - val_threeD_loss: 31.0678 - val_loss_1: 87.3994
+Epoch 11/100
+1801071/1801071 - 253s - loss: 31.9341 - threeD_loss: 31.0746 - loss_1: 85.9470 - val_loss: 31.7708 - val_threeD_loss: 30.9229 - val_loss_1: 84.7993
+Epoch 12/100
+1801071/1801071 - 253s - loss: 31.7278 - threeD_loss: 30.8913 - loss_1: 83.6506 - val_loss: 31.6069 - val_threeD_loss: 30.7795 - val_loss_1: 82.7412
+Epoch 13/100
+1801071/1801071 - 252s - loss: 31.5488 - threeD_loss: 30.7300 - loss_1: 81.8801 - val_loss: 31.3043 - val_threeD_loss: 30.4927 - val_loss_1: 81.1508
+Epoch 14/100
+1801071/1801071 - 256s - loss: 31.3733 - threeD_loss: 30.5693 - loss_1: 80.3995 - val_loss: 31.3916 - val_threeD_loss: 30.5929 - val_loss_1: 79.8672
+Epoch 15/100
+1801071/1801071 - 253s - loss: 31.1552 - threeD_loss: 30.3622 - loss_1: 79.2970 - val_loss: 30.8336 - val_threeD_loss: 30.0435 - val_loss_1: 79.0158
+Epoch 16/100
+1801071/1801071 - 252s - loss: 30.8123 - threeD_loss: 30.0262 - loss_1: 78.6086 - val_loss: 30.6329 - val_threeD_loss: 29.8487 - val_loss_1: 78.4196
+Epoch 17/100
+1801071/1801071 - 258s - loss: 30.3051 - threeD_loss: 29.5216 - loss_1: 78.3512 - val_loss: 29.9273 - val_threeD_loss: 29.1449 - val_loss_1: 78.2375
+Epoch 18/100
+1801071/1801071 - 255s - loss: 29.4695 - threeD_loss: 28.6874 - loss_1: 78.2041 - val_loss: 28.8648 - val_threeD_loss: 28.0847 - val_loss_1: 78.0151
+Epoch 19/100
+1801071/1801071 - 253s - loss: 28.0667 - threeD_loss: 27.2879 - loss_1: 77.8771 - val_loss: 27.0123 - val_threeD_loss: 26.2348 - val_loss_1: 77.7506
+Epoch 20/100
+1801071/1801071 - 252s - loss: 26.7238 - threeD_loss: 25.9508 - loss_1: 77.2932 - val_loss: 26.3455 - val_threeD_loss: 25.5772 - val_loss_1: 76.8314
+Epoch 21/100
+1801071/1801071 - 252s - loss: 26.2020 - threeD_loss: 25.4406 - loss_1: 76.1487 - val_loss: 25.9100 - val_threeD_loss: 25.1523 - val_loss_1: 75.7716
+Epoch 22/100
+1801071/1801071 - 252s - loss: 25.8646 - threeD_loss: 25.1115 - loss_1: 75.3092 - val_loss: 25.6353 - val_threeD_loss: 24.8860 - val_loss_1: 74.9286
+Epoch 23/100
+1801071/1801071 - 253s - loss: 25.5766 - threeD_loss: 24.8312 - loss_1: 74.5378 - val_loss: 25.3617 - val_threeD_loss: 24.6206 - val_loss_1: 74.1137
+Epoch 24/100
+1801071/1801071 - 253s - loss: 25.3944 - threeD_loss: 24.6557 - loss_1: 73.8690 - val_loss: 25.1619 - val_threeD_loss: 24.4248 - val_loss_1: 73.7062
+Epoch 25/100
+1801071/1801071 - 252s - loss: 25.2584 - threeD_loss: 24.5250 - loss_1: 73.3390 - val_loss: 25.1201 - val_threeD_loss: 24.3900 - val_loss_1: 73.0098
+Epoch 26/100
+1801071/1801071 - 251s - loss: 25.1368 - threeD_loss: 24.4087 - loss_1: 72.8124 - val_loss: 24.9464 - val_threeD_loss: 24.2216 - val_loss_1: 72.4765
+Epoch 27/100
+1801071/1801071 - 254s - loss: 25.0384 - threeD_loss: 24.3148 - loss_1: 72.3591 - val_loss: 25.0038 - val_threeD_loss: 24.2805 - val_loss_1: 72.3342
+Epoch 28/100
+1801071/1801071 - 255s - loss: 24.9639 - threeD_loss: 24.2445 - loss_1: 71.9311 - val_loss: 24.8331 - val_threeD_loss: 24.1161 - val_loss_1: 71.7049
+Epoch 29/100
+1801071/1801071 - 257s - loss: 24.8897 - threeD_loss: 24.1740 - loss_1: 71.5600 - val_loss: 24.8070 - val_threeD_loss: 24.0924 - val_loss_1: 71.4578
+Epoch 30/100
+1801071/1801071 - 252s - loss: 24.8186 - threeD_loss: 24.1060 - loss_1: 71.2492 - val_loss: 24.7320 - val_threeD_loss: 24.0216 - val_loss_1: 71.0487
+Epoch 31/100
+1801071/1801071 - 252s - loss: 24.7636 - threeD_loss: 24.0542 - loss_1: 70.9297 - val_loss: 24.8407 - val_threeD_loss: 24.1327 - val_loss_1: 70.8068
+Epoch 32/100

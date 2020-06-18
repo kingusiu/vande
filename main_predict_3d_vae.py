@@ -4,21 +4,17 @@ import util.experiment as ex
 import util.event_sample as es
 import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
-from config import *
+import config.sample_dict as sd
 
 # ********************************************************
 #               runtime params
 # ********************************************************
 
-run_n = 5
+test_samples = ['GtoWW35na','GtoWW35br']
+
+
+run_n = 55
 experiment = ex.Experiment(run_n).setup(result_dir=True)
-
-# ********************************************
-#               read test data (events)
-# ********************************************
-
-test_sample = es.EventSample.from_input_file('RS Graviton WW br 3.0TeV',os.path.join(config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5'))
-test_evts_j1, test_evts_j2 = test_sample.get_particles()
 
 # ********************************************
 #               load model
@@ -27,33 +23,42 @@ test_evts_j1, test_evts_j2 = test_sample.get_particles()
 vae = VAE_3D()
 vae.load( experiment.model_dir )
 
-# *******************************************************
-#               predict test data
-# *******************************************************
+for sample_id in test_samples:
+    # ********************************************
+    #               read test data (events)
+    # ********************************************
 
-test_evts_j1_reco, z_mean_j1, z_log_var_j1 = vae.predict_with_latent(test_evts_j1)
-test_evts_j2_reco, z_mean_j2, z_log_var_j2 = vae.predict_with_latent(test_evts_j2)
+    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_mjj_cut_concat_200K.h5') # os.path.join(config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
+    test_sample = es.EventSample.from_input_file(sd.sample_name[sample_id], input_path)
+    test_evts_j1, test_evts_j2 = test_sample.get_particles()
 
-# *******************************************************
-#               compute losses
-# *******************************************************
+    # *******************************************************
+    #               predict test data
+    # *******************************************************
 
-losses_j1 = lo.compute_loss_of_prediction_3D_kl(test_evts_j1, test_evts_j1_reco, z_mean_j1, z_log_var_j1)
-losses_j2 = lo.compute_loss_of_prediction_3D_kl(test_evts_j2, test_evts_j2_reco, z_mean_j2, z_log_var_j2)
+    test_evts_j1_reco, z_mean_j1, z_log_var_j1 = vae.predict_with_latent(test_evts_j1)
+    test_evts_j2_reco, z_mean_j2, z_log_var_j2 = vae.predict_with_latent(test_evts_j2)
 
-# *******************************************************
-#               add losses to DataSample and save
-# *******************************************************
+    # *******************************************************
+    #               compute losses
+    # *******************************************************
 
-reco_sample = es.EventSample(test_sample.name + ' reco', particles=[test_evts_j1_reco,test_evts_j2_reco], event_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
+    losses_j1 = lo.compute_loss_of_prediction_3D_kl(test_evts_j1, test_evts_j1_reco, z_mean_j1, z_log_var_j1)
+    losses_j2 = lo.compute_loss_of_prediction_3D_kl(test_evts_j2, test_evts_j2_reco, z_mean_j2, z_log_var_j2)
 
-for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
-    reco_sample.add_event_feature(label, loss)
-for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
-    reco_sample.add_event_feature(label, loss)
+    # *******************************************************
+    #               add losses to DataSample and save
+    # *******************************************************
 
-# *******************************************************
-#               write predicted data
-# *******************************************************
+    reco_sample = es.EventSample(test_sample.name + ' reco', particles=[test_evts_j1_reco,test_evts_j2_reco], event_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
 
-reco_sample.dump(experiment.result_dir)
+    for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
+        reco_sample.add_event_feature(label, loss)
+    for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
+        reco_sample.add_event_feature(label, loss)
+
+    # *******************************************************
+    #               write predicted data
+    # *******************************************************
+
+    reco_sample.dump(experiment.result_dir)

@@ -4,15 +4,15 @@ import pathlib
 
 import tensorflow as tf
 
-from config import *
+import config.config as co
 from vae.losses import *
 
 
 class VAE( object ):
 
-    def __init__(self, run=0, log_dir=config['tensorboard_dir'], model_dir=config['model_dir']):
+    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir']):
         # network parameters
-        self.input_shape = (config['image_size'], config['image_size'], 1)
+        self.input_shape = (co.config['image_size'], co.config['image_size'], 1)
         self.batch_size = 128
         self.kernel_size = 3
         self.filter_n = 6
@@ -159,7 +159,7 @@ class VAE( object ):
         self.model.save(os.path.join(self.model_dir,'vae.h5'))
 
 
-    def plot_training(self, fig_dir=config['fig_dir'] ):
+    def plot_training(self, fig_dir=co.config['fig_dir'] ):
         plt.figure()
         plt.semilogy(self.history.history['loss'])
         plt.semilogy(self.history.history['val_loss'])

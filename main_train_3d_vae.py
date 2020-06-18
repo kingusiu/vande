@@ -1,17 +1,20 @@
 import os
-from config import *
-#import setGPU
+import setGPU
 import numpy as np
 
 import util.experiment as ex
 import inout.input_data_reader as idr
 from vae.vae_3Dloss_model import VAE_3D
+import config.sample_dict as sd
 
 # ********************************************************
 #       runtime params
 # ********************************************************
 
-run_n = 5
+train_sample = 'qcdSide'
+input_path = os.path.join(sd.base_dir_events,sd.file_names[train_sample]+'_mjj_cut_concat_1.2M.h5') # os.path.join( config['input_dir'], 'background_small.h5' )
+
+run_n = 55
 experiment = ex.Experiment( run_n ).setup(model_dir=True)
 
 
@@ -19,8 +22,8 @@ experiment = ex.Experiment( run_n ).setup(model_dir=True)
 #       read in training data ( events )
 # ********************************************************
 
-data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'background_small.h5' ))
-train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents( )
+data_reader = idr.InputDataReader(input_path)
+train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents(with_names=False)
 
 # ********************************************************
 #       prepare training data
@@ -40,5 +43,6 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-vae.fit( training_evts, training_evts, epochs=100, verbose=2 )
+history = vae.fit( training_evts, training_evts, epochs=100, verbose=2 )
+vae.plot_training( experiment.fig_dir )
 vae.save_model( run_n )

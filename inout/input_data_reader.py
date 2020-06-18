@@ -2,7 +2,7 @@ import os
 import h5py
 import pandas as pd
 import numpy as np
-from config import *
+import config.config as co
 from event_to_image_converter import *
 import util.utility_fun as ut
 
@@ -75,9 +75,9 @@ class InputDataReader():
         dijet_features, dijet_feature_names = self.read_dijet_features()
         # cut on mass
         mjj_idx = dijet_feature_names.index('mJJ')
-        events_j1, events_j2, dijet_features = ut.filter_arrays_on_value( events_j1, events_j2, dijet_features, filter_arr=dijet_features[:,mjj_idx], filter_val=config['mass_cut'] )
+        events_j1, events_j2, dijet_features = ut.filter_arrays_on_value( events_j1, events_j2, dijet_features, filter_arr=dijet_features[:,mjj_idx], filter_val=co.config['mass_cut'] )
 
-        img_j1, img_j2 = convert_events_to_image(events_j1, events_j2, config['image_size'])
+        img_j1, img_j2 = convert_events_to_image(events_j1, events_j2, co.config['image_size'])
         # normalize by pixel values from training
         img_j1, img_j2 = normalize_by_jet_pt(img_j1, img_j2, dijet_features, dijet_feature_names )
         return [img_j1, img_j2, dijet_features, dijet_feature_names]
@@ -87,7 +87,7 @@ class InputDataReader():
         read result file and return data as recarray
     """
     def read_results_to_df( self ):
-        results, jet_feature_names = self.read_data_multikey( config['result_key'], 'labels' )
+        results, jet_feature_names = self.read_data_multikey( co.config['result_key'], 'labels' )
         labels = [n.decode("utf-8") for n in jet_feature_names]
         return pd.DataFrame(results,columns=labels)
 

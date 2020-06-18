@@ -1,6 +1,6 @@
 import h5py
 import os
-from config import *
+import config.config as co
 from result import *
 
 def write_results_array_to_file( results, labels, file_path ):
