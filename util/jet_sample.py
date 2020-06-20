@@ -5,7 +5,7 @@ import inout.result_writer as rw
 
 """ module containing wrapper for a data sample """
 
-class DataSample( ):
+class JetSample():
     
     def __init__( self, name, data ):
         self.name = name
@@ -17,7 +17,7 @@ class DataSample( ):
         return cls(name, df)
 
     @classmethod
-    def from_result_file(cls, name, path):
+    def from_input_file(cls, name, path):
         df = idr.InputDataReader(path).read_results_to_df()
         if 'sel' in df:  # convert selection column to bool
             df['sel'] = df['sel'].astype(bool)
@@ -55,7 +55,7 @@ class DataSample( ):
         if 'sel' in self.data: # convert selection column to int for writing
             dump_data = self.data.copy()
             dump_data['sel'] = dump_data['sel'].astype(int)
-        rw.write_results_array_to_file( dump_data.values, list(dump_data.columns), path )
+        rw.write_jet_sample_to_file( dump_data.values, list(dump_data.columns), path )
         print('written data sample to {}'.format(path))
         
     def title( self ):

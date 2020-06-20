@@ -4,7 +4,7 @@ from config import *
 from vae.vae_model import VAE
 import vae.losses as lo
 import inout.input_data_reader as idr
-import util.data_sample as ds
+import util.jet_sample as js
 import util.experiment as ex
 
 
@@ -20,7 +20,7 @@ experiment = ex.Experiment( run_n, result_dir=True )
 # ********************************************
 
 data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_mjj_cut_concat_10K_pt_img.h5' ) )
-test_sample = ds.DataSample.from_feature_array('GtoWW3.5TevNa', *data_reader.read_dijet_features())
+test_sample = js.JetSample.from_feature_array('GtoWW3.5TevNa', *data_reader.read_dijet_features())
 test_img_j1, test_img_j2 = data_reader.read_images( )
 
 # ********************************************
