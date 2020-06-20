@@ -1,10 +1,12 @@
 import os
+import setGPU
 
 import util.experiment as ex
 import util.event_sample as es
 import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
 import config.sample_dict as sd
+import config.config as co
 
 # ********************************************************
 #               runtime params
@@ -13,23 +15,24 @@ import config.sample_dict as sd
 test_samples = ['GtoWW35na','GtoWW35br']
 
 
-run_n = 55
+run_n = 2
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 
 # ********************************************
 #               load model
 # ********************************************
 
-vae = VAE_3D()
-vae.load( experiment.model_dir )
+vae = VAE_3D(model_dir=experiment.model_dir)
+vae.load( )
 
 for sample_id in test_samples:
     # ********************************************
     #               read test data (events)
     # ********************************************
 
-    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_mjj_cut_concat_200K.h5') # os.path.join(config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
-    test_sample = es.EventSample.from_input_file(sd.sample_name[sample_id], input_path)
+    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_mjj_cut_concat_200K.h5') #
+    input_path = os.path.join(co.config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
+    test_sample = es.EventSample.from_input_file(sample_id, input_path)
     test_evts_j1, test_evts_j2 = test_sample.get_particles()
 
     # *******************************************************
@@ -50,7 +53,7 @@ for sample_id in test_samples:
     #               add losses to DataSample and save
     # *******************************************************
 
-    reco_sample = es.EventSample(test_sample.name + ' reco', particles=[test_evts_j1_reco,test_evts_j2_reco], event_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
+    reco_sample = es.EventSample(sample_id + 'Reco', particles=[test_evts_j1_reco,test_evts_j2_reco], event_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
 
     for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
         reco_sample.add_event_feature(label, loss)

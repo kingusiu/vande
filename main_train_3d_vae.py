@@ -1,21 +1,23 @@
 import os
-import setGPU
+#import setGPU
 import numpy as np
 
 import util.experiment as ex
 import inout.input_data_reader as idr
 from vae.vae_3Dloss_model import VAE_3D
 import config.sample_dict as sd
+import config.config as co
 
 # ********************************************************
 #       runtime params
 # ********************************************************
 
 train_sample = 'qcdSide'
-input_path = os.path.join(sd.base_dir_events,sd.file_names[train_sample]+'_mjj_cut_concat_1.2M.h5') # os.path.join( config['input_dir'], 'background_small.h5' )
+input_path = os.path.join(sd.base_dir_events,sd.file_names[train_sample]+'_mjj_cut_concat_1.2M.h5')
+#input_path = os.path.join( co.config['input_dir'], 'background_small.h5' )
 
-run_n = 55
-experiment = ex.Experiment( run_n ).setup(model_dir=True)
+run_n = 45
+experiment = ex.Experiment( run_n ).setup(model_dir=True, fig_dir=True)
 
 
 # ********************************************************
@@ -45,4 +47,4 @@ vae.build()
 
 history = vae.fit( training_evts, training_evts, epochs=100, verbose=2 )
 vae.plot_training( experiment.fig_dir )
-vae.save_model( run_n )
+vae.save_model( )

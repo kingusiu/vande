@@ -3,6 +3,8 @@ import pandas as pd
 import os
 import inout.input_data_reader as idr
 import inout.result_writer as rw
+import config.sample_dict as sd
+
 
 class EventSample():
 
@@ -14,7 +16,7 @@ class EventSample():
         :param event_features: N x F_n features (pandas dataframe)
         '''
         self.name = name
-        self.file_name = self.name.replace(' ','_')+'.h5'
+        self.file_name = sd.file_names[self.name]+'.h5'
         self.particles = np.asarray(particles) # numpy array [ 2 (jets) x N events x 100 particles x 3 features ]
         self.particle_feature_names = particle_feature_names
         self.event_features = pd.DataFrame(event_features) # dataframe: names = columns

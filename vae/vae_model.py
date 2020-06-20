@@ -26,10 +26,10 @@ class VAE( object ):
         self.regularizer = None # regularizers.l2()
 
     # adding keras mse as dummy loss, because training loss in function closure not (easily) accessible and model won't load without all custom function references
-    def load( self, path ):
-        self.encoder = tf.keras.models.load_model(os.path.join(path, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'sampling' : self.sampling})
-        self.decoder = tf.keras.models.load_model(os.path.join(path, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss})
-        self.model = tf.keras.models.load_model(os.path.join(path, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'loss': tf.keras.losses.mse, 'sampling' : self.sampling})
+    def load( self ):
+        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'sampling' : self.sampling})
+        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss})
+        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'loss': tf.keras.losses.mse, 'sampling' : self.sampling})
 
 
     def build( self ):
