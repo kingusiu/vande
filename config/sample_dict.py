@@ -18,7 +18,7 @@ file_names = {
 
 sample_name = {
                 'qcdSide': 'QCD side',
-                'qcdSideReco': 'QCD side',
+                'qcdSideReco': 'QCD side reco',
                 'GtoWW30na': r'$G(3.0 TeV)\to WW$ narrow',
                 'GtoWW30br': r'$G(3.0 TeV)\to WW$ broad',
                 'GtoWW35na': r'$G(3.5 TeV)\to WW$ narrow',

@@ -12,10 +12,10 @@ import config.config as co
 #               runtime params
 # ********************************************************
 
-test_samples = ['GtoWW35na','GtoWW35br']
+test_samples = ['qcdSide']
 
 
-run_n = 2
+run_n = 45
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 
 # ********************************************
@@ -30,8 +30,9 @@ for sample_id in test_samples:
     #               read test data (events)
     # ********************************************
 
-    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_mjj_cut_concat_200K.h5') #
-    input_path = os.path.join(co.config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
+    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_concat_500K.h5')
+    #'_mjj_cut_concat_200K.h5')
+    #input_path = os.path.join(co.config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
     test_sample = es.EventSample.from_input_file(sample_id, input_path)
     test_evts_j1, test_evts_j2 = test_sample.get_particles()
 
