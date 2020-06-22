@@ -3,7 +3,9 @@ import pandas as pd
 import inout.input_data_reader as idr
 import inout.result_writer as rw
 
-""" module containing wrapper for a data sample """
+""" module containing wrapper for a data sample 
+    ['mJJ', 'j1Pt', 'j1Eta', 'j1Phi', 'j1M', 'j1E', 'j2Pt', 'j2M', 'j2E', 'DeltaEtaJJ', 'DeltaPhiJJ', 'j1TotalLoss', 'j1RecoLoss', 'j1KlLoss', 'j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']
+"""
 
 class JetSample():
     
@@ -18,7 +20,7 @@ class JetSample():
 
     @classmethod
     def from_input_file(cls, name, path):
-        df = idr.InputDataReader(path).read_results_to_df()
+        df = idr.InputDataReader(path).read_dijet_features_to_df()
         if 'sel' in df:  # convert selection column to bool
             df['sel'] = df['sel'].astype(bool)
         return cls( name, df )

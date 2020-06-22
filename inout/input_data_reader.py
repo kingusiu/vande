@@ -83,15 +83,6 @@ class InputDataReader():
         return [img_j1, img_j2, dijet_features, dijet_feature_names]
 
 
-    """
-        read result file and return data as recarray
-    """
-    def read_results_to_df( self ):
-        results, jet_feature_names = self.read_data_multikey( co.config['result_key'], 'labels' )
-        labels = [n.decode("utf-8") for n in jet_feature_names]
-        return pd.DataFrame(results,columns=labels)
-
-
     def read_events_results_concatenate( self, result_dir ):
         if not self.check_path( result_dir ) : return
         file_list = os.listdir( result_dir )
