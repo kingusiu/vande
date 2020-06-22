@@ -10,7 +10,7 @@ def plot_feature( sample_dict, feature_name, sample_names=None, fig_dir=None, pl
     plot_bg_vs_sig_distribution(feature,legend=legend,xlabel=feature_name,title=r'distribution '+feature_name,fig_dir=fig_dir,plot_name='bg_vs_sig_hist_'+feature_name+'_'+plot_suffix)
 
 
-def plot_bg_vs_sig_distribution(data, bins=100, xlabel='x', ylabel='share', title='bg vs sig distribution', legend=[], normed=True, ylogscale=True, fig_dir=None, plot_name='bg_vs_sig_dist', legend_loc='best', first_is_bg=True):
+def plot_bg_vs_sig_distribution(data, bins=100, xlabel='x', ylabel='frac', title='bg vs sig distribution', legend=[], normed=True, ylogscale=True, fig_dir=None, plot_name='bg_vs_sig_dist', legend_loc='best', first_is_bg=True):
     '''
     plots feature distribution treating first data-array as backround and rest of arrays as signal
     :param data: list/array of N elements where first element is assumed to be background and elements 2..N-1 assumed to be signal. all elements = array of length M
