@@ -1,7 +1,7 @@
 import h5py
 import os
 import config.config as co
-from result import *
+
 
 particles_key = 'jetConstituentsList'
 particles_names_key = 'particleFeatureNames'
