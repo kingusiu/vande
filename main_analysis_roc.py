@@ -27,7 +27,7 @@ for sample_id in all_samples:
     data[sample_id] = js.JetSample.from_input_file(sample_id, os.path.join(experiment.result_dir, sd.file_names[sample_id]+'.h5'))
 
 # plot standard ROC for all strategies
-for BSM_sample in []: #BSM_samples:
+for BSM_sample in BSM_samples:
 
     neg_class_losses = [strategy( data[SM_sample] ) for strategy in ls.loss_strategies.values()]
     pos_class_losses = [strategy( data[BSM_sample] ) for strategy in ls.loss_strategies.values()]
@@ -36,7 +36,7 @@ for BSM_sample in []: #BSM_samples:
 
 # plot binned ROC
 BSM_samples = ['GtoWW15brReco','GtoWW15naReco','GtoWW25brReco','GtoWW25naReco','GtoWW35brReco','GtoWW35naReco','GtoWW45brReco','GtoWW45naReco']
-mass_centers = [1500,1500,2500,2500,4500,4500]
+mass_centers = [1500,1500,2500,2500,3500,3500,4500,4500]
 strategies = ['s3','s4','s5']
 
 for s in strategies:
