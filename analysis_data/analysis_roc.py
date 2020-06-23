@@ -1,13 +1,10 @@
 import sklearn.metrics as skl
-from collections import OrderedDict
 import matplotlib.pyplot as plt
 import os
 import numpy as np
 
-import discriminator.loss_strategy as ls
-import util.experiment as ex
 import util.jet_sample as js
-import config.sample_dict as sd
+
 
 def get_label_and_score_arrays(neg_class_losses, pos_class_losses):
     labels = []
@@ -20,11 +17,14 @@ def get_label_and_score_arrays(neg_class_losses, pos_class_losses):
     return [labels, losses]
 
 
-def plot_roc(y_true_arr, loss_arr, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None):
+def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None):
+
+    class_labels, losses = get_label_and_score_arrays( neg_class_losses, pos_class_losses ) # neg_class_loss array same for all pos_class_losses
+
     aucs = []
     fig = plt.figure(figsize=(5, 5))
 
-    for y_true, loss, label in zip(y_true_arr, loss_arr, legend):
+    for y_true, loss, label in zip(class_labels, losses, legend):
         fpr, tpr, threshold = skl.roc_curve(y_true, loss)
         aucs.append(skl.roc_auc_score(y_true, loss))
         plt.loglog(fpr, tpr, label=label + " (auc " + "{0:.3f}".format(aucs[-1]) + ")")
@@ -41,28 +41,21 @@ def plot_roc(y_true_arr, loss_arr, legend=[], title='ROC', legend_loc='best', pl
     return aucs
 
 
-strategies = ['s1', 's2', 's3', 's4', 's5']
+def get_mjj_binned_sample(sample, mjj_peak, window_pct=20):
+    left_edge, right_edge = mjj_peak * (1. - window_pct / 100.), mjj_peak * (1. + window_pct / 100.)
 
-legend = [ls.loss_strategies[s].title_str for s in strategies]
+    left_bin = sample[sample['mJJ'] < left_edge]
+    center_bin = sample[(sample['mJJ'] >= left_edge) & (sample['mJJ'] <= right_edge)]
+    right_bin = sample[sample['mJJ'] > right_edge]
 
-run_n = 45
-experiment = ex.Experiment(run_n).setup(fig_dir=True)
+    left_bin_ds = js.JetSample(sample.title() + ' mJJ < ' + str(left_edge / 1000), left_bin)
+    center_bin_ds = js.JetSample(sample.title() + ' ' + str(left_edge / 1000) + ' <= mJJ <= ' + str(right_edge / 1000),
+                                  center_bin)
+    right_bin_ds = js.JetSample(sample.title() + ' mJJ > ' + str(right_edge / 1000), right_bin)
 
-SM_sample = 'qcdSideReco'
-BSM_samples = ['qcdSigReco', 'GtoWW15naReco', 'GtoWW15brReco', 'GtoWW25naReco', 'GtoWW25brReco','GtoWW35naReco', 'GtoWW35brReco', 'GtoWW45naReco', 'GtoWW45brReco']
+    return [left_bin_ds, center_bin_ds, right_bin_ds]
+
+def plot_binned_roc( sample_dict, ):
+    pass
 
 
-all_samples = [SM_sample] + BSM_samples
-
-
-data = OrderedDict()
-for sample_id in all_samples:
-    data[sample_id] = js.JetSample.from_input_file(sample_id, os.path.join(experiment.result_dir, sd.file_names[sample_id]+'.h5'))
-
-for BSM_sample in BSM_samples:
-
-    neg_class_loss = [strategy( data[SM_sample] ) for strategy in ls.loss_strategies.values()]
-    pos_class_losses = [strategy( data[BSM_sample] ) for strategy in ls.loss_strategies.values()]
-
-    class_labels, losses = get_label_and_score_arrays( neg_class_loss, pos_class_losses ) # neg_class_loss array same for all pos_class_losses
-    plot_roc( class_labels, losses, legend=legend, title='ROC '+sd.sample_name[BSM_sample], plot_name='ROC_'+sd.file_names[BSM_sample], fig_dir=experiment.fig_dir_event )
