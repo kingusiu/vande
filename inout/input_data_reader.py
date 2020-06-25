@@ -1,9 +1,8 @@
 import os
 import h5py
 import pandas as pd
-import numpy as np
 import config.config as co
-from event_to_image_converter import *
+from inout.event_to_image_converter import *
 import util.utility_fun as ut
 
 
