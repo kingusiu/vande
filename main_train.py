@@ -12,8 +12,10 @@ import inout.sample_factory as sf
 # ********************************************************
 
 run_n = 0
+data_sample = 'img-local'
+
 experiment = ex.Experiment(run_n).setup(model_dir=True)
-paths = sf.SamplePathFactory(experiment,'img-local')
+paths = sf.SamplePathFactory(experiment,data_sample)
 
 # ********************************************************
 #       read in training data ( images )

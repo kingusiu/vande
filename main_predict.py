@@ -13,14 +13,16 @@ import util.experiment as ex
 # ********************************************************
 
 run_n = 0
+data_sample = 'img-local'
+sample_id = 'GtoWW35na'
+
 experiment = ex.Experiment(run_n).setup(result_dir=True)
-paths = sf.SamplePathFactory(experiment,'img-local')
+paths = sf.SamplePathFactory(experiment,data_sample)
 
 # ********************************************
 #               read test data (images)
 # ********************************************
 
-sample_id = 'GtoWW35na'
 data_reader = idr.InputDataReader(paths.sample_path(sample_id))
 test_sample = js.JetSample.from_feature_array(sample_id, *data_reader.read_dijet_features())
 test_img_j1, test_img_j2 = data_reader.read_images( )
