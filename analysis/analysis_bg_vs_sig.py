@@ -16,7 +16,7 @@ def plot_bg_vs_sig_distribution(data, bins=100, xlabel='x', ylabel='frac', title
     :param data: list/array of N elements where first element is assumed to be background and elements 2..N-1 assumed to be signal. all elements = array of length M
     '''
     fig = plt.figure(figsize=(6, 4))
-    alpha = 0.5
+    alpha = 0.4
     histtype = 'stepfilled'
     if ylogscale:
         plt.yscale('log')

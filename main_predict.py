@@ -14,7 +14,7 @@ import util.experiment as ex
 
 run_n = 0
 data_sample = 'img-local'
-sample_id = 'GtoWW35na'
+sample_id = 'GtoWW25br'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)

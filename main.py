@@ -18,10 +18,7 @@ experiment = ex.Experiment( run_n ).setup(model_dir=True, fig_dir=True)
 #       read in data ( jet constituents & jet features )
 # ********************************************************
 
-data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'background_small_img_ptnormal_bin32.h5' ))
-train_img_j1, train_img_j2 = data_reader.read_images( )
-
-img_analysis = aji.AnalysisJetImage('QCD train', do=['sampled_img', 'avg_img'], fig_dir=experiment.fig_dir)
+data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'background_small_img_ptnormal_bin32.h5' ) = aji.AnalysisJetImage('QCD train', do=['sampled_img', 'avg_img'], fig_dir=experiment.fig_dir)
 img_analysis.analyze( [train_img_j1, train_img_j2] )
 
 training_img = np.vstack([train_img_j1,train_img_j2])
@@ -29,7 +26,10 @@ np.random.shuffle( training_img )
 
 # *******************************************************
 #                       build and train
-# *******************************************************
+# *******************************************************)
+# train_img_j1, train_img_j2 = data_reader.read_images( )
+#
+# img_analysis
 
 vae = VAE(run_n)
 vae.build()

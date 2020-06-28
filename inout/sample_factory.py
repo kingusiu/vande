@@ -19,9 +19,11 @@ class SamplePathFactory():
         if self.mode == 'img-local':
             self.init_img_local()
 
+    def init_default(self):
+        pass
+
     def init_img_local(self):
-        self.qcd_file_path = os.path.join(self.input_dir,'background_small_img_ptnormal_bin32.h5')
-        self.available_samples = ['qcdSide','GtoWW25br','GtoWW35na']
+        self.qcd_file_path = os.path.join(self.input_dir,'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_img_20K.h5')
         self.sample_suffix = '_mjj_cut_concat_10K_pt_img.h5'
 
     @property
@@ -29,11 +31,9 @@ class SamplePathFactory():
         return self.qcd_file_path
 
     def sample_path(self,id):
-        if id not in self.available_samples:
-            raise 'sample {} not available in mode {}'.format(id,self.mode)
         if id == 'qcdSide':
             return self.qcd_path
         return os.path.join(self.input_dir,sd.file_names[id]+self.sample_suffix)
 
     def result_path(self,id):
-        return os.path.join(self.result_dir,sd.file_names[id]+'_reco.h5')
+        return os.path.join(self.result_dir,sd.file_names[id]+'.h5')
