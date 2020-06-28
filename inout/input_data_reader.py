@@ -5,6 +5,7 @@ import config.config as co
 from inout.event_to_image_converter import *
 import util.utility_fun as ut
 
+default_jet_feature_names = ['mJJ', 'j1Pt', 'j1Eta', 'j1Phi', 'j1M', 'j1E', 'j2Pt', 'j2M', 'j2E', 'DeltaEtaJJ', 'DeltaPhiJJ']
 
 class InputDataReader():
 
@@ -57,7 +58,8 @@ class InputDataReader():
         return [data[:, 0, :, :], data[:, 1, :, :]]
 
     def read_dijet_feature_names(self):
-        return [ n.decode("utf-8") for n in self.read_data(self.jet_feature_names_key) ]
+        feature_names = self.read_data(self.jet_feature_names_key)
+        return default_jet_feature_names if not feature_names else [ n.decode("utf-8") for n in feature_names] # some files don't have feature names saved
 
     def read_dijet_features(self, with_names=True):
         if with_names:

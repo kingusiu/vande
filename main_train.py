@@ -1,5 +1,5 @@
 import os
-#import setGPU
+import setGPU
 import numpy as np
 
 import util.experiment as ex
@@ -11,11 +11,11 @@ import inout.sample_factory as sf
 #       runtime params
 # ********************************************************
 
-run_n = 0
-data_sample = 'img-local'
+run_n = 46
+data_sample = 'img'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True)
-paths = sf.SamplePathFactory(experiment,data_sample)
+paths = sf.SamplePathFactory(experiment, data_sample)
 
 # ********************************************************
 #       read in training data ( images )
@@ -29,7 +29,7 @@ train_img_j1, train_img_j2 = data_reader.read_images( )
 # ********************************************************
 
 training_img = np.vstack([train_img_j1,train_img_j2])
-np.random.shuffle( training_img )
+np.random.shuffle(training_img)
 
 # *******************************************************
 #                       build model
@@ -42,5 +42,5 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-vae.fit( training_img, training_img, epochs=5, verbose=2 )
-vae.save_model( )
+vae.fit( training_img, training_img, epochs=100, verbose=2 )
+vae.save_model()
