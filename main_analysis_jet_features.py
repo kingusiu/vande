@@ -1,7 +1,7 @@
 import os
 
 import config.sample_dict as sd
-import analysis_data.analysis_jet_feature as ajf
+import analysis.analysis_jet_feature as ajf
 import util.experiment as ex
 import util.jet_sample as js
 import util.event_sample as es

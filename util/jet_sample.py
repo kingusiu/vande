@@ -23,7 +23,7 @@ class JetSample():
         df = idr.InputDataReader(path).read_dijet_features_to_df()
         if 'sel' in df:  # convert selection column to bool
             df['sel'] = df['sel'].astype(bool)
-        return cls( name, df )
+        return cls(name, df)
 
     @classmethod
     def from_event_sample(cls, event_sample):

@@ -154,6 +154,7 @@ class VAE( object ):
 
 
     def save_model(self):
+        print('saving model to {}'.format(self.model_dir))
         self.encoder.save(os.path.join(self.model_dir, 'encoder.h5'))
         self.decoder.save(os.path.join(self.model_dir,'decoder.h5'))
         self.model.save(os.path.join(self.model_dir,'vae.h5'))

@@ -1,8 +1,12 @@
 import os
 
 base_dir_events = '/eos/user/k/kiwoznia/data/VAE_data/concat_events'
-# todo: base dir images
+base_dir_images = '/eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images'
 base_dir_results = '/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results'
+
+base_dir_events_local = 'data/events'
+base_dir_images_local = 'data/images'
+
 
 file_names = {
                 'qcdSide': 'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND',

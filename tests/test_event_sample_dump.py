@@ -1,7 +1,7 @@
 import os
 import util.experiment as ex
 import util.event_sample as es
-import analysis_data.analysis_constituents as ac
+import analysis.analysis_constituents as ac
 from config import *
 
 

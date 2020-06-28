@@ -5,7 +5,7 @@ import numpy as np
 
 import util.experiment as ex
 import inout.input_data_reader as idr
-import analysis_data.analysis_constituents as ac
+import analysis.analysis_constituents as ac
 from vae.vae_3Dloss_model import VAE_3D
 
 # ********************************************************

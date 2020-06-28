@@ -1,7 +1,7 @@
 import os
 from collections import OrderedDict
 
-import analysis_data.analysis_losses as alo
+import analysis.analysis_losses as alo
 import util.jet_sample as js
 import util.experiment as ex
 import config.sample_dict as sd
