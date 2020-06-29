@@ -1,4 +1,4 @@
-import os
+import setGPU
 
 from vae.vae_model import VAE
 import vae.losses as lo
@@ -12,20 +12,11 @@ import util.experiment as ex
 #               runtime params
 # ********************************************************
 
-run_n = 0
-data_sample = 'img-local'
-sample_id = 'GtoWW25br'
+run_n = 46
+data_sample = 'img'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
-
-# ********************************************
-#               read test data (images)
-# ********************************************
-
-data_reader = idr.InputDataReader(paths.sample_path(sample_id))
-test_sample = js.JetSample.from_feature_array(sample_id, *data_reader.read_dijet_features())
-test_img_j1, test_img_j2 = data_reader.read_images( )
 
 # ********************************************
 #               load model
@@ -34,28 +25,43 @@ test_img_j1, test_img_j2 = data_reader.read_images( )
 vae = VAE(run=run_n,model_dir=experiment.model_dir)
 vae.load()
 
-# *******************************************************
-#               predict test data
-# *******************************************************
+# ********************************************
+#               read test data (images)
+# ********************************************
 
-reco_img_j1, z_mean_j1, z_log_var_j1 = vae.predict_with_latent( test_img_j1 )
-reco_img_j2, z_mean_j2, z_log_var_j2 = vae.predict_with_latent( test_img_j2 )
+sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
 
-# *******************************************************
-#               compute losses
-# *******************************************************
+for sample_id in sample_ids:
 
-losses_j1 = lo.compute_loss_of_prediction_mse_kl(test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1)
-losses_j2 = lo.compute_loss_of_prediction_mse_kl(test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2)
+    data_reader = idr.InputDataReader(paths.sample_path(sample_id))
+    test_sample = js.JetSample.from_feature_array(sample_id, *data_reader.read_dijet_features())
+    test_img_j1, test_img_j2 = data_reader.read_images( )
 
-# *******************************************************
-#               add losses to DataSample and save
-# *******************************************************
 
-for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
-    test_sample.add_feature(label,loss)
-for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
-    test_sample.add_feature(label,loss)
+    # *******************************************************
+    #               predict test data
+    # *******************************************************
 
-test_sample.dump(paths.result_path(sample_id))
+    print('-'*10, 'predicting', '-'*10)
+    reco_img_j1, z_mean_j1, z_log_var_j1 = vae.predict_with_latent( test_img_j1 )
+    reco_img_j2, z_mean_j2, z_log_var_j2 = vae.predict_with_latent( test_img_j2 )
+
+    # *******************************************************
+    #               compute losses
+    # *******************************************************
+
+    print('-'*10, 'computing losses', '-'*10)
+    losses_j1 = lo.compute_loss_of_prediction_mse_kl(test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1)
+    losses_j2 = lo.compute_loss_of_prediction_mse_kl(test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2)
+
+    # *******************************************************
+    #               add losses to DataSample and save
+    # *******************************************************
+
+    for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
+        test_sample.add_feature(label,loss)
+    for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
+        test_sample.add_feature(label,loss)
+
+    test_sample.dump(paths.result_path(sample_id))
 
