@@ -18,7 +18,6 @@ experiment = ex.Experiment(run_n).setup(fig_dir=True)
 SM_sample = 'qcdSideReco'
 BSM_samples = ['qcdSigReco', 'GtoWW15naReco', 'GtoWW15brReco', 'GtoWW25naReco', 'GtoWW25brReco','GtoWW35naReco', 'GtoWW35brReco', 'GtoWW45naReco', 'GtoWW45brReco']
 
-
 all_samples = [SM_sample] + BSM_samples
 
 
@@ -44,9 +43,9 @@ for s in strategies:
     strategy = ls.loss_strategies[s]
 
     for BSM_sample, mass_center in zip(BSM_samples,mass_centers):
-        binned_bg = ar.get_mjj_binned_sample(data[SM_sample],mass_center)
-        binned_sig = ar.get_mjj_binned_sample(data[BSM_sample],mass_center)
 
+        binned_bg = ar.get_mjj_binned_sample(data[SM_sample], mass_center)
+        binned_sig = ar.get_mjj_binned_sample(data[BSM_sample], mass_center)
 
         neg_class_losses = [ strategy( b ) for b in binned_bg ]
         pos_class_losses = [ strategy( s ) for s in binned_sig ]

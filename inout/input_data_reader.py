@@ -59,7 +59,7 @@ class InputDataReader():
 
     def read_dijet_feature_names(self):
         feature_names = self.read_data(self.jet_feature_names_key)
-        return default_jet_feature_names if not feature_names else [ n.decode("utf-8") for n in feature_names] # some files don't have feature names saved
+        return default_jet_feature_names if feature_names.size == 0 else [ n.decode("utf-8") for n in feature_names] # some files don't have feature names saved
 
     def read_dijet_features(self, with_names=True):
         if with_names:

@@ -17,7 +17,7 @@ def get_label_and_score_arrays(neg_class_losses, pos_class_losses):
     return [labels, losses]
 
 
-def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None):
+def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None, xlim=None):
 
     class_labels, losses = get_label_and_score_arrays( neg_class_losses, pos_class_losses ) # neg_class_loss array same for all pos_class_losses
 
@@ -30,6 +30,8 @@ def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_
         plt.loglog(fpr, tpr, label=label + " (auc " + "{0:.3f}".format(aucs[-1]) + ")")
 
     plt.grid()
+    if xlim:
+        plt.xlim(left=xlim)
     plt.xlabel('False positive rate')
     plt.ylabel('True positive rate')
     plt.legend(loc=legend_loc)

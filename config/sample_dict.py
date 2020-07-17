@@ -6,6 +6,7 @@ base_dir_results = '/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolution
 
 base_dir_events_local = 'data/events'
 base_dir_images_local = 'data/images'
+base_dir_results_local = 'results'
 
 
 file_names = {

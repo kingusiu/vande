@@ -63,5 +63,5 @@ for sample_id in sample_ids:
     for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
         test_sample.add_feature(label,loss)
 
-    test_sample.dump(paths.result_path(sample_id))
+    test_sample.dump(paths.result_path(sample_id + 'Reco'))
 
