@@ -2,6 +2,7 @@ import tensorflow as tf
 import os
 
 from vae.vae_model import VAE
+from vae.vae_model import Sampling
 from vae.losses import *
 
 # custom 1d transposed convolution that expands to 2d output for vae decoder
@@ -44,7 +45,8 @@ class VAE_3D( VAE ):
 
 
     def compile(self,model):
-        model.compile(optimizer='adam', loss=threeD_kl_loss(self.z_mean, self.z_log_var), metrics=[threeD_loss,kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        loss = ThreeD_KL_Loss(self.z_mean, self.z_log_var)
+        model.compile(optimizer='adam', loss=loss, metrics=[loss.threeD_loss, loss.kl_loss], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
 
     # ***********************************
@@ -84,7 +86,8 @@ class VAE_3D( VAE ):
         self.z_log_var = tf.keras.layers.Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
-        z = tf.keras.layers.Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
+        self.sampling = Sampling()
+        z = self.sampling((self.z_mean, self.z_log_var))
 
         # instantiate encoder model
         encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')

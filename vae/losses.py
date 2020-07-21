@@ -7,6 +7,7 @@ import config.config as co
 #                   training losses
 # ********************************************************
 
+
 ### KL
 
 def kl_loss( z_mean, z_log_var ):
@@ -17,6 +18,7 @@ def kl_loss( z_mean, z_log_var ):
 # metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
 def kl_loss_for_metric( z_mean, z_log_var ):
 
+    @tf.function
     def loss( inputs, outputs ):
         #return config['beta'] * kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
         return kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
@@ -25,6 +27,7 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 
 ### MSE
 
+@tf.function
 def mse_loss( inputs, outputs ):
     mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
     reco_loss = mse(inputs, outputs)
@@ -34,6 +37,7 @@ def mse_loss( inputs, outputs ):
 
 def mse_kl_loss( z_mean, z_log_var ):
 
+    @tf.function
     def loss( inputs, outputs ):
         return mse_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
 
@@ -65,7 +69,34 @@ def exponential_prob_kl_loss( z_mean, z_log_var ):
 
 ### 3D LOSS
 
-def threeD_loss( inputs, outputs ): #[batch_size x 100 x 3]
+
+class ThreeD_KL_Loss(tf.keras.losses.Loss):
+
+    def __init__(self, z_mean, z_log_var, name='ThreeD_KL_Loss'):
+        super(ThreeD_KL_Loss, self).__init__(name=name)
+        self.z_mean = z_mean
+        self.z_log_var = z_log_var
+
+    def threeD_loss(self, inputs, outputs):
+        expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
+        expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
+        # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs
+        distances = tf.math.reduce_sum(tf.math.squared_difference(expand_inputs, expand_outputs), -1)
+        # get min for inputs (min of rows -> [batch_size x 100]) and mit for outputs (min of columns)
+        min_dist_to_inputs = tf.math.reduce_min(distances,1)
+        min_dist_to_outputs = tf.math.reduce_min(distances,2)
+        return tf.math.reduce_sum(min_dist_to_inputs, 1) + tf.math.reduce_sum(min_dist_to_outputs, 1)
+
+    def kl_loss(self, inputs, outputs):
+        kl = 1. + self.z_log_var - tf.square(self.z_mean) - tf.exp(self.z_log_var)
+        kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
+        return kl
+
+    def call(self, inputs, outputs):
+        return self.threeD_loss(inputs, outputs) + co.config['beta'] * self.kl_loss(inputs, outputs)
+
+
+def threeD_loss_fun( inputs, outputs ): #[batch_size x 100 x 3]
     expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
     expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
     # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs
@@ -76,7 +107,8 @@ def threeD_loss( inputs, outputs ): #[batch_size x 100 x 3]
     return tf.math.reduce_sum(min_dist_to_inputs, 1) + tf.math.reduce_sum(min_dist_to_outputs, 1)
 
 
-def threeD_kl_loss( z_mean, z_log_var ):
+def threeD_kl_loss_fun( z_mean, z_log_var ):
+
     def loss( inputs, outputs ):
         return threeD_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
     return loss

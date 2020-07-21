@@ -46,6 +46,6 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-history = vae.fit(training_evts, training_evts, epochs=5, verbose=2)
+history = vae.fit(training_evts, training_evts, epochs=3, verbose=2)
 vae.plot_training(experiment.fig_dir)
 vae.save_model()

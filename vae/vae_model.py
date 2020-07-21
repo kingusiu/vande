@@ -8,6 +8,27 @@ import config.config as co
 from vae.losses import *
 
 
+# sampling layer
+class Sampling(tf.keras.layers.Layer):
+    """
+    instead of sampling from Q(z|X),
+    sample eps = N(0,I), then z = z_mean + sqrt(var)*eps
+
+    # Arguments:
+        args (tensor): mean and log of variance of Q(z|X)
+
+    # Returns:
+        z (tensor): sampled latent vector
+    """
+    def call(self, args):
+        z_mean, z_log_var = args
+        batch = tf.shape(z_mean)[0]
+        dim = tf.shape(z_mean)[1]
+        epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
+        # by default, random_normal has mean=0 and std=1.0
+        return z_mean + tf.exp(0.5 * z_log_var) * epsilon
+
+
 class VAE( object ):
 
     def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir']):
@@ -79,7 +100,7 @@ class VAE( object ):
         self.z_log_var = tf.keras.layers.Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
-        z = tf.keras.layers.Lambda(self.sampling, output_shape=(self.z_size,), name='z')([self.z_mean, self.z_log_var])
+        z = Sampling()((self.z_mean, self.z_log_var))
 
         # instantiate encoder model
         encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')
@@ -129,28 +150,6 @@ class VAE( object ):
         z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.batch_size)
         reco = self.decoder.predict(z, batch_size=self.batch_size)
         return [ reco, z_mean, z_log_var ]
-
-
-    # ***********************************
-    #       reparametrization trick
-    # ***********************************
-    def sampling( self, args ):
-        """
-        instead of sampling from Q(z|X),
-        sample eps = N(0,I), then z = z_mean + sqrt(var)*eps
-
-        # Arguments:
-            args (tensor): mean and log of variance of Q(z|X)
-
-        # Returns:
-            z (tensor): sampled latent vector
-        """
-        z_mean, z_log_var = args
-        batch = tf.shape(z_mean)[0]
-        dim = tf.shape(z_mean)[1]
-        epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
-        # by default, random_normal has mean=0 and std=1.0
-        return z_mean + tf.exp(0.5 * z_log_var) * epsilon
 
 
     def save_model(self):
