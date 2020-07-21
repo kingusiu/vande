@@ -24,7 +24,7 @@ data_reader = idr.InputDataReader( os.path.join( config['input_dir'], 'backgroun
 train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents( )
 
 particle_analysis = ac.AnalysisConstituents('QCD train', fig_dir=experiment.fig_dir_event)
-particle_analysis.analyze( [train_evts_j1, train_evts_j2] )
+particle_analysis.analyze([train_evts_j1, train_evts_j2])
 
 # ********************************************************
 #       prepare training data

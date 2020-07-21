@@ -69,7 +69,7 @@ def threeD_loss( inputs, outputs ): #[batch_size x 100 x 3]
     expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
     expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
     # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs
-    distances = tf.math.reduce_sum(tf.squared_difference(expand_inputs, expand_outputs), -1)
+    distances = tf.math.reduce_sum(tf.math.squared_difference(expand_inputs, expand_outputs), -1)
     # get min for inputs (min of rows -> [batch_size x 100]) and mit for outputs (min of columns)
     min_dist_to_inputs = tf.math.reduce_min(distances,1)
     min_dist_to_outputs = tf.math.reduce_min(distances,2)

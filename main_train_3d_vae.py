@@ -7,24 +7,25 @@ import inout.input_data_reader as idr
 from vae.vae_3Dloss_model import VAE_3D
 import config.sample_dict as sd
 import config.config as co
+import inout.sample_factory as sf
+
 
 # ********************************************************
 #       runtime params
 # ********************************************************
 
-train_sample = 'qcdSide'
-input_path = os.path.join(sd.base_dir_events,sd.file_names[train_sample]+'_mjj_cut_concat_1.2M.h5')
-#input_path = os.path.join( co.config['input_dir'], 'background_small.h5' )
+run_n = 4
+data_sample = 'particle-local'
 
-run_n = 45
-experiment = ex.Experiment( run_n ).setup(model_dir=True, fig_dir=True)
+experiment = ex.Experiment(run_n).setup(model_dir=True, fig_dir=True)
+paths = sf.SamplePathFactory(experiment, data_sample)
 
 
 # ********************************************************
 #       read in training data ( events )
 # ********************************************************
 
-data_reader = idr.InputDataReader(input_path)
+data_reader = idr.InputDataReader(paths.qcd_path)
 train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents(with_names=False)
 
 # ********************************************************
@@ -32,7 +33,7 @@ train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents(with_names=Fals
 # ********************************************************
 
 training_evts = np.vstack([train_evts_j1, train_evts_j2])
-np.random.shuffle( training_evts )
+np.random.shuffle(training_evts)
 
 # *******************************************************
 #                       build model
@@ -45,6 +46,6 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-history = vae.fit( training_evts, training_evts, epochs=100, verbose=2 )
-vae.plot_training( experiment.fig_dir )
-vae.save_model( )
+history = vae.fit(training_evts, training_evts, epochs=5, verbose=2)
+vae.plot_training(experiment.fig_dir)
+vae.save_model()
