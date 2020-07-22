@@ -118,7 +118,9 @@ class VAE_3D( VAE ):
         # 2D Conv Transpose
         x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation=tf.keras.activations.elu, kernel_regularizer=self.regularizer, name='conv_2d_transpose')(x)
         x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3), name='decoder_output')(x)
-        outputs_decoder = tf.keras.layers.Lambda(lambda x: x * tf.sqrt(self.norm_layer.variance) + self.norm_layer.mean)(x)
+        def unnnorm_closure(xx):
+            return xx * tf.sqrt(self.norm_layer.variance) + self.norm_layer.mean
+        outputs_decoder = tf.keras.layers.Lambda(lambda xx: unnnorm_closure(xx))(x)
 
         # instantiate decoder model
         decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
