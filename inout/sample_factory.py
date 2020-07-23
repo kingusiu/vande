@@ -24,6 +24,8 @@ class SamplePathFactory():
             self.init_img()
         if self.mode == 'particle-local':
             self.init_particle_local()
+        if self.mode == 'particle':
+            self.init_particle()
 
 
     def init_img(self):
@@ -37,6 +39,9 @@ class SamplePathFactory():
         self.qcd_file_path = os.path.join(self.input_dir,'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_img_20K.h5')
         self.sample_suffix = '_mjj_cut_concat_10K_pt_img.h5'
         self.result_dir = os.path.join(sd.base_dir_results_local, experiment.run_dir)
+
+    def init_particle(self):
+        self.qcd_file_path = os.path.join(self.input_dir, sd.file_names['qcdSide']+'_concat_1.5M.h5')
 
     def init_particle_local(self):
         self.qcd_file_path = os.path.join(self.input_dir, 'background_small_concat_10K.h5')
@@ -68,4 +73,4 @@ def read_results_to_jet_sample_dict(sample_ids, experiment, mode='default'):
 
 def read_inputs_to_jet_sample_dict(sample_ids, experiment, mode='default'):
     paths = SamplePathFactory(experiment, mode=mode)  # 'default' datasample
-    return read_data_to_jet_sample_dict(sample_ids, paths.sample_path)
+ 
