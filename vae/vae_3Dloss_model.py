@@ -86,11 +86,10 @@ class VAE_3D( VAE ):
         self.z_log_var = tf.keras.layers.Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
-        self.sampling = Sampling()
-        z = self.sampling((self.z_mean, self.z_log_var))
+        self.z = Sampling()((self.z_mean, self.z_log_var))
 
         # instantiate encoder model
-        encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')
+        encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')
         encoder.summary()
         # plot_model(encoder, to_file=CONFIG['plotdir']+'vae_cnn_encoder.png', show_shapes=True)
         return encoder

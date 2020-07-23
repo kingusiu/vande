@@ -38,9 +38,6 @@ class VAE( object ):
         self.kernel_size = 3
         self.filter_n = 6
         self.z_size = 10
-        self.encoder = None
-        self.decoder = None
-        self.model = None
         self.run = run
         self.log_dir = log_dir
         self.model_dir = model_dir
@@ -56,9 +53,9 @@ class VAE( object ):
     def build( self ):
 
         inputs = tf.keras.layers.Input(shape=self.input_shape, name='encoder_input')
-        self.encoder = self.build_encoder( inputs )
+        self.encoder = self.build_encoder(inputs)
         self.decoder = self.build_decoder( )
-        outputs = self.decoder( self.encoder(inputs)[-1] )  # link encoder output to decoder
+        outputs = self.decoder( self.z )  # link encoder output to decoder
         # instantiate VAE model
         vae = tf.keras.Model(inputs, outputs, name='vae')
         vae.summary()
@@ -100,10 +97,10 @@ class VAE( object ):
         self.z_log_var = tf.keras.layers.Dense(self.z_size, name='z_log_var', kernel_regularizer=self.regularizer)(x)
 
         # use reparameterization trick to push the sampling out as input
-        z = Sampling()((self.z_mean, self.z_log_var))
+        self.z = Sampling()((self.z_mean, self.z_log_var))
 
         # instantiate encoder model
-        encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, z], name='encoder')
+        encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')
         encoder.summary()
         # plot_model(encoder, to_file=CONFIG['plotdir']+'vae_cnn_encoder.png', show_shapes=True)
         return encoder
