@@ -9,6 +9,10 @@ import config.sample_dict as sd
 import config.config as co
 import inout.sample_factory as sf
 
+import sys
+print('Python: ', sys.version)
+import tensorflow as tf
+print('Tensorflow: ', tf.__version__)
 
 # ********************************************************
 #       runtime params
@@ -46,6 +50,6 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-history = vae.fit(training_evts, training_evts, epochs=3, verbose=2)
+history = vae.fit(training_evts, training_evts, epochs=100, verbose=2)
 vae.plot_training(experiment.fig_dir)
 vae.save_model()

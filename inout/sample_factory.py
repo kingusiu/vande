@@ -73,4 +73,4 @@ def read_results_to_jet_sample_dict(sample_ids, experiment, mode='default'):
 
 def read_inputs_to_jet_sample_dict(sample_ids, experiment, mode='default'):
     paths = SamplePathFactory(experiment, mode=mode)  # 'default' datasample
- 
+    return read_data_to_jet_sample_dict(sample_ids, paths.sample_path)

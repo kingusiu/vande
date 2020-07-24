@@ -1,31 +1,176 @@
 setGPU: Setting GPU to: 0
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  np_resource = np.dtype([("resource", np.ubyte, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
-/afs/cern.ch/work/k/kiwoznia/.local/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
-  np_resource = np.dtype([("resource", np.ubyte, 1)])
-Traceback (most recent call last):
-  File "main_train_3d_vae.py", line 28, in <module>
-    data_reader = idr.InputDataReader(paths.qcd_path)
-  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/inout/sample_factory.py", line 46, in qcd_path
-    return self.qcd_file_path
-AttributeError: 'SamplePathFactory' object has no attribute 'qcd_file_path'
+2020-07-24 14:52:29.189065: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:52:29.189563: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:52:29.189587: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Python:  3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+Tensorflow:  2.1.0
+2020-07-24 14:53:56.476376: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-07-24 14:53:59.710804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-07-24 14:53:59.711865: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:53:59.794914: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-24 14:53:59.795771: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:53:59.796288: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:53:59.796799: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:53:59.797507: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10'; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-24 14:54:00.773785: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-24 14:54:00.773870: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1592] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-07-24 14:54:00.774891: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-07-24 14:54:00.800486: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200040000 Hz
+2020-07-24 14:54:00.808110: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1362ebc0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-24 14:54:00.808166: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-07-24 14:54:01.003143: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x14536260 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-07-24 14:54:01.003206: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-07-24 14:54:01.003417: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-07-24 14:54:01.003437: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+normalization (Normalization)   (None, 100, 3)       7           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3, 1)    0           normalization[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda[0][0]                     
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_1[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 26,638
+Trainable params: 26,631
+Non-trainable params: 7
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 15)                165       
+_________________________________________________________________
+dense_3 (Dense)              (None, 38)                608       
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               25662     
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_6 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+decoder_output (Lambda)      (None, 100, 3)            0         
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 100, 3)            0         
+=================================================================
+Total params: 27,106
+Trainable params: 27,106
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+normalization (Normalization)   (None, 100, 3)       7           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3, 1)    0           normalization[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda[0][0]                     
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_1[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+__________________________________________________________________________________________________
+decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
+==================================================================================================
+Total params: 53,744
+Trainable params: 53,737
+Non-trainable params: 7
+__________________________________________________________________________________________________
+Train on 2253555 samples, validate on 751185 samples
+Epoch 1/100
+2253555/2253555 - 503s - loss: 423.7042 - threeD_loss: 422.8271 - kl_loss: 87.6932 - val_loss: 102.6688 - val_threeD_loss: 101.7710 - val_kl_loss: 89.7751
+Epoch 2/100
+2253555/2253555 - 444s - loss: 85.6848 - threeD_loss: 84.8926 - kl_loss: 79.1876 - val_loss: 69.4364 - val_threeD_loss: 68.7114 - val_kl_loss: 72.4899
+Epoch 3/100
+2253555/2253555 - 582s - loss: 43.4948 - threeD_loss: 42.7690 - kl_loss: 72.5677 - val_loss: 37.2044 - val_threeD_loss: 36.5059 - val_kl_loss: 69.8440
+Epoch 4/100
+2253555/2253555 - 584s - loss: 38.4990 - threeD_loss: 37.8098 - kl_loss: 68.9189 - val_loss: 36.3555 - val_threeD_loss: 35.6786 - val_kl_loss: 67.6861
+Epoch 5/100
+2253555/2253555 - 553s - loss: 37.3451 - threeD_loss: 36.6729 - kl_loss: 67.2215 - val_loss: 35.5001 - val_threeD_loss: 34.8347 - val_kl_loss: 66.5404
+Epoch 6/100
+2253555/2253555 - 439s - loss: 36.5817 - threeD_loss: 35.9177 - kl_loss: 66.3990 - val_loss: 35.3167 - val_threeD_loss: 34.6561 - val_kl_loss: 66.0527
+Epoch 7/100
+2253555/2253555 - 415s - loss: 37.4545 - threeD_loss: 36.7984 - kl_loss: 65.6145 - val_loss: 37.7054 - val_threeD_loss: 37.0469 - val_kl_loss: 65.8551
+Epoch 8/100
+2253555/2253555 - 410s - loss: 35.8969 - threeD_loss: 35.2456 - kl_loss: 65.1172 - val_loss: 33.6117 - val_threeD_loss: 32.9640 - val_kl_loss: 64.7772
+Epoch 9/100
+2253555/2253555 - 434s - loss: 35.3972 - threeD_loss: 34.7510 - kl_loss: 64.6219 - val_loss: 34.1684 - val_threeD_loss: 33.5241 - val_kl_loss: 64.4244
+Epoch 10/100
+
+Epoch 00010: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+2253555/2253555 - 421s - loss: 35.4365 - threeD_loss: 34.7942 - kl_loss: 64.2303 - val_loss: 34.2708 - val_threeD_loss: 33.6336 - val_kl_loss: 63.7161
+Epoch 11/100
+2253555/2253555 - 476s - loss: 32.3479 - threeD_loss: 31.7032 - kl_loss: 64.4708 - val_loss: 32.0901 - val_threeD_loss: 31.4435 - val_kl_loss: 64.6596
+Epoch 12/100
+2253555/2253555 - 500s - loss: 31.7717 - threeD_loss: 31.1240 - kl_loss: 64.7666 - val_loss: 31.3878 - val_threeD_loss: 30.7391 - val_kl_loss: 64.8745
+Epoch 13/100
+2253555/2253555 - 464s - loss: 30.5212 - threeD_loss: 29.8715 - kl_loss: 64.9642 - val_loss: 30.0903 - val_threeD_loss: 29.4377 - val_kl_loss: 65.2605
+Epoch 14/100
+2253555/2253555 - 460s - loss: 29.5262 - threeD_loss: 28.8746 - kl_loss: 65.1654 - val_loss: 29.4544 - val_threeD_loss: 28.8024 - val_kl_loss: 65.1949
+Epoch 15/100
+2253555/2253555 - 439s - loss: 29.1234 - threeD_loss: 28.4722 - kl_loss: 65.1170 - val_loss: 28.9824 - val_threeD_loss: 28.3297 - val_kl_loss: 65.2719
+Epoch 16/100
+2253555/2253555 - 462s - loss: 28.8732 - threeD_loss: 28.2225 - kl_loss: 65.0756 - val_loss: 28.8623 - val_threeD_loss: 28.2118 - val_kl_loss: 65.0401
+Epoch 17/100
+2253555/2253555 - 443s - loss: 28.6638 - threeD_loss: 28.0136 - kl_loss: 65.0143 - val_loss: 28.5973 - val_threeD_loss: 27.9481 - val_kl_loss: 64.9160
+Epoch 18/100
+2253555/2253555 - 443s - loss: 28.4506 - threeD_loss: 27.8012 - kl_loss: 64.9356 - val_loss: 28.1958 - val_threeD_loss: 27.5466 - val_kl_loss: 64.9157
+Epoch 19/100
