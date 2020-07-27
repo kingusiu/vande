@@ -39,14 +39,13 @@ class VAE_3D( VAE ):
         self.input_shape = (100,3)
 
     def load( self ):
-        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'sampling': self.sampling})
-        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss})
-        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss': threeD_kl_loss, 'threeD_loss': threeD_loss, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'sampling': self.sampling})
+        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss_fun': threeD_kl_loss_fun, 'threeD_loss_fun': threeD_loss_fun, 'kl_loss': kl_loss,'Sampling': Sampling})
+        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss_fun': threeD_kl_loss_fun, 'threeD_loss_fun': threeD_loss_fun, 'kl_loss': kl_loss})
+        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss_fun': threeD_kl_loss_fun, 'threeD_loss_fun': threeD_loss_fun, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'Sampling': Sampling})
 
 
     def compile(self,model):
-        loss = ThreeD_KL_Loss(self.z_mean, self.z_log_var)
-        model.compile(optimizer='adam', loss=loss, metrics=[loss.threeD_loss, loss.kl_loss], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        model.compile(optimizer='adam', loss=threeD_kl_loss_fun(self.z_mean, self.z_log_var), metrics=[threeD_loss_fun, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
 
     # ***********************************
@@ -54,10 +53,8 @@ class VAE_3D( VAE ):
     # ***********************************
     def build_encoder(self, inputs):
         # normalize
-        self.norm_layer = tf.keras.layers.experimental.preprocessing.Normalization()
-        x = self.norm_layer(inputs)
         # add channel dim
-        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(x) # [B x 100 x 3] => [B x 100 x 3 x 1]
+        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(inputs) # [B x 100 x 3] => [B x 100 x 3 x 1]
         # 2D Conv
         x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
         # Squeeze
@@ -116,10 +113,8 @@ class VAE_3D( VAE ):
         x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
         # 2D Conv Transpose
         x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation=tf.keras.activations.elu, kernel_regularizer=self.regularizer, name='conv_2d_transpose')(x)
-        x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3), name='decoder_output')(x)
-        def unnnorm_closure(xx):
-            return xx * tf.sqrt(self.norm_layer.variance) + self.norm_layer.mean
-        outputs_decoder = tf.keras.layers.Lambda(lambda xx: unnnorm_closure(xx))(x)
+        outputs_decoder = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3), name='decoder_output')(x)
+        #return xx * tf.sqrt(self.norm_layer.variance) + self.norm_layer.mean
 
         # instantiate decoder model
         decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
@@ -131,7 +126,6 @@ class VAE_3D( VAE ):
     def fit( self, x, y, epochs=3, verbose=2 ):
         callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN(),
                      ] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
-        self.norm_layer.adapt(x) # compute mean and variance of Normalization Layer
         self.history = self.model.fit(x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25)
         return self.history
 

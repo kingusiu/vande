@@ -18,7 +18,6 @@ def kl_loss( z_mean, z_log_var ):
 # metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
 def kl_loss_for_metric( z_mean, z_log_var ):
 
-    @tf.function
     def loss( inputs, outputs ):
         #return config['beta'] * kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
         return kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
@@ -27,7 +26,6 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 
 ### MSE
 
-@tf.function
 def mse_loss( inputs, outputs ):
     mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
     reco_loss = mse(inputs, outputs)
@@ -37,7 +35,6 @@ def mse_loss( inputs, outputs ):
 
 def mse_kl_loss( z_mean, z_log_var ):
 
-    @tf.function
     def loss( inputs, outputs ):
         return mse_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
 
@@ -110,7 +107,7 @@ def threeD_loss_fun( inputs, outputs ): #[batch_size x 100 x 3]
 def threeD_kl_loss_fun( z_mean, z_log_var ):
 
     def loss( inputs, outputs ):
-        return threeD_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
+        return threeD_loss_fun( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
     return loss
 
 
