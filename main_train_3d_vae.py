@@ -45,7 +45,7 @@ mean, std_dev = ut.get_mean_and_std(training_evts)
 #                       build model
 # *******************************************************
 
-vae = VAE_3D(run=run_n,model_dir=experiment.model_dir)
+vae = VAE_3D(run=run_n, model_dir=experiment.model_dir)
 vae.build(mean, std_dev)
 
 # *******************************************************
