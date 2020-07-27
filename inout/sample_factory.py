@@ -45,6 +45,7 @@ class SamplePathFactory():
 
     def init_particle_local(self):
         self.qcd_file_path = os.path.join(self.input_dir, 'background_small_concat_10K.h5')
+        self.sample_suffix = '_10K.h5'
 
     @property
     def qcd_path(self):

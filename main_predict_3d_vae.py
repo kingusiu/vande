@@ -1,5 +1,5 @@
 import os
-import setGPU
+#import setGPU
 
 import util.experiment as ex
 import util.event_sample as es
@@ -7,21 +7,28 @@ import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
 import config.sample_dict as sd
 import config.config as co
+import inout.sample_factory as sf
+
 
 # ********************************************************
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
+#test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
+test_samples = ['qcdSide', 'GtoWW30na', 'GtoWW30br']
 
-run_n = 45
+run_n = 4
+data_sample = 'particle-local'
+
 experiment = ex.Experiment(run_n).setup(result_dir=True)
+paths = sf.SamplePathFactory(experiment, data_sample)
+
 
 # ********************************************
 #               load model
 # ********************************************
 
-vae = VAE_3D(model_dir=experiment.model_dir)
+vae = VAE_3D(run=run_n, model_dir=experiment.model_dir)
 vae.load( )
 
 for sample_id in test_samples:
@@ -30,9 +37,7 @@ for sample_id in test_samples:
     #               read test data (events)
     # ********************************************
 
-    input_path = os.path.join(sd.base_dir_events,sd.file_names[sample_id]+'_mjj_cut_concat_200K.h5')
-    #input_path = os.path.join(co.config['input_dir'],'RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
-    test_sample = es.EventSample.from_input_file(sample_id, input_path)
+    test_sample = es.EventSample.from_input_file(sample_id, paths.sample_path(sample_id))
     test_evts_j1, test_evts_j2 = test_sample.get_particles()
 
     # *******************************************************
