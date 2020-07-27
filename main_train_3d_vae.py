@@ -8,6 +8,7 @@ from vae.vae_3Dloss_model import VAE_3D
 import config.sample_dict as sd
 import config.config as co
 import inout.sample_factory as sf
+import util.utility_fun as ut
 
 import sys
 print('Python: ', sys.version)
@@ -38,13 +39,14 @@ train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents(with_names=Fals
 
 training_evts = np.vstack([train_evts_j1, train_evts_j2])
 np.random.shuffle(training_evts)
+mean, std_dev = ut.get_mean_and_std(training_evts)
 
 # *******************************************************
 #                       build model
 # *******************************************************
 
 vae = VAE_3D(run=run_n,model_dir=experiment.model_dir)
-vae.build()
+vae.build(mean, std_dev)
 
 # *******************************************************
 #                       train and save

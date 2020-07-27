@@ -44,6 +44,18 @@ class VAE_3D( VAE ):
         self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'Conv1DTranspose':Conv1DTranspose, 'threeD_kl_loss_fun': threeD_kl_loss_fun, 'threeD_loss_fun': threeD_loss_fun, 'kl_loss': kl_loss,'loss': tf.keras.losses.mse, 'Sampling': Sampling})
 
 
+    def build(self, mean, std_dev ):
+
+        inputs = tf.keras.layers.Input(shape=self.input_shape, name='encoder_input')
+        self.encoder = self.build_encoder(inputs, mean, std_dev)
+        self.decoder = self.build_decoder(mean, std_dev)
+        outputs = self.decoder( self.z )  # link encoder output to decoder
+        # instantiate VAE model
+        vae = tf.keras.Model(inputs, outputs, name='vae')
+        vae.summary()
+        self.compile( vae )
+        self.model = vae
+
     def compile(self,model):
         model.compile(optimizer='adam', loss=threeD_kl_loss_fun(self.z_mean, self.z_log_var), metrics=[threeD_loss_fun, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
@@ -51,7 +63,7 @@ class VAE_3D( VAE ):
     # ***********************************
     #               encoder
     # ***********************************
-    def build_encoder(self, inputs):
+    def build_encoder(self, inputs, mean, std_dev):
         # normalize
         # add channel dim
         x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(inputs) # [B x 100 x 3] => [B x 100 x 3 x 1]
@@ -94,7 +106,7 @@ class VAE_3D( VAE ):
     # ***********************************
     #           decoder
     # ***********************************
-    def build_decoder(self):
+    def build_decoder(self, mean, std_dev):
         latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), name='z_sampling')
         # Dense * 3
         x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
