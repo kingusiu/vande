@@ -174,3 +174,110 @@ Epoch 17/100
 Epoch 18/100
 2253555/2253555 - 443s - loss: 28.4506 - threeD_loss: 27.8012 - kl_loss: 64.9356 - val_loss: 28.1958 - val_threeD_loss: 27.5466 - val_kl_loss: 64.9157
 Epoch 19/100
+2253555/2253555 - 513s - loss: 27.9935 - threeD_loss: 27.3446 - kl_loss: 64.8829 - val_loss: 27.5493 - val_threeD_loss: 26.8981 - val_kl_loss: 65.1284
+Epoch 20/100
+2253555/2253555 - 603s - loss: 25.4385 - threeD_loss: 24.7803 - kl_loss: 65.8234 - val_loss: 24.4972 - val_threeD_loss: 23.8333 - val_kl_loss: 66.3895
+Epoch 21/100
+2253555/2253555 - 606s - loss: 23.8913 - threeD_loss: 23.2227 - kl_loss: 66.8574 - val_loss: 23.2526 - val_threeD_loss: 22.5776 - val_kl_loss: 67.4909
+Epoch 22/100
+2253555/2253555 - 616s - loss: 22.1223 - threeD_loss: 21.4448 - kl_loss: 67.7541 - val_loss: 21.7628 - val_threeD_loss: 21.0859 - val_kl_loss: 67.6821
+Epoch 23/100
+2253555/2253555 - 608s - loss: 21.6350 - threeD_loss: 20.9579 - kl_loss: 67.7095 - val_loss: 21.5362 - val_threeD_loss: 20.8593 - val_kl_loss: 67.6837
+Epoch 24/100
+2253555/2253555 - 609s - loss: 21.4988 - threeD_loss: 20.8232 - kl_loss: 67.5668 - val_loss: 21.3906 - val_threeD_loss: 20.7159 - val_kl_loss: 67.4796
+Epoch 25/100
+2253555/2253555 - 610s - loss: 21.4075 - threeD_loss: 20.7337 - kl_loss: 67.3835 - val_loss: 21.3352 - val_threeD_loss: 20.6619 - val_kl_loss: 67.3332
+Epoch 26/100
+2253555/2253555 - 608s - loss: 21.3284 - threeD_loss: 20.6561 - kl_loss: 67.2281 - val_loss: 21.3355 - val_threeD_loss: 20.6647 - val_kl_loss: 67.0851
+Epoch 27/100
+2253555/2253555 - 596s - loss: 21.2627 - threeD_loss: 20.5918 - kl_loss: 67.0953 - val_loss: 21.2193 - val_threeD_loss: 20.5489 - val_kl_loss: 67.0387
+Epoch 28/100
+2253555/2253555 - 595s - loss: 21.2212 - threeD_loss: 20.5515 - kl_loss: 66.9621 - val_loss: 21.1606 - val_threeD_loss: 20.4909 - val_kl_loss: 66.9749
+Epoch 29/100
+2253555/2253555 - 594s - loss: 21.2021 - threeD_loss: 20.5336 - kl_loss: 66.8522 - val_loss: 21.3404 - val_threeD_loss: 20.6726 - val_kl_loss: 66.7864
+Epoch 30/100
+
+Epoch 00030: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+2253555/2253555 - 594s - loss: 21.1776 - threeD_loss: 20.5105 - kl_loss: 66.7085 - val_loss: 21.1628 - val_threeD_loss: 20.4962 - val_kl_loss: 66.6565
+Epoch 31/100
+2253555/2253555 - 595s - loss: 21.0182 - threeD_loss: 20.3509 - kl_loss: 66.7317 - val_loss: 21.0234 - val_threeD_loss: 20.3559 - val_kl_loss: 66.7533
+Epoch 32/100
+2253555/2253555 - 596s - loss: 21.0147 - threeD_loss: 20.3470 - kl_loss: 66.7661 - val_loss: 21.0320 - val_threeD_loss: 20.3643 - val_kl_loss: 66.7670
+Epoch 33/100
+2253555/2253555 - 591s - loss: 21.0117 - threeD_loss: 20.3440 - kl_loss: 66.7677 - val_loss: 21.0199 - val_threeD_loss: 20.3521 - val_kl_loss: 66.7796
+Epoch 34/100
+2253555/2253555 - 597s - loss: 21.0092 - threeD_loss: 20.3415 - kl_loss: 66.7675 - val_loss: 21.0215 - val_threeD_loss: 20.3538 - val_kl_loss: 66.7677
+Epoch 35/100
+
+Epoch 00035: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
+2253555/2253555 - 608s - loss: 21.0065 - threeD_loss: 20.3387 - kl_loss: 66.7729 - val_loss: 21.0263 - val_threeD_loss: 20.3587 - val_kl_loss: 66.7567
+Epoch 36/100
+2253555/2253555 - 603s - loss: 20.9852 - threeD_loss: 20.3175 - kl_loss: 66.7702 - val_loss: 20.9982 - val_threeD_loss: 20.3306 - val_kl_loss: 66.7642
+Epoch 37/100
+2253555/2253555 - 603s - loss: 20.9842 - threeD_loss: 20.3166 - kl_loss: 66.7730 - val_loss: 20.9958 - val_threeD_loss: 20.3281 - val_kl_loss: 66.7683
+Epoch 38/100
+2253555/2253555 - 605s - loss: 20.9841 - threeD_loss: 20.3164 - kl_loss: 66.7729 - val_loss: 20.9953 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7754
+Epoch 39/100
+2253555/2253555 - 602s - loss: 20.9838 - threeD_loss: 20.3162 - kl_loss: 66.7743 - val_loss: 20.9958 - val_threeD_loss: 20.3281 - val_kl_loss: 66.7683
+Epoch 40/100
+2253555/2253555 - 604s - loss: 20.9835 - threeD_loss: 20.3158 - kl_loss: 66.7733 - val_loss: 20.9950 - val_threeD_loss: 20.3274 - val_kl_loss: 66.7668
+Epoch 41/100
+2253555/2253555 - 603s - loss: 20.9831 - threeD_loss: 20.3154 - kl_loss: 66.7757 - val_loss: 20.9954 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7783
+Epoch 42/100
+2253555/2253555 - 604s - loss: 20.9829 - threeD_loss: 20.3151 - kl_loss: 66.7778 - val_loss: 20.9948 - val_threeD_loss: 20.3270 - val_kl_loss: 66.7795
+Epoch 43/100
+2253555/2253555 - 604s - loss: 20.9824 - threeD_loss: 20.3147 - kl_loss: 66.7782 - val_loss: 20.9952 - val_threeD_loss: 20.3274 - val_kl_loss: 66.7774
+Epoch 44/100
+2253555/2253555 - 603s - loss: 20.9820 - threeD_loss: 20.3143 - kl_loss: 66.7778 - val_loss: 20.9944 - val_threeD_loss: 20.3266 - val_kl_loss: 66.7773
+Epoch 45/100
+2253555/2253555 - 603s - loss: 20.9820 - threeD_loss: 20.3143 - kl_loss: 66.7767 - val_loss: 20.9937 - val_threeD_loss: 20.3261 - val_kl_loss: 66.7679
+Epoch 46/100
+2253555/2253555 - 606s - loss: 20.9816 - threeD_loss: 20.3139 - kl_loss: 66.7709 - val_loss: 20.9954 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7780
+Epoch 47/100
+
+Epoch 00047: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
+2253555/2253555 - 603s - loss: 20.9812 - threeD_loss: 20.3136 - kl_loss: 66.7726 - val_loss: 20.9942 - val_threeD_loss: 20.3264 - val_kl_loss: 66.7758
+Epoch 48/100
+2253555/2253555 - 612s - loss: 20.9789 - threeD_loss: 20.3112 - kl_loss: 66.7715 - val_loss: 20.9915 - val_threeD_loss: 20.3238 - val_kl_loss: 66.7722
+Epoch 49/100
+2253555/2253555 - 599s - loss: 20.9787 - threeD_loss: 20.3109 - kl_loss: 66.7721 - val_loss: 20.9915 - val_threeD_loss: 20.3238 - val_kl_loss: 66.7718
+Epoch 50/100
+
+Epoch 00050: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
+2253555/2253555 - 603s - loss: 20.9785 - threeD_loss: 20.3109 - kl_loss: 66.7725 - val_loss: 20.9918 - val_threeD_loss: 20.3241 - val_kl_loss: 66.7720
+Epoch 51/100
+2253555/2253555 - 602s - loss: 20.9785 - threeD_loss: 20.3108 - kl_loss: 66.7729 - val_loss: 20.9914 - val_threeD_loss: 20.3237 - val_kl_loss: 66.7723
+Epoch 52/100
+2253555/2253555 - 605s - loss: 20.9782 - threeD_loss: 20.3105 - kl_loss: 66.7731 - val_loss: 20.9909 - val_threeD_loss: 20.3231 - val_kl_loss: 66.7725
+Epoch 53/100
+2253555/2253555 - 602s - loss: 20.9787 - threeD_loss: 20.3110 - kl_loss: 66.7729 - val_loss: 20.9911 - val_threeD_loss: 20.3234 - val_kl_loss: 66.7724
+Epoch 54/100
+
+Epoch 00054: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
+2253555/2253555 - 604s - loss: 20.9784 - threeD_loss: 20.3107 - kl_loss: 66.7733 - val_loss: 20.9918 - val_threeD_loss: 20.3241 - val_kl_loss: 66.7721
+Epoch 55/100
+2253555/2253555 - 602s - loss: 20.9787 - threeD_loss: 20.3109 - kl_loss: 66.7728 - val_loss: 20.9908 - val_threeD_loss: 20.3231 - val_kl_loss: 66.7721
+Epoch 56/100
+
+Epoch 00056: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
+2253555/2253555 - 603s - loss: 20.9785 - threeD_loss: 20.3107 - kl_loss: 66.7731 - val_loss: 20.9910 - val_threeD_loss: 20.3232 - val_kl_loss: 66.7723
+Epoch 57/100
+2253555/2253555 - 604s - loss: 20.9783 - threeD_loss: 20.3105 - kl_loss: 66.7728 - val_loss: 20.9910 - val_threeD_loss: 20.3233 - val_kl_loss: 66.7722
+Epoch 58/100
+
+Epoch 00058: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-11.
+2253555/2253555 - 604s - loss: 20.9786 - threeD_loss: 20.3109 - kl_loss: 66.7730 - val_loss: 20.9913 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7723
+Epoch 59/100
+2253555/2253555 - 604s - loss: 20.9786 - threeD_loss: 20.3109 - kl_loss: 66.7728 - val_loss: 20.9911 - val_threeD_loss: 20.3234 - val_kl_loss: 66.7721
+Epoch 60/100
+
+Epoch 00060: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-12.
+2253555/2253555 - 601s - loss: 20.9785 - threeD_loss: 20.3108 - kl_loss: 66.7731 - val_loss: 20.9910 - val_threeD_loss: 20.3233 - val_kl_loss: 66.7721
+Epoch 61/100
+2253555/2253555 - 610s - loss: 20.9784 - threeD_loss: 20.3107 - kl_loss: 66.7730 - val_loss: 20.9913 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7722
+Epoch 62/100
+
+Epoch 00062: ReduceLROnPlateau reducing learning rate to 1.0000001044244145e-13.
+2253555/2253555 - 602s - loss: 20.9784 - threeD_loss: 20.3106 - kl_loss: 66.7727 - val_loss: 20.9914 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7723
+Epoch 00062: early stopping
+saving model to models/run_101
