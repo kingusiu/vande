@@ -17,7 +17,7 @@ def get_label_and_score_arrays(neg_class_losses, pos_class_losses):
     return [labels, losses]
 
 
-def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None, xlim=None):
+def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None, xlim=None, logx=True):
 
     class_labels, losses = get_label_and_score_arrays( neg_class_losses, pos_class_losses ) # neg_class_loss array same for all pos_class_losses
 
@@ -27,13 +27,16 @@ def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_
     for y_true, loss, label in zip(class_labels, losses, legend):
         fpr, tpr, threshold = skl.roc_curve(y_true, loss)
         aucs.append(skl.roc_auc_score(y_true, loss))
-        plt.loglog(fpr, tpr, label=label + " (auc " + "{0:.3f}".format(aucs[-1]) + ")")
+        if logx:
+            plt.loglog(tpr, 1./fpr, label=label + " (auc " + "{0:.3f}".format(aucs[-1]) + ")")
+        else:
+            plt.logy(tpr, 1./fpr, label=label + " (auc " + "{0:.3f}".format(aucs[-1]) + ")")
 
     plt.grid()
     if xlim:
         plt.xlim(left=xlim)
-    plt.xlabel('False positive rate')
-    plt.ylabel('True positive rate')
+    plt.xlabel('True positive rate')
+    plt.ylabel('1 / False positive rate')
     plt.legend(loc=legend_loc)
     plt.tight_layout()
     plt.title(title)
