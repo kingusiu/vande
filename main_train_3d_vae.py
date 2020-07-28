@@ -1,5 +1,5 @@
 import os
-import setGPU
+#import setGPU
 import numpy as np
 
 import util.experiment as ex
