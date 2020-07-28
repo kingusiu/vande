@@ -36,7 +36,7 @@ np.random.shuffle(training_img)
 #                       build model
 # *******************************************************
 
-vae = VAE_HR(run=run_n,model_dir=experiment.model_dir)
+vae = VAE_HR(run=run_n,model_dir=experiment.model_dir, input_size=54, z_size=16, filter_n=32)
 vae.build()
 
 # *******************************************************

@@ -5,12 +5,9 @@
 			"path": "."
 		}
 	],
-	"settings":
-	{
-		"rulers":
-		[
-			80,
-			120
-		]
+	//"build_systems": 
+	"settings" : {
+    	"rulers": [80, 120],
+
 	}
 }

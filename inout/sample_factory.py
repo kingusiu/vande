@@ -43,7 +43,7 @@ class SamplePathFactory():
         self.sample_suffix = '_mjj_cut_concat_10K_pt_img.h5'
         self.result_dir = os.path.join(sd.base_dir_results_local, experiment.run_dir)
 
-    def init_img_local_54():
+    def init_img_local_54(self):
         self.qcd_file_path = os.path.join(self.input_dir, sd.file_names['qcdSide']+'_mjj_cut_20K_pt_img_54px.h5')
 
     def init_particle(self):
