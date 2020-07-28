@@ -5,14 +5,15 @@ import numpy as np
 import util.experiment as ex
 import inout.input_data_reader as idr
 from vae.vae_model import VAE
+from vae.vae_highres_model import VAE_HR
 import inout.sample_factory as sf
 
 # ********************************************************
 #       runtime params
 # ********************************************************
 
-run_n = 5
-data_sample = 'img-local'
+run_n = 6
+data_sample = 'img-local-54'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)
@@ -35,7 +36,7 @@ np.random.shuffle(training_img)
 #                       build model
 # *******************************************************
 
-vae = VAE(run=run_n,model_dir=experiment.model_dir)
+vae = VAE_HR(run=run_n,model_dir=experiment.model_dir)
 vae.build()
 
 # *******************************************************
