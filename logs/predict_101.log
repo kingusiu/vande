@@ -1,0 +1,46 @@
+setGPU: Setting GPU to: 4
+2020-07-28 12:09:12.887177: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.1/lib64
+2020-07-28 12:09:12.906154: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.1/lib64
+2020-07-28 12:09:12.906196: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-07-28 12:09:57.785316: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-07-28 12:09:57.952464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:83:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-07-28 12:09:57.954836: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-28 12:09:57.981500: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-28 12:09:57.995961: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-07-28 12:09:57.999174: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-07-28 12:09:58.028343: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-07-28 12:09:58.331431: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-07-28 12:09:59.271210: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-28 12:09:59.295446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-07-28 12:09:59.296085: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-07-28 12:09:59.361675: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200015000 Hz
+2020-07-28 12:09:59.375595: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x53a10f0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-28 12:09:59.375680: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-07-28 12:09:59.733217: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5407650 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-07-28 12:09:59.733276: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-07-28 12:09:59.736730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:83:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-07-28 12:09:59.736864: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-28 12:09:59.736895: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-28 12:09:59.736919: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-07-28 12:09:59.736942: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-07-28 12:09:59.736965: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-07-28 12:09:59.736987: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-07-28 12:09:59.737011: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-28 12:09:59.752660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-07-28 12:09:59.759614: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-28 12:09:59.766750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-07-28 12:09:59.766794: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-07-28 12:09:59.766817: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-07-28 12:09:59.783854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10481 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+Traceback (most recent call last):
+  File "main_predict_3d_vae.py", line 40, in <module>
+    test_sample = es.EventSample.from_input_file(sample_id, paths.sample_path(sample_id))
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/inout/sample_factory.py", line 57, in sample_path
+    return os.path.join(self.input_dir,sd.file_names[id]+self.sample_suffix)
+AttributeError: 'SamplePathFactory' object has no attribute 'sample_suffix'
