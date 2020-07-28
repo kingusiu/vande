@@ -31,13 +31,13 @@ class Sampling(tf.keras.layers.Layer):
 
 class VAE( object ):
 
-    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32):
+    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32, z_size=10, filter_n=6):
         # network parameters
         self.input_shape = (input_size, input_size, 1)
         self.batch_size = 128
         self.kernel_size = 3
-        self.filter_n = 6
-        self.z_size = 10
+        self.filter_n = filter_n
+        self.z_size = z_size
         self.run = run
         self.log_dir = log_dir
         self.model_dir = model_dir
@@ -52,7 +52,7 @@ class VAE( object ):
 
     def build( self ):
 
-        inputs = tf.keras.layers.Input(shape=self.input_shape, name='encoder_input')
+        inputs = tf.keras.layers.Input(shape=self.input_shape, dtype=tf.float32, name='encoder_input')
         self.encoder = self.build_encoder(inputs)
         self.decoder = self.build_decoder( )
         outputs = self.decoder( self.z )  # link encoder output to decoder
@@ -111,7 +111,7 @@ class VAE( object ):
     # ***********************************
     def build_decoder(self):
 
-        latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), dtype=tf.float32, name='z_sampling')
+        latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), name='z_sampling')
         x = tf.keras.layers.Dense(self.size_convolved[1] // 42, activation='relu',kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
         x = tf.keras.layers.Dense(self.size_convolved[1] // 17, activation='relu',kernel_regularizer=self.regularizer)(x)  # double size
         x = tf.keras.layers.Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu',kernel_regularizer=self.regularizer)(x)
