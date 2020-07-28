@@ -14,8 +14,8 @@ import inout.sample_factory as sf
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
-#test_samples = ['qcdSide', 'GtoWW30na', 'GtoWW30br']
+#test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
+test_samples = ['qcdSide', 'GtoWW35na', 'GtoWW35br']
 
 run_n = 101
 data_sample = 'particle'

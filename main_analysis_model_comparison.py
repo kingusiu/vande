@@ -14,8 +14,8 @@ import discriminator.loss_strategy as ls
 #               runtime params
 # ********************************************************
 
-run_n_model1 = 46
-run_n_model2 = 45
+run_n_model1 = 45
+run_n_model2 = 101
 
 SM_sample = 'qcdSideReco'
 BSM_samples = ['GtoWW15naReco', 'GtoWW15brReco', 'GtoWW25naReco', 'GtoWW25brReco','GtoWW35naReco', 'GtoWW35brReco', 'GtoWW45naReco', 'GtoWW45brReco']
@@ -46,7 +46,7 @@ for s in strategies:
         pos_class_losses = [strategy(s) for s in [binned_sig_img_vae, binned_sig_3D_vae]]
         legend = [binned_sig_img_vae.name + ' IMG VAE', binned_sig_img_vae.name + ' 3D VAE' ]
 
-        ar.plot_roc(neg_class_losses, pos_class_losses, legend=legend, title='model comparison ROC binned strategy ' + strategy.title_str + ' ' + sd.sample_name[BSM_sample], plot_name='ROC_binned_' + strategy.file_str + '_' + sd.file_names[BSM_sample], fig_dir='fig/run_45_vs_46', xlim=10**(-3))
+        ar.plot_roc(neg_class_losses, pos_class_losses, legend=legend, title='model comparison ROC binned strategy ' + strategy.title_str + ' ' + sd.sample_name[BSM_sample], log_x=False, plot_name='ROC_binned_linearTPR_' + strategy.file_str + '_' + sd.file_names[BSM_sample], fig_dir='fig/run_'+str(run_n_model1)+'_vs_'+str(run_n_model2), xlim=10**(-3))
 
 
 
