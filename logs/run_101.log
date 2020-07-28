@@ -1,46 +1,47 @@
-setGPU: Setting GPU to: 0
-2020-07-24 14:52:29.189065: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:52:29.189563: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:52:29.189587: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+setGPU: Setting GPU to: 1
+2020-07-27 19:47:26.286553: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:47:26.304266: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:47:26.304305: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
 Python:  3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00) 
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
 Tensorflow:  2.1.0
-2020-07-24 14:53:56.476376: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-07-24 14:53:59.710804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
-pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+computed mean [-2.1978545e-04  2.4053527e-06  4.3403177e+00] and std-dev [ 0.21184182  0.2110031  21.787518  ]
+2020-07-27 19:55:26.102383: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-07-27 19:55:26.229924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
 coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
-2020-07-24 14:53:59.711865: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:53:59.794914: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-07-24 14:53:59.795771: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:53:59.796288: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:53:59.796799: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:53:59.797507: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10'; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
-2020-07-24 14:54:00.773785: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-07-24 14:54:00.773870: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1592] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+2020-07-27 19:55:26.236710: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:55:26.335345: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-27 19:55:26.342185: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:55:26.348703: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:55:26.355151: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:55:26.361551: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10'; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.0/lib64
+2020-07-27 19:55:27.332212: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-27 19:55:27.332287: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1592] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
-2020-07-24 14:54:00.774891: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2020-07-24 14:54:00.800486: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200040000 Hz
-2020-07-24 14:54:00.808110: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1362ebc0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-07-24 14:54:00.808166: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-07-24 14:54:01.003143: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x14536260 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-07-24 14:54:01.003206: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
-2020-07-24 14:54:01.003417: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-07-24 14:54:01.003437: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      
+2020-07-27 19:55:27.334472: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-07-27 19:55:27.468178: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199915000 Hz
+2020-07-27 19:55:27.481427: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x13741a70 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-27 19:55:27.481502: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-07-27 19:55:27.795221: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x13783000 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-07-27 19:55:27.795267: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-07-27 19:55:27.795434: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-07-27 19:55:27.795449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      
 Model: "encoder"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
 encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
 __________________________________________________________________________________________________
-normalization (Normalization)   (None, 100, 3)       7           encoder_input[0][0]              
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
 __________________________________________________________________________________________________
-lambda (Lambda)                 (None, 100, 3, 1)    0           normalization[0][0]              
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
 __________________________________________________________________________________________________
-conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda[0][0]                     
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
 __________________________________________________________________________________________________
-lambda_1 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
 __________________________________________________________________________________________________
-conv1d (Conv1D)                 (None, 96, 10)       190         lambda_1[0][0]                   
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
 __________________________________________________________________________________________________
 conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
 __________________________________________________________________________________________________
@@ -59,9 +60,9 @@ ________________________________________________________________________________
 sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
                                                                  z_log_var[0][0]                  
 ==================================================================================================
-Total params: 26,638
+Total params: 26,631
 Trainable params: 26,631
-Non-trainable params: 7
+Non-trainable params: 0
 __________________________________________________________________________________________________
 Model: "decoder"
 _________________________________________________________________
@@ -83,13 +84,13 @@ conv1d_transpose (Conv1DTran (None, 96, 10)            430
 _________________________________________________________________
 conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
 _________________________________________________________________
-lambda_6 (Lambda)            (None, 98, 1, 6)          0         
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
 _________________________________________________________________
 conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
 _________________________________________________________________
-decoder_output (Lambda)      (None, 100, 3)            0         
+lambda_8 (Lambda)            (None, 100, 3)            0         
 _________________________________________________________________
-lambda_7 (Lambda)            (None, 100, 3)            0         
+un_normalized_decoder_out (L (None, 100, 3)            0         
 =================================================================
 Total params: 27,106
 Trainable params: 27,106
@@ -101,15 +102,15 @@ Layer (type)                    Output Shape         Param #     Connected to
 ==================================================================================================
 encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
 __________________________________________________________________________________________________
-normalization (Normalization)   (None, 100, 3)       7           encoder_input[0][0]              
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
 __________________________________________________________________________________________________
-lambda (Lambda)                 (None, 100, 3, 1)    0           normalization[0][0]              
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
 __________________________________________________________________________________________________
-conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda[0][0]                     
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
 __________________________________________________________________________________________________
-lambda_1 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
 __________________________________________________________________________________________________
-conv1d (Conv1D)                 (None, 96, 10)       190         lambda_1[0][0]                   
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
 __________________________________________________________________________________________________
 conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
 __________________________________________________________________________________________________
@@ -130,154 +131,172 @@ sampling (Sampling)             (None, 10)           0           z_mean[0][0]
 __________________________________________________________________________________________________
 decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
 ==================================================================================================
-Total params: 53,744
+Total params: 53,737
 Trainable params: 53,737
-Non-trainable params: 7
+Non-trainable params: 0
 __________________________________________________________________________________________________
 Train on 2253555 samples, validate on 751185 samples
 Epoch 1/100
-2253555/2253555 - 503s - loss: 423.7042 - threeD_loss: 422.8271 - kl_loss: 87.6932 - val_loss: 102.6688 - val_threeD_loss: 101.7710 - val_kl_loss: 89.7751
+2253555/2253555 - 419s - loss: 361.7728 - threeD_loss_fun: 360.2574 - loss_1: 151.5726 - val_loss: 88.6144 - val_threeD_loss_fun: 87.5118 - val_loss_1: 110.2536
 Epoch 2/100
-2253555/2253555 - 444s - loss: 85.6848 - threeD_loss: 84.8926 - kl_loss: 79.1876 - val_loss: 69.4364 - val_threeD_loss: 68.7114 - val_kl_loss: 72.4899
+2253555/2253555 - 419s - loss: 68.3302 - threeD_loss_fun: 67.4305 - loss_1: 89.9898 - val_loss: 48.5788 - val_threeD_loss_fun: 47.7859 - val_loss_1: 79.2872
 Epoch 3/100
-2253555/2253555 - 582s - loss: 43.4948 - threeD_loss: 42.7690 - kl_loss: 72.5677 - val_loss: 37.2044 - val_threeD_loss: 36.5059 - val_kl_loss: 69.8440
+2253555/2253555 - 417s - loss: 43.9716 - threeD_loss_fun: 43.2121 - loss_1: 75.9314 - val_loss: 40.4570 - val_threeD_loss_fun: 39.7301 - val_loss_1: 72.6860
 Epoch 4/100
-2253555/2253555 - 584s - loss: 38.4990 - threeD_loss: 37.8098 - kl_loss: 68.9189 - val_loss: 36.3555 - val_threeD_loss: 35.6786 - val_kl_loss: 67.6861
+2253555/2253555 - 415s - loss: 40.7560 - threeD_loss_fun: 40.0520 - loss_1: 70.3816 - val_loss: 40.0771 - val_threeD_loss_fun: 39.3890 - val_loss_1: 68.8098
 Epoch 5/100
-2253555/2253555 - 553s - loss: 37.3451 - threeD_loss: 36.6729 - kl_loss: 67.2215 - val_loss: 35.5001 - val_threeD_loss: 34.8347 - val_kl_loss: 66.5404
+2253555/2253555 - 415s - loss: 40.2951 - threeD_loss_fun: 39.6169 - loss_1: 67.8250 - val_loss: 40.6249 - val_threeD_loss_fun: 39.9562 - val_loss_1: 66.8690
 Epoch 6/100
-2253555/2253555 - 439s - loss: 36.5817 - threeD_loss: 35.9177 - kl_loss: 66.3990 - val_loss: 35.3167 - val_threeD_loss: 34.6561 - val_kl_loss: 66.0527
+
+Epoch 00006: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+2253555/2253555 - 418s - loss: 39.9530 - threeD_loss_fun: 39.2883 - loss_1: 66.4802 - val_loss: 43.3281 - val_threeD_loss_fun: 42.6706 - val_loss_1: 65.7528
 Epoch 7/100
-2253555/2253555 - 415s - loss: 37.4545 - threeD_loss: 36.7984 - kl_loss: 65.6145 - val_loss: 37.7054 - val_threeD_loss: 37.0469 - val_kl_loss: 65.8551
+2253555/2253555 - 426s - loss: 37.5292 - threeD_loss_fun: 36.8659 - loss_1: 66.3341 - val_loss: 37.4700 - val_threeD_loss_fun: 36.8053 - val_loss_1: 66.4693
 Epoch 8/100
-2253555/2253555 - 410s - loss: 35.8969 - threeD_loss: 35.2456 - kl_loss: 65.1172 - val_loss: 33.6117 - val_threeD_loss: 32.9640 - val_kl_loss: 64.7772
+2253555/2253555 - 422s - loss: 37.4481 - threeD_loss_fun: 36.7848 - loss_1: 66.3386 - val_loss: 37.4076 - val_threeD_loss_fun: 36.7454 - val_loss_1: 66.2170
 Epoch 9/100
-2253555/2253555 - 434s - loss: 35.3972 - threeD_loss: 34.7510 - kl_loss: 64.6219 - val_loss: 34.1684 - val_threeD_loss: 33.5241 - val_kl_loss: 64.4244
+2253555/2253555 - 421s - loss: 37.3825 - threeD_loss_fun: 36.7207 - loss_1: 66.1859 - val_loss: 37.5012 - val_threeD_loss_fun: 36.8400 - val_loss_1: 66.1182
 Epoch 10/100
-
-Epoch 00010: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
-2253555/2253555 - 421s - loss: 35.4365 - threeD_loss: 34.7942 - kl_loss: 64.2303 - val_loss: 34.2708 - val_threeD_loss: 33.6336 - val_kl_loss: 63.7161
+2253555/2253555 - 423s - loss: 37.3184 - threeD_loss_fun: 36.6581 - loss_1: 66.0286 - val_loss: 37.3148 - val_threeD_loss_fun: 36.6545 - val_loss_1: 66.0321
 Epoch 11/100
-2253555/2253555 - 476s - loss: 32.3479 - threeD_loss: 31.7032 - kl_loss: 64.4708 - val_loss: 32.0901 - val_threeD_loss: 31.4435 - val_kl_loss: 64.6596
+2253555/2253555 - 426s - loss: 37.1929 - threeD_loss_fun: 36.5332 - loss_1: 65.9709 - val_loss: 37.0101 - val_threeD_loss_fun: 36.3515 - val_loss_1: 65.8509
 Epoch 12/100
-2253555/2253555 - 500s - loss: 31.7717 - threeD_loss: 31.1240 - kl_loss: 64.7666 - val_loss: 31.3878 - val_threeD_loss: 30.7391 - val_kl_loss: 64.8745
+2253555/2253555 - 425s - loss: 36.5553 - threeD_loss_fun: 35.8944 - loss_1: 66.0879 - val_loss: 35.9171 - val_threeD_loss_fun: 35.2539 - val_loss_1: 66.3334
 Epoch 13/100
-2253555/2253555 - 464s - loss: 30.5212 - threeD_loss: 29.8715 - kl_loss: 64.9642 - val_loss: 30.0903 - val_threeD_loss: 29.4377 - val_kl_loss: 65.2605
+2253555/2253555 - 467s - loss: 35.6383 - threeD_loss_fun: 34.9753 - loss_1: 66.2980 - val_loss: 35.3865 - val_threeD_loss_fun: 34.7243 - val_loss_1: 66.2160
 Epoch 14/100
-2253555/2253555 - 460s - loss: 29.5262 - threeD_loss: 28.8746 - kl_loss: 65.1654 - val_loss: 29.4544 - val_threeD_loss: 28.8024 - val_kl_loss: 65.1949
+2253555/2253555 - 437s - loss: 35.1039 - threeD_loss_fun: 34.4416 - loss_1: 66.2425 - val_loss: 34.8109 - val_threeD_loss_fun: 34.1492 - val_loss_1: 66.1590
 Epoch 15/100
-2253555/2253555 - 439s - loss: 29.1234 - threeD_loss: 28.4722 - kl_loss: 65.1170 - val_loss: 28.9824 - val_threeD_loss: 28.3297 - val_kl_loss: 65.2719
+2253555/2253555 - 425s - loss: 34.7373 - threeD_loss_fun: 34.0756 - loss_1: 66.1564 - val_loss: 34.5837 - val_threeD_loss_fun: 33.9232 - val_loss_1: 66.0406
 Epoch 16/100
-2253555/2253555 - 462s - loss: 28.8732 - threeD_loss: 28.2225 - kl_loss: 65.0756 - val_loss: 28.8623 - val_threeD_loss: 28.2118 - val_kl_loss: 65.0401
+2253555/2253555 - 428s - loss: 34.4475 - threeD_loss_fun: 33.7874 - loss_1: 66.0212 - val_loss: 34.2438 - val_threeD_loss_fun: 33.5839 - val_loss_1: 65.9975
 Epoch 17/100
-2253555/2253555 - 443s - loss: 28.6638 - threeD_loss: 28.0136 - kl_loss: 65.0143 - val_loss: 28.5973 - val_threeD_loss: 27.9481 - val_kl_loss: 64.9160
+2253555/2253555 - 429s - loss: 33.9989 - threeD_loss_fun: 33.3403 - loss_1: 65.8619 - val_loss: 33.6645 - val_threeD_loss_fun: 33.0068 - val_loss_1: 65.7778
 Epoch 18/100
-2253555/2253555 - 443s - loss: 28.4506 - threeD_loss: 27.8012 - kl_loss: 64.9356 - val_loss: 28.1958 - val_threeD_loss: 27.5466 - val_kl_loss: 64.9157
+2253555/2253555 - 426s - loss: 33.5031 - threeD_loss_fun: 32.8445 - loss_1: 65.8754 - val_loss: 33.2642 - val_threeD_loss_fun: 32.6051 - val_loss_1: 65.9069
 Epoch 19/100
-2253555/2253555 - 513s - loss: 27.9935 - threeD_loss: 27.3446 - kl_loss: 64.8829 - val_loss: 27.5493 - val_threeD_loss: 26.8981 - val_kl_loss: 65.1284
+2253555/2253555 - 427s - loss: 33.1807 - threeD_loss_fun: 32.5218 - loss_1: 65.8817 - val_loss: 33.0587 - val_threeD_loss_fun: 32.4002 - val_loss_1: 65.8393
 Epoch 20/100
-2253555/2253555 - 603s - loss: 25.4385 - threeD_loss: 24.7803 - kl_loss: 65.8234 - val_loss: 24.4972 - val_threeD_loss: 23.8333 - val_kl_loss: 66.3895
+2253555/2253555 - 421s - loss: 32.9158 - threeD_loss_fun: 32.2577 - loss_1: 65.8225 - val_loss: 32.8574 - val_threeD_loss_fun: 32.1988 - val_loss_1: 65.8486
 Epoch 21/100
-2253555/2253555 - 606s - loss: 23.8913 - threeD_loss: 23.2227 - kl_loss: 66.8574 - val_loss: 23.2526 - val_threeD_loss: 22.5776 - val_kl_loss: 67.4909
+2253555/2253555 - 420s - loss: 32.6301 - threeD_loss_fun: 31.9722 - loss_1: 65.7993 - val_loss: 33.1639 - val_threeD_loss_fun: 32.5070 - val_loss_1: 65.6762
 Epoch 22/100
-2253555/2253555 - 616s - loss: 22.1223 - threeD_loss: 21.4448 - kl_loss: 67.7541 - val_loss: 21.7628 - val_threeD_loss: 21.0859 - val_kl_loss: 67.6821
+2253555/2253555 - 429s - loss: 32.3035 - threeD_loss_fun: 31.6460 - loss_1: 65.7425 - val_loss: 32.0915 - val_threeD_loss_fun: 31.4338 - val_loss_1: 65.7649
 Epoch 23/100
-2253555/2253555 - 608s - loss: 21.6350 - threeD_loss: 20.9579 - kl_loss: 67.7095 - val_loss: 21.5362 - val_threeD_loss: 20.8593 - val_kl_loss: 67.6837
+2253555/2253555 - 428s - loss: 31.8587 - threeD_loss_fun: 31.2012 - loss_1: 65.7403 - val_loss: 31.7920 - val_threeD_loss_fun: 31.1337 - val_loss_1: 65.8376
 Epoch 24/100
-2253555/2253555 - 609s - loss: 21.4988 - threeD_loss: 20.8232 - kl_loss: 67.5668 - val_loss: 21.3906 - val_threeD_loss: 20.7159 - val_kl_loss: 67.4796
+2253555/2253555 - 424s - loss: 31.1193 - threeD_loss_fun: 30.4602 - loss_1: 65.9084 - val_loss: 30.5014 - val_threeD_loss_fun: 29.8415 - val_loss_1: 65.9916
 Epoch 25/100
-2253555/2253555 - 610s - loss: 21.4075 - threeD_loss: 20.7337 - kl_loss: 67.3835 - val_loss: 21.3352 - val_threeD_loss: 20.6619 - val_kl_loss: 67.3332
+2253555/2253555 - 427s - loss: 29.7659 - threeD_loss_fun: 29.1034 - loss_1: 66.2545 - val_loss: 29.0019 - val_threeD_loss_fun: 28.3359 - val_loss_1: 66.5982
 Epoch 26/100
-2253555/2253555 - 608s - loss: 21.3284 - threeD_loss: 20.6561 - kl_loss: 67.2281 - val_loss: 21.3355 - val_threeD_loss: 20.6647 - val_kl_loss: 67.0851
+2253555/2253555 - 418s - loss: 28.4320 - threeD_loss_fun: 27.7633 - loss_1: 66.8722 - val_loss: 27.9362 - val_threeD_loss_fun: 27.2659 - val_loss_1: 67.0324
 Epoch 27/100
-2253555/2253555 - 596s - loss: 21.2627 - threeD_loss: 20.5918 - kl_loss: 67.0953 - val_loss: 21.2193 - val_threeD_loss: 20.5489 - val_kl_loss: 67.0387
+2253555/2253555 - 424s - loss: 27.7395 - threeD_loss_fun: 27.0675 - loss_1: 67.1913 - val_loss: 27.3410 - val_threeD_loss_fun: 26.6682 - val_loss_1: 67.2747
 Epoch 28/100
-2253555/2253555 - 595s - loss: 21.2212 - threeD_loss: 20.5515 - kl_loss: 66.9621 - val_loss: 21.1606 - val_threeD_loss: 20.4909 - val_kl_loss: 66.9749
+2253555/2253555 - 424s - loss: 27.2997 - threeD_loss_fun: 26.6265 - loss_1: 67.3106 - val_loss: 27.3356 - val_threeD_loss_fun: 26.6620 - val_loss_1: 67.3717
 Epoch 29/100
-2253555/2253555 - 594s - loss: 21.2021 - threeD_loss: 20.5336 - kl_loss: 66.8522 - val_loss: 21.3404 - val_threeD_loss: 20.6726 - val_kl_loss: 66.7864
+2253555/2253555 - 432s - loss: 26.9356 - threeD_loss_fun: 26.2616 - loss_1: 67.4017 - val_loss: 26.7795 - val_threeD_loss_fun: 26.1045 - val_loss_1: 67.4978
 Epoch 30/100
-
-Epoch 00030: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
-2253555/2253555 - 594s - loss: 21.1776 - threeD_loss: 20.5105 - kl_loss: 66.7085 - val_loss: 21.1628 - val_threeD_loss: 20.4962 - val_kl_loss: 66.6565
+2253555/2253555 - 423s - loss: 26.6160 - threeD_loss_fun: 25.9411 - loss_1: 67.4908 - val_loss: 26.4243 - val_threeD_loss_fun: 25.7486 - val_loss_1: 67.5746
 Epoch 31/100
-2253555/2253555 - 595s - loss: 21.0182 - threeD_loss: 20.3509 - kl_loss: 66.7317 - val_loss: 21.0234 - val_threeD_loss: 20.3559 - val_kl_loss: 66.7533
+2253555/2253555 - 450s - loss: 26.3423 - threeD_loss_fun: 25.6674 - loss_1: 67.4931 - val_loss: 26.2273 - val_threeD_loss_fun: 25.5531 - val_loss_1: 67.4238
 Epoch 32/100
-2253555/2253555 - 596s - loss: 21.0147 - threeD_loss: 20.3470 - kl_loss: 66.7661 - val_loss: 21.0320 - val_threeD_loss: 20.3643 - val_kl_loss: 66.7670
+2253555/2253555 - 433s - loss: 26.1111 - threeD_loss_fun: 25.4360 - loss_1: 67.5100 - val_loss: 26.0613 - val_threeD_loss_fun: 25.3859 - val_loss_1: 67.5375
 Epoch 33/100
-2253555/2253555 - 591s - loss: 21.0117 - threeD_loss: 20.3440 - kl_loss: 66.7677 - val_loss: 21.0199 - val_threeD_loss: 20.3521 - val_kl_loss: 66.7796
+2253555/2253555 - 423s - loss: 25.9164 - threeD_loss_fun: 25.2410 - loss_1: 67.5337 - val_loss: 25.7508 - val_threeD_loss_fun: 25.0751 - val_loss_1: 67.5719
 Epoch 34/100
-2253555/2253555 - 597s - loss: 21.0092 - threeD_loss: 20.3415 - kl_loss: 66.7675 - val_loss: 21.0215 - val_threeD_loss: 20.3538 - val_kl_loss: 66.7677
+2253555/2253555 - 427s - loss: 25.7643 - threeD_loss_fun: 25.0888 - loss_1: 67.5423 - val_loss: 25.5621 - val_threeD_loss_fun: 24.8864 - val_loss_1: 67.5719
 Epoch 35/100
-
-Epoch 00035: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
-2253555/2253555 - 608s - loss: 21.0065 - threeD_loss: 20.3387 - kl_loss: 66.7729 - val_loss: 21.0263 - val_threeD_loss: 20.3587 - val_kl_loss: 66.7567
+2253555/2253555 - 423s - loss: 25.6310 - threeD_loss_fun: 24.9554 - loss_1: 67.5640 - val_loss: 25.7707 - val_threeD_loss_fun: 25.0942 - val_loss_1: 67.6444
 Epoch 36/100
-2253555/2253555 - 603s - loss: 20.9852 - threeD_loss: 20.3175 - kl_loss: 66.7702 - val_loss: 20.9982 - val_threeD_loss: 20.3306 - val_kl_loss: 66.7642
+2253555/2253555 - 428s - loss: 25.5173 - threeD_loss_fun: 24.8415 - loss_1: 67.5801 - val_loss: 25.4000 - val_threeD_loss_fun: 24.7241 - val_loss_1: 67.6000
 Epoch 37/100
-2253555/2253555 - 603s - loss: 20.9842 - threeD_loss: 20.3166 - kl_loss: 66.7730 - val_loss: 20.9958 - val_threeD_loss: 20.3281 - val_kl_loss: 66.7683
+2253555/2253555 - 420s - loss: 25.4210 - threeD_loss_fun: 24.7448 - loss_1: 67.6230 - val_loss: 25.2871 - val_threeD_loss_fun: 24.6109 - val_loss_1: 67.6200
 Epoch 38/100
-2253555/2253555 - 605s - loss: 20.9841 - threeD_loss: 20.3164 - kl_loss: 66.7729 - val_loss: 20.9953 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7754
+2253555/2253555 - 422s - loss: 25.3306 - threeD_loss_fun: 24.6541 - loss_1: 67.6521 - val_loss: 25.3814 - val_threeD_loss_fun: 24.7046 - val_loss_1: 67.6827
 Epoch 39/100
-2253555/2253555 - 602s - loss: 20.9838 - threeD_loss: 20.3162 - kl_loss: 66.7743 - val_loss: 20.9958 - val_threeD_loss: 20.3281 - val_kl_loss: 66.7683
+2253555/2253555 - 425s - loss: 25.2639 - threeD_loss_fun: 24.5872 - loss_1: 67.6757 - val_loss: 25.0870 - val_threeD_loss_fun: 24.4105 - val_loss_1: 67.6480
 Epoch 40/100
-2253555/2253555 - 604s - loss: 20.9835 - threeD_loss: 20.3158 - kl_loss: 66.7733 - val_loss: 20.9950 - val_threeD_loss: 20.3274 - val_kl_loss: 66.7668
+2253555/2253555 - 425s - loss: 25.1901 - threeD_loss_fun: 24.5134 - loss_1: 67.6722 - val_loss: 25.1252 - val_threeD_loss_fun: 24.4484 - val_loss_1: 67.6844
 Epoch 41/100
-2253555/2253555 - 603s - loss: 20.9831 - threeD_loss: 20.3154 - kl_loss: 66.7757 - val_loss: 20.9954 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7783
+
+Epoch 00041: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+2253555/2253555 - 427s - loss: 25.1330 - threeD_loss_fun: 24.4563 - loss_1: 67.6605 - val_loss: 25.1117 - val_threeD_loss_fun: 24.4349 - val_loss_1: 67.6887
 Epoch 42/100
-2253555/2253555 - 604s - loss: 20.9829 - threeD_loss: 20.3151 - kl_loss: 66.7778 - val_loss: 20.9948 - val_threeD_loss: 20.3270 - val_kl_loss: 66.7795
+2253555/2253555 - 426s - loss: 24.8143 - threeD_loss_fun: 24.1370 - loss_1: 67.7310 - val_loss: 24.7972 - val_threeD_loss_fun: 24.1197 - val_loss_1: 67.7528
 Epoch 43/100
-2253555/2253555 - 604s - loss: 20.9824 - threeD_loss: 20.3147 - kl_loss: 66.7782 - val_loss: 20.9952 - val_threeD_loss: 20.3274 - val_kl_loss: 66.7774
+2253555/2253555 - 425s - loss: 24.8007 - threeD_loss_fun: 24.1225 - loss_1: 67.8103 - val_loss: 24.7855 - val_threeD_loss_fun: 24.1071 - val_loss_1: 67.8420
 Epoch 44/100
-2253555/2253555 - 603s - loss: 20.9820 - threeD_loss: 20.3143 - kl_loss: 66.7778 - val_loss: 20.9944 - val_threeD_loss: 20.3266 - val_kl_loss: 66.7773
+2253555/2253555 - 423s - loss: 24.7925 - threeD_loss_fun: 24.1139 - loss_1: 67.8624 - val_loss: 24.8015 - val_threeD_loss_fun: 24.1226 - val_loss_1: 67.8908
 Epoch 45/100
-2253555/2253555 - 603s - loss: 20.9820 - threeD_loss: 20.3143 - kl_loss: 66.7767 - val_loss: 20.9937 - val_threeD_loss: 20.3261 - val_kl_loss: 66.7679
+2253555/2253555 - 423s - loss: 24.7839 - threeD_loss_fun: 24.1049 - loss_1: 67.8912 - val_loss: 24.7769 - val_threeD_loss_fun: 24.0978 - val_loss_1: 67.9009
 Epoch 46/100
-2253555/2253555 - 606s - loss: 20.9816 - threeD_loss: 20.3139 - kl_loss: 66.7709 - val_loss: 20.9954 - val_threeD_loss: 20.3276 - val_kl_loss: 66.7780
+2253555/2253555 - 425s - loss: 24.7747 - threeD_loss_fun: 24.0955 - loss_1: 67.9218 - val_loss: 24.7540 - val_threeD_loss_fun: 24.0747 - val_loss_1: 67.9377
 Epoch 47/100
-
-Epoch 00047: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
-2253555/2253555 - 603s - loss: 20.9812 - threeD_loss: 20.3136 - kl_loss: 66.7726 - val_loss: 20.9942 - val_threeD_loss: 20.3264 - val_kl_loss: 66.7758
+2253555/2253555 - 424s - loss: 24.7649 - threeD_loss_fun: 24.0856 - loss_1: 67.9420 - val_loss: 24.7918 - val_threeD_loss_fun: 24.1124 - val_loss_1: 67.9375
 Epoch 48/100
-2253555/2253555 - 612s - loss: 20.9789 - threeD_loss: 20.3112 - kl_loss: 66.7715 - val_loss: 20.9915 - val_threeD_loss: 20.3238 - val_kl_loss: 66.7722
+
+Epoch 00048: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
+2253555/2253555 - 427s - loss: 24.7571 - threeD_loss_fun: 24.0776 - loss_1: 67.9541 - val_loss: 24.7973 - val_threeD_loss_fun: 24.1178 - val_loss_1: 67.9578
 Epoch 49/100
-2253555/2253555 - 599s - loss: 20.9787 - threeD_loss: 20.3109 - kl_loss: 66.7721 - val_loss: 20.9915 - val_threeD_loss: 20.3238 - val_kl_loss: 66.7718
+2253555/2253555 - 447s - loss: 24.7141 - threeD_loss_fun: 24.0344 - loss_1: 67.9718 - val_loss: 24.7199 - val_threeD_loss_fun: 24.0400 - val_loss_1: 67.9823
 Epoch 50/100
-
-Epoch 00050: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
-2253555/2253555 - 603s - loss: 20.9785 - threeD_loss: 20.3109 - kl_loss: 66.7725 - val_loss: 20.9918 - val_threeD_loss: 20.3241 - val_kl_loss: 66.7720
+2253555/2253555 - 464s - loss: 24.7117 - threeD_loss_fun: 24.0319 - loss_1: 67.9775 - val_loss: 24.7177 - val_threeD_loss_fun: 24.0378 - val_loss_1: 67.9874
 Epoch 51/100
-2253555/2253555 - 602s - loss: 20.9785 - threeD_loss: 20.3108 - kl_loss: 66.7729 - val_loss: 20.9914 - val_threeD_loss: 20.3237 - val_kl_loss: 66.7723
+2253555/2253555 - 423s - loss: 24.7109 - threeD_loss_fun: 24.0310 - loss_1: 67.9828 - val_loss: 24.7167 - val_threeD_loss_fun: 24.0369 - val_loss_1: 67.9862
 Epoch 52/100
-2253555/2253555 - 605s - loss: 20.9782 - threeD_loss: 20.3105 - kl_loss: 66.7731 - val_loss: 20.9909 - val_threeD_loss: 20.3231 - val_kl_loss: 66.7725
+2253555/2253555 - 425s - loss: 24.7099 - threeD_loss_fun: 24.0301 - loss_1: 67.9853 - val_loss: 24.7145 - val_threeD_loss_fun: 24.0346 - val_loss_1: 67.9918
 Epoch 53/100
-2253555/2253555 - 602s - loss: 20.9787 - threeD_loss: 20.3110 - kl_loss: 66.7729 - val_loss: 20.9911 - val_threeD_loss: 20.3234 - val_kl_loss: 66.7724
+2253555/2253555 - 422s - loss: 24.7081 - threeD_loss_fun: 24.0282 - loss_1: 67.9911 - val_loss: 24.7132 - val_threeD_loss_fun: 24.0332 - val_loss_1: 67.9951
 Epoch 54/100
-
-Epoch 00054: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
-2253555/2253555 - 604s - loss: 20.9784 - threeD_loss: 20.3107 - kl_loss: 66.7733 - val_loss: 20.9918 - val_threeD_loss: 20.3241 - val_kl_loss: 66.7721
+2253555/2253555 - 425s - loss: 24.7079 - threeD_loss_fun: 24.0280 - loss_1: 67.9945 - val_loss: 24.7173 - val_threeD_loss_fun: 24.0372 - val_loss_1: 68.0066
 Epoch 55/100
-2253555/2253555 - 602s - loss: 20.9787 - threeD_loss: 20.3109 - kl_loss: 66.7728 - val_loss: 20.9908 - val_threeD_loss: 20.3231 - val_kl_loss: 66.7721
+2253555/2253555 - 422s - loss: 24.7058 - threeD_loss_fun: 24.0257 - loss_1: 67.9962 - val_loss: 24.7128 - val_threeD_loss_fun: 24.0328 - val_loss_1: 68.0041
 Epoch 56/100
-
-Epoch 00056: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
-2253555/2253555 - 603s - loss: 20.9785 - threeD_loss: 20.3107 - kl_loss: 66.7731 - val_loss: 20.9910 - val_threeD_loss: 20.3232 - val_kl_loss: 66.7723
+2253555/2253555 - 431s - loss: 24.7057 - threeD_loss_fun: 24.0258 - loss_1: 68.0012 - val_loss: 24.7094 - val_threeD_loss_fun: 24.0294 - val_loss_1: 68.0029
 Epoch 57/100
-2253555/2253555 - 604s - loss: 20.9783 - threeD_loss: 20.3105 - kl_loss: 66.7728 - val_loss: 20.9910 - val_threeD_loss: 20.3233 - val_kl_loss: 66.7722
+2253555/2253555 - 428s - loss: 24.7053 - threeD_loss_fun: 24.0253 - loss_1: 68.0052 - val_loss: 24.7106 - val_threeD_loss_fun: 24.0305 - val_loss_1: 68.0124
 Epoch 58/100
 
-Epoch 00058: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-11.
-2253555/2253555 - 604s - loss: 20.9786 - threeD_loss: 20.3109 - kl_loss: 66.7730 - val_loss: 20.9913 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7723
+Epoch 00058: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
+2253555/2253555 - 427s - loss: 24.7042 - threeD_loss_fun: 24.0240 - loss_1: 68.0120 - val_loss: 24.7099 - val_threeD_loss_fun: 24.0297 - val_loss_1: 68.0174
 Epoch 59/100
-2253555/2253555 - 604s - loss: 20.9786 - threeD_loss: 20.3109 - kl_loss: 66.7728 - val_loss: 20.9911 - val_threeD_loss: 20.3234 - val_kl_loss: 66.7721
+2253555/2253555 - 430s - loss: 24.6989 - threeD_loss_fun: 24.0187 - loss_1: 68.0135 - val_loss: 24.7062 - val_threeD_loss_fun: 24.0260 - val_loss_1: 68.0192
 Epoch 60/100
-
-Epoch 00060: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-12.
-2253555/2253555 - 601s - loss: 20.9785 - threeD_loss: 20.3108 - kl_loss: 66.7731 - val_loss: 20.9910 - val_threeD_loss: 20.3233 - val_kl_loss: 66.7721
+2253555/2253555 - 423s - loss: 24.6987 - threeD_loss_fun: 24.0186 - loss_1: 68.0145 - val_loss: 24.7058 - val_threeD_loss_fun: 24.0256 - val_loss_1: 68.0189
 Epoch 61/100
-2253555/2253555 - 610s - loss: 20.9784 - threeD_loss: 20.3107 - kl_loss: 66.7730 - val_loss: 20.9913 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7722
+2253555/2253555 - 425s - loss: 24.6986 - threeD_loss_fun: 24.0184 - loss_1: 68.0143 - val_loss: 24.7056 - val_threeD_loss_fun: 24.0255 - val_loss_1: 68.0185
 Epoch 62/100
+2253555/2253555 - 433s - loss: 24.6988 - threeD_loss_fun: 24.0186 - loss_1: 68.0148 - val_loss: 24.7055 - val_threeD_loss_fun: 24.0253 - val_loss_1: 68.0205
+Epoch 63/100
+2253555/2253555 - 426s - loss: 24.6984 - threeD_loss_fun: 24.0183 - loss_1: 68.0154 - val_loss: 24.7064 - val_threeD_loss_fun: 24.0262 - val_loss_1: 68.0210
+Epoch 64/100
 
-Epoch 00062: ReduceLROnPlateau reducing learning rate to 1.0000001044244145e-13.
-2253555/2253555 - 602s - loss: 20.9784 - threeD_loss: 20.3106 - kl_loss: 66.7727 - val_loss: 20.9914 - val_threeD_loss: 20.3236 - val_kl_loss: 66.7723
-Epoch 00062: early stopping
+Epoch 00064: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
+2253555/2253555 - 422s - loss: 24.6984 - threeD_loss_fun: 24.0183 - loss_1: 68.0154 - val_loss: 24.7071 - val_threeD_loss_fun: 24.0269 - val_loss_1: 68.0212
+Epoch 65/100
+2253555/2253555 - 418s - loss: 24.6981 - threeD_loss_fun: 24.0180 - loss_1: 68.0164 - val_loss: 24.7060 - val_threeD_loss_fun: 24.0258 - val_loss_1: 68.0204
+Epoch 66/100
+2253555/2253555 - 422s - loss: 24.6981 - threeD_loss_fun: 24.0179 - loss_1: 68.0159 - val_loss: 24.7044 - val_threeD_loss_fun: 24.0242 - val_loss_1: 68.0203
+Epoch 67/100
+2253555/2253555 - 438s - loss: 24.6983 - threeD_loss_fun: 24.0181 - loss_1: 68.0159 - val_loss: 24.7046 - val_threeD_loss_fun: 24.0244 - val_loss_1: 68.0201
+Epoch 68/100
+
+Epoch 00068: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
+2253555/2253555 - 438s - loss: 24.6979 - threeD_loss_fun: 24.0177 - loss_1: 68.0160 - val_loss: 24.7057 - val_threeD_loss_fun: 24.0255 - val_loss_1: 68.0202
+Epoch 69/100
+2253555/2253555 - 420s - loss: 24.6976 - threeD_loss_fun: 24.0174 - loss_1: 68.0157 - val_loss: 24.7052 - val_threeD_loss_fun: 24.0250 - val_loss_1: 68.0200
+Epoch 70/100
+
+Epoch 00070: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
+2253555/2253555 - 425s - loss: 24.6974 - threeD_loss_fun: 24.0173 - loss_1: 68.0159 - val_loss: 24.7057 - val_threeD_loss_fun: 24.0255 - val_loss_1: 68.0201
+Epoch 71/100
+2253555/2253555 - 417s - loss: 24.6977 - threeD_loss_fun: 24.0176 - loss_1: 68.0155 - val_loss: 24.7057 - val_threeD_loss_fun: 24.0255 - val_loss_1: 68.0203
+Epoch 72/100
+
+Epoch 00072: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-11.
+2253555/2253555 - 422s - loss: 24.6978 - threeD_loss_fun: 24.0177 - loss_1: 68.0157 - val_loss: 24.7052 - val_threeD_loss_fun: 24.0250 - val_loss_1: 68.0202
+Epoch 73/100
+2253555/2253555 - 424s - loss: 24.6982 - threeD_loss_fun: 24.0180 - loss_1: 68.0156 - val_loss: 24.7061 - val_threeD_loss_fun: 24.0259 - val_loss_1: 68.0202
+Epoch 00073: early stopping
 saving model to models/run_101

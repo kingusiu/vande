@@ -1,5 +1,5 @@
 import os
-#import setGPU
+import setGPU
 
 import util.experiment as ex
 import util.event_sample as es
@@ -14,11 +14,11 @@ import inout.sample_factory as sf
 #               runtime params
 # ********************************************************
 
-#test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
-test_samples = ['qcdSide', 'GtoWW30na', 'GtoWW30br']
+test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
+#test_samples = ['qcdSide', 'GtoWW30na', 'GtoWW30br']
 
-run_n = 4
-data_sample = 'particle-local'
+run_n = 101
+data_sample = 'particle'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)

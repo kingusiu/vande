@@ -138,7 +138,7 @@ def compute_loss_of_prediction_mse_kl(input, predicted, z_mean, z_log_var):
 
 
 def threeD_loss_manual(inputs, outputs):
-    distances = np.sum((inputs[:,:,np.newaxis,:]-outputs[:,np.newaxis,:,:])**2,axis=-1)
+    distances = np.sum(np.subtract(inputs[:,:,np.newaxis,:],outputs[:,np.newaxis,:,:])**2, axis=-1)
     min_dist_to_inputs = np.min(distances,axis=1)
     min_dist_to_outputs = np.min(distances,axis=2)
     return np.sum(min_dist_to_inputs,axis=1) + np.sum(min_dist_to_outputs,axis=1)

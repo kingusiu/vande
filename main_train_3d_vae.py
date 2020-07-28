@@ -1,5 +1,5 @@
 import os
-#import setGPU
+import setGPU
 import numpy as np
 
 import util.experiment as ex
@@ -19,8 +19,8 @@ print('Tensorflow: ', tf.__version__)
 #       runtime params
 # ********************************************************
 
-run_n = 4
-data_sample = 'particle-local'
+run_n = 101
+data_sample = 'particle'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True, fig_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)
@@ -52,6 +52,6 @@ vae.build(mean, std_dev)
 #                       train and save
 # *******************************************************
 
-history = vae.fit(training_evts, training_evts, epochs=3, verbose=2)
+history = vae.fit(training_evts, training_evts, epochs=100, verbose=2)
 vae.plot_training(experiment.fig_dir)
 vae.save_model()
