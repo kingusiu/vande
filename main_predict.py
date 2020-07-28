@@ -1,6 +1,7 @@
-#import setGPU
+import setGPU
 
 from vae.vae_model import VAE
+from vae.vae_highres_model import VAE_HR
 import vae.losses as lo
 import inout.input_data_reader as idr
 import inout.sample_factory as sf
@@ -12,8 +13,8 @@ import util.experiment as ex
 #               runtime params
 # ********************************************************
 
-run_n = 5
-data_sample = 'img-local'
+run_n = 6
+data_sample = 'img-local-54'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
@@ -22,7 +23,7 @@ paths = sf.SamplePathFactory(experiment,data_sample)
 #               load model
 # ********************************************
 
-vae = VAE(run=run_n, model_dir=experiment.model_dir)
+vae = VAE_HR(run=run_n, model_dir=experiment.model_dir)
 vae.load()
 
 # ********************************************

@@ -1,6 +1,6 @@
 config = {
 
-    'image_size' : 32,
+    'image_size' : 54,
     'beta' : 0.01,
     'min_pixel' : 0.0,
     'max_pixel' : 1866.1377,

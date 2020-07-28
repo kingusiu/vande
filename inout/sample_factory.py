@@ -45,6 +45,7 @@ class SamplePathFactory():
 
     def init_img_local_54(self):
         self.qcd_file_path = os.path.join(self.input_dir, sd.file_names['qcdSide']+'_mjj_cut_20K_pt_img_54px.h5')
+        self.sample_suffix = '_mjj_cut_10K_pt_img_54px.h5'
 
     def init_particle(self):
         self.qcd_file_path = os.path.join(self.input_dir, sd.file_names['qcdSide']+'_concat_1.5M.h5')

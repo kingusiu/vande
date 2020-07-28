@@ -144,8 +144,8 @@ def threeD_loss_manual(inputs, outputs):
     return np.sum(min_dist_to_inputs,axis=1) + np.sum(min_dist_to_outputs,axis=1)
 
 
-def compute_loss_of_prediction_3D_kl(input, predicted, z_mean, z_log_var):
-    reco_losses = threeD_loss_manual(input, predicted)
+def compute_loss_of_prediction_3D_kl(inputs, predicted, z_mean, z_log_var):
+    reco_losses = threeD_loss_manual(inputs, predicted)
     kl_losses = kl_loss_manual(z_mean, z_log_var)
     total_losses = reco_losses + co.config['beta'] * kl_losses
     return [total_losses, reco_losses, kl_losses]
