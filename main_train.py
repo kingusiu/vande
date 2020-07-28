@@ -1,5 +1,5 @@
 import os
-import setGPU
+#import setGPU
 import numpy as np
 
 import util.experiment as ex
@@ -11,8 +11,8 @@ import inout.sample_factory as sf
 #       runtime params
 # ********************************************************
 
-run_n = 46
-data_sample = 'img'
+run_n = 5
+data_sample = 'img-local'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)
@@ -42,5 +42,5 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-vae.fit( training_img, training_img, epochs=100, verbose=2 )
+vae.fit( training_img, training_img, epochs=3, verbose=2 )
 vae.save_model()

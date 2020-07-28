@@ -31,9 +31,9 @@ class Sampling(tf.keras.layers.Layer):
 
 class VAE( object ):
 
-    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir']):
+    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32):
         # network parameters
-        self.input_shape = (co.config['image_size'], co.config['image_size'], 1)
+        self.input_shape = (input_size, input_size, 1)
         self.batch_size = 128
         self.kernel_size = 3
         self.filter_n = 6
@@ -45,9 +45,9 @@ class VAE( object ):
 
     # adding keras mse as dummy loss, because training loss in function closure not (easily) accessible and model won't load without all custom function references
     def load( self ):
-        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'sampling' : self.sampling})
+        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'Sampling' : Sampling})
         self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss})
-        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'loss': tf.keras.losses.mse, 'sampling' : self.sampling})
+        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss': kl_loss, 'loss': tf.keras.losses.mse, 'Sampling' : Sampling})
 
 
     def build( self ):
@@ -64,7 +64,7 @@ class VAE( object ):
 
 
     def compile(self, model):
-        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)])  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
     #               encoder
@@ -111,7 +111,7 @@ class VAE( object ):
     # ***********************************
     def build_decoder(self):
 
-        latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), name='z_sampling')
+        latent_inputs = tf.keras.layers.Input(shape=(self.z_size,), dtype=tf.float32, name='z_sampling')
         x = tf.keras.layers.Dense(self.size_convolved[1] // 42, activation='relu',kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
         x = tf.keras.layers.Dense(self.size_convolved[1] // 17, activation='relu',kernel_regularizer=self.regularizer)(x)  # double size
         x = tf.keras.layers.Dense(self.shape_convolved[1] * self.shape_convolved[2] * self.shape_convolved[3], activation='relu',kernel_regularizer=self.regularizer)(x)

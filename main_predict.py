@@ -1,4 +1,4 @@
-import setGPU
+#import setGPU
 
 from vae.vae_model import VAE
 import vae.losses as lo
@@ -12,8 +12,8 @@ import util.experiment as ex
 #               runtime params
 # ********************************************************
 
-run_n = 46
-data_sample = 'img'
+run_n = 5
+data_sample = 'img-local'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
@@ -22,14 +22,15 @@ paths = sf.SamplePathFactory(experiment,data_sample)
 #               load model
 # ********************************************
 
-vae = VAE(run=run_n,model_dir=experiment.model_dir)
+vae = VAE(run=run_n, model_dir=experiment.model_dir)
 vae.load()
 
 # ********************************************
 #               read test data (images)
 # ********************************************
 
-sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+#sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+sample_ids = ['GtoWW25br', 'GtoWW35na']
 
 for sample_id in sample_ids:
 

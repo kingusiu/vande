@@ -46,7 +46,7 @@ class VAE_3D( VAE ):
 
     def build(self, mean, std_dev ):
 
-        inputs = tf.keras.layers.Input(shape=self.input_shape, name='encoder_input')
+        inputs = tf.keras.layers.Input(shape=self.input_shape, dtype=tf.float32, name='encoder_input')
         self.encoder = self.build_encoder(inputs, mean, std_dev)
         self.decoder = self.build_decoder(mean, std_dev)
         outputs = self.decoder( self.z )  # link encoder output to decoder
