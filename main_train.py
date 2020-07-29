@@ -1,5 +1,5 @@
 import os
-#import setGPU
+import setGPU
 import numpy as np
 
 import util.experiment as ex
@@ -12,8 +12,8 @@ import inout.sample_factory as sf
 #       runtime params
 # ********************************************************
 
-run_n = 6
-data_sample = 'img-local-54'
+run_n = 301
+data_sample = 'img-54'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)

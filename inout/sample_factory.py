@@ -9,6 +9,7 @@ class SamplePathFactory():
     path_dict = {
         'default': sd.base_dir_events,
         'img': sd.base_dir_images,
+        'img-54': os.path.join(sd.base_dir_images,'54px')
         'particle': sd.base_dir_events,
         'img-local': sd.base_dir_images_local,
         'img-local-54': sd.base_dir_images_local,
@@ -25,15 +26,20 @@ class SamplePathFactory():
             self.init_img_local_54()
         if self.mode == 'img':
             self.init_img()
+        if self.mode == 'img-54':
+            self.init_img_54()
         if self.mode == 'particle-local':
             self.init_particle_local()
         if self.mode == 'particle':
             self.init_particle()
 
 
-    def init_img(self):
+    def init_img(self, pix_suffix=None):
         self.qcd_file_path = os.path.join(self.input_dir,'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_mjj_cut_concat_1.2M_pt_img.h5')
         self.sample_suffix = '_mjj_cut_concat_200K_pt_img.h5'
+
+    def init_img_54(self):
+        self.qcd_file_path = os.path.join(self.input_dir,'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_mjj_cut_1.2M_pt_img_54px.h5')
 
     def init_default(self):
         pass
