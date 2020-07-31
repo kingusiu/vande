@@ -137,3 +137,79 @@ Trainable params: 7,847,397
 Non-trainable params: 0
 __________________________________________________________________________________________________
 Train on 1800000 samples, validate on 600000 samples
+Epoch 1/100
+2020-07-31 14:26:23.801996: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-31 14:26:24.157128: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+1800000/1800000 - 281s - loss: 0.1312 - mse_loss: 0.1000 - loss_1: 3.1225 - val_loss: 0.1240 - val_mse_loss: 0.0893 - val_loss_1: 3.4671
+Epoch 2/100
+1800000/1800000 - 277s - loss: 0.1225 - mse_loss: 0.0881 - loss_1: 3.4371 - val_loss: 0.1215 - val_mse_loss: 0.0875 - val_loss_1: 3.3986
+Epoch 3/100
+1800000/1800000 - 275s - loss: 0.1208 - mse_loss: 0.0863 - loss_1: 3.4503 - val_loss: 0.1203 - val_mse_loss: 0.0852 - val_loss_1: 3.5191
+Epoch 4/100
+1800000/1800000 - 285s - loss: 0.1201 - mse_loss: 0.0854 - loss_1: 3.4648 - val_loss: 0.1194 - val_mse_loss: 0.0841 - val_loss_1: 3.5323
+Epoch 5/100
+1800000/1800000 - 289s - loss: 0.1197 - mse_loss: 0.0851 - loss_1: 3.4613 - val_loss: 0.1204 - val_mse_loss: 0.0883 - val_loss_1: 3.2078
+Epoch 6/100
+
+Epoch 00006: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+1800000/1800000 - 290s - loss: 0.1196 - mse_loss: 0.0853 - loss_1: 3.4337 - val_loss: 0.1195 - val_mse_loss: 0.0836 - val_loss_1: 3.5820
+Epoch 7/100
+1800000/1800000 - 290s - loss: 0.1180 - mse_loss: 0.0829 - loss_1: 3.5033 - val_loss: 0.1178 - val_mse_loss: 0.0828 - val_loss_1: 3.4949
+Epoch 8/100
+1800000/1800000 - 291s - loss: 0.1177 - mse_loss: 0.0828 - loss_1: 3.4919 - val_loss: 0.1177 - val_mse_loss: 0.0825 - val_loss_1: 3.5134
+Epoch 9/100
+1800000/1800000 - 291s - loss: 0.1176 - mse_loss: 0.0828 - loss_1: 3.4826 - val_loss: 0.1177 - val_mse_loss: 0.0837 - val_loss_1: 3.4001
+Epoch 10/100
+1800000/1800000 - 290s - loss: 0.1175 - mse_loss: 0.0830 - loss_1: 3.4550 - val_loss: 0.1176 - val_mse_loss: 0.0821 - val_loss_1: 3.5482
+Epoch 11/100
+1800000/1800000 - 291s - loss: 0.1175 - mse_loss: 0.0827 - loss_1: 3.4799 - val_loss: 0.1175 - val_mse_loss: 0.0830 - val_loss_1: 3.4442
+Epoch 12/100
+1800000/1800000 - 291s - loss: 0.1175 - mse_loss: 0.0831 - loss_1: 3.4422 - val_loss: 0.1175 - val_mse_loss: 0.0825 - val_loss_1: 3.4972
+Epoch 13/100
+1800000/1800000 - 289s - loss: 0.1174 - mse_loss: 0.0824 - loss_1: 3.5001 - val_loss: 0.1174 - val_mse_loss: 0.0827 - val_loss_1: 3.4729
+Epoch 14/100
+
+Epoch 00014: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+1800000/1800000 - 291s - loss: 0.1174 - mse_loss: 0.0825 - loss_1: 3.4855 - val_loss: 0.1174 - val_mse_loss: 0.0820 - val_loss_1: 3.5395
+Epoch 15/100
+1800000/1800000 - 290s - loss: 0.1172 - mse_loss: 0.0820 - loss_1: 3.5216 - val_loss: 0.1172 - val_mse_loss: 0.0821 - val_loss_1: 3.5151
+Epoch 16/100
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0823 - loss_1: 3.4937 - val_loss: 0.1172 - val_mse_loss: 0.0824 - val_loss_1: 3.4871
+Epoch 17/100
+
+Epoch 00017: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0823 - loss_1: 3.4894 - val_loss: 0.1172 - val_mse_loss: 0.0823 - val_loss_1: 3.4984
+Epoch 18/100
+1800000/1800000 - 293s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4958 - val_loss: 0.1172 - val_mse_loss: 0.0823 - val_loss_1: 3.4966
+Epoch 19/100
+
+Epoch 00019: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4951 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4976
+Epoch 20/100
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4957 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4976
+Epoch 21/100
+
+Epoch 00021: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
+1800000/1800000 - 290s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4959 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4977
+Epoch 22/100
+1800000/1800000 - 290s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4959 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4977
+Epoch 23/100
+
+Epoch 00023: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0823 - val_loss_1: 3.4978
+Epoch 24/100
+1800000/1800000 - 287s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4978
+Epoch 25/100
+
+Epoch 00025: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
+1800000/1800000 - 290s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4978
+Epoch 26/100
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4978
+Epoch 27/100
+
+Epoch 00027: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-11.
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4978
+Epoch 28/100
+1800000/1800000 - 291s - loss: 0.1172 - mse_loss: 0.0822 - loss_1: 3.4960 - val_loss: 0.1172 - val_mse_loss: 0.0822 - val_loss_1: 3.4978
+Epoch 00028: early stopping
+saving model to models/run_47

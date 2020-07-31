@@ -64,7 +64,7 @@ class VAE( object ):
 
 
     def compile(self, model):
-        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var, self.input_shape[0]), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
     #               encoder

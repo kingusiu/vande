@@ -18,25 +18,26 @@ def kl_loss( z_mean, z_log_var ):
 # metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
 def kl_loss_for_metric( z_mean, z_log_var ):
 
-    def loss( inputs, outputs ):
+    def kl_loss_fun( inputs, outputs ):
         #return config['beta'] * kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
         return kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
 
-    return loss
+    return kl_loss_fun
 
 ### MSE
 
 def mse_loss( inputs, outputs ):
     mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
     reco_loss = mse(inputs, outputs)
-    reco_loss *= co.config['image_size'] * co.config['image_size']  # mse returns mean sqr err, so multiply by n
     return reco_loss  # returns scalar (one for each input sample)
 
 
-def mse_kl_loss( z_mean, z_log_var ):
+def mse_kl_loss( z_mean, z_log_var, input_size ):
 
-    def loss( inputs, outputs ):
-        return mse_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
+    # multiplying back by N because input is so sparse -> average error very small 
+    def loss( inputs, outputs  ):
+        #input_size = inputs.get_shape().as_list()
+        return input_size*input_size * mse_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
 
     return loss
 
