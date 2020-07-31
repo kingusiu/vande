@@ -33,7 +33,7 @@ class VAE( object ):
 
     def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32, z_size=10, filter_n=6):
         # network parameters
-        self.input_shape = (input_size, input_size,1)
+        self.input_shape = (input_size, input_size)
         self.batch_size = 128
         self.kernel_size = 3
         self.filter_n = filter_n
@@ -71,7 +71,8 @@ class VAE( object ):
     # ***********************************
     def build_encoder(self, inputs):
 
-        x = inputs
+        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(inputs) # [B x N_pix x N_pix] => [B x N_pix x N_pix x 1]
+
         for i in range(3):
             x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
             self.filter_n += 4
@@ -123,7 +124,9 @@ class VAE( object ):
             self.filter_n -= 4
             x = tf.keras.layers.Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer)(x)
 
-        outputs_decoder = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same', name='decoder_output')(x)
+        x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same', name='decoder_output')(x)
+        outputs_decoder = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3))(x) # [B x N_pix x N_pix x 1] -> [B x N_pix x N_pix]
+
 
         # instantiate decoder model
         decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
