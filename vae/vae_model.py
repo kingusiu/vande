@@ -33,7 +33,7 @@ class VAE( object ):
 
     def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32, z_size=10, filter_n=6):
         # network parameters
-        self.input_shape = (input_size, input_size)
+        self.input_shape = (input_size, input_size,1)
         self.batch_size = 128
         self.kernel_size = 3
         self.filter_n = filter_n

@@ -3,6 +3,7 @@ from functools import reduce
 import numpy as np
 
 
+# TODO: rename to 'scikit sample from dijet sample'
 def dijet_sample_from_dijet_sample(sample):
     '''
     computing dijet with scikit hep package from dijet features given in input file (to obtain missing features like pt-jj)

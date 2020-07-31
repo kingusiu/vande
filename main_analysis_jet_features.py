@@ -6,11 +6,30 @@ import util.experiment as ex
 import util.jet_sample as js
 import util.event_sample as es
 import util.plotting as up
+import inout.sample_factory as sf
 
-experiment = ex.Experiment(run_n=0)
+
+run_n = 101
+data_sample = 'particle-local'
+
+experiment = ex.Experiment(run_n).setup(fig_dir=True)
+paths = sf.SamplePathFactory(experiment, data_sample)
+
+
+# ********************************************************
+#       read in training data ( events )
+# ********************************************************
+
+qcd_sample = js.JetSample.from_input_file('qcdSide',paths.qcd_file_path)
+scikit_qcd_sample = ajf.dijet_sample_from_dijet_sample(qcd_sample)
+ptjj = [j.pt for j in scikit_qcd_sample]
+
+up.plot_hist(ptjj, title='ptjj', plot_name='ptjj_dist', fig_dir=experiment.fig_dir, xlim=(-1,10), bins=3000)
+
+
 
 # scikit dijet sample from particle sample
-event_sample = es.EventSample.from_input_file('GtoWW30br','data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
+event_sample = es.EventSample.from_input_file('GtoWW30br','../data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
 j1_particles, j2_particles = event_sample.get_particles()
 j1_scikit = ajf.jet_sample_from_particle_sample(j1_particles)
 j2_scikit = ajf.jet_sample_from_particle_sample(j2_particles)
@@ -19,7 +38,7 @@ mjj_scikit = [j.mass for j in jj_scikit]
 ptjj_scikit = [j.pt for j in jj_scikit]
 
 # original dijet sample
-jet_sample = js.JetSample.from_input_file('GtoWW30br','data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
+jet_sample = js.JetSample.from_input_file('GtoWW30br','../data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.0TeV_concat_10K.h5')
 #scikit dijet sample from original dijet sample
 jet_sample_scikit = ajf.dijet_sample_from_dijet_sample(jet_sample)
 mjj_scikit_from_orig = [j.mass for j in jet_sample_scikit]

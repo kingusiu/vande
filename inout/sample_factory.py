@@ -9,7 +9,7 @@ class SamplePathFactory():
     path_dict = {
         'default': sd.base_dir_events,
         'img': sd.base_dir_images,
-        'img-54': os.path.join(sd.base_dir_images,'54px')
+        'img-54': os.path.join(sd.base_dir_images,'54px'),
         'particle': sd.base_dir_events,
         'img-local': sd.base_dir_images_local,
         'img-local-54': sd.base_dir_images_local,

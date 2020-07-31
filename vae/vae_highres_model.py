@@ -19,6 +19,7 @@ class VAE_HR(VAE):
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(inputs) # [B x N_pix x N_pix] => [B x N_pix x N_pix x 1]
 
 		for i in range(3):
+			x = tf.keras.layers.Dropout(0.1)(x)
 			x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
 			x = tf.keras.layers.AveragePooling2D()(x)
 
@@ -59,6 +60,7 @@ class VAE_HR(VAE):
 		for i in range(3):
 			x = tf.keras.layers.UpSampling2D()(x)
 			x = tf.keras.layers.Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer)(x)
+			x = tf.keras.layers.Dropout(0.1)(x)
 
 		# last conv transpose to get back to 1 channel
 		x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same', name='decoder_output')(x)
