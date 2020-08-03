@@ -13,8 +13,8 @@ import util.experiment as ex
 #               runtime params
 # ********************************************************
 
-run_n = 47
-data_sample = 'img-54'
+run_n = 4
+data_sample = 'img-local-54'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
