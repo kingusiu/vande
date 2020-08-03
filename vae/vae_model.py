@@ -45,9 +45,9 @@ class VAE( object ):
 
     # adding keras mse as dummy loss and dummy kl_loss_fun, because training loss in function closure not (easily) accessible and model won't load without all custom function references
     def load( self ):
-        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss_for_metric': kl_loss_for_metric, 'Sampling' : Sampling})
-        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss_for_metric': kl_loss_for_metric})
-        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss': mse_loss, 'kl_loss_for_metric': kl_loss_for_metric, 'loss': tf.keras.losses.mse, 'kl_loss_fun': kl_loss, 'Sampling' : Sampling})
+        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric, 'Sampling' : Sampling})
+        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric})
+        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric, 'loss': tf.keras.losses.mse, 'kl_loss_fun': kl_loss, 'Sampling' : Sampling})
 
 
     def build( self ):
@@ -64,7 +64,7 @@ class VAE( object ):
 
 
     def compile(self, model):
-        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var, self.input_shape[0]), metrics=[mse_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
+        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var, self.input_shape[0]), metrics=[mse_loss(self.input_shape[0]), kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
     #               encoder
