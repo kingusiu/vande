@@ -5,7 +5,7 @@ import util.experiment as ex
 import util.event_sample as es
 import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
-import config.sample_dict as sd
+import POfAH.sample_dict as sd
 import config.config as co
 import inout.sample_factory as sf
 

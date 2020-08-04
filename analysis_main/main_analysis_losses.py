@@ -4,7 +4,7 @@ from collections import OrderedDict
 import analysis.analysis_losses as alo
 import util.jet_sample as js
 import util.experiment as ex
-import config.sample_dict as sd
+import POfAH.sample_dict as sd
 import inout.sample_factory as sf
 
 def analyze_losses( run_n, SM_sample_id, BSM_sample_ids, plot_suffix=''):

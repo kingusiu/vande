@@ -1,6 +1,6 @@
 import os
 from collections import OrderedDict
-import config.sample_dict as sd
+import POfAH.sample_dict as sd
 import POfAH.jet_sample as js
 
 

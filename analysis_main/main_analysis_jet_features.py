@@ -1,6 +1,6 @@
 import os
 
-import config.sample_dict as sd
+import POfAH.sample_dict as sd
 import analysis.analysis_jet_feature as ajf
 import util.experiment as ex
 import util.jet_sample as js
