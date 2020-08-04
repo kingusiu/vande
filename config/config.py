@@ -1,7 +1,7 @@
 config = {
 
     'image_size' : 54,
-    'beta' : 0.01,
+    'beta' : 0.1,
     'min_pixel' : 0.0,
     'max_pixel' : 1866.1377,
     'mass_cut' : 1100.0,
