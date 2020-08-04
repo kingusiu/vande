@@ -40,6 +40,7 @@ class SamplePathFactory():
 
     def init_img_54(self):
         self.qcd_file_path = os.path.join(self.input_dir,'qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_mjj_cut_1.2M_pt_img_54px.h5')
+        self.sample_suffix = '_mjj_cut_concat_200K_pt_img_54px.h5'
 
     def init_default(self):
         pass
