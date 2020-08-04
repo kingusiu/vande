@@ -71,7 +71,9 @@ class VAE( object ):
     # ***********************************
     def build_encoder(self, inputs):
 
-        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(inputs) # [B x N_pix x N_pix] => [B x N_pix x N_pix x 1]
+        x = tf.keras.layers.Dropout(0.5)(inputs)
+
+        x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(x) # [B x N_pix x N_pix] => [B x N_pix x N_pix x 1]
 
         for i in range(3):
             x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer)(x)
@@ -123,6 +125,8 @@ class VAE( object ):
         for i in range(3):
             self.filter_n -= 4
             x = tf.keras.layers.Conv2DTranspose(filters=self.filter_n, kernel_size=self.kernel_size, activation='relu',kernel_regularizer=self.regularizer)(x)
+
+        x = tf.keras.layers.Dropout(0.5)(x)
 
         x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.kernel_size, activation='relu', kernel_regularizer=self.regularizer, padding='same', name='decoder_output')(x)
         outputs_decoder = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3))(x) # [B x N_pix x N_pix x 1] -> [B x N_pix x N_pix]

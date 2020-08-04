@@ -12,8 +12,8 @@ import inout.sample_factory as sf
 #       runtime params
 # ********************************************************
 
-run_n = 4
-data_sample = 'img-local-54'
+run_n = 49
+data_sample = 'img-54'
 
 experiment = ex.Experiment(run_n).setup(model_dir=True)
 paths = sf.SamplePathFactory(experiment, data_sample)
@@ -43,5 +43,5 @@ vae.build()
 #                       train and save
 # *******************************************************
 
-vae.fit(training_img, training_img, epochs=3, verbose=2)
+vae.fit(training_img, training_img, epochs=100, verbose=2)
 vae.save_model()
