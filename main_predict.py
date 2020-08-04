@@ -53,8 +53,8 @@ for sample_id in sample_ids:
     # *******************************************************
 
     print('-'*10, 'computing losses', '-'*10)
-    losses_j1 = lo.compute_loss_of_prediction_mse_kl(test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1)
-    losses_j2 = lo.compute_loss_of_prediction_mse_kl(test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2)
+    losses_j1 = lo.compute_loss_of_prediction_mse_kl(test_img_j1, reco_img_j1, z_mean_j1, z_log_var_j1, input_size=54)
+    losses_j2 = lo.compute_loss_of_prediction_mse_kl(test_img_j2, reco_img_j2, z_mean_j2, z_log_var_j2, input_size=54)
 
     # *******************************************************
     #               add losses to DataSample and save

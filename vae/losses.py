@@ -26,18 +26,24 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 
 ### MSE
 
-def mse_loss( inputs, outputs ):
-    mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
-    reco_loss = mse(inputs, outputs)
-    return reco_loss  # returns scalar (one for each input sample)
+def mse_loss( input_size ):
+
+    # returns scalar (one for each input sample)
+    def mse_loss_fun(inputs, outputs):
+        mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
+        reco_loss = mse(inputs, outputs)
+        return input_size * input_size * reco_loss # rescale by input_size**2, because sparse input -> very small avg loss  
+
+    return mse_loss_fun
 
 
 def mse_kl_loss( z_mean, z_log_var, input_size ):
 
+    total_squared_error = mse_loss(input_size)
     # multiplying back by N because input is so sparse -> average error very small 
-    def loss( inputs, outputs  ):
+    def loss(inputs, outputs):
         #input_size = inputs.get_shape().as_list()
-        return input_size*input_size * mse_loss( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
+        return total_squared_error(inputs, outputs) + co.config['beta'] * kl_loss( z_mean, z_log_var )
 
     return loss
 
@@ -116,11 +122,11 @@ def threeD_kl_loss_fun( z_mean, z_log_var ):
 #                   manual analysis losses
 # ********************************************************
 
-def mse_loss_manual(inputs,outputs):
+def mse_loss_manual(inputs, outputs, input_size=32):
     inputs = inputs.reshape(inputs.shape[0],-1) # flatten to tensor of n events, each of size 1024 (32x32)
     outputs = outputs.reshape(outputs.shape[0],-1)
     reconstruction_loss = np.mean( np.square(outputs-inputs), axis=-1)
-    reconstruction_loss *= co.config['image_size'] * co.config['image_size'] # mse returns mean sqr err, so multiply by n
+    reconstruction_loss *= input_size * input_size # mse returns mean sqr err, so multiply by n
     return np.array(reconstruction_loss)
 
 
@@ -131,8 +137,8 @@ def kl_loss_manual(z_mean,z_log_var):
 
 
 # compute losses manually given original data (inputs), predicted data (outputs) and bg_z_mean and z_log var
-def compute_loss_of_prediction_mse_kl(input, predicted, z_mean, z_log_var):
-    reco_losses = mse_loss_manual(input, predicted)
+def compute_loss_of_prediction_mse_kl(input, predicted, z_mean, z_log_var, input_size=32):
+    reco_losses = mse_loss_manual(input, predicted, input_size)
     kl_losses = kl_loss_manual(z_mean, z_log_var)
     total_losses = reco_losses + co.config['beta'] * kl_losses # custom loss = mse_loss + l * kl_loss
     return [ total_losses, reco_losses, kl_losses ]
