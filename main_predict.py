@@ -6,7 +6,7 @@ import vae.losses as lo
 import POfAH.util.input_data_reader as idr
 import POfAH.util.sample_factory as sf
 import POfAH.jet_sample as js
-import util.experiment as ex
+import POfAH.util.experiment as ex
 
 
 # ********************************************************
