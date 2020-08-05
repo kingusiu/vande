@@ -2,11 +2,11 @@ import os
 import setGPU
 import numpy as np
 
-import POfAH.util.experiment as ex
-import POfAH.util.input_data_reader as idr
+import pofah.util.experiment as ex
+import pofah.util.input_data_reader as idr
 from vae.vae_model import VAE
 from vae.vae_highres_model import VAE_HR
-import POfAH.util.sample_factory as sf
+import pofah.util.sample_factory as sf
 
 # ********************************************************
 #       runtime params
