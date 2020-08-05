@@ -3,18 +3,18 @@ import setGPU
 from vae.vae_model import VAE
 from vae.vae_highres_model import VAE_HR
 import vae.losses as lo
-import inout.input_data_reader as idr
-import inout.sample_factory as sf
-import util.jet_sample as js
-import util.experiment as ex
+import pofah.util.input_data_reader as idr
+import pofah.util.sample_factory as sf
+import pofah.jet_sample as js
+import pofah.util.experiment as ex
 
 
 # ********************************************************
 #               runtime params
 # ********************************************************
 
-run_n = 4
-data_sample = 'img-local-54'
+run_n = 49
+data_sample = 'img-54'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
@@ -30,13 +30,12 @@ vae.load()
 #               read test data (images)
 # ********************************************
 
-#sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
-sample_ids = ['GtoWW25br', 'GtoWW35na']
+sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+#sample_ids = ['GtoWW25br', 'GtoWW35na']
 
 for sample_id in sample_ids:
 
     data_reader = idr.InputDataReader(paths.sample_path(sample_id))
-    test_sample = js.JetSample.from_feature_array(sample_id, *data_reader.read_dijet_features())
     test_img_j1, test_img_j2 = data_reader.read_images( )
 
 
@@ -60,10 +59,12 @@ for sample_id in sample_ids:
     #               add losses to DataSample and save
     # *******************************************************
 
+    predicted_sample = js.JetSample.from_feature_array(sample_id, *data_reader.read_dijet_features())
+    
     for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
-        test_sample.add_feature(label,loss)
+        predicted_sample.add_feature(label,loss)
     for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
-        test_sample.add_feature(label,loss)
+        predicted_sample.add_feature(label,loss)
 
-    test_sample.dump(paths.result_path(sample_id + 'Reco'))
+    predicted_sample.dump(paths.result_path(sample_id + 'Reco'))
 

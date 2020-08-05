@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 import os
-import inout.input_data_reader as idr
+import POfAH.util.input_data_reader as idr
 import inout.result_writer as rw
-import config.sample_dict as sd
+import POfAH.sample_dict as sd
 
 
 class EventSample():

@@ -1,7 +1,7 @@
 import os
 from collections import OrderedDict
-import config.sample_dict as sd
-import util.jet_sample as js
+import POfAH.sample_dict as sd
+import POfAH.jet_sample as js
 
 
 class SamplePathFactory():

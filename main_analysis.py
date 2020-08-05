@@ -4,9 +4,9 @@ import os
 import analysis_main.main_analysis_losses as al
 import analysis.analysis_roc as ar
 import util.experiment as ex
-import util.jet_sample as js
-import config.sample_dict as sd
-import inout.sample_factory as sf
+import POfAH.jet_sample as js
+import POfAH.sample_dict as sd
+import POfAH.util.sample_factory as sf
 import discriminator.loss_strategy as ls
 
 

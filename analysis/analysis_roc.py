@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 
-import util.jet_sample as js
+import pofah.jet_sample as js
 
 
 def get_label_and_score_arrays(neg_class_losses, pos_class_losses):

@@ -1,8 +1,8 @@
 import h5py
-import inout.sample_factory as sf
-import inout.input_data_reader as idr
-import util.experiment as ex
-import util.jet_sample as js
+import POfAH.util.sample_factory as sf
+import POfAH.util.input_data_reader as idr
+import POfAH.util.experiment as ex
+import POfAH.jet_sample as js
 
 
 run_n = 0

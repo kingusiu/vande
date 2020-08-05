@@ -3,15 +3,20 @@
 	{
 		"selected_items":
 		[
+			[
+				"img-local",
+				"img-local-54\t(sample_factory.py)"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "main_train.py",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 1493,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -27,6 +32,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
 			[
 				"side",
 				"View: Toggle Open Files in Side Bar"
@@ -52,20 +73,81 @@
 	},
 	"expanded_folders":
 	[
-		"/home/kinga/mnt"
+		"/home/kinga/mnt",
+		"/home/kinga/mnt/inout",
+		"/home/kinga/mnt/util"
 	],
 	"file_history":
 	[
+		"/home/kinga/mnt/main.py",
+		"/home/kinga/mnt/main_3d_vae.py",
+		"/home/kinga/mnt/main_train_3d_vae.py",
+		"/home/kinga/mnt/analysis_main/main_analysis_jet_features.py",
+		"/home/kinga/mnt/analysis_main/main_analysis_losses.py",
+		"/home/kinga/mnt/analysis_main/main_analysis_roc.py",
+		"/home/kinga/mnt/playground/test_sample_path_factory.py",
+		"/home/kinga/mnt/tests/test_event_sample_dump.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/backend/application.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/audio/audio_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/core/core_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/custom_scalar/custom_scalars_plugin.py",
+		"/home/kinga/mnt/main_analysis_model_comparison.py",
+		"/home/kinga/mnt/main_analysis_jet_features.py",
+		"/home/kinga/mnt/main_analysis.py",
+		"/home/kinga/mnt/main_predict_3d_vae.py",
+		"/home/kinga/mnt/main_predict.py",
+		"/home/kinga/mnt/vae/vae_prediction.py",
+		"/home/kinga/mnt/util/event_sample.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/text/text_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/scalar/scalars_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/pr_curve/pr_curves_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/image/images_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/hparams/list_session_groups.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/hparams/hparams_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/hparams/get_experiment.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/hparams/backend_context.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/histogram/histograms_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/graph/graphs_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/distribution/distributions_plugin.py",
+		"/home/kinga/mnt/venv/lib/python3.6/site-packages/tensorboard/plugins/debugger_v2/debugger_v2_plugin.py",
+		"/home/kinga/mnt/inout/sample_factory.py",
+		"/home/kinga/mnt/analysis/analysis_roc.py",
+		"/home/kinga/mnt/analysis/analysis_losses.py"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 101.0,
 		"where_history":
 		[
+			"*.py",
+			"~/mnt/main(.*)",
+			"~/mnt/main*",
+			"~/mnt/.*/.*.py",
+			"~/mnt/*/.*.py",
+			"~/mnt/*/*.py",
+			"~/mnt/main.*",
+			"~/mnt/main*",
+			"~/mnt/*main*",
+			"~/mnt/*main*.py",
+			"~/mnt/.*.py",
+			"~/mnt",
+			"~/mnt/.*.py",
+			"~/mnt/*.py",
+			"~/mnt/.*.py",
+			"~/mnt/.*/.*.py",
+			"~/mnt/*/*.py",
+			"~/mnt/*.py",
+			"~/mnt/*/*.py",
+			"~/mnt/*.py",
+			"~/mnt/analysis",
+			"~/mnt/vae",
+			"~/mnt",
+			"~/mnt/inout",
+			""
 		]
 	},
 	"find_state":
@@ -73,13 +155,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"util.experiment",
+			"inout.input_data_reader",
+			"inout.sample_factory",
+			"util.jet_sample",
+			"config.sample_dict"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"POfAH.util.experiment",
+			"POfAH.util.input_data_reader",
+			"POfAH.util.sample_factory",
+			"POfAH.jet_sample",
+			"POfAH.sample_dict"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -95,24 +187,28 @@
 			[
 				{
 					"buffer": 0,
+					"file": "main_train.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1312,
+								1312
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tabs_extra_last_activated": 1596563690.89,
+							"tabs_extra_last_activated_sheet_index": 0
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -126,7 +222,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -155,15 +251,19 @@
 		]
 	},
 	"menu_visible": true,
-	"output.find_results":
+	"output.SublimeLinter":
 	{
 		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 120.0
 	},
 	"pinned_build_system": "",
 	"project": "vae.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -201,7 +301,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 229.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

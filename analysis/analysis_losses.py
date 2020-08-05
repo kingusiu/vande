@@ -1,7 +1,7 @@
 import analysis.analysis_bg_vs_sig as bgsig
 import discriminator.loss_strategy as ls
 import util.plotting as up
-import config.sample_dict as sd
+import pofah.sample_dict as sd
 
 
 losses = ['j1TotalLoss','j2TotalLoss','j1RecoLoss','j2RecoLoss','j1KlLoss','j2KlLoss']

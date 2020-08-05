@@ -3,9 +3,9 @@ import os
 
 import analysis.analysis_roc as ar
 import discriminator.loss_strategy as ls
-import config.sample_dict as sd
-import util.jet_sample as js
-import util.experiment as ex
+import pofah.sample_dict as sd
+import pofah.jet_sample as js
+import pofah.util.experiment as ex
 
 
 strategies = ['s1', 's2', 's3', 's4', 's5']

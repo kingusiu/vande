@@ -2,8 +2,8 @@ import os
 from config import *
 #import setGPU
 
-import util.experiment as ex
-import inout.input_data_reader as idr
+import POfAH.util.experiment as ex
+import POfAH.util.input_data_reader as idr
 from vae.vae_prediction import *
 import analysis.analysis_jet_image as aji
 

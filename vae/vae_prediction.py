@@ -1,4 +1,4 @@
-from inout.input_data_reader import *
+from POfAH.util.input_data_reader import *
 from config import *
 from vae.vae_model import *
 from inout.result_writer import *
