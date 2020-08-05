@@ -3,8 +3,8 @@ import setGPU
 from vae.vae_model import VAE
 from vae.vae_highres_model import VAE_HR
 import vae.losses as lo
-import inout.input_data_reader as idr
-import inout.sample_factory as sf
+import POfAH.util.input_data_reader as idr
+import POfAH.util.sample_factory as sf
 import POfAH.jet_sample as js
 import util.experiment as ex
 

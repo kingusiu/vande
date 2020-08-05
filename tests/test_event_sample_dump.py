@@ -1,5 +1,5 @@
 import os
-import util.experiment as ex
+import POfAH.util.experiment as ex
 import util.event_sample as es
 import analysis.analysis_constituents as ac
 from config import *

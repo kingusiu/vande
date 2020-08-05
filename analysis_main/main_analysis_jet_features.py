@@ -2,11 +2,11 @@ import os
 
 import POfAH.sample_dict as sd
 import analysis.analysis_jet_feature as ajf
-import util.experiment as ex
-import util.jet_sample as js
+import POfAH.util.experiment as ex
+import POfAH.jet_sample as js
 import util.event_sample as es
 import util.plotting as up
-import inout.sample_factory as sf
+import POfAH.util.sample_factory as sf
 
 
 run_n = 101

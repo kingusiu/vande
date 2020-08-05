@@ -2,10 +2,10 @@ import os
 from collections import OrderedDict
 
 import analysis.analysis_losses as alo
-import util.jet_sample as js
-import util.experiment as ex
+import POfAH.jet_sample as js
+import POfAH.util.experiment as ex
 import POfAH.sample_dict as sd
-import inout.sample_factory as sf
+import POfAH.util.sample_factory as sf
 
 def analyze_losses( run_n, SM_sample_id, BSM_sample_ids, plot_suffix=''):
 

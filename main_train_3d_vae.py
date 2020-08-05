@@ -2,12 +2,12 @@ import os
 #import setGPU
 import numpy as np
 
-import util.experiment as ex
-import inout.input_data_reader as idr
+import POfAH.util.experiment as ex
+import POfAH.util.input_data_reader as idr
 from vae.vae_3Dloss_model import VAE_3D
 import POfAH.sample_dict as sd
 import config.config as co
-import inout.sample_factory as sf
+import POfAH.util.sample_factory as sf
 import util.utility_fun as ut
 
 import sys

@@ -7,7 +7,7 @@ import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
 import POfAH.sample_dict as sd
 import config.config as co
-import inout.sample_factory as sf
+import POfAH.util.sample_factory as sf
 
 
 # ********************************************************
