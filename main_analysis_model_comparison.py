@@ -3,10 +3,10 @@ import os
 
 import analysis_main.main_analysis_losses as al
 import analysis.analysis_roc as ar
-import util.experiment as ex
-import POfAH.jet_sample as js
-import POfAH.sample_dict as sd
-import POfAH.util.sample_factory as sf
+import pofah.util.experiment as ex
+import pofah.jet_sample as js
+import pofah.sample_dict as sd
+import pofah.util.sample_factory as sf
 import discriminator.loss_strategy as ls
 
 
@@ -15,7 +15,7 @@ import discriminator.loss_strategy as ls
 # ********************************************************
 
 run_n_model1 = 46
-run_n_model2 = 47
+run_n_model2 = 49
 
 SM_sample = 'qcdSideReco'
 BSM_samples = ['GtoWW15naReco', 'GtoWW15brReco', 'GtoWW25naReco', 'GtoWW25brReco','GtoWW35naReco', 'GtoWW35brReco', 'GtoWW45naReco', 'GtoWW45brReco']

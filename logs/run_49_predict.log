@@ -1,0 +1,92 @@
+setGPU: Setting GPU to: 1
+2020-08-05 15:58:14.855157: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.1/lib64
+2020-08-05 15:58:14.855547: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/usr/local/cuda-10.1/lib64
+2020-08-05 15:58:14.855563: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-08-05 15:58:16.444962: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-08-05 15:58:16.515546: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-08-05 15:58:16.517297: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-05 15:58:16.540398: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-05 15:58:16.551305: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-08-05 15:58:16.553992: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-08-05 15:58:16.570374: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-08-05 15:58:16.574478: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-08-05 15:58:16.580685: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-08-05 15:58:16.585917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-08-05 15:58:16.586382: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-08-05 15:58:16.602499: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199870000 Hz
+2020-08-05 15:58:16.608535: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5579b50 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-08-05 15:58:16.608581: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-08-05 15:58:16.801345: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4d5ac80 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-08-05 15:58:16.801400: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-08-05 15:58:16.803860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-08-05 15:58:16.803931: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-05 15:58:16.803957: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-05 15:58:16.803977: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-08-05 15:58:16.803998: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-08-05 15:58:16.804018: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-08-05 15:58:16.804038: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-08-05 15:58:16.804058: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-08-05 15:58:16.808221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-08-05 15:58:16.808291: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-05 15:58:16.811676: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-08-05 15:58:16.811711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-08-05 15:58:16.811731: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-08-05 15:58:16.816143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10323 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_mjj_cut_1.2M_pt_img_54px.h5  ===
+read  1200000  jet 1 images and  1200000  jet 2 images
+---------- predicting ----------
+2020-08-05 16:03:16.127022: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-05 16:03:16.457979: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+---------- computing losses ----------
+written data sample to results/run_49/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/qcd_sqrtshatTeV_13TeV_PU40_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  201386  jet 1 images and  201386  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/qcd_sqrtshatTeV_13TeV_PU40_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  203302  jet 1 images and  203302  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  201564  jet 1 images and  201564  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  204670  jet 1 images and  204670  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  204673  jet 1 images and  204673  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  201632  jet 1 images and  201632  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  203642  jet 1 images and  203642  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  200997  jet 1 images and  200997  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_reco.h5
+=== reading images from  /eos/user/k/kiwoznia/data/VAE_data/march_2020_data/input/images/54px/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_mjj_cut_concat_200K_pt_img_54px.h5  ===
+read  205020  jet 1 images and  205020  jet 2 images
+---------- predicting ----------
+---------- computing losses ----------
+written data sample to results/run_49/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_reco.h5
