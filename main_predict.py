@@ -13,8 +13,8 @@ import pofah.util.experiment as ex
 #               runtime params
 # ********************************************************
 
-run_n = 49
-data_sample = 'img-54'
+run_n = 4
+data_sample = 'img-local-54'
 
 experiment = ex.Experiment(run_n).setup(result_dir=True)
 paths = sf.SamplePathFactory(experiment,data_sample)
@@ -30,8 +30,8 @@ vae.load()
 #               read test data (images)
 # ********************************************
 
-sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
-#sample_ids = ['GtoWW25br', 'GtoWW35na']
+#sample_ids = ['qcdSide', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+sample_ids = ['GtoWW25br', 'GtoWW35na']
 
 for sample_id in sample_ids:
 
