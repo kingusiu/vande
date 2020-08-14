@@ -1,13 +1,13 @@
 import os
 import setGPU
 
-import util.experiment as ex
+import pofah.util.experiment as ex
 import util.event_sample as es
 import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
-import POfAH.sample_dict as sd
+import pofah.sample_dict as sd
 import config.config as co
-import POfAH.util.sample_factory as sf
+import pofah.util.sample_factory as sf
 
 
 # ********************************************************
@@ -15,7 +15,8 @@ import POfAH.util.sample_factory as sf
 # ********************************************************
 
 #test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
-test_samples = ['qcdSide', 'GtoWW35na', 'GtoWW35br']
+#test_samples = ['qcdSide', 'GtoWW35na', 'GtoWW35br']
+test_samples = ['qcdSig']
 
 run_n = 101
 data_sample = 'particle'
