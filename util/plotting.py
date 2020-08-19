@@ -26,24 +26,3 @@ def plot_hist_on_axis(ax, data, bins, xlabel, ylabel, title, legend=[], ylogscal
         ax.set_xlim(xlim)
 
 
-def plot_hist_2d( x, y, xlabel='x', ylabel='y', title='2d hist', plot_name='plot', fig_dir=None):
-    fig = plt.figure()
-    ax = plt.gca()
-    im = plot_hist_2d_on_axis( ax, x, y, xlabel, ylabel, title )
-    fig.colorbar(im[3])
-    plt.tight_layout()
-    if fig_dir:
-        plt.savefig(os.path.join(fig_dir,plot_name+'_hist2d.png'))
-    plt.show()
-    #plt.close()
-    return ax
-    
-    
-def plot_hist_2d_on_axis( ax, x, y, xlabel, ylabel, title ):
-    im = ax.hist2d(x, y, bins=100, norm=colors.LogNorm())
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
-    ax.set_title(title)
-    return im
-
-    
