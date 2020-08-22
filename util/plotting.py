@@ -22,7 +22,7 @@ def plot_hist_on_axis(ax, data, bins, xlabel, ylabel, title, legend=[], ylogscal
     if ylim:
         ax.set_ylim(ylim)
     if xlim:
-        print('setting xkim to ', xlim)
+        print('setting xlim to ', xlim)
         ax.set_xlim(xlim)
 
 
