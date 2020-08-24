@@ -2,7 +2,7 @@ import os
 import setGPU
 
 import pofah.util.experiment as ex
-import util.event_sample as es
+import pofah.util.event_sample as es
 import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
 import pofah.sample_dict as sd
