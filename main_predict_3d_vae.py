@@ -8,7 +8,7 @@ import vae.losses as lo
 from vae.vae_3Dloss_model import VAE_3D
 import config.config as co
 import pofah.util.sample_factory as sf
-import pofah.path_constants.sample_dict_file_parts as sdi 
+import pofah.path_constants.sample_dict_file_parts_input as sdi 
 import pofah.path_constants.sample_dict_file_parts_reco as sdr 
 
 
@@ -16,13 +16,13 @@ import pofah.path_constants.sample_dict_file_parts_reco as sdr
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW45na', 'GtoWW45br']
-#test_samples = ['qcdSide', 'GtoWW35na', 'GtoWW35br']
+#test_samples = ['GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+test_samples = ['GtoWW35na', 'GtoWW35br']
 #test_samples = ['qcdSig']
 
 run_n = 101
 
-experiment = ex.Experiment(run_n=run_n, path_dict=sdi.path_dict)
+experiment = ex.Experiment(run_n=run_n)
 
 # ********************************************
 #               load model
@@ -81,5 +81,5 @@ for sample_id in test_samples:
         #               write predicted data
         # *******************************************************
 
-        print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][sample_id], os.path.join(result_paths.sample_path(sample_id), file_name)))
-        reco_sample.dump(os.path.join(result_paths.sample_path(sample_id), file_name))
+        print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][reco_sample.name], os.path.join(result_paths.sample_path(reco_sample.name), file_name)))
+        reco_sample.dump(os.path.join(result_paths.sample_path(reco_sample.name), file_name))

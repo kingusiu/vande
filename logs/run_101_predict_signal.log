@@ -1,0 +1,80 @@
+setGPU: Setting GPU to: 0
+2020-08-31 16:07:17.941605: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-08-31 16:07:17.943980: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-08-31 16:07:17.944002: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-08-31 16:07:20.080352: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-08-31 16:07:23.426133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-08-31 16:07:23.435447: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-31 16:07:23.454922: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-31 16:07:23.466397: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-08-31 16:07:23.475239: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-08-31 16:07:23.489980: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-08-31 16:07:23.502430: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-08-31 16:07:23.512875: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-08-31 16:07:23.517525: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-08-31 16:07:23.518353: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-08-31 16:07:23.545470: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200050000 Hz
+2020-08-31 16:07:23.553747: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4cc73b0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-08-31 16:07:23.553810: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-08-31 16:07:23.732299: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x44ebca0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-08-31 16:07:23.732360: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-08-31 16:07:23.734832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-08-31 16:07:23.734918: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-31 16:07:23.734956: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-31 16:07:23.734988: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-08-31 16:07:23.735018: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-08-31 16:07:23.735049: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-08-31 16:07:23.735079: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-08-31 16:07:23.735110: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-08-31 16:07:23.739413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-08-31 16:07:23.739488: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-08-31 16:07:23.743189: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-08-31 16:07:23.743223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-08-31 16:07:23.743243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-08-31 16:07:23.747752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_000.h5: 224016 j1 evts, 224016 j2 evts
+predicting $G(1.5 TeV)\to WW$ narrow
+2020-08-31 16:07:37.498052: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-08-31 16:07:37.673329: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-08-31 16:07:38.608189: W tensorflow/stream_executor/gpu/redzone_allocator.cc:312] Not found: ./bin/ptxas not found
+Relying on driver to perform ptx compilation. This message will be only logged once.
+writing results for $G(1.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_001.h5: 224016 j1 evts, 224016 j2 evts
+predicting $G(1.5 TeV)\to WW$ narrow
+writing results for $G(1.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_000.h5: 201332 j1 evts, 201332 j2 evts
+predicting $G(1.5 TeV)\to WW$ broad
+writing results for $G(1.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_001.h5: 201332 j1 evts, 201332 j2 evts
+predicting $G(1.5 TeV)\to WW$ broad
+writing results for $G(1.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_001.h5: 256252 j1 evts, 256252 j2 evts
+predicting $G(2.5 TeV)\to WW$ narrow
+writing results for $G(2.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_000.h5: 256253 j1 evts, 256253 j2 evts
+predicting $G(2.5 TeV)\to WW$ narrow
+writing results for $G(2.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_001.h5: 238913 j1 evts, 238913 j2 evts
+predicting $G(2.5 TeV)\to WW$ broad
+writing results for $G(2.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_000.h5: 238914 j1 evts, 238914 j2 evts
+predicting $G(2.5 TeV)\to WW$ broad
+writing results for $G(2.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_000.h5: 216178 j1 evts, 216178 j2 evts
+predicting $G(4.5 TeV)\to WW$ narrow
+writing results for $G(4.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_001.h5: 216178 j1 evts, 216178 j2 evts
+predicting $G(4.5 TeV)\to WW$ narrow
+writing results for $G(4.5 TeV)\to WW$ narrow reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_001.h5: 258749 j1 evts, 258749 j2 evts
+predicting $G(4.5 TeV)\to WW$ broad
+writing results for $G(4.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_000.h5: 258749 j1 evts, 258749 j2 evts
+predicting $G(4.5 TeV)\to WW$ broad
+writing results for $G(4.5 TeV)\to WW$ broad reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_000.h5
