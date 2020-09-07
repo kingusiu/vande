@@ -17,8 +17,9 @@ import pofah.path_constants.sample_dict_file_parts_reco as sdr
 # ********************************************************
 
 #test_samples = ['GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
-test_samples = ['GtoWW35na', 'GtoWW35br']
+#test_samples = ['GtoWW35na', 'GtoWW35br']
 #test_samples = ['qcdSig']
+test_samples = ['qcdSigBis']
 
 run_n = 101
 
@@ -41,7 +42,7 @@ for sample_id in test_samples:
     # ********************************************
 
 
-    list_ds = tf.data.Dataset.list_files(input_paths.sample_path(sample_id)+'/*')
+    list_ds = tf.data.Dataset.list_files(input_paths.sample_dir_path(sample_id)+'/*')
 
     for file_path in list_ds:
 
@@ -81,5 +82,5 @@ for sample_id in test_samples:
         #               write predicted data
         # *******************************************************
 
-        print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][reco_sample.name], os.path.join(result_paths.sample_path(reco_sample.name), file_name)))
-        reco_sample.dump(os.path.join(result_paths.sample_path(reco_sample.name), file_name))
+        print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][reco_sample.name], os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name)))
+        reco_sample.dump(os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name))

@@ -19,7 +19,7 @@ def get_label_and_score_arrays(neg_class_losses, pos_class_losses):
 
 def plot_roc(neg_class_losses, pos_class_losses, legend=[], title='ROC', legend_loc='best', plot_name='ROC', fig_dir=None, xlim=None, log_x=True):
 
-    class_labels, losses = get_label_and_score_arrays( neg_class_losses, pos_class_losses ) # neg_class_loss array same for all pos_class_losses
+    class_labels, losses = get_label_and_score_arrays(neg_class_losses, pos_class_losses) # neg_class_loss array same for all pos_class_losses
 
     aucs = []
     fig = plt.figure(figsize=(5, 5))

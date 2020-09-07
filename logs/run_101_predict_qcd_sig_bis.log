@@ -1,0 +1,54 @@
+setGPU: Setting GPU to: 0
+2020-09-01 16:50:24.335016: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-09-01 16:50:24.337512: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-09-01 16:50:24.337526: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-09-01 16:50:27.348106: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-09-01 16:50:31.299315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.73GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-09-01 16:50:31.301162: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-01 16:50:31.317035: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-01 16:50:31.322443: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-01 16:50:31.323236: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-01 16:50:31.329166: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-01 16:50:31.331850: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-01 16:50:31.342654: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-01 16:50:31.346569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-09-01 16:50:31.348107: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-09-01 16:50:31.368938: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200000000 Hz
+2020-09-01 16:50:31.372950: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5ffb7f0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-09-01 16:50:31.372992: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-09-01 16:50:31.572309: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x6061de0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-09-01 16:50:31.572420: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2020-09-01 16:50:31.574840: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.73GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-09-01 16:50:31.574922: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-01 16:50:31.574948: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-01 16:50:31.574971: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-09-01 16:50:31.574993: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-09-01 16:50:31.575014: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-09-01 16:50:31.575035: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-09-01 16:50:31.575057: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-09-01 16:50:31.578501: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-09-01 16:50:31.578562: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-09-01 16:50:31.581502: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-09-01 16:50:31.581528: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-09-01 16:50:31.581547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-09-01 16:50:31.585242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14221 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:No training configuration found in save file: the model was *not* compiled. Compile it manually.
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_001.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion bis
+2020-09-01 16:50:49.875965: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-09-01 16:50:50.247705: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+writing results for QCD signalregion bis reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_003.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion bis
+writing results for QCD signalregion bis reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_003.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_000.h5: 168377 j1 evts, 168377 j2 evts
+predicting QCD signalregion bis
+writing results for QCD signalregion bis reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_002.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion bis
+writing results for QCD signalregion bis reco to /eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/results/run_101/qcd_sqrtshatTeV_13TeV_PU40_BIS_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_002.h5
