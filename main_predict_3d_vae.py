@@ -33,7 +33,7 @@ vae = VAE_3D(run=run_n, model_dir=experiment.model_dir)
 vae.load( )
 
 input_paths = sf.SamplePathDirFactory(sdi.path_dict)
-result_paths = sf.SamplePathDirFactory(sdr.path_dict).extend_base_path(experiment.run_dir)
+result_paths = sf.SamplePathDirFactory(sdr.path_dict).update_base_path({'$run$': experiment.run_dir})
 
 for sample_id in test_samples:
 
