@@ -8,9 +8,23 @@ import config.config as co
 # ********************************************************
 
 
+class MseKlLoss(tf.keras.losses.Loss):
+    def __init__(self, z_mean, z_log_var, beta, input_sz, name='mse_kl_loss'):
+        super().__init__(name=name)
+        self.z_mean = z_mean
+        self.z_log_var = z_log_var
+        self.beta = beta
+        self.input_sz = input_sz
+        self.mse_loss = make_mse_loss(input_sz)
+
+    def call(self, inputs, outputs):
+        return self.mse_loss(inputs,outputs) + self.beta * kl_loss(self.z_mean, self.z_log_var)
+
+
 ### KL
 
-def kl_loss( z_mean, z_log_var ):
+@tf.function
+def kl_loss(z_mean, z_log_var):
     kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
     kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
     return kl
@@ -26,27 +40,28 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 
 ### MSE
 
-def mse_loss( input_size ):
+def make_mse_loss(input_sz):
 
     # returns scalar (one for each input sample)
     @tf.function
-    def mse_loss_fun(inputs, outputs):
+    def mse_loss(inputs, outputs):
         mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
         reco_loss = mse(inputs, outputs)
-        return input_size * input_size * reco_loss # rescale by input_size**2, because sparse input -> very small avg loss  
+        return input_sz * input_sz * reco_loss # rescale by input_size**2, because sparse input -> very small avg loss  
 
-    return mse_loss_fun
+    return mse_loss
 
 
-def mse_kl_loss( z_mean, z_log_var, input_size ):
+def make_mse_kl_loss(z_mean, z_log_var, beta, input_sz):
 
-    total_squared_error = mse_loss(input_size)
+    total_squared_error = make_mse_loss(input_sz)
     # multiplying back by N because input is so sparse -> average error very small 
-    def loss(inputs, outputs):
+    @tf.function
+    def mse_kl_loss(inputs, outputs):
         #input_size = inputs.get_shape().as_list()
-        return total_squared_error(inputs, outputs) + co.config['beta'] * kl_loss( z_mean, z_log_var )
+        return total_squared_error(inputs, outputs) + beta * kl_loss(z_mean, z_log_var)
 
-    return loss
+    return mse_kl_loss
 
 ### EXPONENTIAL
 

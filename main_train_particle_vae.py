@@ -1,19 +1,15 @@
 import os
-#import setGPU
-import numpy as np
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
-import POfAH.util.experiment as ex
-import POfAH.util.input_data_reader as idr
-from vae.vae_3Dloss_model import VAE_3D
-import POfAH.sample_dict as sd
-import config.config as co
-import POfAH.util.sample_factory as sf
-import util.utility_fun as ut
 
-import sys
-print('Python: ', sys.version)
 import tensorflow as tf
-print('Tensorflow: ', tf.__version__)
+print('tensorflow version: ', tf.__version__)
+
+import vae.vae_particle as vap
+import pofah.path_constants.sample_dict_file_parts_input as sdi
+import sarewt.data_reader as dare
+
 
 # ********************************************************
 #       runtime params
@@ -24,13 +20,12 @@ run_n = 102
 experiment = ex.Experiment(run_n).setup(model_dir=True, fig_dir=True)
 paths = sf.SamplePathDirFactory(sdi.path_dict)
 
-
 # ********************************************************
 #       read in training data ( events )
 # ********************************************************
-
-data_reader = idr.InputDataReader(paths.qcd_path)
-train_evts_j1, train_evts_j2 = data_reader.read_jet_constituents(with_names=False)
+sample_id = 'qcdSideAll'
+data_reader = dare.DataReader(paths.sample_dir_path(sample_id))
+train_evts_j1, train_evts_j2 = data_reader.read_constituents_from_dir()
 
 # ********************************************************
 #       prepare training data
@@ -44,13 +39,13 @@ mean, std_dev = ut.get_mean_and_std(training_evts)
 #                       build model
 # *******************************************************
 
-vae = VAE_3D(run=run_n, model_dir=experiment.model_dir)
+vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_mse_kl_loss, batch_sz=128, beta=0.01)
 vae.build(mean, std_dev)
 
 # *******************************************************
 #                       train and save
 # *******************************************************
 
-history = vae.fit(training_evts, training_evts, epochs=100, verbose=2)
+vae.fit(training_evts, training_evts, epochs=100, verbose=2)
 vae.plot_training(experiment.fig_dir)
-vae.save_model()
+vae.save_model(path=experiment.model_dir)

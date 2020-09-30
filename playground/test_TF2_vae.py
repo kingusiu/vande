@@ -2,8 +2,9 @@ import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
-
 import tensorflow as tf
+#tf.compat.v1.disable_eager_execution()
+#tf.config.experimental_run_functions_eagerly(True)
 print('tensorflow version: ', tf.__version__)
 
 import vae.losses as lo
@@ -72,7 +73,7 @@ import numpy as np
 examples_n = 300
 #x_train = np.random.random(size=(examples_n,original_dim))
 x_train = np.random.random(size=(examples_n,100,3))
-nn = vap.VAEparticle(loss=lo.mse_loss)
+nn = vap.VAEparticle(loss=lo.make_mse_kl_loss)
 x_mean_var = (np.mean(x_train), np.var(x_train))
 nn.build(x_mean_var=x_mean_var)
 nn.model.fit(x_train, x_train, epochs=3, batch_size=batch_sz, verbose=2)

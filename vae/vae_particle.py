@@ -3,6 +3,8 @@ os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 import numpy as np
 import tensorflow as tf
+#tf.compat.v1.disable_eager_execution()
+#tf.config.experimental_run_functions_eagerly(True)
 from collections import namedtuple
 
 import vae.losses as losses
@@ -53,9 +55,10 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 
 class VAEparticle():
 
-	def __init__(self, input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.mse_loss, batch_sz=128, beta=0.01, regularizer=None):
-		Parameters = namedtuple('Parameters','input_shape filter_n kernel_sz loss regularizer z_sz beta batch_sz')
-		self.params = Parameters(input_shape=input_shape, filter_n=filter_n, kernel_sz=kernel_sz, loss=loss, regularizer=regularizer, z_sz=z_sz, beta=beta, batch_sz=batch_sz)
+	def __init__(self, input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_mse_kl_loss, batch_sz=128, beta=0.01, regularizer=None):
+		Parameters = namedtuple('Parameters','input_shape kernel_sz loss regularizer z_sz beta batch_sz')
+		self.params = Parameters(input_shape=input_shape, kernel_sz=kernel_sz, loss=loss, regularizer=regularizer, z_sz=z_sz, beta=beta, batch_sz=batch_sz)
+		self.filter_n = filter_n
 
 	def build(self, x_mean_var):
 		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
@@ -65,7 +68,7 @@ class VAEparticle():
 		# instantiate VAE model
 		self.model = tf.keras.Model(inputs, outputs, name='vae')
 		self.model.summary()
-		self.model.compile(optimizer='adam', loss=self.params.loss(self.params.batch_sz))
+		self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta, self.params.batch_sz), experimental_run_tf_function=False)
 
 	def build_encoder(self, inputs, mean, var):
 		# normalize
@@ -73,14 +76,14 @@ class VAEparticle():
 		# add channel dim
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(normalized) # [B x 100 x 3] => [B x 100 x 3 x 1]
 		# 2D Conv
-		x = tf.keras.layers.Conv2D(filters=self.params.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x)
+		x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x)
 		# Squeeze
 		x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
 		# 1D Conv * 2
-		self.params.filter_n += 4
-		x = tf.keras.layers.Conv1D(filters=self.params.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x) # [ B x 96 x 10 ]
-		self.params.filter_n += 4
-		x = tf.keras.layers.Conv1D(filters=self.params.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x) # [ B x 94 x 14 ]
+		self.filter_n += 4
+		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x) # [ B x 96 x 10 ]
+		self.filter_n += 4
+		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.params.regularizer)(x) # [ B x 94 x 14 ]
 		# Pool
 		x = tf.keras.layers.AveragePooling1D()(x) # [ B x 47 x 14 ]
 		# shape info needed to build decoder model
@@ -119,10 +122,10 @@ class VAEparticle():
 		# Upsample
 		x = tf.keras.layers.UpSampling1D()(x) # [ B x 94 x 16 ]
 		# 1D Conv Transpose * 2
-		self.params.filter_n -= 4
-		x = Conv1DTranspose(filters=self.params.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
-		self.params.filter_n -= 4
-		x = Conv1DTranspose(filters=self.params.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
+		self.filter_n -= 4
+		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
+		self.filter_n -= 4
+		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
 		# Expand
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
 		# 2D Conv Transpose
@@ -135,6 +138,9 @@ class VAEparticle():
 		decoder.summary()
 		# plot_model(decoder, to_file=CONFIG['plotdir'] + 'vae_cnn_decoder.png', show_shapes=True)
 		return decoder
+
+	def fit(x_train, x_train, epochs=100, verbose=2):
+		self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.batch_sz, verbose=verbose)
 
 	def save(self, path):
 		self.model.save(path)
