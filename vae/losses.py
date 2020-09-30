@@ -29,6 +29,7 @@ def kl_loss_for_metric( z_mean, z_log_var ):
 def mse_loss( input_size ):
 
     # returns scalar (one for each input sample)
+    @tf.function
     def mse_loss_fun(inputs, outputs):
         mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
         reco_loss = mse(inputs, outputs)
