@@ -12,22 +12,6 @@ import vae.losses as losses
 import vae.vae_model as baseVAE
 
 
-# custom sampling layer for latent space
-class Sampling(tf.keras.layers.Layer):
-	"""Uses (z_mean, z_log_var) to sample z, the vector encoding a digit."""
-
-	def call(self, inputs):
-		z_mean, z_log_var = inputs
-		batch = tf.shape(z_mean)[0]
-		dim = tf.shape(z_mean)[1]
-		epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
-		return z_mean + tf.exp(0.5 * z_log_var) * epsilon
-
-	def get_config(self):
-		return super(Sampling, self).get_config()
-
-
-
 # custom 1d transposed convolution that expands to 2d output for vae decoder
 class Conv1DTranspose(tf.keras.layers.Layer):
 
@@ -103,7 +87,7 @@ class VAEparticle(baseVAE.VAE):
 		self.z_log_var = tf.keras.layers.Dense(self.params.z_sz, name='z_log_var', kernel_regularizer=self.params.regularizer)(x)
 
 		# use reparameterization trick to push the sampling out as input
-		self.z = Sampling()((self.z_mean, self.z_log_var))
+		self.z = baseVAE.Sampling()((self.z_mean, self.z_log_var))
 
 		# instantiate encoder model
 		encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')
@@ -150,7 +134,7 @@ class VAEparticle(baseVAE.VAE):
 
 	def load(self, path):
 		''' loading only for inference -> passing compile=False '''
-		custom_objects = {'Sampling': Sampling, 'Conv1DTranspose': Conv1DTranspose}
+		custom_objects = {'Sampling': baseVAE.Sampling, 'Conv1DTranspose': Conv1DTranspose}
 		self.encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
 		self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
 		self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)

@@ -9,25 +9,19 @@ import config.config as co
 from vae.losses import *
 
 
-# sampling layer
+# custom sampling layer for latent space
 class Sampling(tf.keras.layers.Layer):
-    """
-    instead of sampling from Q(z|X),
-    sample eps = N(0,I), then z = z_mean + sqrt(var)*eps
+    """Uses (z_mean, z_log_var) to sample z, the vector encoding a digit."""
 
-    # Arguments:
-        args (tensor): mean and log of variance of Q(z|X)
-
-    # Returns:
-        z (tensor): sampled latent vector
-    """
-    def call(self, args):
-        z_mean, z_log_var = args
+    def call(self, inputs):
+        z_mean, z_log_var = inputs
         batch = tf.shape(z_mean)[0]
         dim = tf.shape(z_mean)[1]
         epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
-        # by default, random_normal has mean=0 and std=1.0
         return z_mean + tf.exp(0.5 * z_log_var) * epsilon
+
+    def get_config(self):
+        return super(Sampling, self).get_config()
 
 
 class VAE(object):
