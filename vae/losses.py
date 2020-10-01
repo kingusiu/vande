@@ -122,9 +122,9 @@ def threeD_loss(inputs, outputs): #[batch_size x 100 x 3]
 
 
 def make_threeD_kl_loss(z_mean, z_log_var, beta):
-
+    kl_loss = make_kl_loss(z_mean, z_log_var)
     def threeD_kl_loss(inputs, outputs):
-        return threeD_loss(inputs, outputs) + beta * kl_loss(z_mean, z_log_var)
+        return threeD_loss(inputs, outputs) + beta * kl_loss(inputs, outputs)
     return threeD_kl_loss
 
 

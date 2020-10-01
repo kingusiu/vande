@@ -56,9 +56,9 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 
 class VAEparticle():
 
-	def __init__(self, input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_mse_kl_loss, batch_sz=128, beta=0.01, regularizer=None):
-		Parameters = namedtuple('Parameters','input_shape kernel_sz loss regularizer z_sz beta batch_sz')
-		self.params = Parameters(input_shape=input_shape, kernel_sz=kernel_sz, loss=loss, regularizer=regularizer, z_sz=z_sz, beta=beta, batch_sz=batch_sz)
+	def __init__(self, input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
+		Parameters = namedtuple('Parameters','input_shape kernel_sz loss reco_loss regularizer z_sz beta batch_sz')
+		self.params = Parameters(input_shape=input_shape, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, z_sz=z_sz, beta=beta, batch_sz=batch_sz)
 		self.filter_n = filter_n
 
 	def build(self, x_mean_stdev):
@@ -69,7 +69,7 @@ class VAEparticle():
 		# instantiate VAE model
 		self.model = tf.keras.Model(inputs, outputs, name='vae')
 		self.model.summary()
-		self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), experimental_run_tf_function=False)
+		self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), metrics=[self.params.reco_loss, losses.make_kl_loss(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)
 
 	def build_encoder(self, inputs, mean, stdev):
 		# normalize
@@ -141,7 +141,7 @@ class VAEparticle():
 		return decoder
 
 	def fit(self, x_train, epochs=100, verbose=2, reco_loss=losses.threeD_loss):
-		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, metrics=[reco_loss, kl_loss_for_metric(self.z_mean,self.z_log_var)])
+		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25)
 
 	def save(self, path):
 		print('saving model to {}'.format(path))
