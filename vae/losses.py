@@ -31,23 +31,11 @@ def make_kl_loss(z_mean, z_log_var):
     return kl_loss
 
 
-### MSE
+### MSE + KL
 
-def make_mse_loss(input_sz):
+def make_mse_kl_loss(z_mean, z_log_var, beta):
 
-    # returns scalar (one for each input sample)
-    @tf.function
-    def mse_loss(inputs, outputs):
-        mse = tf.keras.losses.MeanSquaredError() # here only mse function object is created
-        reco_loss = mse(inputs, outputs)
-        return input_sz * input_sz * reco_loss # rescale by input_size**2, because sparse input -> very small avg loss  
-
-    return mse_loss
-
-
-def make_mse_kl_loss(z_mean, z_log_var, beta, input_sz):
-
-    mse_loss = make_mse_loss(input_sz)
+    mse_loss = tf.keras.losses.MeanSquaredError()
     kl_loss = make_kl_loss(z_mean, z_log_var)
     # multiplying back by N because input is so sparse -> average error very small 
     @tf.function
