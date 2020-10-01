@@ -22,21 +22,14 @@ class MseKlLoss(tf.keras.losses.Loss):
 
 
 ### KL
+def make_kl_loss(z_mean, z_log_var):
+    @tf.function
+    def kl_loss(inputs, outputs):
+        kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
+        kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
+        return kl
+    return kl_loss
 
-@tf.function
-def kl_loss(z_mean, z_log_var):
-    kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
-    kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
-    return kl
-
-# metric is called with y_true and y_pred, so need function closure to evaluate z_mean and z_log_var instead
-def kl_loss_for_metric( z_mean, z_log_var ):
-
-    def kl_loss_fun( inputs, outputs ):
-        #return config['beta'] * kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
-        return kl_loss( z_mean, z_log_var ) # ignore inputs / outputs arguments passed in by keras
-
-    return kl_loss_fun
 
 ### MSE
 
@@ -54,12 +47,13 @@ def make_mse_loss(input_sz):
 
 def make_mse_kl_loss(z_mean, z_log_var, beta, input_sz):
 
-    total_squared_error = make_mse_loss(input_sz)
+    mse_loss = make_mse_loss(input_sz)
+    kl_loss = make_kl_loss(z_mean, z_log_var)
     # multiplying back by N because input is so sparse -> average error very small 
     @tf.function
     def mse_kl_loss(inputs, outputs):
         #input_size = inputs.get_shape().as_list()
-        return total_squared_error(inputs, outputs) + beta * kl_loss(z_mean, z_log_var)
+        return mse_loss(inputs, outputs) + beta * kl_loss(inputs, outputs)
 
     return mse_kl_loss
 
