@@ -113,19 +113,9 @@ class VAEparticle(vbase.VAE):
 		# plot_model(decoder, to_file=CONFIG['plotdir'] + 'vae_cnn_decoder.png', show_shapes=True)
 		return decoder
 
-	def fit(self, x_train, epochs=100, verbose=2, reco_loss=losses.threeD_loss):
+	def fit(self, x_train, epochs=100, verbose=2):
 		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25)
 
-	def save(self, path):
-		print('saving model to {}'.format(path))
-		self.encoder.save(os.path.join(path, 'encoder.h5'))
-		self.decoder.save(os.path.join(path,'decoder.h5'))
-		self.model.save(os.path.join(path,'vae.h5'))
-
 	def load(self, path):
-		''' loading only for inference -> passing compile=False '''
 		custom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}
-		self.encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
-		self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
-		self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
-
+		super().load(path=path, custom_objects=custom_objects)

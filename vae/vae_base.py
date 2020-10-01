@@ -32,9 +32,8 @@ class VAE(ABC):
         self.params = Parameters(**params)
         self.filter_n = self.params.filter_ini_n
 
-
-
     def build(self, x_mean_stdev):
+        # build and link encoder and decoder
         inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
         self.encoder = self.build_encoder(inputs, *x_mean_stdev)
         self.decoder = self.build_decoder(*x_mean_stdev)
@@ -43,7 +42,6 @@ class VAE(ABC):
         self.model = tf.keras.Model(inputs, outputs, name='vae')
         self.model.summary()
         self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), metrics=[self.params.reco_loss, losses.make_kl_loss(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)
-
 
     @abstractmethod
     def build_encoder(self, inputs):
@@ -60,27 +58,25 @@ class VAE(ABC):
         self.history = self.model.fit(x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25)
         return self.history
 
-
     def predict(self, x):
         return self.model.predict( x, batch_size=self.batch_size )
-
 
     def predict_with_latent(self, x):
         z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.batch_size)
         reco = self.decoder.predict(z, batch_size=self.batch_size)
         return [ reco, z_mean, z_log_var ]
 
+    def save(self, path):
+        print('saving model to {}'.format(path))
+        self.encoder.save(os.path.join(path, 'encoder.h5'))
+        self.decoder.save(os.path.join(path,'decoder.h5'))
+        self.model.save(os.path.join(path,'vae.h5'))
 
-    def save_model(self):
-        print('saving model to {}'.format(self.model_dir))
-        self.encoder.save(os.path.join(self.model_dir, 'encoder.h5'))
-        self.decoder.save(os.path.join(self.model_dir,'decoder.h5'))
-        self.model.save(os.path.join(self.model_dir,'vae.h5'))
-
-    def load( self ):
-        self.encoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'encoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric, 'Sampling' : Sampling})
-        self.decoder = tf.keras.models.load_model(os.path.join(self.model_dir, 'decoder.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric})
-        self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric, 'loss': tf.keras.losses.mse, 'kl_loss_fun': kl_loss, 'Sampling' : Sampling})
+    def load(self, path, custom_objects={}):
+        ''' loading only for inference -> passing compile=False '''
+        self.encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
+        self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
+        self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
 
     def plot_training(self, fig_dir='fig'):
         plt.figure()
