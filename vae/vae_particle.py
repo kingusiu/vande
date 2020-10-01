@@ -44,16 +44,6 @@ class VAEparticle(baseVAE.VAE):
 	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
 		super(VAEparticle, self).__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
 
-	def build(self, x_mean_stdev):
-		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
-		self.encoder = self.build_encoder(inputs, *x_mean_stdev)
-		self.decoder = self.build_decoder(*x_mean_stdev)
-		outputs = self.decoder(self.z)  # link encoder output to decoder
-		# instantiate VAE model
-		self.model = tf.keras.Model(inputs, outputs, name='vae')
-		self.model.summary()
-		self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), metrics=[self.params.reco_loss, losses.make_kl_loss(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)
-
 	def build_encoder(self, inputs, mean, stdev):
 		# normalize
 		normalized = tf.keras.layers.Lambda(lambda xx: (xx-mean)/stdev)(inputs)
@@ -139,7 +129,7 @@ class VAEparticle(baseVAE.VAE):
 		self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
 		self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
 
-	def plot_training(self, fig_dir='fig' ):
+	def plot_training(self, fig_dir='fig'):
 		plt.figure()
 		plt.semilogy(self.history.history['loss'])
 		plt.semilogy(self.history.history['val_loss'])

@@ -6,7 +6,7 @@ import tensorflow as tf
 from collections import namedtuple
 
 import config.config as co
-from vae.losses import *
+import vae.losses as losses
 
 
 # custom sampling layer for latent space
@@ -38,21 +38,16 @@ class VAE(object):
         self.model = tf.keras.models.load_model(os.path.join(self.model_dir, 'vae.h5'), custom_objects={'mse_kl_loss': mse_kl_loss, 'mse_loss_fun': tf.keras.losses.mse, 'kl_loss_for_metric': kl_loss_for_metric, 'loss': tf.keras.losses.mse, 'kl_loss_fun': kl_loss, 'Sampling' : Sampling})
 
 
-    def build( self ):
-
-        inputs = tf.keras.layers.Input(shape=self.input_shape, dtype=tf.float32, name='encoder_input')
-        self.encoder = self.build_encoder(inputs)
-        self.decoder = self.build_decoder( )
-        outputs = self.decoder( self.z )  # link encoder output to decoder
+    def build(self, x_mean_stdev):
+        inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
+        self.encoder = self.build_encoder(inputs, *x_mean_stdev)
+        self.decoder = self.build_decoder(*x_mean_stdev)
+        outputs = self.decoder(self.z)  # link encoder output to decoder
         # instantiate VAE model
-        vae = tf.keras.Model(inputs, outputs, name='vae')
-        vae.summary()
-        self.compile( vae )
-        self.model = vae
+        self.model = tf.keras.Model(inputs, outputs, name='vae')
+        self.model.summary()
+        self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), metrics=[self.params.reco_loss, losses.make_kl_loss(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)
 
-
-    def compile(self, model):
-        model.compile(optimizer='adam', loss=mse_kl_loss(self.z_mean, self.z_log_var, self.input_shape[0]), metrics=[mse_loss(self.input_shape[0]), kl_loss_for_metric(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)  # , metrics=loss_metrics monitor mse and kl terms of loss 'rmsprop'
 
     # ***********************************
     #               encoder
