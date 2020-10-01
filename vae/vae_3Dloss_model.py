@@ -142,4 +142,3 @@ class VAE_3D( VAE ):
                      ] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
         self.history = self.model.fit(x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25)
         return self.history
-

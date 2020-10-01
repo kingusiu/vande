@@ -116,7 +116,7 @@ class ThreeD_KL_Loss(tf.keras.losses.Loss):
         return self.threeD_loss(inputs, outputs) + co.config['beta'] * self.kl_loss(inputs, outputs)
 
 
-def threeD_loss_fun( inputs, outputs ): #[batch_size x 100 x 3]
+def threeD_loss(inputs, outputs): #[batch_size x 100 x 3]
     expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
     expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
     # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs
@@ -127,11 +127,11 @@ def threeD_loss_fun( inputs, outputs ): #[batch_size x 100 x 3]
     return tf.math.reduce_sum(min_dist_to_inputs, 1) + tf.math.reduce_sum(min_dist_to_outputs, 1)
 
 
-def threeD_kl_loss_fun( z_mean, z_log_var ):
+def make_threeD_kl_loss(z_mean, z_log_var, beta):
 
-    def loss( inputs, outputs ):
-        return threeD_loss_fun( inputs, outputs ) + co.config['beta'] * kl_loss( z_mean, z_log_var )
-    return loss
+    def threeD_kl_loss(inputs, outputs):
+        return threeD_loss(inputs, outputs) + beta * kl_loss(z_mean, z_log_var)
+    return threeD_kl_loss
 
 
 # ********************************************************

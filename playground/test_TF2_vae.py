@@ -73,10 +73,10 @@ import numpy as np
 examples_n = 300
 #x_train = np.random.random(size=(examples_n,original_dim))
 x_train = np.random.random(size=(examples_n,100,3))
-nn = vap.VAEparticle(loss=lo.make_mse_kl_loss)
+nn = vap.VAEparticle(loss=lo.make_threeD_kl_loss)
 x_mean_var = (np.mean(x_train), np.var(x_train))
 nn.build(x_mean_var=x_mean_var)
-nn.model.fit(x_train, x_train, epochs=3, batch_size=batch_sz, verbose=2)
+nn.fit(x_train, epochs=3, verbose=2)
 x_test = np.random.random(size=(examples_n,100,3))
 x_predicted = nn.model.predict(x_test)
 path = './test_model.h5'
