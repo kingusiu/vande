@@ -42,7 +42,7 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 class VAEparticle(vbase.VAE):
 
 	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
-		super(VAEparticle, self).__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
+		super().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
 
 	def build_encoder(self, inputs, mean, stdev):
 		# normalize
@@ -114,7 +114,8 @@ class VAEparticle(vbase.VAE):
 		return decoder
 
 	def fit(self, x_train, epochs=100, verbose=2):
-		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25)
+		callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN()] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
+		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
 
 	def load(self, path):
 		custom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}
