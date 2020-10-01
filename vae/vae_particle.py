@@ -9,7 +9,7 @@ from collections import namedtuple
 import matplotlib.pyplot as plt
 
 import vae.losses as losses
-import vae.vae_model as baseVAE
+import vae.vae_base as vbase
 
 
 # custom 1d transposed convolution that expands to 2d output for vae decoder
@@ -39,7 +39,7 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 		return config
 
 
-class VAEparticle(baseVAE.VAE):
+class VAEparticle(vbase.VAE):
 
 	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
 		super(VAEparticle, self).__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
@@ -77,7 +77,7 @@ class VAEparticle(baseVAE.VAE):
 		self.z_log_var = tf.keras.layers.Dense(self.params.z_sz, name='z_log_var', kernel_regularizer=self.params.regularizer)(x)
 
 		# use reparameterization trick to push the sampling out as input
-		self.z = baseVAE.Sampling()((self.z_mean, self.z_log_var))
+		self.z = vbase.Sampling()((self.z_mean, self.z_log_var))
 
 		# instantiate encoder model
 		encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')
@@ -124,19 +124,8 @@ class VAEparticle(baseVAE.VAE):
 
 	def load(self, path):
 		''' loading only for inference -> passing compile=False '''
-		custom_objects = {'Sampling': baseVAE.Sampling, 'Conv1DTranspose': Conv1DTranspose}
+		custom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}
 		self.encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
 		self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
 		self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
-
-	def plot_training(self, fig_dir='fig'):
-		plt.figure()
-		plt.semilogy(self.history.history['loss'])
-		plt.semilogy(self.history.history['val_loss'])
-		plt.title('training and validation loss')
-		plt.ylabel('loss')
-		plt.xlabel('epoch')
-		plt.legend(['training','validation'], loc='upper right')
-		plt.savefig(os.path.join(fig_dir,'loss.png'))
-		plt.close()
 
