@@ -44,7 +44,7 @@ mean_stdev = utfu.get_mean_and_stdev(train_evts)
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, batch_sz=128, beta=0.01)
+vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, batch_sz=128, beta=0.1)
 vae.build(mean_stdev)
 
 # *******************************************************

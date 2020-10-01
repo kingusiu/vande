@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pathlib
 
 import tensorflow as tf
+from collections import namedtuple
 
 import config.config as co
 from vae.losses import *
@@ -29,19 +30,12 @@ class Sampling(tf.keras.layers.Layer):
         return z_mean + tf.exp(0.5 * z_log_var) * epsilon
 
 
-class VAE( object ):
+class VAE(object):
 
-    def __init__(self, run=0, log_dir=co.config['tensorboard_dir'], model_dir=co.config['model_dir'], input_size=32, z_size=10, filter_n=6):
-        # network parameters
-        self.input_shape = (input_size, input_size)
-        self.batch_size = 128
-        self.kernel_size = 3
-        self.filter_n = filter_n
-        self.z_size = z_size
-        self.run = run
-        self.log_dir = log_dir
-        self.model_dir = model_dir
-        self.regularizer = None # regularizers.l2()
+    def __init__(self, **params):
+        Parameters = namedtuple('Parameters', sorted(params))
+        self.params = Parameters(**params)
+        self.filter_n = self.params.filter_ini_n
 
     # adding keras mse as dummy loss and dummy kl_loss_fun, because training loss in function closure not (easily) accessible and model won't load without all custom function references
     def load( self ):

@@ -9,6 +9,7 @@ from collections import namedtuple
 import matplotlib.pyplot as plt
 
 import vae.losses as losses
+import vae.vae_model as baseVAE
 
 
 # custom sampling layer for latent space
@@ -54,12 +55,10 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 		return config
 
 
-class VAEparticle():
+class VAEparticle(baseVAE.VAE):
 
-	def __init__(self, input_shape=(100,3), z_sz=10, filter_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
-		Parameters = namedtuple('Parameters','input_shape kernel_sz loss reco_loss regularizer z_sz beta batch_sz')
-		self.params = Parameters(input_shape=input_shape, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, z_sz=z_sz, beta=beta, batch_sz=batch_sz)
-		self.filter_n = filter_n
+	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
+		super(VAEparticle, self).__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
 
 	def build(self, x_mean_stdev):
 		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
