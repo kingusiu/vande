@@ -55,15 +55,15 @@ class VAE(ABC):
     def fit( self, x, y, epochs=3, verbose=2 ):
         callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN(),
                      ] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
-        self.history = self.model.fit(x, y, batch_size=self.batch_size, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25)
+        self.history = self.model.fit(x, y, batch_size=self.params.batch_sz, epochs=epochs, verbose=verbose, callbacks=callbacks, validation_split=0.25)
         return self.history
 
     def predict(self, x):
-        return self.model.predict( x, batch_size=self.batch_size )
+        return self.model.predict( x, batch_size=self.params.batch_sz )
 
     def predict_with_latent(self, x):
-        z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.batch_size)
-        reco = self.decoder.predict(z, batch_size=self.batch_size)
+        z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.params.batch_sz)
+        reco = self.decoder.predict(z, batch_size=self.params.batch_sz)
         return [ reco, z_mean, z_log_var ]
 
     def save(self, path):
