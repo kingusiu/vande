@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import os
 import matplotlib.pyplot as plt
 import pathlib
+import h5py
 
 import tensorflow as tf
 from collections import namedtuple
@@ -51,6 +52,17 @@ class VAE(ABC):
     def build_decoder(self):
         pass
 
+    @classmethod
+    def from_saved_model(cls, path):
+        encoder, decoder, model = cls.load(path)
+        with h5py.File(os.path.join(path,'model_params.h5'),'r') as f: 
+            params = f.get('params')
+            beta = params.attrs['beta']
+        instance = cls(beta=beta)
+        instance.encoder = encoder
+        instance.decoder = decoder
+        instance.model = model
+        return instance 
 
     def fit( self, x, y, epochs=3, verbose=2 ):
         callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN(),
@@ -59,24 +71,30 @@ class VAE(ABC):
         return self.history
 
     def predict(self, x):
-        return self.model.predict( x, batch_size=self.params.batch_sz )
+        return self.model.predict(x)
 
     def predict_with_latent(self, x):
-        z_mean, z_log_var, z = self.encoder.predict(x, batch_size=self.params.batch_sz)
-        reco = self.decoder.predict(z, batch_size=self.params.batch_sz)
-        return [ reco, z_mean, z_log_var ]
+        z_mean, z_log_var, z = self.encoder.predict(x)
+        reco = self.decoder.predict(z)
+        return [reco, z_mean, z_log_var]
 
     def save(self, path):
         print('saving model to {}'.format(path))
         self.encoder.save(os.path.join(path, 'encoder.h5'))
         self.decoder.save(os.path.join(path,'decoder.h5'))
         self.model.save(os.path.join(path,'vae.h5'))
+        # sneak in beta factor as group attribute of vae.h5 file
+        with h5py.File(os.path.join(path,'model_params.h5'),'w') as f:
+            ds = f.create_group('params')
+            ds.attrs['beta'] = self.params.beta
 
-    def load(self, path, custom_objects={}):
+    @classmethod
+    def load(cls, path, custom_objects={}):
         ''' loading only for inference -> passing compile=False '''
-        self.encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
-        self.decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
-        self.model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
+        encoder = tf.keras.models.load_model(os.path.join(path,'encoder.h5'), custom_objects=custom_objects, compile=False)
+        decoder = tf.keras.models.load_model(os.path.join(path,'decoder.h5'), custom_objects=custom_objects, compile=False)
+        model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
+        return encoder, decoder, model
 
     def plot_training(self, fig_dir='fig'):
         plt.figure()

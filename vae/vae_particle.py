@@ -117,6 +117,7 @@ class VAEparticle(vbase.VAE):
 		callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN()] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
 		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
 
-	def load(self, path):
+	@classmethod
+	def load(cls, path):
 		custom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}
-		super().load(path=path, custom_objects=custom_objects)
+		return super().load(path=path, custom_objects=custom_objects)

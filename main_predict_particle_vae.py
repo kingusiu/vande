@@ -30,8 +30,7 @@ experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 #               load model
 # ********************************************
 
-vae = VAEparticle()
-vae.load(path=experiment.model_dir)
+vae = VAEparticle.from_saved_model(path=experiment.model_dir)
 
 input_paths = sf.SamplePathDirFactory(sdib.path_dict)
 result_paths = sf.SamplePathDirFactory(sdr.path_dict).update_base_path({'$run$': experiment.run_dir})
