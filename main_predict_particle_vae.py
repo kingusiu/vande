@@ -31,6 +31,7 @@ experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 # ********************************************
 
 vae = VAEparticle.from_saved_model(path=experiment.model_dir)
+print('beta factor: ', vae.beta)
 
 input_paths = sf.SamplePathDirFactory(sdib.path_dict)
 result_paths = sf.SamplePathDirFactory(sdr.path_dict).update_base_path({'$run$': experiment.run_dir})
@@ -64,8 +65,8 @@ for sample_id in test_samples:
         #               compute losses
         # *******************************************************
 
-        losses_j1 = lo.compute_loss_of_prediction_3D_kl(test_evts_j1, test_evts_j1_reco, z_mean_j1, z_log_var_j1, beta=0.1)
-        losses_j2 = lo.compute_loss_of_prediction_3D_kl(test_evts_j2, test_evts_j2_reco, z_mean_j2, z_log_var_j2, beta=0.1)
+        losses_j1 = lo.compute_loss_of_prediction_3D_kl(test_evts_j1, test_evts_j1_reco, z_mean_j1, z_log_var_j1, beta=vae.beta)
+        losses_j2 = lo.compute_loss_of_prediction_3D_kl(test_evts_j2, test_evts_j2_reco, z_mean_j2, z_log_var_j2, beta=vae.beta)
 
         # *******************************************************
         #               add losses to DataSample and save

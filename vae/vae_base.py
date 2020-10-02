@@ -62,7 +62,11 @@ class VAE(ABC):
         instance.encoder = encoder
         instance.decoder = decoder
         instance.model = model
-        return instance 
+        return instance
+
+    @property
+    def beta(self):
+        return self.params.beta
 
     def fit( self, x, y, epochs=3, verbose=2 ):
         callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN(),
