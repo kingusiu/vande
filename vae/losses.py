@@ -16,6 +16,10 @@ def make_kl_loss(z_mean, z_log_var):
         return kl
     return kl_loss
 
+# wrapper for mse loss to pass as reco loss
+def mse_loss(inputs, outputs):
+    return tf.keras.losses.MeanSquaredError()(inputs, outputs)
+
 
 ### MSE + KL
 

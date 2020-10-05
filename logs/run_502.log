@@ -1,0 +1,288 @@
+setGPU: Setting GPU to: 0
+2020-10-02 21:44:01.373158: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-02 21:44:01.376141: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-02 21:44:01.376183: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+tensorflow version:  2.1.0
+reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts :  16
+computed mean [ 6.72533009e+00 -2.15758534e-05  5.93309004e-05] and std-dev [22.66495894  1.63390377  1.77655593]
+2020-10-02 21:51:37.040035: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-10-02 21:51:42.234635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-10-02 21:51:42.235289: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-02 21:51:42.258653: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-02 21:51:42.261578: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-10-02 21:51:42.262016: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-10-02 21:51:42.265017: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-10-02 21:51:42.266548: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-10-02 21:51:42.305312: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-10-02 21:51:42.307187: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-10-02 21:51:42.307734: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-10-02 21:51:42.324482: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200010000 Hz
+2020-10-02 21:51:42.330559: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4d792d0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-10-02 21:51:42.330594: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-10-02 21:51:42.449433: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4e06680 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-10-02 21:51:42.449488: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-10-02 21:51:42.451603: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-10-02 21:51:42.451685: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-02 21:51:42.451717: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-02 21:51:42.451745: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-10-02 21:51:42.451772: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-10-02 21:51:42.451799: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-10-02 21:51:42.451824: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-10-02 21:51:42.451851: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-10-02 21:51:42.454948: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-10-02 21:51:42.455028: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-02 21:51:42.458020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-10-02 21:51:42.458052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-10-02 21:51:42.458071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-10-02 21:51:42.461410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 26,631
+Trainable params: 26,631
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 15)                165       
+_________________________________________________________________
+dense_3 (Dense)              (None, 38)                608       
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               25662     
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+lambda_8 (Lambda)            (None, 100, 3)            0         
+_________________________________________________________________
+un_normalized_decoder_out (L (None, 100, 3)            0         
+=================================================================
+Total params: 27,106
+Trainable params: 27,106
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+__________________________________________________________________________________________________
+decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
+==================================================================================================
+Total params: 53,737
+Trainable params: 53,737
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Train on 7526272 samples, validate on 2508758 samples
+Epoch 1/300
+2020-10-02 21:51:45.382676: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-02 21:51:45.509876: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+7526272/7526272 - 546s - loss: 1019.6833 - threeD_loss: 1018.6147 - kl_loss: 106.5898 - val_loss: 762.6713 - val_threeD_loss: 761.6435 - val_kl_loss: 102.9243
+Epoch 2/300
+7526272/7526272 - 537s - loss: 722.3118 - threeD_loss: 721.3735 - kl_loss: 94.0479 - val_loss: 691.1264 - val_threeD_loss: 690.2354 - val_kl_loss: 89.2025
+Epoch 3/300
+7526272/7526272 - 538s - loss: 659.5572 - threeD_loss: 658.5743 - kl_loss: 98.2839 - val_loss: 594.7844 - val_threeD_loss: 593.9052 - val_kl_loss: 87.8076
+Epoch 4/300
+7526272/7526272 - 543s - loss: 588.6982 - threeD_loss: 587.8115 - kl_loss: 88.7762 - val_loss: 578.3656 - val_threeD_loss: 577.4106 - val_kl_loss: 95.5250
+Epoch 5/300
+7526272/7526272 - 530s - loss: 549.4589 - threeD_loss: 548.5260 - kl_loss: 93.6293 - val_loss: 534.4540 - val_threeD_loss: 533.6081 - val_kl_loss: 84.4308
+Epoch 6/300
+7526272/7526272 - 535s - loss: 528.7418 - threeD_loss: 527.9389 - kl_loss: 80.2920 - val_loss: 521.5810 - val_threeD_loss: 520.8302 - val_kl_loss: 75.1383
+Epoch 7/300
+7526272/7526272 - 527s - loss: 520.7352 - threeD_loss: 520.0071 - kl_loss: 72.7903 - val_loss: 520.3314 - val_threeD_loss: 519.6246 - val_kl_loss: 70.7019
+Epoch 8/300
+7526272/7526272 - 534s - loss: 522.8986 - threeD_loss: 522.1979 - kl_loss: 69.9242 - val_loss: 525.9933 - val_threeD_loss: 525.3074 - val_kl_loss: 68.6513
+Epoch 9/300
+7526272/7526272 - 521s - loss: 515.5766 - threeD_loss: 514.8971 - kl_loss: 68.1182 - val_loss: 510.7665 - val_threeD_loss: 510.0886 - val_kl_loss: 67.8336
+Epoch 10/300
+7526272/7526272 - 530s - loss: 510.3594 - threeD_loss: 509.6776 - kl_loss: 68.0004 - val_loss: 505.6148 - val_threeD_loss: 504.9378 - val_kl_loss: 67.7275
+Epoch 11/300
+7526272/7526272 - 521s - loss: 507.2141 - threeD_loss: 506.5366 - kl_loss: 67.7603 - val_loss: 502.0162 - val_threeD_loss: 501.3373 - val_kl_loss: 67.8061
+Epoch 12/300
+7526272/7526272 - 521s - loss: 504.9665 - threeD_loss: 504.2910 - kl_loss: 67.2943 - val_loss: 501.1082 - val_threeD_loss: 500.4285 - val_kl_loss: 67.8515
+Epoch 13/300
+7526272/7526272 - 532s - loss: 503.5638 - threeD_loss: 502.8878 - kl_loss: 67.5376 - val_loss: 502.0192 - val_threeD_loss: 501.3491 - val_kl_loss: 67.1136
+Epoch 14/300
+
+Epoch 00014: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+7526272/7526272 - 537s - loss: 502.6831 - threeD_loss: 502.0087 - kl_loss: 67.6044 - val_loss: 518.1656 - val_threeD_loss: 517.4783 - val_kl_loss: 68.7264
+Epoch 15/300
+7526272/7526272 - 549s - loss: 491.0876 - threeD_loss: 490.3928 - kl_loss: 69.6552 - val_loss: 490.0610 - val_threeD_loss: 489.3567 - val_kl_loss: 70.2634
+Epoch 16/300
+7526272/7526272 - 525s - loss: 489.9834 - threeD_loss: 489.2780 - kl_loss: 70.4404 - val_loss: 489.3160 - val_threeD_loss: 488.6121 - val_kl_loss: 70.4657
+Epoch 17/300
+7526272/7526272 - 529s - loss: 489.5292 - threeD_loss: 488.8276 - kl_loss: 70.3624 - val_loss: 488.7061 - val_threeD_loss: 488.0027 - val_kl_loss: 70.3751
+Epoch 18/300
+7526272/7526272 - 525s - loss: 489.1615 - threeD_loss: 488.4571 - kl_loss: 70.3164 - val_loss: 488.3614 - val_threeD_loss: 487.6579 - val_kl_loss: 70.3812
+Epoch 19/300
+7526272/7526272 - 541s - loss: 488.9175 - threeD_loss: 488.2123 - kl_loss: 70.3246 - val_loss: 488.3166 - val_threeD_loss: 487.6146 - val_kl_loss: 70.1454
+Epoch 20/300
+7526272/7526272 - 531s - loss: 488.7223 - threeD_loss: 488.0151 - kl_loss: 70.2480 - val_loss: 488.2910 - val_threeD_loss: 487.5897 - val_kl_loss: 70.1603
+Epoch 21/300
+7526272/7526272 - 526s - loss: 488.4562 - threeD_loss: 487.7568 - kl_loss: 70.0545 - val_loss: 487.5071 - val_threeD_loss: 486.8050 - val_kl_loss: 70.0582
+Epoch 22/300
+7526272/7526272 - 533s - loss: 488.3716 - threeD_loss: 487.6702 - kl_loss: 70.0565 - val_loss: 488.0378 - val_threeD_loss: 487.3371 - val_kl_loss: 70.1147
+Epoch 23/300
+
+Epoch 00023: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+7526272/7526272 - 534s - loss: 488.2198 - threeD_loss: 487.5224 - kl_loss: 69.7516 - val_loss: 487.5300 - val_threeD_loss: 486.8318 - val_kl_loss: 69.7256
+Epoch 24/300
+7526272/7526272 - 536s - loss: 486.6406 - threeD_loss: 485.9444 - kl_loss: 69.8260 - val_loss: 486.1261 - val_threeD_loss: 485.4294 - val_kl_loss: 69.9534
+Epoch 25/300
+7526272/7526272 - 528s - loss: 486.5307 - threeD_loss: 485.8273 - kl_loss: 69.9443 - val_loss: 486.1385 - val_threeD_loss: 485.4355 - val_kl_loss: 70.0952
+Epoch 26/300
+7526272/7526272 - 528s - loss: 486.4912 - threeD_loss: 485.7908 - kl_loss: 70.0576 - val_loss: 486.0159 - val_threeD_loss: 485.3131 - val_kl_loss: 70.2129
+Epoch 27/300
+7526272/7526272 - 540s - loss: 486.4448 - threeD_loss: 485.7430 - kl_loss: 70.1868 - val_loss: 486.0629 - val_threeD_loss: 485.3608 - val_kl_loss: 70.2608
+Epoch 28/300
+7526272/7526272 - 532s - loss: 486.4066 - threeD_loss: 485.7036 - kl_loss: 70.2575 - val_loss: 485.9822 - val_threeD_loss: 485.2783 - val_kl_loss: 70.3012
+Epoch 29/300
+7526272/7526272 - 531s - loss: 486.3821 - threeD_loss: 485.6762 - kl_loss: 70.3407 - val_loss: 485.9573 - val_threeD_loss: 485.2532 - val_kl_loss: 70.4034
+Epoch 30/300
+7526272/7526272 - 525s - loss: 486.3602 - threeD_loss: 485.6582 - kl_loss: 70.3563 - val_loss: 485.9686 - val_threeD_loss: 485.2652 - val_kl_loss: 70.3666
+Epoch 31/300
+
+Epoch 00031: ReduceLROnPlateau reducing learning rate to 1.0000000656873453e-06.
+7526272/7526272 - 536s - loss: 486.3411 - threeD_loss: 485.6384 - kl_loss: 70.3736 - val_loss: 485.9870 - val_threeD_loss: 485.2803 - val_kl_loss: 70.4863
+Epoch 32/300
+7526272/7526272 - 543s - loss: 486.1650 - threeD_loss: 485.4597 - kl_loss: 70.4521 - val_loss: 485.7836 - val_threeD_loss: 485.0797 - val_kl_loss: 70.4983
+Epoch 33/300
+7526272/7526272 - 556s - loss: 486.1491 - threeD_loss: 485.4443 - kl_loss: 70.4816 - val_loss: 485.7759 - val_threeD_loss: 485.0718 - val_kl_loss: 70.5156
+Epoch 34/300
+7526272/7526272 - 532s - loss: 486.1444 - threeD_loss: 485.4376 - kl_loss: 70.4967 - val_loss: 485.7752 - val_threeD_loss: 485.0709 - val_kl_loss: 70.5324
+Epoch 35/300
+7526272/7526272 - 532s - loss: 486.1369 - threeD_loss: 485.4338 - kl_loss: 70.5138 - val_loss: 485.7673 - val_threeD_loss: 485.0633 - val_kl_loss: 70.5446
+Epoch 36/300
+7526272/7526272 - 531s - loss: 486.1359 - threeD_loss: 485.4282 - kl_loss: 70.5179 - val_loss: 485.7540 - val_threeD_loss: 485.0511 - val_kl_loss: 70.5485
+Epoch 37/300
+7526272/7526272 - 535s - loss: 486.1296 - threeD_loss: 485.4236 - kl_loss: 70.5137 - val_loss: 485.7574 - val_threeD_loss: 485.0531 - val_kl_loss: 70.5340
+Epoch 38/300
+
+Epoch 00038: ReduceLROnPlateau reducing learning rate to 1.0000001111620805e-07.
+7526272/7526272 - 544s - loss: 486.1258 - threeD_loss: 485.4182 - kl_loss: 70.5149 - val_loss: 485.7543 - val_threeD_loss: 485.0471 - val_kl_loss: 70.5431
+Epoch 39/300
+7526272/7526272 - 530s - loss: 486.1048 - threeD_loss: 485.4007 - kl_loss: 70.5160 - val_loss: 485.7433 - val_threeD_loss: 485.0383 - val_kl_loss: 70.5444
+Epoch 40/300
+7526272/7526272 - 528s - loss: 486.1016 - threeD_loss: 485.3987 - kl_loss: 70.5174 - val_loss: 485.7423 - val_threeD_loss: 485.0370 - val_kl_loss: 70.5457
+Epoch 41/300
+7526272/7526272 - 530s - loss: 486.1011 - threeD_loss: 485.3967 - kl_loss: 70.5203 - val_loss: 485.7416 - val_threeD_loss: 485.0356 - val_kl_loss: 70.5466
+Epoch 42/300
+7526272/7526272 - 522s - loss: 486.1003 - threeD_loss: 485.3939 - kl_loss: 70.5196 - val_loss: 485.7412 - val_threeD_loss: 485.0380 - val_kl_loss: 70.5459
+Epoch 43/300
+7526272/7526272 - 529s - loss: 486.0996 - threeD_loss: 485.3945 - kl_loss: 70.5194 - val_loss: 485.7400 - val_threeD_loss: 485.0343 - val_kl_loss: 70.5474
+Epoch 44/300
+7526272/7526272 - 535s - loss: 486.0998 - threeD_loss: 485.3942 - kl_loss: 70.5216 - val_loss: 485.7406 - val_threeD_loss: 485.0346 - val_kl_loss: 70.5505
+Epoch 45/300
+7526272/7526272 - 516s - loss: 486.0985 - threeD_loss: 485.3953 - kl_loss: 70.5232 - val_loss: 485.7396 - val_threeD_loss: 485.0335 - val_kl_loss: 70.5500
+Epoch 46/300
+7526272/7526272 - 532s - loss: 486.0976 - threeD_loss: 485.3920 - kl_loss: 70.5233 - val_loss: 485.7400 - val_threeD_loss: 485.0359 - val_kl_loss: 70.5479
+Epoch 47/300
+
+Epoch 00047: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-08.
+7526272/7526272 - 525s - loss: 486.0982 - threeD_loss: 485.3929 - kl_loss: 70.5205 - val_loss: 485.7398 - val_threeD_loss: 485.0344 - val_kl_loss: 70.5484
+Epoch 48/300
+7526272/7526272 - 546s - loss: 486.0956 - threeD_loss: 485.3878 - kl_loss: 70.5221 - val_loss: 485.7383 - val_threeD_loss: 485.0320 - val_kl_loss: 70.5479
+Epoch 49/300
+7526272/7526272 - 530s - loss: 486.0958 - threeD_loss: 485.3872 - kl_loss: 70.5215 - val_loss: 485.7406 - val_threeD_loss: 485.0360 - val_kl_loss: 70.5480
+Epoch 50/300
+7526272/7526272 - 525s - loss: 486.0954 - threeD_loss: 485.3920 - kl_loss: 70.5215 - val_loss: 485.7372 - val_threeD_loss: 485.0323 - val_kl_loss: 70.5476
+Epoch 51/300
+7526272/7526272 - 520s - loss: 486.0952 - threeD_loss: 485.3918 - kl_loss: 70.5217 - val_loss: 485.7366 - val_threeD_loss: 485.0320 - val_kl_loss: 70.5476
+Epoch 52/300
+7526272/7526272 - 523s - loss: 486.0958 - threeD_loss: 485.3902 - kl_loss: 70.5212 - val_loss: 485.7387 - val_threeD_loss: 485.0331 - val_kl_loss: 70.5474
+Epoch 53/300
+
+Epoch 00053: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-09.
+7526272/7526272 - 518s - loss: 486.0962 - threeD_loss: 485.3937 - kl_loss: 70.5212 - val_loss: 485.7377 - val_threeD_loss: 485.0322 - val_kl_loss: 70.5477
+Epoch 54/300
+7526272/7526272 - 535s - loss: 486.0951 - threeD_loss: 485.3885 - kl_loss: 70.5210 - val_loss: 485.7388 - val_threeD_loss: 485.0346 - val_kl_loss: 70.5471
+Epoch 55/300
+
+Epoch 00055: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-10.
+7526272/7526272 - 529s - loss: 486.0957 - threeD_loss: 485.3910 - kl_loss: 70.5215 - val_loss: 485.7380 - val_threeD_loss: 485.0326 - val_kl_loss: 70.5477
+Epoch 56/300
+7526272/7526272 - 540s - loss: 486.0955 - threeD_loss: 485.3910 - kl_loss: 70.5214 - val_loss: 485.7395 - val_threeD_loss: 485.0352 - val_kl_loss: 70.5474
+Epoch 57/300
+
+Epoch 00057: ReduceLROnPlateau reducing learning rate to 1.000000082740371e-11.
+7526272/7526272 - 533s - loss: 486.0957 - threeD_loss: 485.3885 - kl_loss: 70.5214 - val_loss: 485.7387 - val_threeD_loss: 485.0328 - val_kl_loss: 70.5474
+Epoch 58/300
+7526272/7526272 - 525s - loss: 486.0954 - threeD_loss: 485.3914 - kl_loss: 70.5214 - val_loss: 485.7389 - val_threeD_loss: 485.0337 - val_kl_loss: 70.5474
+Epoch 00058: early stopping
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_502
