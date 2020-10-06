@@ -32,7 +32,7 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 # ********************************************************
 sample_id = 'qcdSideAll'
 data_reader = dare.DataReader(paths.sample_dir_path(sample_id))
-# convert constituents from cylindrical to cartesian coordinates
+# convert constituents from cylindrical to cartesian coordinates if needed
 train_evts_j1j2 = conv.eppt_to_xyz(data_reader.read_constituents_from_dir()) if cartesian else data_reader.read_constituents_from_dir()
 
 # ********************************************************

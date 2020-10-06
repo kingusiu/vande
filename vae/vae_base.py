@@ -75,11 +75,11 @@ class VAE(ABC):
         return self.history
 
     def predict(self, x):
-        return self.model.predict(x)
+        return self.model.predict(x, batch_size=1024)
 
     def predict_with_latent(self, x):
-        z_mean, z_log_var, z = self.encoder.predict(x)
-        reco = self.decoder.predict(z)
+        z_mean, z_log_var, z = self.encoder.predict(x, batch_size=1024)
+        reco = self.decoder.predict(z, batch_size=1024)
         return [reco, z_mean, z_log_var]
 
     def save(self, path):

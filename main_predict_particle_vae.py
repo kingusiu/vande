@@ -8,7 +8,7 @@ import vae.losses as lo
 from vae.vae_particle import VAEparticle
 import config.config as co
 import pofah.util.sample_factory as sf
-import pofah.path_constants.sample_dict_file_parts_input_baby as sdib 
+import pofah.path_constants.sample_dict_file_parts_input as sdi 
 import pofah.path_constants.sample_dict_file_parts_reco as sdr 
 import sarewt.data_reader as dare
 
@@ -17,12 +17,13 @@ import sarewt.data_reader as dare
 #               runtime params
 # ********************************************************
 
-#test_samples = ['GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
-test_samples = ['qcdSig', 'GtoWW35na']
+test_samples = ['qcdSideAll','qcdSigAll', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+#test_samples = ['qcdSig', 'GtoWW35na']
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 3
+run_n = 501
+cartesian = True
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 
@@ -33,7 +34,7 @@ experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 vae = VAEparticle.from_saved_model(path=experiment.model_dir)
 print('beta factor: ', vae.beta)
 
-input_paths = sf.SamplePathDirFactory(sdib.path_dict)
+input_paths = sf.SamplePathDirFactory(sdi.path_dict)
 result_paths = sf.SamplePathDirFactory(sdr.path_dict).update_base_path({'$run$': experiment.run_dir})
 
 for sample_id in test_samples:
@@ -48,7 +49,7 @@ for sample_id in test_samples:
     for file_path in list_ds:
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
-        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8')).convert_to_cartesian()
+        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8')).convert_to_cartesian() if cartesian else es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))
         test_evts_j1, test_evts_j2 = test_sample.get_particles()
         print('{}: {} j1 evts, {} j2 evts'.format(file_path.numpy().decode('utf-8'), len(test_evts_j1), len(test_evts_j2)))
 
@@ -57,7 +58,7 @@ for sample_id in test_samples:
         #               predict test data
         # *******************************************************
 
-        print('predicting {}'.format(sdib.path_dict['sample_name'][sample_id]))
+        print('predicting {}'.format(sdi.path_dict['sample_name'][sample_id]))
         test_evts_j1_reco, z_mean_j1, z_log_var_j1 = vae.predict_with_latent(test_evts_j1)
         test_evts_j2_reco, z_mean_j2, z_log_var_j2 = vae.predict_with_latent(test_evts_j2)
 
