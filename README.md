@@ -1,4 +1,4 @@
-# VAnDe
+# vande
 Variational Autoencoding for Anomaly Detection
 
 ## Particle VAE
