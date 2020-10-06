@@ -19,3 +19,6 @@ setting parameters
 ```
 main_predict_particle_vae.py
 ```
+setting parameters
+- run_n ... experiment number
+- cartesian ... True/False: constituents coordinates (if False: cylindrical)
