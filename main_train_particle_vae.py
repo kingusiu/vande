@@ -19,7 +19,7 @@ import pofah.util.utility_fun as utfu
 #       runtime params
 # ********************************************************
 
-run_n = 102
+run_n = 103
 beta = 0.01
 loss = losses.make_threeD_kl_loss #losses.make_mse_kl_loss
 reco_loss = losses.threeD_loss #losses.mse_loss
@@ -47,7 +47,7 @@ mean_stdev = utfu.get_mean_and_stdev(train_evts)
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=loss, reco_loss=reco_loss, batch_sz=128, beta=beta)
+vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=loss, reco_loss=reco_loss, batch_sz=128, beta=beta, regularizer='L1L2')
 vae.build(mean_stdev)
 
 # *******************************************************

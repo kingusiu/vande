@@ -22,7 +22,7 @@ test_samples = ['qcdSideAll','qcdSigAll', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na',
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 501
+run_n = 701
 cartesian = True
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)

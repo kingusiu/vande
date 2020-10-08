@@ -10,3 +10,6 @@ data/
 tensorboard/
 .git-old/
 *.pyc
+*sublime*
+*.h5
+

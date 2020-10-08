@@ -21,7 +21,7 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 		self.filters = filters
 		self.activation = activation
 		self.ExpandChannel = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=2))
-		self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=self.filters, kernel_size=(self.kernel_sz,1), activation=self.activation)
+		self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=self.filters, kernel_size=(self.kernel_sz,1), activation=self.activation, kernel_regularizer=self.params.regularizer)
 		self.SqueezeChannel = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))
 
 	def call(self, inputs):
