@@ -1,0 +1,17 @@
+setGPU: Setting GPU to: 1
+2020-10-08 15:15:48.256965: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-08 15:15:48.268155: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-08 15:15:48.268212: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+tensorflow version:  2.1.0
+reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts :  16
+computed mean [-2.2611377e-04  6.2941308e-06  2.9775577e+00] and std-dev [ 0.12930067  0.12930067 20.703691  ]
+Traceback (most recent call last):
+  File "main_train_particle_vae.py", line 50, in <module>
+    vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=loss, reco_loss=reco_loss, batch_sz=128, beta=beta, regularizer='L1L2')
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/vae/vae_particle.py", line 45, in __init__
+    super().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/vae/vae_base.py", line 42, in __init__
+    self.params.regularizer = self.regularizer_dict[self.params.regularizer]
+AttributeError: can't set attribute

@@ -1,0 +1,215 @@
+setGPU: Setting GPU to: 0
+2020-10-06 11:54:23.629862: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-06 11:54:23.632675: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-10-06 11:54:23.632693: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-10-06 11:54:25.363597: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-10-06 11:54:30.293548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-10-06 11:54:30.294233: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-06 11:54:30.311910: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-06 11:54:30.316008: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-10-06 11:54:30.316623: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-10-06 11:54:30.320871: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-10-06 11:54:30.323011: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-10-06 11:54:30.332091: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-10-06 11:54:30.334581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-10-06 11:54:30.336652: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-10-06 11:54:30.356636: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200010000 Hz
+2020-10-06 11:54:30.364377: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5478370 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-10-06 11:54:30.364423: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-10-06 11:54:30.501788: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4c637d0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-10-06 11:54:30.501840: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-10-06 11:54:30.503680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-10-06 11:54:30.503768: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-06 11:54:30.503801: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-06 11:54:30.503829: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-10-06 11:54:30.503855: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-10-06 11:54:30.503882: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-10-06 11:54:30.503908: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-10-06 11:54:30.503935: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-10-06 11:54:30.507067: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-10-06 11:54:30.507147: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-10-06 11:54:30.510098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-10-06 11:54:30.510133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-10-06 11:54:30.510152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-10-06 11:54:30.513414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+beta factor:  0.01
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_010.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+2020-10-06 11:55:20.496184: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-10-06 11:55:20.722588: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_010.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_000.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_003.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_003.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_009.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_009.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_BIS_concat_000.h5: 312462 j1 evts, 312462 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_BIS_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_007.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_007.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_BIS_concat_001.h5: 312462 j1 evts, 312462 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_BIS_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_008.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_008.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_013.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_013.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_004.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_004.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_011.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_011.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_005.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_005.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_001.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_006.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_006.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_012.h5: 313756 j1 evts, 313756 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_012.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_002.h5: 313757 j1 evts, 313757 j2 evts
+predicting QCD sideband all
+writing results for QCD side all reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_SIDEBAND_concat_002.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_021.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_021.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_012.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_012.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_016.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_016.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_001.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_010.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_010.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_003.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_003.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_013.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_013.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_009.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_009.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_004.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_004.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_018.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_018.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_007.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_007.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_002.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_002.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_019.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_019.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_014.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_014.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_001.h5: 168376 j1 evts, 168376 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_000.h5: 168377 j1 evts, 168377 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_BIS_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_015.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_015.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_006.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_006.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_003.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_003.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_020.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_020.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_005.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_005.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_011.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_011.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_002.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_002.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_017.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_017.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_000.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_008.h5: 211320 j1 evts, 211320 j2 evts
+predicting QCD signalregion all samples
+writing results for QCD signalregion all samples reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/qcd_sqrtshatTeV_13TeV_PU40_ALL_parts/qcd_sqrtshatTeV_13TeV_PU40_concat_008.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_001.h5: 224016 j1 evts, 224016 j2 evts
+predicting $G(1.5 TeV)\to WW$ narrow
+writing results for $G(1.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_000.h5: 224016 j1 evts, 224016 j2 evts
+predicting $G(1.5 TeV)\to WW$ narrow
+writing results for $G(1.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_1.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_001.h5: 201332 j1 evts, 201332 j2 evts
+predicting $G(1.5 TeV)\to WW$ broad
+writing results for $G(1.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_000.h5: 201332 j1 evts, 201332 j2 evts
+predicting $G(1.5 TeV)\to WW$ broad
+writing results for $G(1.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_1.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_001.h5: 256252 j1 evts, 256252 j2 evts
+predicting $G(2.5 TeV)\to WW$ narrow
+writing results for $G(2.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_000.h5: 256253 j1 evts, 256253 j2 evts
+predicting $G(2.5 TeV)\to WW$ narrow
+writing results for $G(2.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_2.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_000.h5: 238914 j1 evts, 238914 j2 evts
+predicting $G(2.5 TeV)\to WW$ broad
+writing results for $G(2.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_001.h5: 238913 j1 evts, 238913 j2 evts
+predicting $G(2.5 TeV)\to WW$ broad
+writing results for $G(2.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_2.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_concat_000.h5: 257745 j1 evts, 257745 j2 evts
+predicting $G(3.5 TeV)\to WW$ narrow
+writing results for $G(3.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_concat_001.h5: 257744 j1 evts, 257744 j2 evts
+predicting $G(3.5 TeV)\to WW$ narrow
+writing results for $G(3.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_3.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_concat_001.h5: 251910 j1 evts, 251910 j2 evts
+predicting $G(3.5 TeV)\to WW$ broad
+writing results for $G(3.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_concat_000.h5: 251910 j1 evts, 251910 j2 evts
+predicting $G(3.5 TeV)\to WW$ broad
+writing results for $G(3.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_3.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_001.h5: 216178 j1 evts, 216178 j2 evts
+predicting $G(4.5 TeV)\to WW$ narrow
+writing results for $G(4.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_001.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_000.h5: 216178 j1 evts, 216178 j2 evts
+predicting $G(4.5 TeV)\to WW$ narrow
+writing results for $G(4.5 TeV)\to WW$ narrow reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_NARROW_13TeV_PU40_4.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_000.h5: 258749 j1 evts, 258749 j2 evts
+predicting $G(4.5 TeV)\to WW$ broad
+writing results for $G(4.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_000.h5
+/eos/user/k/kiwoznia/data/VAE_data/events/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_001.h5: 258749 j1 evts, 258749 j2 evts
+predicting $G(4.5 TeV)\to WW$ broad
+writing results for $G(4.5 TeV)\to WW$ broad reco to /eos/user/k/kiwoznia/data/VAE_results/events/run_502/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_parts/RSGraviton_WW_BROAD_13TeV_PU40_4.5TeV_concat_001.h5

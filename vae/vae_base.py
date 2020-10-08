@@ -38,8 +38,7 @@ class VAE(ABC):
         Parameters = namedtuple('Parameters', sorted(params))
         self.params = Parameters(**params)
         self.filter_n = self.params.filter_ini_n
-        if self.params.regularizer is not None:
-            self.params.regularizer = self.regularizer_dict[self.params.regularizer]
+        self.regularizer = self.regularizer_dict[self.params.regularizer] if self.params.regularizer is not None else None
 
     def build(self, x_mean_stdev):
         # build and link encoder and decoder
