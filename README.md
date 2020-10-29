@@ -11,7 +11,7 @@ requires Python3 and TF 2.1
 main_train_particle_vae.py
 ```
 
-setting parameters
+parameters
 - run_n ... experiment number
 - beta ... beta coefficient for Kullback-Leibler divergence term
 - loss ... 3D+KL loss or MSE+KL loss (from losses module)
@@ -22,6 +22,6 @@ setting parameters
 ```
 main_predict_particle_vae.py
 ```
-setting parameters
+parameters
 - run_n ... experiment number
 - cartesian ... True/False: constituents coordinates (if False: cylindrical)
