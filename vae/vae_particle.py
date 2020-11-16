@@ -116,7 +116,10 @@ class VAEparticle(vbase.VAE):
 
 	def fit(self, x_train, epochs=100, verbose=2):
 		callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN()] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
-		self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
+		if isinstance(x_train, np.ndarray): # if input is numpy array
+			self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
+		else: # else if input is a generator
+			self.history = self.model.fit_generator(x_train)
 
 	@classmethod
 	def load(cls, path):
