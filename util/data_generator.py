@@ -9,18 +9,31 @@ class DataGenerator():
 		self.data_reader = dare.DataReader(path)
 		self.batch_sz = batch_sz
 
-	def __call__():
+	def get_next_sample_chunk(self, constituents):
+		samples_in_file = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])
+		np.random.shuffle(samples_in_file)
+		return samples_in_file	
+
+	def __call__(self):
 		'''
 			generate data samples of size batch_sz
 		'''
+		
 		samples = []
-		for constituents in self.data_reader.read_constituents_parts_from_dir(max_sz_mb=1000):
-			samples_file = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])
-			samples.extend(samples_file)
-			while len(samples) >= batch_sz:
-				samples_batch, samples = np.asarray(samples[:batch_sz]), samples[batch_sz:]
-				np.random.shuffle(samples_batch)
-				yield samples_batch
+
+		# loop through whole dataset
+		for constituents in self.data_reader.read_constituents_parts_from_dir(min_n=self.batch_sz):
+			samples.extend(self.get_next_sample_chunk(constituents))
+			while len(samples) >= self.batch_sz:
+				samples_batch, samples = np.asarray(samples[:self.batch_sz]), samples[self.batch_sz:]
+				yield (samples_batch, samples_batch) # x == y in autoencoder
+		# last batch: if events left in samples, pad with start to batch_sz
+		if samples:
+			generator = self.data_reader.read_constituents_parts_from_dir(min_n=self.batch_sz)
+			samples.extend(self.get_next_sample_chunk(next(generator)))
+			samples_batch = np.asarray(samples[:self.batch_sz])
+			yield (samples_batch, samples_batch)
+
 
 	def get_mean_and_stdev(self):
 		'''

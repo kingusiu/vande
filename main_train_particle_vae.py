@@ -9,7 +9,7 @@ import vae.losses as losses
 import pofah.path_constants.sample_dict_file_parts_input as sdi
 import pofah.util.experiment as expe
 import pofah.util.sample_factory as safa
-import vae.util.data_generator as dage
+import util.data_generator as dage
 
 # ********************************************************
 #       runtime params
