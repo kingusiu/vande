@@ -119,7 +119,7 @@ class VAEparticle(vbase.VAE):
 		if isinstance(x_train, np.ndarray): # if input is numpy array
 			self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
 		else: # else if input is a generator
-			self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_split=0.25, callbacks=callbacks)
+			self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, callbacks=callbacks)
 
 	@classmethod
 	def load(cls, path):

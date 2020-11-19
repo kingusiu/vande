@@ -5,9 +5,10 @@ import pofah.util.utility_fun as utfu
 
 class DataGenerator():
 
-	def __init__(self, path, batch_sz=1024):
+	def __init__(self, path, batch_sz=1024, max_n=1e9):
 		self.data_reader = dare.DataReader(path)
 		self.batch_sz = batch_sz
+		self.max_n = max_n
 
 	def get_next_sample_chunk(self, constituents):
 		samples_in_file = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])
@@ -20,15 +21,17 @@ class DataGenerator():
 		'''
 		
 		samples = []
+		yield_n = 0
 
 		# loop through whole dataset
 		for constituents in self.data_reader.read_constituents_parts_from_dir(min_n=self.batch_sz):
 			samples.extend(self.get_next_sample_chunk(constituents))
-			while len(samples) >= self.batch_sz:
+			while (len(samples) >= self.batch_sz) and (yield_n <= self.max_n):
 				samples_batch, samples = np.asarray(samples[:self.batch_sz]), samples[self.batch_sz:]
+				yield_n += self.batch_sz
 				yield (samples_batch, samples_batch) # x == y in autoencoder
 		# last batch: if events left in samples, pad with start to batch_sz
-		if samples:
+		if samples and (yield_n <= self.max_n):
 			generator = self.data_reader.read_constituents_parts_from_dir(min_n=self.batch_sz)
 			samples.extend(self.get_next_sample_chunk(next(generator)))
 			samples_batch = np.asarray(samples[:self.batch_sz])
