@@ -1,0 +1,248 @@
+setGPU: Setting GPU to: 0
+2020-11-19 18:20:41.093032: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-11-19 18:20:41.097897: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-11-19 18:20:41.097938: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+tensorflow version:  2.1.0
+reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  2
+computed mean [-3.0852025e-04 -8.0044811e-06  2.8349175e+00] and std-dev [ 0.20823258  0.21253183 14.768446  ]
+reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  1
+2020-11-19 18:22:59.119538: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-11-19 18:23:03.409098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-11-19 18:23:03.409924: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-19 18:23:03.429479: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-11-19 18:23:03.433584: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-11-19 18:23:03.434212: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-11-19 18:23:03.438499: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-11-19 18:23:03.440570: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-11-19 18:23:03.449941: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-19 18:23:03.452773: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-11-19 18:23:03.453829: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-11-19 18:23:03.472941: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199845000 Hz
+2020-11-19 18:23:03.479164: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xa52ab20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-11-19 18:23:03.479193: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-11-19 18:23:03.590085: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xa480b40 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-11-19 18:23:03.590131: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-11-19 18:23:03.591900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-11-19 18:23:03.591976: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-19 18:23:03.592010: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-11-19 18:23:03.592038: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-11-19 18:23:03.592065: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-11-19 18:23:03.592091: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-11-19 18:23:03.592117: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-11-19 18:23:03.592144: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-19 18:23:03.595465: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-11-19 18:23:03.595536: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-19 18:23:03.598614: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-19 18:23:03.598644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-11-19 18:23:03.598663: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-11-19 18:23:03.602126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 26,631
+Trainable params: 26,631
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 15)                165       
+_________________________________________________________________
+dense_3 (Dense)              (None, 38)                608       
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               25662     
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+lambda_8 (Lambda)            (None, 100, 3)            0         
+_________________________________________________________________
+un_normalized_decoder_out (L (None, 100, 3)            0         
+=================================================================
+Total params: 27,106
+Trainable params: 27,106
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+__________________________________________________________________________________________________
+decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
+==================================================================================================
+Total params: 53,737
+Trainable params: 53,737
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Epoch 1/300
+reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+
+num files read for file part from  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  1
+2020-11-19 18:23:39.435797: W tensorflow/core/framework/op_kernel.cc:1643] Invalid argument: ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+Traceback (most recent call last):
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/ops/script_ops.py", line 236, in __call__
+    ret = func(*args)
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/dataset_ops.py", line 825, in generator_py_func
+    "of shape %s was expected." % (ret_array.shape, expected_shape))
+
+ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+
+
+2020-11-19 18:23:39.436321: W tensorflow/core/framework/op_kernel.cc:1655] OP_REQUIRES failed at iterator_ops.cc:941 : Invalid argument: ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+Traceback (most recent call last):
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/ops/script_ops.py", line 236, in __call__
+    ret = func(*args)
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/dataset_ops.py", line 825, in generator_py_func
+    "of shape %s was expected." % (ret_array.shape, expected_shape))
+
+ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+
+
+	 [[{{node PyFunc}}]]
+Traceback (most recent call last):
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/context.py", line 1897, in execution_mode
+    yield
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/iterator_ops.py", line 659, in _next_internal
+    output_shapes=self._flat_output_shapes)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/ops/gen_dataset_ops.py", line 2479, in iterator_get_next_sync
+    _ops.raise_from_not_ok_status(e, name)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/framework/ops.py", line 6606, in raise_from_not_ok_status
+    six.raise_from(core._status_to_exception(e.code, message), None)
+  File "<string>", line 3, in raise_from
+tensorflow.python.framework.errors_impl.InvalidArgumentError: ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+Traceback (most recent call last):
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/ops/script_ops.py", line 236, in __call__
+    ret = func(*args)
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/dataset_ops.py", line 825, in generator_py_func
+    "of shape %s was expected." % (ret_array.shape, expected_shape))
+
+ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+
+
+	 [[{{node PyFunc}}]] [Op:IteratorGetNextSync]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main_train_particle_vae.py", line 47, in <module>
+    
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/vae/vae_particle.py", line 122, in fit
+    self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, callbacks=callbacks)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 819, in fit
+    use_multiprocessing=use_multiprocessing)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_generator.py", line 694, in fit
+    steps_name='steps_per_epoch')
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_generator.py", line 221, in model_iteration
+    batch_data = _get_next_batch(generator)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_generator.py", line 364, in _get_next_batch
+    generator_output = next(generator)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/iterator_ops.py", line 630, in __next__
+    return self.next()
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/iterator_ops.py", line 674, in next
+    return self._next_internal()
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/iterator_ops.py", line 665, in _next_internal
+    return structure.from_compatible_tensor_list(self._element_spec, ret)
+  File "/usr/lib64/python3.6/contextlib.py", line 99, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/context.py", line 1900, in execution_mode
+    executor_new.wait()
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/executor.py", line 67, in wait
+    pywrap_tensorflow.TFE_ExecutorWaitForAllPendingNodes(self._handle)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+Traceback (most recent call last):
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/ops/script_ops.py", line 236, in __call__
+    ret = func(*args)
+
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/data/ops/dataset_ops.py", line 825, in generator_py_func
+    "of shape %s was expected." % (ret_array.shape, expected_shape))
+
+ValueError: `generator` yielded an element of shape (2, 256, 100, 3) where an element of shape (256, 100, 3) was expected.
+
+
+	 [[{{node PyFunc}}]]
+2020-11-19 18:23:40.907220: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled

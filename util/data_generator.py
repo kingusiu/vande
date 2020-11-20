@@ -29,13 +29,14 @@ class DataGenerator():
 			while (len(samples) >= self.batch_sz) and (yield_n <= self.max_n):
 				samples_batch, samples = np.asarray(samples[:self.batch_sz]), samples[self.batch_sz:]
 				yield_n += self.batch_sz
-				yield (samples_batch, samples_batch) # x == y in autoencoder
+				yield samples_batch, samples_batch # x == y in autoencoder
+				
 		# last batch: if events left in samples, pad with start to batch_sz
 		if samples and (yield_n <= self.max_n):
 			generator = self.data_reader.read_constituents_parts_from_dir(min_n=self.batch_sz)
 			samples.extend(self.get_next_sample_chunk(next(generator)))
 			samples_batch = np.asarray(samples[:self.batch_sz])
-			yield (samples_batch, samples_batch)
+			yield samples_batch, samples_batch
 
 
 	def get_mean_and_stdev(self):
