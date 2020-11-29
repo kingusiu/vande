@@ -18,8 +18,8 @@ import sarewt.data_reader as dare
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n beta batch_sz regularizer')
-params = Parameters(run_n=104, beta=0.01, batch_sz=256, regularizer=None) # 'L1L2'
+Parameters = namedtuple('Parameters', 'run_n beta train_sz batch_sz regularizer')
+params = Parameters(run_n=104, beta=0.01, train_sz=1e4, batch_sz=256, regularizer=None) # 'L1L2'
 loss = losses.make_threeD_kl_loss #losses.make_mse_kl_loss
 reco_loss = losses.threeD_loss #losses.mse_loss
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
@@ -28,11 +28,15 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 # ********************************************************
 #       prepare training (generator) and validation data
 # ********************************************************
-data_train_generator = dage.DataGenerator(paths.sample_dir_path('qcdSide'), batch_sz=params.batch_sz, max_n=10e6) # generate 10 M jet samples
-mean_stdev = data_train_generator.get_mean_and_stdev()
+
+#train
+data_train_generator = dage.DataGenerator(paths.sample_dir_path('qcdSide')) # generate 10 M jet samples
+data_train = tf.data.Dataset.from_generator(data_train_generator, output_types=(tf.float32, tf.float32)).take(int(params.train_sz)).batch(params.batch_sz, drop_remainder=True) # already shuffled
+# validation
 data_reader = dare.DataReader(paths.sample_dir_path('qcdSideExt'))
-data_valid = data_train_generator.get_next_sample_chunk(data_reader.read_constituents_from_dir(max_n=5e5)) # validate on half a million samples
-data_train = tf.data.Dataset.from_generator(data_train_generator, output_types=tf.float32, output_shapes=(2, params.batch_sz, 100, 3))
+data_valid = tf.data.Dataset.from_tensor_slices(data_train_generator.get_next_sample_chunk(data_reader.read_constituents_from_dir(max_n=5e5))) #.batch(params.batch_sz, drop_remainder=True) # validate on half a million samples
+# stats for normalization layer
+mean_stdev = data_train_generator.get_mean_and_stdev()
 
 # *******************************************************
 #                       build model
@@ -45,6 +49,7 @@ vae.build(mean_stdev)
 #                       train and save
 # *******************************************************
 
-vae.fit(data_train, epochs=300, validation_data=data_valid, verbose=2)
+#vae.fit(data_train, epochs=300, validation_data=data_valid, verbose=2)
+vae.fit(data_train, epochs=300, verbose=2)
 vae.plot_training(experiment.fig_dir)
 vae.save(path=experiment.model_dir)

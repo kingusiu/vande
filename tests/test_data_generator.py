@@ -5,6 +5,10 @@ import pofah.path_constants.sample_dict_file_parts_input_baby as sdi
 import util.data_generator as dage
 
 
+'''
+test obsolete: generator returns only one sample at a time
+'''
+
 class DataGeneratorTestCase(unittest.TestCase):
 
 	def setUp(self):
