@@ -114,13 +114,13 @@ class VAEparticle(vbase.VAE):
 		# plot_model(decoder, to_file=CONFIG['plotdir'] + 'vae_cnn_decoder.png', show_shapes=True)
 		return decoder
 
-	def fit(self, x_train, epochs=100, verbose=2, validation_data=None):
+	def fit(self, x_train, epochs=100, verbose=2, validation_data=None, validation_steps=100):
 		callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN()] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)
 		if isinstance(x_train, np.ndarray): # if input is numpy array
 			self.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)
 		else: # else if input is a generator
-			#self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, validation_steps=100, callbacks=callbacks)
-			self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, callbacks=callbacks)
+			print('calling generator fit()')
+			self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, validation_steps=validation_steps, callbacks=callbacks)
 
 	@classmethod
 	def load(cls, path):
