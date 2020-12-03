@@ -1,0 +1,97 @@
+setGPU: Setting GPU to: 0
+2020-12-03 00:40:32.211343: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-12-03 00:40:32.213238: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-12-03 00:40:32.213253: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-12-03 00:40:33.254857: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-12-03 00:40:36.150265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-12-03 00:40:36.153380: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-03 00:40:36.216775: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-12-03 00:40:36.223455: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-12-03 00:40:36.225737: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-12-03 00:40:36.234028: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-12-03 00:40:36.237656: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-12-03 00:40:36.251204: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-12-03 00:40:36.254347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-12-03 00:40:36.258593: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-12-03 00:40:36.289745: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200000000 Hz
+2020-12-03 00:40:36.296431: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4c2bf30 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-03 00:40:36.296483: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-03 00:40:36.411469: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x447b870 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-03 00:40:36.411526: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2020-12-03 00:40:36.414249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-12-03 00:40:36.414374: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-03 00:40:36.414421: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-12-03 00:40:36.414463: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-12-03 00:40:36.414503: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-12-03 00:40:36.414544: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-12-03 00:40:36.414584: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-12-03 00:40:36.414625: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-12-03 00:40:36.419195: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-12-03 00:40:36.419304: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-03 00:40:36.423674: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-03 00:40:36.423716: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-12-03 00:40:36.423746: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-12-03 00:40:36.428178: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14257 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
+[DataReader] read_events_from_dir(): reading 1000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  1
+[DataReader] deleting...
+Epoch 1/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+2020-12-03 00:41:19.092291: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+[DataGenerator]: __call__() yielded 1000000 samples
+[DataReader] deleting...
+Epoch 1/100
+3906/3906 - 190s - loss: 59.7354 - val_loss: 61.8236
+Epoch 2/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 178s - loss: 58.5345 - val_loss: 59.9492
+2020-12-03 00:47:05.263981: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 3/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 183s - loss: 57.4484 - val_loss: 59.9273
+2020-12-03 00:50:08.249322: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 4/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 188s - loss: 51.7399 - val_loss: 2.0666
+2020-12-03 00:53:16.288471: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 5/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 186s - loss: 1.2740 - val_loss: 1.1172
+2020-12-03 00:56:21.928363: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 6/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 188s - loss: 1.1125 - val_loss: 1.0945
+2020-12-03 00:59:30.280315: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 7/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/100
+3906/3906 - 188s - loss: 1.0934 - val_loss: 1.0775
+2020-12-03 01:02:37.813391: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 8/100
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call

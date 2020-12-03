@@ -29,13 +29,14 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 #       prepare training (generator) and validation data
 # ********************************************************
 
-#train
-data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), samples_in_parts_n=params.gen_part_n, samples_max_n=params.train_total_n) # generate 10 M jet samples
+# train (generator)
+data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), sample_part_n=params.gen_part_n, sample_max_n=params.train_total_n) # generate 10 M jet samples
 data_train = tf.data.Dataset.from_generator(data_train_generator, output_types=(tf.float32, tf.float32), output_shapes=((100,3),(100,3))).batch(params.batch_n, drop_remainder=True) # already shuffled
-# validation
-data_valid_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSideExt'), samples_in_parts_n=params.gen_part_n, samples_max_n=params.valid_total_n) 
-data_valid = tf.data.Dataset.from_generator(data_valid_generator, output_types=(tf.float32, tf.float32), output_shapes=((100,3),(100,3))).batch(params.batch_n, drop_remainder=True) # validate on 1M samples
-validation_steps = params.valid_total_n // params.batch_n
+
+# validation (full tensor, 2M samples)
+data_valid = dage.constituents_to_input_samples(dare.DataReader(path=paths.sample_dir_path('qcdSideExt')).read_constituents_from_dir(read_n=params.valid_total_n))
+ds_valid = tf.data.Dataset.from_tensor_slices((data_valid, data_valid)).batch(params.batch_n, drop_remainder=True)
+
 # stats for normalization layer
 mean_stdev = data_train_generator.get_mean_and_stdev()
 
@@ -50,6 +51,6 @@ vae.build(mean_stdev)
 #                       train and save
 # *******************************************************
 
-vae.fit(data_train, epochs=300, validation_data=data_valid, validation_steps=validation_steps, verbose=2)
+vae.fit(data_train, epochs=300, validation_data=ds_valid, verbose=2)
 vae.plot_training(experiment.fig_dir)
 vae.save(path=experiment.model_dir)

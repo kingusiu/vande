@@ -1,0 +1,350 @@
+setGPU: Setting GPU to: 0
+2020-12-02 00:45:29.849687: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-12-02 00:45:29.851267: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-12-02 00:45:29.851284: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+tensorflow version:  2.1.0
+2020-12-02 00:45:31.265097: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-12-02 00:45:36.007464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-12-02 00:45:36.007879: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-02 00:45:36.016480: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-12-02 00:45:36.019352: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-12-02 00:45:36.020220: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-12-02 00:45:36.023211: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-12-02 00:45:36.024712: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-12-02 00:45:36.031766: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-12-02 00:45:36.033605: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-12-02 00:45:36.034772: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-12-02 00:45:36.053576: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199845000 Hz
+2020-12-02 00:45:36.058962: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4bc17c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-02 00:45:36.058988: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-02 00:45:36.178082: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x43bfc00 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-02 00:45:36.178172: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-12-02 00:45:36.180128: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-12-02 00:45:36.180214: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-02 00:45:36.180250: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-12-02 00:45:36.180280: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-12-02 00:45:36.180308: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-12-02 00:45:36.180338: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-12-02 00:45:36.180366: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-12-02 00:45:36.180395: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-12-02 00:45:36.183516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-12-02 00:45:36.183593: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-12-02 00:45:36.186561: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-02 00:45:36.186597: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-12-02 00:45:36.186617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-12-02 00:45:36.189924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  2
+[DataReader] deleting...
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  2
+computed mean [-2.5694157e-04  3.9219353e-07  3.1619492e+00] and std-dev [ 0.23610476  0.23951028 14.948415  ]
+[DataReader] deleting...
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 26,631
+Trainable params: 26,631
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 15)                165       
+_________________________________________________________________
+dense_3 (Dense)              (None, 38)                608       
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               25662     
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+lambda_8 (Lambda)            (None, 100, 3)            0         
+_________________________________________________________________
+un_normalized_decoder_out (L (None, 100, 3)            0         
+=================================================================
+Total params: 27,106
+Trainable params: 27,106
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+__________________________________________________________________________________________________
+decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
+==================================================================================================
+Total params: 53,737
+Trainable params: 53,737
+Non-trainable params: 0
+__________________________________________________________________________________________________
+calling generator fit()
+Epoch 1/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+2020-12-02 00:48:05.222107: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-12-02 00:48:05.395826: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+[DataGenerator]: __call__() yielded 10000000 samples
+[DataReader] deleting...
+Epoch 1/300
+39062/39062 - 3294s - loss: 86.1687 - threeD_loss: 85.3341 - kl_loss: 83.6292 - val_loss: 21.3565 - val_threeD_loss: 20.6612 - val_kl_loss: 69.5246
+Epoch 2/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3334s - loss: 20.7723 - threeD_loss: 20.1018 - kl_loss: 67.0429 - val_loss: 19.1533 - val_threeD_loss: 18.5010 - val_kl_loss: 65.2343
+2020-12-02 02:38:08.671980: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 3/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3328s - loss: 18.6770 - threeD_loss: 18.0357 - kl_loss: 64.1425 - val_loss: 17.6523 - val_threeD_loss: 17.0208 - val_kl_loss: 63.1511
+2020-12-02 03:33:36.336754: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 4/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3209s - loss: 17.7672 - threeD_loss: 17.1404 - kl_loss: 62.6774 - val_loss: 17.0542 - val_threeD_loss: 16.4310 - val_kl_loss: 62.3311
+2020-12-02 04:27:04.945998: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 5/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3283s - loss: 17.5238 - threeD_loss: 16.9055 - kl_loss: 61.8193 - val_loss: 16.8366 - val_threeD_loss: 16.2216 - val_kl_loss: 61.5000
+2020-12-02 05:21:47.545217: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 6/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3315s - loss: 17.3673 - threeD_loss: 16.7557 - kl_loss: 61.1603 - val_loss: 16.7781 - val_threeD_loss: 16.1692 - val_kl_loss: 60.8899
+2020-12-02 06:17:02.951217: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 7/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3301s - loss: 17.2382 - threeD_loss: 16.6318 - kl_loss: 60.6383 - val_loss: 16.6057 - val_threeD_loss: 16.0002 - val_kl_loss: 60.5557
+2020-12-02 07:12:03.488934: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 8/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3275s - loss: 16.9099 - threeD_loss: 16.3076 - kl_loss: 60.2194 - val_loss: 16.4124 - val_threeD_loss: 15.8120 - val_kl_loss: 60.0365
+2020-12-02 08:06:38.741977: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 9/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3246s - loss: 16.5275 - threeD_loss: 15.9280 - kl_loss: 59.9484 - val_loss: 15.9097 - val_threeD_loss: 15.3109 - val_kl_loss: 59.8787
+2020-12-02 09:00:44.837637: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 10/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3274s - loss: 16.1398 - threeD_loss: 15.5423 - kl_loss: 59.7537 - val_loss: 16.8149 - val_threeD_loss: 16.2193 - val_kl_loss: 59.5573
+2020-12-02 09:55:18.522039: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 11/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+
+Epoch 00011: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+39062/39062 - 3226s - loss: 15.9230 - threeD_loss: 15.3291 - kl_loss: 59.3775 - val_loss: 16.6765 - val_threeD_loss: 16.0857 - val_kl_loss: 59.0911
+2020-12-02 10:49:04.755369: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 12/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3250s - loss: 15.1934 - threeD_loss: 14.6008 - kl_loss: 59.2623 - val_loss: 15.1572 - val_threeD_loss: 14.5663 - val_kl_loss: 59.0881
+2020-12-02 11:43:14.452344: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 13/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3192s - loss: 15.1509 - threeD_loss: 14.5608 - kl_loss: 59.0144 - val_loss: 15.1498 - val_threeD_loss: 14.5607 - val_kl_loss: 58.9109
+2020-12-02 12:36:26.290729: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 14/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 2936s - loss: 15.1352 - threeD_loss: 14.5474 - kl_loss: 58.7802 - val_loss: 15.1283 - val_threeD_loss: 14.5419 - val_kl_loss: 58.6404
+2020-12-02 13:25:21.957628: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 15/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3176s - loss: 15.1217 - threeD_loss: 14.5360 - kl_loss: 58.5733 - val_loss: 15.1067 - val_threeD_loss: 14.5223 - val_kl_loss: 58.4433
+2020-12-02 14:18:18.027541: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 16/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3300s - loss: 15.1097 - threeD_loss: 14.5258 - kl_loss: 58.3974 - val_loss: 15.2035 - val_threeD_loss: 14.6203 - val_kl_loss: 58.3137
+2020-12-02 15:13:17.853163: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 17/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3302s - loss: 15.1005 - threeD_loss: 14.5183 - kl_loss: 58.2287 - val_loss: 15.1016 - val_threeD_loss: 14.5203 - val_kl_loss: 58.1254
+2020-12-02 16:08:19.470516: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 18/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3360s - loss: 15.0916 - threeD_loss: 14.5108 - kl_loss: 58.0784 - val_loss: 15.0718 - val_threeD_loss: 14.4919 - val_kl_loss: 57.9861
+2020-12-02 17:04:19.386152: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 19/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3260s - loss: 15.0858 - threeD_loss: 14.5065 - kl_loss: 57.9327 - val_loss: 15.0970 - val_threeD_loss: 14.5180 - val_kl_loss: 57.9021
+2020-12-02 17:58:39.629669: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 20/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3399s - loss: 15.0772 - threeD_loss: 14.4991 - kl_loss: 57.7971 - val_loss: 15.0716 - val_threeD_loss: 14.4942 - val_kl_loss: 57.7408
+2020-12-02 18:55:18.378699: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 21/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3721s - loss: 15.0645 - threeD_loss: 14.4876 - kl_loss: 57.6989 - val_loss: 15.0892 - val_threeD_loss: 14.5125 - val_kl_loss: 57.6672
+2020-12-02 19:57:19.308125: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 22/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3736s - loss: 15.0567 - threeD_loss: 14.4809 - kl_loss: 57.5842 - val_loss: 15.0313 - val_threeD_loss: 14.4560 - val_kl_loss: 57.5349
+2020-12-02 20:59:35.415175: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 23/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3551s - loss: 15.0520 - threeD_loss: 14.4774 - kl_loss: 57.4628 - val_loss: 15.0249 - val_threeD_loss: 14.4507 - val_kl_loss: 57.4209
+2020-12-02 21:58:46.368849: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 24/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3631s - loss: 15.0459 - threeD_loss: 14.4725 - kl_loss: 57.3419 - val_loss: 15.0564 - val_threeD_loss: 14.4837 - val_kl_loss: 57.2694
+2020-12-02 22:59:17.497093: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 25/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+
+Epoch 00025: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
+39062/39062 - 3801s - loss: 15.0382 - threeD_loss: 14.4659 - kl_loss: 57.2283 - val_loss: 15.0582 - val_threeD_loss: 14.4866 - val_kl_loss: 57.1534
+2020-12-03 00:02:38.571261: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 26/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
+Epoch 1/300
+39062/39062 - 3811s - loss: 14.9932 - threeD_loss: 14.4212 - kl_loss: 57.1912 - val_loss: 14.9926 - val_threeD_loss: 14.4209 - val_kl_loss: 57.1749
+2020-12-03 01:06:09.385796: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
+Epoch 27/300
+[DataGenerator]: __call__()
+[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+[DataReader]: generate_event_parts_by_num() first call
