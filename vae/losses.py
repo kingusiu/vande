@@ -8,13 +8,10 @@ import config.config as co
 # ********************************************************
 
 ### KL
-def make_kl_loss(z_mean, z_log_var):
-    @tf.function
-    def kl_loss(inputs, outputs):
-        kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
-        kl = - 0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
-        return kl
-    return kl_loss
+@tf.function
+def kl_loss(z_mean, z_log_var):
+    kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
+    return -0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
 
 # wrapper for mse loss to pass as reco loss
 def mse_loss(inputs, outputs):

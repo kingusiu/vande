@@ -17,6 +17,7 @@ class Sampling(tf.keras.layers.Layer):
 
     def call(self, inputs):
         z_mean, z_log_var = inputs
+        self.add_loss(losses.kl_loss(z_mean, z_log_var)) # adding kl-loss to layer
         batch = tf.shape(z_mean)[0]
         dim = tf.shape(z_mean)[1]
         epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
