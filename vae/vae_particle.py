@@ -1,10 +1,7 @@
 import os
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+import setGPU
 import numpy as np
 import tensorflow as tf
-#tf.compat.v1.disable_eager_execution()
-#tf.config.experimental_run_functions_eagerly(True)
 from collections import namedtuple
 import matplotlib.pyplot as plt
 
@@ -45,7 +42,8 @@ class VAEparticle(vbase.VAE):
 	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):
 		super().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)
 
-	def build_encoder(self, inputs, mean, stdev):
+	def build_encoder(self, mean, stdev):
+		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
 		# normalize
 		normalized = tf.keras.layers.Lambda(lambda xx: (xx-mean)/stdev)(inputs)
 		# add channel dim

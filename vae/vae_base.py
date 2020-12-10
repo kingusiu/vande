@@ -42,7 +42,7 @@ class VAE(ABC):
 
     def build(self, x_mean_stdev):
         # build and link encoder and decoder
-        inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
+        inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='model_input')
         self.encoder = self.build_encoder(inputs, *x_mean_stdev)
         self.decoder = self.build_decoder(*x_mean_stdev)
         outputs = self.decoder(self.z)  # link encoder output to decoder
