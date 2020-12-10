@@ -79,7 +79,7 @@ class VAEparticle(vbase.VAE):
 		self.z = vbase.Sampling()((self.z_mean, self.z_log_var))
 
 		# instantiate encoder model
-		encoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')
+		encoder = tf.keras.Model(inputs, [self.z, self.z_mean, self.z_log_var], name='encoder')
 		encoder.summary()
 		# plot_model(encoder, to_file=CONFIG['plotdir']+'vae_cnn_encoder.png', show_shapes=True)
 		return encoder

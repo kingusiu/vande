@@ -41,15 +41,16 @@ class VAE(ABC):
         self.regularizer = self.regularizer_dict[self.params.regularizer] if self.params.regularizer is not None else None
 
     def build(self, x_mean_stdev):
-        # build and link encoder and decoder
-        inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='model_input')
+        # build encoder and decoder
         self.encoder = self.build_encoder(inputs, *x_mean_stdev)
         self.decoder = self.build_decoder(*x_mean_stdev)
+        # link encoder and decoder to full vae model
+        inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='model_input')
+        self.z, self.z_mean, self.z_log_var = self.encoder(inputs)
         outputs = self.decoder(self.z)  # link encoder output to decoder
         # instantiate VAE model
         self.model = tf.keras.Model(inputs, outputs, name='vae')
         self.model.summary()
-        self.model.compile(optimizer='adam', loss=self.params.loss(self.z_mean, self.z_log_var, self.params.beta), metrics=[self.params.reco_loss, losses.make_kl_loss(self.z_mean,self.z_log_var)], experimental_run_tf_function=False)
 
     @abstractmethod
     def build_encoder(self, inputs):
