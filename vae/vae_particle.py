@@ -62,10 +62,10 @@ class VAEparticle(vbase.VAE):
 		# shape info needed to build decoder model
 		self.shape_convolved = x.get_shape().as_list()
 		# Flatten
-		x = tf.keras.layers.Flatten()(x)
+		x = tf.keras.layers.Flatten()(x) #[B x 658]
 		# Dense * 3
-		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output
-		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again
+		x = tf.keras.layers.Dense(300, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output
+		x = tf.keras.layers.Dense(30, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again
 		# x = Dense(8, activation='relu')(x)
 
 		# *****************************
@@ -87,8 +87,8 @@ class VAEparticle(vbase.VAE):
 	def build_decoder(self, mean, stdev):
 		latent_inputs = tf.keras.layers.Input(shape=(self.params.z_sz,), name='z_sampling')
 		# Dense * 3
-		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
-		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size
+		x = tf.keras.layers.Dense(30, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200
+		x = tf.keras.layers.Dense(300, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size
 		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]), activation='relu', kernel_regularizer=self.regularizer)(x)
 		# Reshape
 		x = tf.keras.layers.Reshape(tuple(self.shape_convolved[1:]))(x)

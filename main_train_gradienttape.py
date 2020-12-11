@@ -30,8 +30,8 @@ def get_mnist_train_and_valid_dataset(batch_size=64):
 
 
 input_shape = (100, 3)
-Parameters = namedtuple('Parameters', 'beta train_total_n valid_total_n batch_n')
-params = Parameters(beta=0.0001, train_total_n=int(10e5), valid_total_n=int(1e5), batch_n=64) # 'L1L2'
+Parameters = namedtuple('Parameters', 'beta train_total_n valid_total_n batch_n z_sz')
+params = Parameters(beta=0.0001, train_total_n=int(10e5), valid_total_n=int(1e5), batch_n=64, z_sz=20) # 'L1L2'
 
 #### get data ####
 train_ds, valid_ds, *mean_stdev = get_mnist_train_and_valid_dataset(params.batch_n)
@@ -47,11 +47,11 @@ loss_fn = losses.threeD_loss
 
 #### build model ####
 
-vae = vap.VAEparticle(input_shape=input_shape, z_sz=10, filter_ini_n=6, kernel_sz=3)
+vae = vap.VAEparticle(input_shape=input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3)
 model = vae.build(mean_stdev)
 
 #### train
-model = tra.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=300, optimizer=optimizer, beta=params.beta, patience=5, min_delta=0.001)
+model = tra.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=150, optimizer=optimizer, beta=params.beta, patience=5, min_delta=0.001)
 
 #### show results
 for i in range(3):
