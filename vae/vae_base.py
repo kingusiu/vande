@@ -43,7 +43,7 @@ class VAE(ABC):
 
     def build(self, x_mean_stdev):
         # build encoder and decoder
-        self.encoder = self.build_encoder(inputs, *x_mean_stdev)
+        self.encoder = self.build_encoder(*x_mean_stdev)
         self.decoder = self.build_decoder(*x_mean_stdev)
         # link encoder and decoder to full vae model
         inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='model_input')
@@ -52,6 +52,7 @@ class VAE(ABC):
         # instantiate VAE model
         self.model = tf.keras.Model(inputs, outputs, name='vae')
         self.model.summary()
+        return self.model
 
     @abstractmethod
     def build_encoder(self, inputs):

@@ -58,7 +58,7 @@ def exponential_prob_kl_loss( z_mean, z_log_var ):
 
 
 ### 3D LOSS
-
+@tf.function
 def threeD_loss(inputs, outputs): #[batch_size x 100 x 3]
     expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
     expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
