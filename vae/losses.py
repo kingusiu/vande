@@ -11,7 +11,7 @@ import config.config as co
 @tf.function
 def kl_loss(z_mean, z_log_var):
     kl = 1. + z_log_var - tf.square(z_mean) - tf.exp(z_log_var)
-    return -0.5 * tf.reduce_sum(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
+    return -0.5 * tf.reduce_mean(kl, axis=-1) # multiplying mse by N -> using sum (instead of mean) in kl loss (todo: try with averages)
 
 # wrapper for mse loss to pass as reco loss
 def mse_loss(inputs, outputs):
@@ -67,7 +67,7 @@ def threeD_loss(inputs, outputs): #[batch_size x 100 x 3]
     # get min for inputs (min of rows -> [batch_size x 100]) and min for outputs (min of columns)
     min_dist_to_inputs = tf.math.reduce_min(distances,1)
     min_dist_to_outputs = tf.math.reduce_min(distances,2)
-    return tf.math.reduce_sum(min_dist_to_inputs, 1) + tf.math.reduce_sum(min_dist_to_outputs, 1)
+    return tf.math.reduce_mean(min_dist_to_inputs, 1) + tf.math.reduce_mean(min_dist_to_outputs, 1)
 
 
 def make_threeD_kl_loss(z_mean, z_log_var, beta):
