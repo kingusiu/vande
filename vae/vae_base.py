@@ -29,17 +29,10 @@ class Sampling(tf.keras.layers.Layer):
 
 class VAE(ABC):
 
-    regularizer_dict = {
-        'L1' : tf.keras.regularizers.l1(0.01),
-        'L2' : tf.keras.regularizers.l2(0.01),
-        'L1L2': tf.keras.regularizers.L1L2(l1=0.01,l2=0.01),
-    }
-
     def __init__(self, **params):
         Parameters = namedtuple('Parameters', sorted(params))
         self.params = Parameters(**params)
         self.filter_n = self.params.filter_ini_n
-        self.regularizer = self.regularizer_dict[self.params.regularizer] if self.params.regularizer is not None else None
 
     def build(self, x_mean_stdev):
         # build encoder and decoder
@@ -55,7 +48,7 @@ class VAE(ABC):
         return self.model
 
     @abstractmethod
-    def build_encoder(self, inputs):
+    def build_encoder(self, inputs): # -> tf.keras.Model
         pass
 
     @abstractmethod
