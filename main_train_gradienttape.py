@@ -31,7 +31,7 @@ def get_mnist_train_and_valid_dataset(batch_size=64):
 
 input_shape = (100, 3)
 Parameters = namedtuple('Parameters', 'beta train_total_n valid_total_n batch_n z_sz')
-params = Parameters(beta=0.0001, train_total_n=int(10e5), valid_total_n=int(1e5), batch_n=64, z_sz=20) # 'L1L2'
+params = Parameters(beta=0.01, train_total_n=int(10e5), valid_total_n=int(1e5), batch_n=64, z_sz=15) # 'L1L2'
 
 #### get data ####
 train_ds, valid_ds, *mean_stdev = get_mnist_train_and_valid_dataset(params.batch_n)
@@ -41,9 +41,9 @@ train_ds, valid_ds, *mean_stdev = get_mnist_train_and_valid_dataset(params.batch
 learning_rate = 0.001
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
 
-# Instantiate a loss function.
+# Instantiate a loss function and weight regularization param
 loss_fn = losses.threeD_loss
-
+lambda_reg = 0.0
 
 #### build model ####
 
@@ -51,7 +51,8 @@ vae = vap.VAEparticle(input_shape=input_shape, z_sz=params.z_sz, filter_ini_n=6,
 model = vae.build(mean_stdev)
 
 #### train
-model = tra.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=150, optimizer=optimizer, beta=params.beta, patience=5, min_delta=0.001)
+model, losses_reco, losses_valid = tra.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=150, optimizer=optimizer, beta=params.beta, patience=5, min_delta=0.001, lambda_reg=lambda_reg)
+tra.plot_training_results(losses_reco, losses_valid, 'fig/test')
 
 #### show results
 for i in range(3):
@@ -65,4 +66,9 @@ for i in range(3):
     plt.clf(); plt.cla(); plt.close()
 
 
+# plot weights distribution
+weights = [w.numpy().flatten() for w in model.trainable_weights if len(w.shape) > 1]
+plt.hist(np.hstack(weights), bins=100)
+plt.yscale('log', nonposy='clip')
+plt.savefig('fig/test/weight_hist_l'+str(lambda_reg)+'.png')
 

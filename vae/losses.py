@@ -77,6 +77,17 @@ def make_threeD_kl_loss(z_mean, z_log_var, beta):
     return threeD_kl_loss
 
 
+
+### L2 weight norm loss
+@tf.function
+def l2_regularize(weights):
+    ''' squared L2 norm of kernel weights '''
+    # get kernel weights (discard bias) for each layer, squared and summed
+    kernel_weights = [tf.reduce_sum(tf.square(w)) for w in weights if len(w.shape) > 1]
+    # return overall sum
+    return tf.reduce_sum(kernel_weights)
+
+
 # ********************************************************
 #                   manual analysis losses
 # ********************************************************
