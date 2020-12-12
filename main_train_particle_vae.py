@@ -20,7 +20,7 @@ import training as tra
 # ********************************************************
 
 Parameters = namedtuple('Parameters', 'run_n input_shape beta train_total_n gen_part_n valid_total_n batch_n z_sz lambda_reg')
-params = Parameters(run_n=104, input_shape=(100,3), beta=0.01, train_total_n=int(1e6), valid_total_n=int(1e5), gen_part_n=int(1e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
+params = Parameters(run_n=104, input_shape=(100,3), beta=0.01, train_total_n=int(5e5), valid_total_n=int(1e5), gen_part_n=int(1e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
 paths = safa.SamplePathDirFactory(sdi.path_dict)
 

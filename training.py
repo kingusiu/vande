@@ -1,4 +1,5 @@
 import os
+import time
 import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
@@ -80,7 +81,7 @@ class Trainer():
             training_loss_kl += kl_loss
             
             # Log every 200 batches.
-            if step % 200 == 0:
+            if step % 100 == 0:
                 print("Step {}: Reco loss {:.4f}, KL loss {:.4f} (for one batch)".format(step, float(sum(reco_loss)), float(sum(kl_loss))))
                 print("Seen so far: %s samples" % ((step + 1) * 64))
 
@@ -116,13 +117,13 @@ class Trainer():
 
         for epoch in range(epochs):
             print("\nStart of epoch %d" % (epoch,))
+            start_time = time.time()
             training_loss_reco, training_loss_kl = self.training_epoch(train_ds, model, loss_fn)
             validation_loss_reco, validation_loss_kl = self.validation_epoch(valid_ds, model, loss_fn)
             losses_reco.append(training_loss_reco + self.beta * training_loss_kl)
             losses_valid.append(validation_loss_reco + self.beta * validation_loss_kl)    
-            
             # print epoch results
-            print('### [Epoch {}]: training loss reco {:.3f} kl {:.3f}, validation loss reco {:.3f} kl {:.3f} (per batch) ###'.format(epoch, training_loss_reco, training_loss_kl, validation_loss_reco, validation_loss_kl))
+            print('### [Epoch {} - {.2f} sec]: training loss reco {:.3f} kl {:.3f}, validation loss reco {:.3f} kl {:.3f} (per batch) ###'.format(epoch, start_time - time.time(), training_loss_reco, training_loss_kl, validation_loss_reco, validation_loss_kl))
             if self.train_stop.check_stop_training(losses_valid):
                 print('!!! stopping training !!!')
                 break
