@@ -39,7 +39,7 @@ class DataGenerator():
             while indices:
                 index = indices.pop(0)
                 next_sample = samples[index] #.copy() 
-                yield next_sample, next_sample  # x == y in autoencoder
+                yield next_sample
             if self.sample_max_n is not None and (samples_read_n >= self.sample_max_n):
                 break
         

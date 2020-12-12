@@ -12,7 +12,7 @@ class Stopper():
         self.max_lr_decay = max_lr_decay
         self.lr_decay_n = 0
 
-     def callback_early_stopping(self, loss_list, min_delta=0.1, patience=5):
+    def callback_early_stopping(self, loss_list, min_delta=0.1, patience=5):
         if len(loss_list) < patience:
             return False
         # compute difference of the last #patience epoch losses
@@ -73,14 +73,14 @@ class Trainer():
         # training
         for step, x_batch_train in enumerate(train_ds):
 
-            reco_loss, kl_loss = training_step(x_batch_train, model, loss_fn)    
+            reco_loss, kl_loss = self.training_step(x_batch_train, model, loss_fn)    
 
             # add training loss for each batch
             training_loss_reco += reco_loss
             training_loss_kl += kl_loss
             
             # Log every 200 batches.
-            if step % 20 == 0:
+            if step % 200 == 0:
                 print("Step {}: Reco loss {:.4f}, KL loss {:.4f} (for one batch)".format(step, float(sum(reco_loss)), float(sum(kl_loss))))
                 print("Seen so far: %s samples" % ((step + 1) * 64))
 
@@ -102,7 +102,7 @@ class Trainer():
         validation_loss_kl = 0.
 
         for step, x_batch_val in enumerate(valid_ds):
-            reco_loss, kl_loss = validation_step(x_batch_val, model, loss_fn)
+            reco_loss, kl_loss = self.validation_step(x_batch_val, model, loss_fn)
             validation_loss_reco += reco_loss
             validation_loss_kl += kl_loss
 
@@ -116,8 +116,8 @@ class Trainer():
 
         for epoch in range(epochs):
             print("\nStart of epoch %d" % (epoch,))
-            training_loss_reco, training_loss_kl = training_epoch(train_ds, model, loss_fn)
-            validation_loss_reco, validation_loss_kl = validation_epoch(valid_ds, model, loss_fn)
+            training_loss_reco, training_loss_kl = self.training_epoch(train_ds, model, loss_fn)
+            validation_loss_reco, validation_loss_kl = self.validation_epoch(valid_ds, model, loss_fn)
             losses_reco.append(training_loss_reco + self.beta * training_loss_kl)
             losses_valid.append(validation_loss_reco + self.beta * validation_loss_kl)    
             
@@ -129,7 +129,7 @@ class Trainer():
         return model, losses_reco, losses_valid
 
 
-    def plot_training_results(losses_reco, losses_valid, fig_dir):
+    def plot_training_results(self, losses_reco, losses_valid, fig_dir):
         plt.figure()
         plt.semilogy(losses_reco)
         plt.semilogy(losses_valid)

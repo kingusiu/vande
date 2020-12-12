@@ -12,16 +12,15 @@ import pofah.util.experiment as expe
 import pofah.util.sample_factory as safa
 import util.data_generator as dage
 import sarewt.data_reader as dare
+import training as tra
 
 
 # ********************************************************
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n beta train_total_n gen_part_n valid_total_n batch_n regularizer')
-params = Parameters(run_n=104, beta=0.01, train_total_n=int(10e6), valid_total_n=int(1e6), gen_part_n=int(1e5), batch_n=256, regularizer=None) # 'L1L2'
-loss = losses.make_threeD_kl_loss #losses.make_mse_kl_loss
-reco_loss = losses.threeD_loss #losses.mse_loss
+Parameters = namedtuple('Parameters', 'run_n input_shape beta train_total_n gen_part_n valid_total_n batch_n z_sz lambda_reg')
+params = Parameters(run_n=104, input_shape=(100,3), beta=0.01, train_total_n=int(1e6), valid_total_n=int(1e5), gen_part_n=int(1e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
 paths = safa.SamplePathDirFactory(sdi.path_dict)
 
@@ -31,26 +30,36 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 
 # train (generator)
 data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), sample_part_n=params.gen_part_n, sample_max_n=params.train_total_n) # generate 10 M jet samples
-data_train = tf.data.Dataset.from_generator(data_train_generator, output_types=(tf.float32, tf.float32), output_shapes=((100,3),(100,3))).batch(params.batch_n, drop_remainder=True) # already shuffled
+train_ds = tf.data.Dataset.from_generator(data_train_generator, output_types=tf.float32, output_shapes=params.input_shape).batch(params.batch_n, drop_remainder=True) # already shuffled
 
-# validation (full tensor, 2M samples)
+# validation (full tensor, 1M events -> 2M samples)
 data_valid = dage.constituents_to_input_samples(dare.DataReader(path=paths.sample_dir_path('qcdSideExt')).read_constituents_from_dir(read_n=params.valid_total_n))
-ds_valid = tf.data.Dataset.from_tensor_slices((data_valid, data_valid)).batch(params.batch_n, drop_remainder=True)
+valid_ds = tf.data.Dataset.from_tensor_slices(data_valid).batch(params.batch_n, drop_remainder=True)
 
 # stats for normalization layer
 mean_stdev = data_train_generator.get_mean_and_stdev()
 
 # *******************************************************
+#                       training options
+# *******************************************************
+
+learning_rate = 0.001
+optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+loss_fn = losses.threeD_loss
+
+# *******************************************************
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=loss, reco_loss=reco_loss, batch_sz=params.batch_n, beta=params.beta, regularizer=params.regularizer)
-vae.build(mean_stdev)
+vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3)
+model = vae.build(mean_stdev)
 
 # *******************************************************
 #                       train and save
 # *******************************************************
 
-vae.fit(data_train, epochs=300, validation_data=ds_valid, verbose=2)
-vae.plot_training(experiment.fig_dir)
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=7, min_delta=0.001, max_lr_decay=5, lambda_reg=params.lambda_reg)
+model, losses_reco, losses_valid = trainer.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=4)
+trainer.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
+
 vae.save(path=experiment.model_dir)
