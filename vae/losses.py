@@ -7,6 +7,12 @@ import config.config as co
 #                   training losses
 # ********************************************************
 
+
+## total loss
+@tf.function
+def total_loss(reco_loss, kl_loss, beta):
+    return reco_loss + beta * kl_loss
+
 ### KL
 @tf.function
 def kl_loss(z_mean, z_log_var):
