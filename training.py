@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
@@ -47,7 +48,7 @@ class Trainer():
 
 
     @tf.function
-    def training_step(self, x_batch, model, loss_fn_reco):
+    def training_step(self, model, loss_fn_reco, x_batch):
         
         with tf.GradientTape() as tape:
             # Run the forward pass
@@ -65,49 +66,49 @@ class Trainer():
         return reco_loss, kl_loss
 
 
-    def training_epoch(self, train_ds, model, loss_fn):
+    def training_epoch(self, model, loss_fn, train_ds):
         
         # metric (reset at start of each epoch)
         training_loss_reco = 0.
         training_loss_kl = 0.
 
-        # training
+        # for each batch in training set
         for step, x_batch_train in enumerate(train_ds):
 
-            reco_loss, kl_loss = self.training_step(x_batch_train, model, loss_fn)    
+            reco_loss, kl_loss = self.training_step(model, loss_fn, x_batch_train)    
 
-            # add training loss for each batch
+            # add training loss (reco & KL)
             training_loss_reco += reco_loss
             training_loss_kl += kl_loss
             
-            # Log every 200 batches.
-            if step % 300 == 0:
+            # Log every 3000 batches.
+            if step % 4000 == 0:
                 print("Step {}: mean reco loss {:.4f}, KL loss {:.4f} (in one batch)".format(step, float(sum(reco_loss)), float(sum(kl_loss))))
-                print("Seen so far: %s samples" % ((step + 1) * 64))
+                print("Seen so far: %s samples" % ((step + 1) * 256))
 
         # return average batch loss
-        return (sum(training_loss_reco / step), sum(training_loss_kl / step)) 
+        return (sum(training_loss_reco / (step+1)), sum(training_loss_kl / (step+1))) 
 
 
     @tf.function
-    def validation_step(self, x_batch, model, loss_fn):
+    def validation_step(self, model, loss_fn, x_batch):
         predictions = model(x_batch, training=False)
         reco_loss = loss_fn(x_batch, predictions)
         kl_loss = sum(model.losses)
         return reco_loss, kl_loss
 
 
-    def validation_epoch(self, valid_ds, model, loss_fn):
+    def validation_epoch(self, model, loss_fn, valid_ds):
         
         validation_loss_reco = 0.
         validation_loss_kl = 0.
 
         for step, x_batch_val in enumerate(valid_ds):
-            reco_loss, kl_loss = self.validation_step(x_batch_val, model, loss_fn)
+            reco_loss, kl_loss = self.validation_step(model, loss_fn, x_batch_val)
             validation_loss_reco += reco_loss
             validation_loss_kl += kl_loss
 
-        return (sum(validation_loss_reco / step), sum(validation_loss_kl / step))
+        return (sum(validation_loss_reco / (step+1)), sum(validation_loss_kl / (step+1)))
 
 
     def train(self, model, loss_fn, train_ds, valid_ds, epochs):
@@ -116,10 +117,11 @@ class Trainer():
         losses_valid = []
 
         for epoch in range(epochs):
-            print("\nStart of epoch %d" % (epoch,))
+            now = datetime.datetime.today()
+            print("\n### [{}.{} {}:{}:{}] Start of epoch {}".format(now.day, now.month, now.hour, now.minute, now.second, epoch))
             start_time = time.time()
-            training_loss_reco, training_loss_kl = self.training_epoch(train_ds, model, loss_fn)
-            validation_loss_reco, validation_loss_kl = self.validation_epoch(valid_ds, model, loss_fn)
+            training_loss_reco, training_loss_kl = self.training_epoch(model, loss_fn, train_ds)
+            validation_loss_reco, validation_loss_kl = self.validation_epoch(model, loss_fn, valid_ds)
             losses_reco.append(training_loss_reco + self.beta * training_loss_kl)
             losses_valid.append(validation_loss_reco + self.beta * validation_loss_kl)    
             # print epoch results
@@ -140,3 +142,27 @@ class Trainer():
         plt.legend(['training','validation'], loc='upper right')
         plt.savefig(os.path.join(fig_dir,'loss.png'))
         plt.close()
+
+### routine for prediction
+
+@tf.function
+def prediction_step(self, model, loss_fn, x_batch):
+    predictions = model(x_batch, training=False)
+    reco_loss = loss_fn(x_batch, predictions)
+    kl_loss = sum(model.losses)
+    return predictions, reco_loss, kl_loss
+
+
+def predict(model, loss_fn, test_ds):
+
+    predictions = []
+    validation_loss_reco = 0.
+    validation_loss_kl = 0.
+
+    for step, x_batch_test in enumerate(test_ds):
+        predictions_batch, reco_loss, kl_loss = prediction_step(model, loss_fn, x_batch_test)
+        validation_loss_reco += reco_loss
+        validation_loss_kl += kl_loss
+        predictions.extend(predictions_batch)
+
+    return (np.asarray(predictions), sum(validation_loss_reco / step), sum(validation_loss_kl / step))

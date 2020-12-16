@@ -17,13 +17,12 @@ import sarewt.data_reader as dare
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSideAll','qcdSigAll', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+test_samples = ['qcdSideExt','qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
 #test_samples = ['qcdSig', 'GtoWW35na']
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 701
-cartesian = True
+run_n = 7104
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 
@@ -49,10 +48,11 @@ for sample_id in test_samples:
     for file_path in list_ds:
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
-        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8')).convert_to_cartesian() if cartesian else es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))
+        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))
         test_evts_j1, test_evts_j2 = test_sample.get_particles()
         print('{}: {} j1 evts, {} j2 evts'.format(file_path.numpy().decode('utf-8'), len(test_evts_j1), len(test_evts_j2)))
-
+        test_j1_ds = tf.Dataset.from_tensor_slices(test_evts_j1)
+        test_j2_ds = tf.Dataset.from_tensor_slices(test_evts_j2)
 
         # *******************************************************
         #               predict test data

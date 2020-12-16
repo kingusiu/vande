@@ -1,51 +1,48 @@
 setGPU: Setting GPU to: 0
-2020-12-02 00:45:29.849687: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
-2020-12-02 00:45:29.851267: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
-2020-12-02 00:45:29.851284: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-tensorflow version:  2.1.0
-2020-12-02 00:45:31.265097: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-12-02 00:45:36.007464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+2020-12-15 15:23:51.251766: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+tensorflow version:  2.3.1
+2020-12-15 15:23:53.437307: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-12-15 15:23:58.272744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
 coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
-2020-12-02 00:45:36.007879: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-12-02 00:45:36.016480: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-12-02 00:45:36.019352: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-12-02 00:45:36.020220: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-12-02 00:45:36.023211: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-12-02 00:45:36.024712: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-12-02 00:45:36.031766: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-12-02 00:45:36.033605: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-12-02 00:45:36.034772: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2020-12-02 00:45:36.053576: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199845000 Hz
-2020-12-02 00:45:36.058962: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4bc17c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-12-02 00:45:36.058988: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-12-02 00:45:36.178082: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x43bfc00 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-12-02 00:45:36.178172: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
-2020-12-02 00:45:36.180128: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
-pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+2020-12-15 15:23:58.272812: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-15 15:23:58.281402: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-15 15:23:58.284456: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-15 15:23:58.284908: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-15 15:23:58.288068: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-15 15:23:58.289628: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-15 15:23:58.296478: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-15 15:23:58.298352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-15 15:23:58.300650: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-12-15 15:23:58.323015: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2199845000 Hz
+2020-12-15 15:23:58.329819: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4f10550 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-15 15:23:58.329870: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-15 15:23:58.454583: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x46ee9d0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-15 15:23:58.454690: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-12-15 15:23:58.456789: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:04:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
 coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
-2020-12-02 00:45:36.180214: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-12-02 00:45:36.180250: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-12-02 00:45:36.180280: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-12-02 00:45:36.180308: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-12-02 00:45:36.180338: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-12-02 00:45:36.180366: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-12-02 00:45:36.180395: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-12-02 00:45:36.183516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-12-02 00:45:36.183593: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-12-02 00:45:36.186561: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-12-02 00:45:36.186597: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
-2020-12-02 00:45:36.186617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
-2020-12-02 00:45:36.189924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-12-15 15:23:58.456861: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-15 15:23:58.456905: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-15 15:23:58.456937: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-15 15:23:58.456968: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-15 15:23:58.456998: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-15 15:23:58.457026: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-15 15:23:58.457057: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-15 15:23:58.460200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-15 15:23:58.460272: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-15 15:23:59.100666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-15 15:23:59.100734: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-12-15 15:23:59.100747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-12-15 15:23:59.102902: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10273 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:04:00.0, compute capability: 6.1)
 [DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
 
 num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  2
-[DataReader] deleting...
 [DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
 
 num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  2
 computed mean [-2.5694157e-04  3.9219353e-07  3.1619492e+00] and std-dev [ 0.23610476  0.23951028 14.948415  ]
-[DataReader] deleting...
 Model: "encoder"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
@@ -68,19 +65,19 @@ average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]
 __________________________________________________________________________________________________
 flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
 __________________________________________________________________________________________________
-dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
+dense (Dense)                   (None, 170)          112030      flatten[0][0]                    
 __________________________________________________________________________________________________
-dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
+dense_1 (Dense)                 (None, 40)           6840        dense[0][0]                      
 __________________________________________________________________________________________________
-z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
+z_mean (Dense)                  (None, 10)           410         dense_1[0][0]                    
 __________________________________________________________________________________________________
-z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
+z_log_var (Dense)               (None, 10)           410         dense_1[0][0]                    
 __________________________________________________________________________________________________
 sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
                                                                  z_log_var[0][0]                  
 ==================================================================================================
-Total params: 26,631
-Trainable params: 26,631
+Total params: 120,374
+Trainable params: 120,374
 Non-trainable params: 0
 __________________________________________________________________________________________________
 Model: "decoder"
@@ -89,11 +86,11 @@ Layer (type)                 Output Shape              Param #
 =================================================================
 z_sampling (InputLayer)      [(None, 10)]              0         
 _________________________________________________________________
-dense_2 (Dense)              (None, 15)                165       
+dense_2 (Dense)              (None, 40)                440       
 _________________________________________________________________
-dense_3 (Dense)              (None, 38)                608       
+dense_3 (Dense)              (None, 170)               6970      
 _________________________________________________________________
-dense_4 (Dense)              (None, 658)               25662     
+dense_4 (Dense)              (None, 658)               112518    
 _________________________________________________________________
 reshape (Reshape)            (None, 47, 14)            0         
 _________________________________________________________________
@@ -111,240 +108,1456 @@ lambda_8 (Lambda)            (None, 100, 3)            0
 _________________________________________________________________
 un_normalized_decoder_out (L (None, 100, 3)            0         
 =================================================================
-Total params: 27,106
-Trainable params: 27,106
+Total params: 120,599
+Trainable params: 120,599
 Non-trainable params: 0
 _________________________________________________________________
 Model: "vae"
-__________________________________________________________________________________________________
-Layer (type)                    Output Shape         Param #     Connected to                     
-==================================================================================================
-encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
-__________________________________________________________________________________________________
-lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
-__________________________________________________________________________________________________
-lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
-__________________________________________________________________________________________________
-conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
-__________________________________________________________________________________________________
-lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
-__________________________________________________________________________________________________
-conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
-__________________________________________________________________________________________________
-conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
-__________________________________________________________________________________________________
-average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
-__________________________________________________________________________________________________
-flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
-__________________________________________________________________________________________________
-dense (Dense)                   (None, 38)           25042       flatten[0][0]                    
-__________________________________________________________________________________________________
-dense_1 (Dense)                 (None, 15)           585         dense[0][0]                      
-__________________________________________________________________________________________________
-z_mean (Dense)                  (None, 10)           160         dense_1[0][0]                    
-__________________________________________________________________________________________________
-z_log_var (Dense)               (None, 10)           160         dense_1[0][0]                    
-__________________________________________________________________________________________________
-sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
-                                                                 z_log_var[0][0]                  
-__________________________________________________________________________________________________
-decoder (Model)                 (None, 100, 3)       27106       sampling[0][0]                   
-==================================================================================================
-Total params: 53,737
-Trainable params: 53,737
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+model_input (InputLayer)     [(None, 100, 3)]          0         
+_________________________________________________________________
+encoder (Functional)         [(None, 10), (None, 10),  120374    
+_________________________________________________________________
+decoder (Functional)         (None, 100, 3)            120599    
+=================================================================
+Total params: 240,973
+Trainable params: 240,973
 Non-trainable params: 0
-__________________________________________________________________________________________________
-calling generator fit()
-Epoch 1/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-2020-12-02 00:48:05.222107: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-12-02 00:48:05.395826: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+_________________________________________________________________
+
+### [15.12 15:27:6] Start of epoch 0
+2020-12-15 15:27:31.417222: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-15 15:27:31.572467: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+Step 0: mean reco loss 64939.8633, KL loss 5.9108 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 202.1534, KL loss 1869.7250 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 153.3129, KL loss 1672.7750 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 149.9338, KL loss 1543.2649 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 77.0662, KL loss 1384.7911 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 81.4463, KL loss 1256.9515 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 69.5621, KL loss 1246.8004 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 58.6138, KL loss 1182.9706 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 80.7443, KL loss 1146.7025 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 57.5465, KL loss 1154.5925 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 63.0049, KL loss 1109.1023 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 61.5415, KL loss 1132.6581 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 64.0599, KL loss 1088.7607 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 59.5709, KL loss 1063.9702 (in one batch)
+Seen so far: 9984256 samples
 [DataGenerator]: __call__() yielded 10000000 samples
-[DataReader] deleting...
-Epoch 1/300
-39062/39062 - 3294s - loss: 86.1687 - threeD_loss: 85.3341 - kl_loss: 83.6292 - val_loss: 21.3565 - val_threeD_loss: 20.6612 - val_kl_loss: 69.5246
-Epoch 2/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3334s - loss: 20.7723 - threeD_loss: 20.1018 - kl_loss: 67.0429 - val_loss: 19.1533 - val_threeD_loss: 18.5010 - val_kl_loss: 65.2343
-2020-12-02 02:38:08.671980: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 3/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3328s - loss: 18.6770 - threeD_loss: 18.0357 - kl_loss: 64.1425 - val_loss: 17.6523 - val_threeD_loss: 17.0208 - val_kl_loss: 63.1511
-2020-12-02 03:33:36.336754: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 4/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3209s - loss: 17.7672 - threeD_loss: 17.1404 - kl_loss: 62.6774 - val_loss: 17.0542 - val_threeD_loss: 16.4310 - val_kl_loss: 62.3311
-2020-12-02 04:27:04.945998: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 5/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3283s - loss: 17.5238 - threeD_loss: 16.9055 - kl_loss: 61.8193 - val_loss: 16.8366 - val_threeD_loss: 16.2216 - val_kl_loss: 61.5000
-2020-12-02 05:21:47.545217: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 6/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3315s - loss: 17.3673 - threeD_loss: 16.7557 - kl_loss: 61.1603 - val_loss: 16.7781 - val_threeD_loss: 16.1692 - val_kl_loss: 60.8899
-2020-12-02 06:17:02.951217: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 7/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3301s - loss: 17.2382 - threeD_loss: 16.6318 - kl_loss: 60.6383 - val_loss: 16.6057 - val_threeD_loss: 16.0002 - val_kl_loss: 60.5557
-2020-12-02 07:12:03.488934: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 8/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3275s - loss: 16.9099 - threeD_loss: 16.3076 - kl_loss: 60.2194 - val_loss: 16.4124 - val_threeD_loss: 15.8120 - val_kl_loss: 60.0365
-2020-12-02 08:06:38.741977: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 9/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3246s - loss: 16.5275 - threeD_loss: 15.9280 - kl_loss: 59.9484 - val_loss: 15.9097 - val_threeD_loss: 15.3109 - val_kl_loss: 59.8787
-2020-12-02 09:00:44.837637: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 10/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3274s - loss: 16.1398 - threeD_loss: 15.5423 - kl_loss: 59.7537 - val_loss: 16.8149 - val_threeD_loss: 16.2193 - val_kl_loss: 59.5573
-2020-12-02 09:55:18.522039: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 11/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
+### [Epoch 0 - 2495.89 sec]: training loss reco 199.633 kl 1294.573, validation loss reco 63.899 kl 1102.652 (mean per batch) ###
 
-Epoch 00011: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
-39062/39062 - 3226s - loss: 15.9230 - threeD_loss: 15.3291 - kl_loss: 59.3775 - val_loss: 16.6765 - val_threeD_loss: 16.0857 - val_kl_loss: 59.0911
-2020-12-02 10:49:04.755369: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 12/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3250s - loss: 15.1934 - threeD_loss: 14.6008 - kl_loss: 59.2623 - val_loss: 15.1572 - val_threeD_loss: 14.5663 - val_kl_loss: 59.0881
-2020-12-02 11:43:14.452344: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 13/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3192s - loss: 15.1509 - threeD_loss: 14.5608 - kl_loss: 59.0144 - val_loss: 15.1498 - val_threeD_loss: 14.5607 - val_kl_loss: 58.9109
-2020-12-02 12:36:26.290729: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 14/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 2936s - loss: 15.1352 - threeD_loss: 14.5474 - kl_loss: 58.7802 - val_loss: 15.1283 - val_threeD_loss: 14.5419 - val_kl_loss: 58.6404
-2020-12-02 13:25:21.957628: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 15/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3176s - loss: 15.1217 - threeD_loss: 14.5360 - kl_loss: 58.5733 - val_loss: 15.1067 - val_threeD_loss: 14.5223 - val_kl_loss: 58.4433
-2020-12-02 14:18:18.027541: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 16/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3300s - loss: 15.1097 - threeD_loss: 14.5258 - kl_loss: 58.3974 - val_loss: 15.2035 - val_threeD_loss: 14.6203 - val_kl_loss: 58.3137
-2020-12-02 15:13:17.853163: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 17/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3302s - loss: 15.1005 - threeD_loss: 14.5183 - kl_loss: 58.2287 - val_loss: 15.1016 - val_threeD_loss: 14.5203 - val_kl_loss: 58.1254
-2020-12-02 16:08:19.470516: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 18/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3360s - loss: 15.0916 - threeD_loss: 14.5108 - kl_loss: 58.0784 - val_loss: 15.0718 - val_threeD_loss: 14.4919 - val_kl_loss: 57.9861
-2020-12-02 17:04:19.386152: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 19/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3260s - loss: 15.0858 - threeD_loss: 14.5065 - kl_loss: 57.9327 - val_loss: 15.0970 - val_threeD_loss: 14.5180 - val_kl_loss: 57.9021
-2020-12-02 17:58:39.629669: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 20/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3399s - loss: 15.0772 - threeD_loss: 14.4991 - kl_loss: 57.7971 - val_loss: 15.0716 - val_threeD_loss: 14.4942 - val_kl_loss: 57.7408
-2020-12-02 18:55:18.378699: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 21/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3721s - loss: 15.0645 - threeD_loss: 14.4876 - kl_loss: 57.6989 - val_loss: 15.0892 - val_threeD_loss: 14.5125 - val_kl_loss: 57.6672
-2020-12-02 19:57:19.308125: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 22/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3736s - loss: 15.0567 - threeD_loss: 14.4809 - kl_loss: 57.5842 - val_loss: 15.0313 - val_threeD_loss: 14.4560 - val_kl_loss: 57.5349
-2020-12-02 20:59:35.415175: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 23/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3551s - loss: 15.0520 - threeD_loss: 14.4774 - kl_loss: 57.4628 - val_loss: 15.0249 - val_threeD_loss: 14.4507 - val_kl_loss: 57.4209
-2020-12-02 21:58:46.368849: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 24/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3631s - loss: 15.0459 - threeD_loss: 14.4725 - kl_loss: 57.3419 - val_loss: 15.0564 - val_threeD_loss: 14.4837 - val_kl_loss: 57.2694
-2020-12-02 22:59:17.497093: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 25/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
+### [15.12 16:8:42] Start of epoch 1
+Step 0: mean reco loss 64.4401, KL loss 1107.4503 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 59.2304, KL loss 1075.6113 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 47.6390, KL loss 1115.4822 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 45.8657, KL loss 1128.1888 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 47.3278, KL loss 1150.8196 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 42.6136, KL loss 1098.2489 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 46.0434, KL loss 1072.6072 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 46.8449, KL loss 1078.8247 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 44.5502, KL loss 1042.3911 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 45.0107, KL loss 1051.2640 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 45.0101, KL loss 1068.2595 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 41.3576, KL loss 1041.8098 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 45.5865, KL loss 1060.4526 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 43.5974, KL loss 1046.1179 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 1 - 2208.28 sec]: training loss reco 48.669 kl 1079.705, validation loss reco 42.331 kl 1040.629 (mean per batch) ###
 
-Epoch 00025: ReduceLROnPlateau reducing learning rate to 1.0000000474974514e-05.
-39062/39062 - 3801s - loss: 15.0382 - threeD_loss: 14.4659 - kl_loss: 57.2283 - val_loss: 15.0582 - val_threeD_loss: 14.4866 - val_kl_loss: 57.1534
-2020-12-03 00:02:38.571261: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 26/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
-Epoch 1/300
-39062/39062 - 3811s - loss: 14.9932 - threeD_loss: 14.4212 - kl_loss: 57.1912 - val_loss: 14.9926 - val_threeD_loss: 14.4209 - val_kl_loss: 57.1749
-2020-12-03 01:06:09.385796: W tensorflow/core/kernels/data/generator_dataset_op.cc:103] Error occurred when finalizing GeneratorDataset iterator: Cancelled: Operation was cancelled
-Epoch 27/300
-[DataGenerator]: __call__()
-[DataReader] generate_event_parts_from_dir(): reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
-[DataReader]: generate_event_parts_by_num() first call
+### [15.12 16:45:30] Start of epoch 2
+Step 0: mean reco loss 41.4336, KL loss 1047.5586 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 47.6694, KL loss 1037.1216 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 47.7740, KL loss 1044.7966 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 43.3956, KL loss 1010.7902 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 41.6844, KL loss 1035.9913 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 42.5242, KL loss 1038.6132 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 42.4088, KL loss 1006.9492 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 44.4540, KL loss 1011.1107 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 41.7563, KL loss 990.3398 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 41.5629, KL loss 984.9301 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 47.3102, KL loss 978.7380 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.4723, KL loss 987.7111 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 48.7189, KL loss 983.9213 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 54.9496, KL loss 969.3202 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 2 - 2243.58 sec]: training loss reco 44.085 kl 1008.720, validation loss reco 50.265 kl 980.324 (mean per batch) ###
+
+### [15.12 17:22:54] Start of epoch 3
+Step 0: mean reco loss 49.5228, KL loss 966.9087 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 41.0190, KL loss 969.4933 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 41.5077, KL loss 980.1193 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 42.0977, KL loss 966.2547 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 43.1452, KL loss 947.8984 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 43.2302, KL loss 957.1444 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.8461, KL loss 944.5262 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 41.3701, KL loss 964.5234 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.4139, KL loss 951.9067 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.6896, KL loss 937.0413 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 42.6971, KL loss 931.8203 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 48.3381, KL loss 921.9735 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.8577, KL loss 956.4141 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 40.6640, KL loss 943.5101 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 3 - 2217.88 sec]: training loss reco 42.794 kl 955.908, validation loss reco 39.914 kl 939.253 (mean per batch) ###
+
+### [15.12 17:59:52] Start of epoch 4
+Step 0: mean reco loss 40.6016, KL loss 937.0330 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.0251, KL loss 925.3962 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 43.6957, KL loss 931.9308 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 41.6111, KL loss 926.3856 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 42.5654, KL loss 946.8608 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 41.4473, KL loss 924.0233 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 41.1888, KL loss 913.1786 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 42.3894, KL loss 932.1829 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.8298, KL loss 904.3747 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 42.6454, KL loss 918.4943 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.2970, KL loss 901.9464 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 52.8965, KL loss 925.8839 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 45.1658, KL loss 902.6596 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.5616, KL loss 890.2984 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 4 - 2189.58 sec]: training loss reco 42.607 kl 921.290, validation loss reco 42.245 kl 902.483 (mean per batch) ###
+
+### [15.12 18:36:21] Start of epoch 5
+Step 0: mean reco loss 41.7468, KL loss 893.4918 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.8373, KL loss 923.1985 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 41.3573, KL loss 905.6815 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.6198, KL loss 913.6086 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.6550, KL loss 909.7173 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 50.9899, KL loss 882.9488 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.6345, KL loss 897.6815 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.3123, KL loss 892.6951 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.5309, KL loss 880.9517 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.2732, KL loss 890.3344 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.8060, KL loss 893.5216 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.6148, KL loss 896.5742 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.4175, KL loss 906.7727 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.9714, KL loss 891.4695 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 5 - 2184.32 sec]: training loss reco 41.822 kl 899.843, validation loss reco 40.676 kl 889.254 (mean per batch) ###
+
+### [15.12 19:12:46] Start of epoch 6
+Step 0: mean reco loss 40.4538, KL loss 890.2333 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 40.0847, KL loss 903.3630 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.8091, KL loss 904.5895 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.2094, KL loss 889.8822 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.7748, KL loss 893.2202 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 41.5003, KL loss 926.9042 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 41.1651, KL loss 892.3077 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 47.7180, KL loss 878.0798 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 55.1462, KL loss 894.3013 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 41.2883, KL loss 881.9075 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 41.1034, KL loss 868.0380 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.8754, KL loss 887.6970 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 41.2767, KL loss 904.1778 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.2294, KL loss 897.1503 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 6 - 2183.80 sec]: training loss reco 41.416 kl 886.423, validation loss reco 41.556 kl 882.957 (mean per batch) ###
+
+### [15.12 19:49:9] Start of epoch 7
+Step 0: mean reco loss 40.2712, KL loss 896.8934 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 41.0397, KL loss 891.4389 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 41.4489, KL loss 870.2488 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.9958, KL loss 890.9330 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.2347, KL loss 873.0302 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.4341, KL loss 881.7468 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 42.5071, KL loss 879.2763 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 41.2374, KL loss 870.0701 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.6398, KL loss 879.5659 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.3934, KL loss 879.8119 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.3295, KL loss 887.1036 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 42.7575, KL loss 884.6266 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.9922, KL loss 884.9156 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.0291, KL loss 864.4387 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 7 - 2131.01 sec]: training loss reco 41.178 kl 878.131, validation loss reco 39.825 kl 872.911 (mean per batch) ###
+
+### [15.12 20:24:40] Start of epoch 8
+Step 0: mean reco loss 38.8438, KL loss 867.0323 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 43.9367, KL loss 859.8326 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 45.5912, KL loss 864.8862 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.1818, KL loss 874.6520 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.9530, KL loss 860.7504 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 42.0530, KL loss 888.4523 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 41.8049, KL loss 865.0862 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.9617, KL loss 885.3333 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 42.6931, KL loss 886.4119 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 42.7441, KL loss 865.9966 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.4328, KL loss 871.9738 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 42.2381, KL loss 848.5109 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.6149, KL loss 866.0339 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.0414, KL loss 860.7061 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 8 - 2217.99 sec]: training loss reco 41.093 kl 870.349, validation loss reco 40.626 kl 869.191 (mean per batch) ###
+
+### [15.12 21:1:38] Start of epoch 9
+Step 0: mean reco loss 39.9992, KL loss 864.3425 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.7746, KL loss 860.4309 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 41.4284, KL loss 870.2405 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.7530, KL loss 878.4801 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 47.1478, KL loss 872.1464 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.0056, KL loss 880.1083 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.0208, KL loss 888.4948 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.3608, KL loss 868.0259 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.2295, KL loss 879.2824 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.5639, KL loss 864.4232 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.4448, KL loss 844.7999 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.8454, KL loss 853.9564 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.7716, KL loss 843.9034 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 37.9189, KL loss 844.6491 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 9 - 2252.20 sec]: training loss reco 40.875 kl 864.238, validation loss reco 39.363 kl 860.675 (mean per batch) ###
+
+### [15.12 21:39:11] Start of epoch 10
+Step 0: mean reco loss 38.7755, KL loss 865.4752 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.2540, KL loss 850.0603 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 40.3280, KL loss 862.6212 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.9559, KL loss 853.6006 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.3648, KL loss 863.9878 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.8517, KL loss 848.2035 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 72.6647, KL loss 855.2412 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 41.6810, KL loss 875.2120 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 49.2195, KL loss 845.9595 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.1531, KL loss 847.1441 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.9769, KL loss 858.7088 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.5396, KL loss 868.8785 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.5875, KL loss 858.1660 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.5920, KL loss 844.8198 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 10 - 2108.55 sec]: training loss reco 40.692 kl 857.825, validation loss reco 41.252 kl 850.538 (mean per batch) ###
+
+### [15.12 22:14:19] Start of epoch 11
+Step 0: mean reco loss 41.4270, KL loss 855.1185 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 42.6895, KL loss 873.7420 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.8579, KL loss 868.3902 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.3952, KL loss 833.5621 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.7736, KL loss 864.6209 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.3608, KL loss 861.0099 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.0314, KL loss 870.0271 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 37.6412, KL loss 863.1922 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 43.2862, KL loss 849.6719 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.6768, KL loss 851.1492 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.3142, KL loss 866.1485 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.8064, KL loss 861.8411 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 37.2351, KL loss 867.2908 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 40.2972, KL loss 839.1602 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 11 - 2164.96 sec]: training loss reco 40.548 kl 854.680, validation loss reco 43.182 kl 844.261 (mean per batch) ###
+
+### [15.12 22:50:24] Start of epoch 12
+Step 0: mean reco loss 42.9431, KL loss 829.1305 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 40.2821, KL loss 861.2681 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.5562, KL loss 839.5192 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 41.8931, KL loss 861.6054 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.8521, KL loss 856.3470 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.9320, KL loss 858.5250 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 37.9915, KL loss 840.7668 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.0520, KL loss 835.3105 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.2474, KL loss 868.6948 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.9202, KL loss 858.4290 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 37.7074, KL loss 855.4784 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.5740, KL loss 855.6876 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.1407, KL loss 840.4666 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 37.4990, KL loss 844.0023 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 12 - 2226.50 sec]: training loss reco 40.397 kl 853.073, validation loss reco 39.501 kl 855.801 (mean per batch) ###
+
+### [15.12 23:27:31] Start of epoch 13
+Step 0: mean reco loss 39.5975, KL loss 869.7854 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.2419, KL loss 857.7308 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 37.5620, KL loss 846.6064 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.5992, KL loss 854.6310 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.7521, KL loss 859.3674 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.6293, KL loss 854.7652 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 44.8270, KL loss 838.5092 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.5963, KL loss 849.3015 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.4026, KL loss 846.9315 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.0570, KL loss 850.5067 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.0610, KL loss 851.5787 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.6195, KL loss 853.7614 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.4546, KL loss 855.6498 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.1626, KL loss 845.3154 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 13 - 2249.21 sec]: training loss reco 40.165 kl 853.604, validation loss reco 39.221 kl 850.424 (mean per batch) ###
+
+### [16.12 0:5:0] Start of epoch 14
+Step 0: mean reco loss 39.2681, KL loss 843.9771 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.1245, KL loss 855.3384 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 37.9175, KL loss 832.8058 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.2663, KL loss 849.4805 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 41.8531, KL loss 839.4155 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.1509, KL loss 847.1879 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.9193, KL loss 854.0850 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.9416, KL loss 852.1806 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.4340, KL loss 849.0461 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.0457, KL loss 850.0886 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.8960, KL loss 853.9792 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 44.0530, KL loss 854.3804 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 41.4608, KL loss 860.4479 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.4095, KL loss 851.6104 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 14 - 2212.18 sec]: training loss reco 39.941 kl 852.614, validation loss reco 40.963 kl 855.992 (mean per batch) ###
+
+### [16.12 0:41:52] Start of epoch 15
+Step 0: mean reco loss 39.9072, KL loss 868.1348 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.9277, KL loss 838.9625 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 37.9848, KL loss 852.1974 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.0562, KL loss 854.8105 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.5994, KL loss 861.4843 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.4996, KL loss 860.0607 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.8424, KL loss 847.4111 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.1260, KL loss 845.2850 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.4514, KL loss 868.1842 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.8896, KL loss 849.0515 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.9316, KL loss 865.4062 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.5011, KL loss 841.9446 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.3552, KL loss 845.7484 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.9599, KL loss 841.6224 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 15 - 2192.91 sec]: training loss reco 39.845 kl 851.982, validation loss reco 39.248 kl 855.761 (mean per batch) ###
+
+### [16.12 1:18:25] Start of epoch 16
+Step 0: mean reco loss 38.3310, KL loss 846.9724 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.2174, KL loss 869.1136 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.2934, KL loss 861.7728 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 41.1159, KL loss 841.6349 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.9564, KL loss 858.9897 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.2098, KL loss 835.8321 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.3007, KL loss 851.6618 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.5251, KL loss 855.1255 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.8650, KL loss 867.3593 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.4321, KL loss 838.9504 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.6373, KL loss 856.6606 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.4128, KL loss 843.1949 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.5998, KL loss 840.2026 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.1714, KL loss 847.9487 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 16 - 2193.08 sec]: training loss reco 39.806 kl 850.756, validation loss reco 39.178 kl 849.264 (mean per batch) ###
+
+### [16.12 1:54:58] Start of epoch 17
+Step 0: mean reco loss 38.9619, KL loss 861.4341 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.2028, KL loss 856.6542 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 41.0919, KL loss 836.2622 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.3001, KL loss 852.5800 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.6352, KL loss 872.3047 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.4594, KL loss 863.4691 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.4399, KL loss 839.7957 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.7113, KL loss 858.4044 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 47.3894, KL loss 847.0197 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.2907, KL loss 856.0485 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.6277, KL loss 860.8867 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.6144, KL loss 851.7154 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.4828, KL loss 851.7199 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.8839, KL loss 836.3757 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 17 - 2206.51 sec]: training loss reco 39.762 kl 850.067, validation loss reco 39.509 kl 841.292 (mean per batch) ###
+
+### [16.12 2:31:44] Start of epoch 18
+Step 0: mean reco loss 39.4737, KL loss 860.5339 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 40.2349, KL loss 844.9495 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.4786, KL loss 852.5143 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.8762, KL loss 854.3899 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.4292, KL loss 844.8297 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.2554, KL loss 848.5483 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.9949, KL loss 864.0440 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.3893, KL loss 853.8750 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.0058, KL loss 848.7314 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.4891, KL loss 850.8967 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.7903, KL loss 847.9900 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.6223, KL loss 845.5675 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 45.5813, KL loss 832.2823 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.5803, KL loss 883.9789 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 18 - 2274.90 sec]: training loss reco 39.726 kl 849.502, validation loss reco 38.567 kl 854.107 (mean per batch) ###
+
+### [16.12 3:9:39] Start of epoch 19
+Step 0: mean reco loss 39.3948, KL loss 865.1863 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.1099, KL loss 843.8519 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.8490, KL loss 855.6984 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.7283, KL loss 835.4991 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.5433, KL loss 850.4375 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.1498, KL loss 842.9882 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.2691, KL loss 849.4908 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.6858, KL loss 852.5208 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 43.4206, KL loss 851.8066 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.8797, KL loss 852.3210 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.7432, KL loss 853.1685 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.9722, KL loss 840.4060 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.7304, KL loss 848.0898 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.1898, KL loss 836.8947 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 19 - 2197.63 sec]: training loss reco 39.662 kl 849.601, validation loss reco 39.190 kl 846.293 (mean per batch) ###
+
+### [16.12 3:46:17] Start of epoch 20
+Step 0: mean reco loss 40.5102, KL loss 852.1517 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.8395, KL loss 848.7977 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 37.8367, KL loss 838.5571 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.6051, KL loss 845.3397 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 41.2104, KL loss 855.8041 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.9170, KL loss 849.9561 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.8338, KL loss 852.0803 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.3762, KL loss 850.7855 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.6016, KL loss 843.9048 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.9138, KL loss 838.8726 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.8308, KL loss 850.6517 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.6003, KL loss 860.2094 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 37.0527, KL loss 847.7543 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 41.0975, KL loss 835.2174 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 20 - 2223.41 sec]: training loss reco 39.812 kl 848.906, validation loss reco 39.220 kl 850.563 (mean per batch) ###
+
+### [16.12 4:23:20] Start of epoch 21
+Step 0: mean reco loss 38.8353, KL loss 862.2299 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.0144, KL loss 852.4046 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.8273, KL loss 839.1235 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.0548, KL loss 847.3286 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.4528, KL loss 847.6626 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.5387, KL loss 856.6909 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.7050, KL loss 835.3959 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.1513, KL loss 832.6437 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.3943, KL loss 848.1435 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 37.5195, KL loss 862.5508 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.8465, KL loss 851.7997 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.4148, KL loss 836.9964 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.4124, KL loss 860.0220 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.0882, KL loss 855.4250 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 21 - 2236.60 sec]: training loss reco 39.777 kl 848.789, validation loss reco 38.567 kl 845.204 (mean per batch) ###
+
+### [16.12 5:0:37] Start of epoch 22
+Step 0: mean reco loss 38.9405, KL loss 850.4612 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.6561, KL loss 863.3101 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.3095, KL loss 840.7743 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.1856, KL loss 845.6241 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.7129, KL loss 856.7056 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.1452, KL loss 852.1439 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 37.9305, KL loss 830.4874 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.2756, KL loss 832.5609 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.1139, KL loss 857.4913 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.7362, KL loss 861.1964 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 37.4463, KL loss 842.2052 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.0203, KL loss 847.7955 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 64.6702, KL loss 841.1439 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.7488, KL loss 854.0640 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 22 - 2124.47 sec]: training loss reco 39.655 kl 847.906, validation loss reco 39.334 kl 842.389 (mean per batch) ###
+
+### [16.12 5:36:2] Start of epoch 23
+Step 0: mean reco loss 40.0272, KL loss 839.9360 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.3431, KL loss 838.3833 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.8943, KL loss 850.9843 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.7076, KL loss 828.9610 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.5726, KL loss 848.8678 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.2699, KL loss 851.3799 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.6151, KL loss 840.6211 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.3395, KL loss 827.0516 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.2626, KL loss 842.9178 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.6119, KL loss 851.9860 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.8540, KL loss 852.6928 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.8330, KL loss 829.9387 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 41.0918, KL loss 835.1464 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.3862, KL loss 847.8421 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 23 - 2234.41 sec]: training loss reco 39.861 kl 848.223, validation loss reco 39.409 kl 853.357 (mean per batch) ###
+
+### [16.12 6:13:16] Start of epoch 24
+Step 0: mean reco loss 40.4799, KL loss 867.3611 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.7958, KL loss 834.0575 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.8204, KL loss 865.3226 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.8701, KL loss 847.0007 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.4114, KL loss 859.5981 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.8291, KL loss 838.5889 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.6120, KL loss 846.4263 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 42.1294, KL loss 858.1900 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.7330, KL loss 826.1547 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 37.9044, KL loss 844.7449 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.9770, KL loss 846.8424 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 37.7500, KL loss 852.2466 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.8878, KL loss 838.1074 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.0731, KL loss 838.0743 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 24 - 2211.05 sec]: training loss reco 39.842 kl 848.465, validation loss reco 39.317 kl 853.078 (mean per batch) ###
+
+### [16.12 6:50:7] Start of epoch 25
+Step 0: mean reco loss 40.5471, KL loss 854.1147 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.9060, KL loss 853.4886 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.2672, KL loss 855.0750 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 41.6181, KL loss 846.5342 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.6049, KL loss 848.3908 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.1561, KL loss 836.1221 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.9181, KL loss 841.6846 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.2478, KL loss 831.5266 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.3680, KL loss 851.0411 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 42.5027, KL loss 842.8360 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 41.3251, KL loss 855.3386 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.1508, KL loss 850.3929 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.0757, KL loss 857.0555 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.4614, KL loss 845.1636 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 25 - 2154.04 sec]: training loss reco 39.770 kl 849.473, validation loss reco 38.780 kl 846.135 (mean per batch) ###
+
+### [16.12 7:26:1] Start of epoch 26
+Step 0: mean reco loss 38.5444, KL loss 843.7401 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.1287, KL loss 841.4949 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.1246, KL loss 853.3022 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.3763, KL loss 858.5200 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 41.0672, KL loss 870.1349 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.0427, KL loss 846.4671 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.2262, KL loss 854.1002 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 42.1338, KL loss 832.3829 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 41.1663, KL loss 839.6049 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 37.5072, KL loss 850.2982 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.1670, KL loss 847.0522 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.4804, KL loss 877.0230 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.3677, KL loss 835.2316 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 42.2304, KL loss 846.1096 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 26 - 2247.19 sec]: training loss reco 39.764 kl 848.694, validation loss reco 40.056 kl 842.713 (mean per batch) ###
+
+### [16.12 8:3:28] Start of epoch 27
+Step 0: mean reco loss 40.1430, KL loss 838.0021 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 44.6601, KL loss 878.0674 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.1790, KL loss 856.5859 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.6550, KL loss 853.5400 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.2901, KL loss 849.0156 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.3333, KL loss 849.6622 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 42.6769, KL loss 844.2009 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.9381, KL loss 862.8058 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.0779, KL loss 849.6873 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.2205, KL loss 842.6385 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.8337, KL loss 857.1578 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 41.1696, KL loss 853.4387 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 37.6427, KL loss 842.1608 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.7607, KL loss 852.4393 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 27 - 2164.43 sec]: training loss reco 39.678 kl 848.811, validation loss reco 39.307 kl 839.989 (mean per batch) ###
+
+### [16.12 8:39:33] Start of epoch 28
+Step 0: mean reco loss 39.0558, KL loss 823.8023 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.3004, KL loss 849.8531 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.9042, KL loss 843.7464 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 42.7460, KL loss 840.2624 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.5705, KL loss 864.7734 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.2005, KL loss 848.2020 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.9205, KL loss 859.8080 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.2460, KL loss 836.9770 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.8144, KL loss 834.9203 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 43.7426, KL loss 839.2666 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.7897, KL loss 859.6160 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.9639, KL loss 844.9486 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.4131, KL loss 846.0541 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.2170, KL loss 845.0670 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 28 - 2167.05 sec]: training loss reco 39.590 kl 847.248, validation loss reco 38.878 kl 849.416 (mean per batch) ###
+
+### [16.12 9:15:40] Start of epoch 29
+Step 0: mean reco loss 38.1926, KL loss 857.0155 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 37.0627, KL loss 844.5466 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 40.2798, KL loss 848.0157 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 42.0300, KL loss 851.5018 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.5782, KL loss 840.7251 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.7682, KL loss 835.2933 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.4225, KL loss 851.7126 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.3519, KL loss 855.6269 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 41.2799, KL loss 857.8482 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.4103, KL loss 857.2877 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.4046, KL loss 845.2620 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 37.5499, KL loss 829.7926 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.1582, KL loss 860.9716 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.4895, KL loss 850.1639 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 29 - 2143.03 sec]: training loss reco 39.536 kl 849.284, validation loss reco 39.076 kl 846.853 (mean per batch) ###
+
+### [16.12 9:51:23] Start of epoch 30
+Step 0: mean reco loss 39.7279, KL loss 851.8216 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.3334, KL loss 853.9926 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.7000, KL loss 861.2141 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.5366, KL loss 852.5909 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 42.5191, KL loss 860.1189 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.0984, KL loss 849.2200 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 37.5537, KL loss 821.3488 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.1016, KL loss 850.9806 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.7353, KL loss 857.9338 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.2570, KL loss 854.1967 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 40.2177, KL loss 871.8318 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 37.9132, KL loss 851.1683 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.3164, KL loss 844.6915 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 42.4572, KL loss 863.3508 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 30 - 2124.66 sec]: training loss reco 39.555 kl 849.046, validation loss reco 39.513 kl 852.702 (mean per batch) ###
+
+### [16.12 10:26:47] Start of epoch 31
+Step 0: mean reco loss 40.5539, KL loss 874.0449 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.9527, KL loss 853.1831 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.8454, KL loss 835.9160 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 45.7515, KL loss 852.6439 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.2859, KL loss 844.8534 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.6585, KL loss 844.8483 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 53.5981, KL loss 845.1618 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 37.7695, KL loss 845.2048 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.7849, KL loss 856.8155 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.6278, KL loss 848.5651 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.7326, KL loss 856.9964 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.6523, KL loss 834.8388 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.5030, KL loss 848.9123 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.4768, KL loss 850.0005 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 31 - 2223.80 sec]: training loss reco 39.662 kl 849.183, validation loss reco 38.929 kl 846.906 (mean per batch) ###
+
+### [16.12 11:3:51] Start of epoch 32
+Step 0: mean reco loss 39.1063, KL loss 853.8866 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 40.2738, KL loss 845.8317 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.9971, KL loss 836.7083 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.2155, KL loss 830.0773 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.5064, KL loss 867.7405 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.3322, KL loss 853.1898 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.5412, KL loss 833.2008 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 41.0338, KL loss 856.9858 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 38.5299, KL loss 842.8046 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 41.0920, KL loss 856.9785 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.3114, KL loss 855.1425 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.5418, KL loss 842.0727 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 39.6276, KL loss 842.9989 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.6766, KL loss 857.1927 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 32 - 2124.55 sec]: training loss reco 39.585 kl 848.126, validation loss reco 38.365 kl 846.179 (mean per batch) ###
+
+### [16.12 11:39:16] Start of epoch 33
+Step 0: mean reco loss 38.1474, KL loss 868.8327 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.9509, KL loss 863.4888 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 42.5964, KL loss 819.3284 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.6564, KL loss 838.4453 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.5054, KL loss 852.3276 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.0119, KL loss 864.7547 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.1171, KL loss 839.5258 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.4034, KL loss 857.3243 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 43.7104, KL loss 840.1390 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.8329, KL loss 865.3769 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.8202, KL loss 841.4241 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.4074, KL loss 832.3796 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.0178, KL loss 856.0385 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 37.7480, KL loss 824.8071 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 33 - 2147.09 sec]: training loss reco 39.619 kl 851.483, validation loss reco 41.123 kl 848.118 (mean per batch) ###
+
+### [16.12 12:15:3] Start of epoch 34
+Step 0: mean reco loss 41.5888, KL loss 838.9205 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.7386, KL loss 849.0165 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.7902, KL loss 870.0740 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.3443, KL loss 845.0696 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 48.1142, KL loss 987.5119 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.4524, KL loss 861.4753 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.3361, KL loss 851.6978 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.2694, KL loss 861.3843 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 41.5849, KL loss 852.6312 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 37.8093, KL loss 853.8413 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.8622, KL loss 844.3154 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 36.8539, KL loss 841.1676 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.6509, KL loss 843.6999 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.6306, KL loss 857.1721 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 34 - 2283.28 sec]: training loss reco 39.447 kl 852.331, validation loss reco 38.201 kl 844.579 (mean per batch) ###
+
+### [16.12 12:53:6] Start of epoch 35
+Step 0: mean reco loss 37.3242, KL loss 833.3289 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.2093, KL loss 836.0825 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.5683, KL loss 854.6918 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.6043, KL loss 850.2998 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.8527, KL loss 861.2970 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.0150, KL loss 845.6060 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.1368, KL loss 863.1451 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 40.9975, KL loss 850.9313 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 46.3981, KL loss 844.6820 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.6482, KL loss 828.0447 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.1837, KL loss 830.9982 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.5225, KL loss 830.5870 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.7395, KL loss 846.9566 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.3725, KL loss 852.4114 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 35 - 2258.44 sec]: training loss reco 39.503 kl 847.727, validation loss reco 40.072 kl 844.418 (mean per batch) ###
+
+### [16.12 13:30:45] Start of epoch 36
+Step 0: mean reco loss 39.1073, KL loss 826.9619 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.8644, KL loss 845.4236 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 37.8781, KL loss 865.2192 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.4194, KL loss 852.5458 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.7180, KL loss 848.2523 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.9611, KL loss 856.7934 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.6350, KL loss 845.9976 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.6430, KL loss 851.4335 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 37.4026, KL loss 844.6048 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.6010, KL loss 850.5364 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.3483, KL loss 854.6146 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.0338, KL loss 856.0095 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.2771, KL loss 869.3190 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.0215, KL loss 855.7095 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 36 - 2165.64 sec]: training loss reco 39.394 kl 848.525, validation loss reco 38.584 kl 850.959 (mean per batch) ###
+
+### [16.12 14:6:50] Start of epoch 37
+Step 0: mean reco loss 37.6197, KL loss 857.1392 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 40.9649, KL loss 854.7053 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.9726, KL loss 881.6518 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 37.9395, KL loss 841.3401 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 39.1605, KL loss 838.1410 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 40.1272, KL loss 854.1364 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.7927, KL loss 853.0681 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 37.8453, KL loss 836.5059 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 41.6997, KL loss 838.4062 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 36.9964, KL loss 841.8160 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.7852, KL loss 850.3358 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.7658, KL loss 854.7253 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.1226, KL loss 861.9781 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.6997, KL loss 857.0502 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 37 - 2314.95 sec]: training loss reco 39.566 kl 847.830, validation loss reco 38.796 kl 848.767 (mean per batch) ###
+
+### [16.12 14:45:25] Start of epoch 38
+Step 0: mean reco loss 39.2874, KL loss 867.3384 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.8506, KL loss 849.7568 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.7374, KL loss 867.9586 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.2817, KL loss 851.0587 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.3751, KL loss 838.6163 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 37.6694, KL loss 856.7364 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.4405, KL loss 832.6686 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 37.6551, KL loss 858.0290 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.3202, KL loss 856.4496 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.0771, KL loss 844.7144 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.6891, KL loss 830.0519 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 41.1608, KL loss 857.9714 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 40.6799, KL loss 843.7036 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 37.1629, KL loss 830.7708 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 38 - 2098.68 sec]: training loss reco 39.710 kl 849.726, validation loss reco 41.076 kl 846.668 (mean per batch) ###
+
+### [16.12 15:20:24] Start of epoch 39
+Step 0: mean reco loss 40.9056, KL loss 834.0118 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.4491, KL loss 845.1609 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 40.1466, KL loss 844.3145 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.0997, KL loss 859.2457 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.3418, KL loss 853.0801 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.2811, KL loss 844.2936 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.9279, KL loss 849.7310 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.2623, KL loss 854.0714 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.3235, KL loss 836.3428 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 40.5669, KL loss 835.8627 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.4261, KL loss 873.0851 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.7174, KL loss 839.2153 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 41.6974, KL loss 851.8674 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.6705, KL loss 849.8488 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 39 - 2146.87 sec]: training loss reco 39.842 kl 848.550, validation loss reco 42.026 kl 847.538 (mean per batch) ###
+
+### [16.12 15:56:11] Start of epoch 40
+Step 0: mean reco loss 40.9765, KL loss 832.6410 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.5521, KL loss 849.4974 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 40.8399, KL loss 843.0647 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 42.4039, KL loss 847.1189 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.8956, KL loss 852.2641 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.9937, KL loss 842.0478 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.8413, KL loss 843.4949 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.9156, KL loss 837.3796 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.2840, KL loss 861.5073 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 39.9192, KL loss 860.0082 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.1988, KL loss 854.4072 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 40.8926, KL loss 851.1509 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 41.3878, KL loss 837.2506 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.7608, KL loss 834.0614 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 40 - 2033.80 sec]: training loss reco 39.598 kl 849.389, validation loss reco 39.195 kl 847.799 (mean per batch) ###
+
+### [16.12 16:30:4] Start of epoch 41
+Step 0: mean reco loss 39.5857, KL loss 842.9779 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.4378, KL loss 852.4860 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.7719, KL loss 870.6440 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 42.0151, KL loss 852.4254 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.0236, KL loss 866.6463 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.3509, KL loss 858.8156 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 39.1816, KL loss 848.3671 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.9276, KL loss 851.8135 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.1739, KL loss 856.8804 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 38.7242, KL loss 837.0422 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.6949, KL loss 850.0284 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 39.1797, KL loss 853.6548 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 37.9939, KL loss 835.3966 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 40.1340, KL loss 839.1838 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 41 - 2119.79 sec]: training loss reco 39.607 kl 851.039, validation loss reco 39.052 kl 851.707 (mean per batch) ###
+
+### [16.12 17:5:24] Start of epoch 42
+Step 0: mean reco loss 38.9977, KL loss 866.6412 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.2795, KL loss 840.8599 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 38.9321, KL loss 869.5569 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 39.8035, KL loss 859.0184 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 40.7042, KL loss 846.8428 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 39.1419, KL loss 835.7528 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.3673, KL loss 845.2191 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 39.7657, KL loss 857.1246 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.5521, KL loss 848.6754 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 41.8587, KL loss 860.2631 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.0498, KL loss 850.0577 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 38.8522, KL loss 838.9791 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 38.9622, KL loss 850.5280 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 38.9411, KL loss 861.5860 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 42 - 2108.96 sec]: training loss reco 39.571 kl 850.512, validation loss reco 39.299 kl 849.159 (mean per batch) ###
+
+### [16.12 17:40:33] Start of epoch 43
+Step 0: mean reco loss 40.2469, KL loss 857.1944 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 39.4617, KL loss 828.6378 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 40.0038, KL loss 855.5044 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 38.7605, KL loss 835.2942 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 43.4089, KL loss 866.5941 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.7392, KL loss 850.8544 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 38.7874, KL loss 833.6035 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 38.5358, KL loss 855.6220 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 40.8437, KL loss 855.7192 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 41.2636, KL loss 845.5911 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 39.6795, KL loss 849.3316 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 41.5763, KL loss 871.8289 (in one batch)
+Seen so far: 8448256 samples
+Step 36000: mean reco loss 37.5864, KL loss 849.8391 (in one batch)
+Seen so far: 9216256 samples
+Step 39000: mean reco loss 39.3162, KL loss 856.6918 (in one batch)
+Seen so far: 9984256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 43 - 2093.56 sec]: training loss reco 39.459 kl 851.473, validation loss reco 39.254 kl 854.586 (mean per batch) ###
+
+### [16.12 18:15:27] Start of epoch 44
+Step 0: mean reco loss 38.8936, KL loss 862.9744 (in one batch)
+Seen so far: 256 samples
+Step 3000: mean reco loss 38.6726, KL loss 852.4442 (in one batch)
+Seen so far: 768256 samples
+Step 6000: mean reco loss 39.4661, KL loss 837.4114 (in one batch)
+Seen so far: 1536256 samples
+Step 9000: mean reco loss 40.2547, KL loss 876.4545 (in one batch)
+Seen so far: 2304256 samples
+Step 12000: mean reco loss 38.2136, KL loss 840.6025 (in one batch)
+Seen so far: 3072256 samples
+Step 15000: mean reco loss 38.4014, KL loss 849.2631 (in one batch)
+Seen so far: 3840256 samples
+Step 18000: mean reco loss 40.0859, KL loss 855.3603 (in one batch)
+Seen so far: 4608256 samples
+Step 21000: mean reco loss 42.9196, KL loss 852.4571 (in one batch)
+Seen so far: 5376256 samples
+Step 24000: mean reco loss 39.4179, KL loss 835.7224 (in one batch)
+Seen so far: 6144256 samples
+Step 27000: mean reco loss 37.8259, KL loss 831.5930 (in one batch)
+Seen so far: 6912256 samples
+Step 30000: mean reco loss 38.7340, KL loss 843.6367 (in one batch)
+Seen so far: 7680256 samples
+Step 33000: mean reco loss 57.2292, KL loss 867.5883 (in one batch)

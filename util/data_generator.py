@@ -25,7 +25,6 @@ class DataGenerator():
         '''
             generate single(!) data-sample (batching done in tf.Dataset)
         '''
-        print('[DataGenerator]: __call__()')
         
         # create new file data-reader, each time data-generator is called (otherwise file-data-reader generation not reset)
         generator = dare.DataReader(self.path).generate_constituents_parts_from_dir(parts_n=self.sample_part_n)

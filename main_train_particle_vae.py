@@ -19,8 +19,8 @@ import training as tra
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n input_shape beta train_total_n gen_part_n valid_total_n batch_n z_sz lambda_reg')
-params = Parameters(run_n=104, input_shape=(100,3), beta=0.01, train_total_n=int(10e6), valid_total_n=int(1e6), gen_part_n=int(1e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
+Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz lambda_reg')
+params = Parameters(run_n=104, input_shape=(100,3), beta=0.01, epochs=400, train_total_n=int(10e6), valid_total_n=int(1e6), gen_part_n=int(1e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
 paths = safa.SamplePathDirFactory(sdi.path_dict)
 
@@ -58,8 +58,8 @@ model = vae.build(mean_stdev)
 #                       train and save
 # *******************************************************
 
-trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=7, min_delta=0.001, max_lr_decay=5, lambda_reg=params.lambda_reg)
-model, losses_reco, losses_valid = trainer.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=4)
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=5, min_delta=0.001, max_lr_decay=5, lambda_reg=params.lambda_reg)
+model, losses_reco, losses_valid = trainer.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs)
 trainer.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
 
 vae.save(path=experiment.model_dir)
