@@ -139,7 +139,7 @@ class Trainer():
                 break
             if epoch > 3 and self.check_best_model(validation_loss_reco):
                 print('saving best so far model with valid loss {} and kl loss {} to {}'.format(validation_loss_reco, validation_loss_kl, model_dir))
-                vae.save(os.path.join(model_dir,'best_so_far_e'+str(epoch)+'.h5'))
+                vae.save(os.path.join(model_dir,'best_so_far'))
         return losses_reco, losses_valid
 
 

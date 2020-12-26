@@ -86,6 +86,7 @@ class VAE(ABC):
         return [reco, z_mean, z_log_var]
 
     def save(self, path):
+        pathlib.Path(path).mkdir(parents=True, exist_ok=True)
         print('saving model to {}'.format(path))
         self.encoder.save(os.path.join(path, 'encoder.h5'))
         self.decoder.save(os.path.join(path,'decoder.h5'))
