@@ -23,10 +23,10 @@ test_samples = ['qcdSideExt','qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'G
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 7104
+run_n = 104
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
-batch_n = 1024
+batch_n = 2048
 
 # ********************************************
 #               load model
@@ -49,7 +49,7 @@ for sample_id in test_samples:
 
     list_ds = tf.data.Dataset.list_files(input_paths.sample_dir_path(sample_id)+'/*')
 
-    for file_path in list_ds:
+    for file_path in list_ds[:5]:
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
         test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))

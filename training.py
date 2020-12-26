@@ -45,7 +45,13 @@ class Trainer():
         self.max_lr_decay = max_lr_decay
         self.lambda_reg = lambda_reg
         self.train_stop = Stopper(optimizer, min_delta, patience, max_lr_decay)
+        self.best_loss_so_far = None
 
+    def check_best_model(self, valid_loss):
+        if (self.best_loss_so_far is None) or (valid_loss < self.best_loss_so_far):
+            self.best_loss_so_far = valid_loss
+            return True
+        return False 
 
     @tf.function
     def training_step(self, model, loss_fn_reco, x_batch):
@@ -111,7 +117,9 @@ class Trainer():
         return (sum(validation_loss_reco / (step+1)), sum(validation_loss_kl / (step+1)))
 
 
-    def train(self, model, loss_fn, train_ds, valid_ds, epochs):
+    def train(self, vae, loss_fn, train_ds, valid_ds, epochs, model_dir):
+
+        model = vae.model
 
         losses_reco = []
         losses_valid = []
@@ -125,11 +133,14 @@ class Trainer():
             losses_reco.append(training_loss_reco + self.beta * training_loss_kl)
             losses_valid.append(validation_loss_reco + self.beta * validation_loss_kl)    
             # print epoch results
-            print('### [Epoch {} - {:.2f} sec]: training loss reco {:.3f} kl {:.3f}, validation loss reco {:.3f} kl {:.3f} (mean per batch) ###'.format(epoch, time.time()-start_time, training_loss_reco, training_loss_kl, validation_loss_reco, validation_loss_kl))
+            print('### [Epoch {} - {:.2f} sec]: train loss reco {:.3f} kl {:.3f}, val loss reco {:.3f} kl {:.3f} (mean / batch) ###'.format(epoch, time.time()-start_time, training_loss_reco, training_loss_kl, validation_loss_reco, validation_loss_kl))
             if self.train_stop.check_stop_training(losses_valid):
                 print('!!! stopping training !!!')
                 break
-        return model, losses_reco, losses_valid
+            if epoch > 3 and self.check_best_model(validation_loss_reco):
+                print('saving best so far model with valid loss {} and kl loss {} to {}'.format(validation_loss_reco, validation_loss_kl, model_dir))
+                vae.save(os.path.join(model_dir,'best_so_far_e'+str(epoch)+'.h5'))
+        return losses_reco, losses_valid
 
 
     def plot_training_results(self, losses_reco, losses_valid, fig_dir):

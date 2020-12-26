@@ -1,0 +1,280 @@
+setGPU: Setting GPU to: 0
+2020-12-17 21:22:36.008764: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+tensorflow version:  2.3.1
+2020-12-17 21:22:46.150367: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-12-17 21:22:49.832886: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-12-17 21:22:49.833127: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-17 21:22:49.854851: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-17 21:22:49.860035: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-17 21:22:49.861090: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-17 21:22:49.866170: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-17 21:22:49.868697: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-17 21:22:49.880645: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-17 21:22:49.884225: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-17 21:22:49.887728: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-12-17 21:22:49.919840: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2200000000 Hz
+2020-12-17 21:22:49.925868: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5c864d0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-17 21:22:49.925932: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-17 21:22:50.042351: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5c89160 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-17 21:22:50.042431: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2020-12-17 21:22:50.046219: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-12-17 21:22:50.046387: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-17 21:22:50.046483: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-17 21:22:50.046529: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-17 21:22:50.046572: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-17 21:22:50.046614: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-17 21:22:50.046655: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-17 21:22:50.046699: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-17 21:22:50.053033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-17 21:22:50.053192: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-17 21:22:50.946266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-17 21:22:50.946355: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-12-17 21:22:50.946370: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-12-17 21:22:50.949456: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13970 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  2
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  2
+computed mean [-2.5694157e-04  3.9219353e-07  3.1619492e+00] and std-dev [ 0.23610476  0.23951028 14.948415  ]
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 170)          112030      flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 40)           6840        dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           410         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           410         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 120,374
+Trainable params: 120,374
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 40)                440       
+_________________________________________________________________
+dense_3 (Dense)              (None, 170)               6970      
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               112518    
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+lambda_8 (Lambda)            (None, 100, 3)            0         
+_________________________________________________________________
+un_normalized_decoder_out (L (None, 100, 3)            0         
+=================================================================
+Total params: 120,599
+Trainable params: 120,599
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+model_input (InputLayer)     [(None, 100, 3)]          0         
+_________________________________________________________________
+encoder (Functional)         [(None, 10), (None, 10),  120374    
+_________________________________________________________________
+decoder (Functional)         (None, 100, 3)            120599    
+=================================================================
+Total params: 240,973
+Trainable params: 240,973
+Non-trainable params: 0
+_________________________________________________________________
+
+### [17.12 21:25:41] Start of epoch 0
+2020-12-17 21:26:12.068345: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-17 21:26:12.349412: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+Step 0: mean reco loss 63822.8594, KL loss 4.3136 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 3076.6294, KL loss 2499.0872 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 1254.8123, KL loss 2334.6484 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 454.5535, KL loss 1861.0752 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 1051.6969, KL loss 6665.5454 (in one batch)
+Seen so far: 4096256 samples
+Step 20000: mean reco loss 378.9317, KL loss 2375.3679 (in one batch)
+Seen so far: 5120256 samples
+Step 24000: mean reco loss 346.9627, KL loss 1407.8121 (in one batch)
+Seen so far: 6144256 samples
+Step 28000: mean reco loss 346.4111, KL loss 1040.3365 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 232.9485, KL loss 790.2045 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 271.3773, KL loss 733.9232 (in one batch)
+Seen so far: 9216256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 0 - 2138.39 sec]: train loss reco 26699.291 kl 4383.190, val loss reco 170.659 kl 825.664 (mean / batch) ###
+
+### [17.12 22:1:20] Start of epoch 1
+Step 0: mean reco loss 175.0833, KL loss 853.3272 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 167.6204, KL loss 723.6613 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 143.0876, KL loss 642.9706 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 439.2218, KL loss 788.8975 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 318.4784, KL loss 745.2173 (in one batch)
+Seen so far: 4096256 samples
+Step 20000: mean reco loss 364.0370, KL loss 741.3191 (in one batch)
+Seen so far: 5120256 samples
+Step 24000: mean reco loss 391.3517, KL loss 968.2978 (in one batch)
+Seen so far: 6144256 samples
+Step 28000: mean reco loss 268.2298, KL loss 911.1453 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 326.9798, KL loss 948.4330 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 308.7820, KL loss 653.0845 (in one batch)
+Seen so far: 9216256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 1 - 1983.15 sec]: train loss reco 326.097 kl 798.068, val loss reco 288.237 kl 676.195 (mean / batch) ###
+
+### [17.12 22:34:23] Start of epoch 2
+Step 0: mean reco loss 240.6189, KL loss 638.2763 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 300.8188, KL loss 509.5569 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 310.6355, KL loss 515.2258 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 276.3398, KL loss 575.5338 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 361.7256, KL loss 548.3617 (in one batch)
+Seen so far: 4096256 samples
+Step 20000: mean reco loss 289.0806, KL loss 491.4221 (in one batch)
+Seen so far: 5120256 samples
+Step 24000: mean reco loss 259.0137, KL loss 531.1611 (in one batch)
+Seen so far: 6144256 samples
+Step 28000: mean reco loss 243.5600, KL loss 463.8267 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 285.4885, KL loss 494.4459 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 260.7394, KL loss 471.1804 (in one batch)
+Seen so far: 9216256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 2 - 2020.54 sec]: train loss reco 353.385 kl 516.330, val loss reco 1675.023 kl 810.157 (mean / batch) ###
+
+### [17.12 23:8:3] Start of epoch 3
+Step 0: mean reco loss 2022.5931, KL loss 839.0165 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 627.4729, KL loss 659.3142 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 604.4975, KL loss 588.1539 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 751.8706, KL loss 689.8915 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 575.9518, KL loss 508.7677 (in one batch)
+Seen so far: 4096256 samples
+Step 20000: mean reco loss 544.8688, KL loss 590.0579 (in one batch)
+Seen so far: 5120256 samples
+Step 24000: mean reco loss 607.2571, KL loss 537.3847 (in one batch)
+Seen so far: 6144256 samples
+Step 28000: mean reco loss 532.2115, KL loss 514.1048 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 520.5383, KL loss 518.7502 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 453.2539, KL loss 506.3059 (in one batch)
+Seen so far: 9216256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 3 - 2032.66 sec]: train loss reco 602.966 kl 565.406, val loss reco 555.622 kl 552.531 (mean / batch) ###
+
+### [17.12 23:41:56] Start of epoch 4
+Step 0: mean reco loss 520.7444, KL loss 547.4209 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 527.7131, KL loss 518.6657 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 511.0633, KL loss 519.1633 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 519.7318, KL loss 467.4532 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 521.5302, KL loss 529.9604 (in one batch)
+Seen so far: 4096256 samples
+Step 20000: mean reco loss 551.6811, KL loss 480.0751 (in one batch)
+Seen so far: 5120256 samples
+Step 24000: mean reco loss 562.8369, KL loss 501.1279 (in one batch)
+Seen so far: 6144256 samples
+Step 28000: mean reco loss 505.5264, KL loss 478.5475 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 610.6921, KL loss 1530.1543 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 579.8987, KL loss 898.1140 (in one batch)
+Seen so far: 9216256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 4 - 2022.44 sec]: train loss reco 3042.151 kl 765.108, val loss reco 6350.829 kl 1372.750 (mean / batch) ###
+Traceback (most recent call last):
+  File "main_train_particle_vae.py", line 62, in <module>
+    model, losses_reco, losses_valid = trainer.train(model=model, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
+  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/vande/training.py", line 139, in train
+    best_so_far = tf.keras.models.clone_model(model)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py", line 429, in clone_model
+    model, input_tensors=input_tensors, layer_fn=clone_function)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py", line 197, in _clone_functional_model
+    model, new_input_layers, layer_fn)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py", line 248, in _clone_layers_and_model_config
+    model, serialize_layer_fn=_copy_layer)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/engine/functional.py", line 1278, in get_network_config
+    layer_config = serialize_layer_fn(layer)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py", line 244, in _copy_layer
+    created_layers[layer.name] = layer_fn(layer)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/models.py", line 61, in _clone_layer
+    return layer.__class__.from_config(layer.get_config())
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/engine/functional.py", line 617, in from_config
+    config, custom_objects)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/engine/functional.py", line 1204, in reconstruct_from_config
+    process_layer(layer_data)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/engine/functional.py", line 1186, in process_layer
+    layer = deserialize_layer(layer_data, custom_objects=custom_objects)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/layers/serialization.py", line 175, in deserialize
+    printable_module_name='layer')
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/utils/generic_utils.py", line 347, in deserialize_keras_object
+    config, module_objects, custom_objects, printable_module_name)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/utils/generic_utils.py", line 296, in class_and_config_for_serialized_keras_object
+    raise ValueError('Unknown ' + printable_module_name + ': ' + class_name)
+ValueError: Unknown layer: Sampling
