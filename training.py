@@ -4,10 +4,10 @@ import datetime
 import numpy as np
 import tensorflow as tf
 from matplotlib import pyplot as plt
-import vae.losses as losses
+import vande.vae.losses as losses
 
 class Stopper():
-    def __init__(self, optimizer, min_delta, patience, max_lr_decay):
+    def __init__(self, optimizer, min_delta=0.01, patience=4, max_lr_decay=5):
         self.optimizer = optimizer
         self.min_delta = min_delta
         self.patience = patience
@@ -60,8 +60,8 @@ class Trainer():
             # Run the forward pass
             predictions = model(x_batch, training=True)  # Logits for this minibatch
             # Compute the loss value for this minibatch.
-            reco_loss = loss_fn_reco(x_batch, predictions)
-            kl_loss = sum(model.losses) # get kl loss registered in sampling layer
+            reco_loss = tf.math.reduce_mean(loss_fn_reco(x_batch, predictions))
+            kl_loss = tf.math.reduce_mean(model.losses) # get kl loss registered in sampling layer
             reg_loss = losses.l2_regularize(model.trainable_weights)
             total_loss = reco_loss + self.beta * kl_loss + self.lambda_reg * reg_loss
         # the gradients of the trainable variables with respect to the loss.
@@ -89,18 +89,18 @@ class Trainer():
             
             # Log every 3000 batches.
             if step % 4000 == 0:
-                print("Step {}: mean reco loss {:.4f}, KL loss {:.4f} (in one batch)".format(step, float(sum(reco_loss)), float(sum(kl_loss))))
+                print("Step {}: mean reco loss {:.4f}, KL loss {:.4f} (in one batch)".format(step, float(reco_loss), float(kl_loss)))
                 print("Seen so far: %s samples" % ((step + 1) * 256))
 
         # return average batch loss
-        return (sum(training_loss_reco / (step+1)), sum(training_loss_kl / (step+1))) 
+        return (training_loss_reco / (step+1), training_loss_kl / (step+1)) 
 
 
     @tf.function
     def validation_step(self, model, loss_fn, x_batch):
         predictions = model(x_batch, training=False)
-        reco_loss = loss_fn(x_batch, predictions)
-        kl_loss = sum(model.losses)
+        reco_loss = tf.math.reduce_mean(loss_fn(x_batch, predictions))
+        kl_loss = tf.math.reduce_mean(model.losses)
         return reco_loss, kl_loss
 
 
@@ -114,7 +114,7 @@ class Trainer():
             validation_loss_reco += reco_loss
             validation_loss_kl += kl_loss
 
-        return (sum(validation_loss_reco / (step+1)), sum(validation_loss_kl / (step+1)))
+        return (validation_loss_reco / (step+1), validation_loss_kl / (step+1))
 
 
     def train(self, vae, loss_fn, train_ds, valid_ds, epochs, model_dir):
@@ -138,26 +138,27 @@ class Trainer():
                 print('!!! stopping training !!!')
                 break
             if epoch > 3 and self.check_best_model(validation_loss_reco):
-                print('saving best so far model with valid loss {} and kl loss {} to {}'.format(validation_loss_reco, validation_loss_kl, model_dir))
-                vae.save(os.path.join(model_dir,'best_so_far'))
+                print('saving best so far model with valid loss {:.3f} and kl loss {:.3f}'.format(validation_loss_reco, validation_loss_kl))
+                vae.save(os.path.join(model_dir, 'best_so_far'))
         return losses_reco, losses_valid
 
 
-    def plot_training_results(self, losses_reco, losses_valid, fig_dir):
-        plt.figure()
-        plt.semilogy(losses_reco)
-        plt.semilogy(losses_valid)
-        plt.title('training and validation loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['training','validation'], loc='upper right')
-        plt.savefig(os.path.join(fig_dir,'loss.png'))
-        plt.close()
+# plot training results
+def plot_training_results(losses_train, losses_valid, fig_dir):
+    plt.figure()
+    plt.semilogy(losses_train)
+    plt.semilogy(losses_valid)
+    plt.title('training and validation loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['training','validation'], loc='upper right')
+    plt.savefig(os.path.join(fig_dir,'loss.png'))
+    plt.close()
 
 ### routine for prediction
 
 @tf.function
-def prediction_step(self, model, loss_fn, x_batch):
+def prediction_step(model, loss_fn, x_batch):
     predictions = model(x_batch, training=False)
     reco_loss = loss_fn(x_batch, predictions)
     kl_loss = sum(model.losses)
@@ -167,13 +168,14 @@ def prediction_step(self, model, loss_fn, x_batch):
 def predict(model, loss_fn, test_ds):
 
     predictions = []
-    validation_loss_reco = 0.
-    validation_loss_kl = 0.
+    validation_loss_reco = []
+    validation_loss_kl = []
 
     for step, x_batch_test in enumerate(test_ds):
+        # print('predicting batch {}'.format(step))
         predictions_batch, reco_loss, kl_loss = prediction_step(model, loss_fn, x_batch_test)
-        validation_loss_reco += reco_loss
-        validation_loss_kl += kl_loss
-        predictions.extend(predictions_batch)
-
-    return (np.asarray(predictions), sum(validation_loss_reco / step), sum(validation_loss_kl / step))
+        validation_loss_reco.append(reco_loss)
+        validation_loss_kl.append(kl_loss)
+        predictions.append(predictions_batch)
+    # import ipdb; ipdb.set_trace()    
+    return (np.concatenate(predictions, axis=0), np.concatenate(validation_loss_reco, axis=0), np.concatenate(validation_loss_kl, axis=0))

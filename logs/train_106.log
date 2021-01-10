@@ -1,41 +1,41 @@
 setGPU: Setting GPU to: 0
-2020-12-26 19:57:10.269953: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-26 20:14:07.541368: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
 tensorflow version:  2.3.1
-2020-12-26 19:57:12.500018: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
-2020-12-26 19:57:14.367098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+2020-12-26 20:14:10.458196: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-12-26 20:14:12.376734: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
 pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
 coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
-2020-12-26 19:57:14.367168: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
-2020-12-26 19:57:14.380905: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
-2020-12-26 19:57:14.384184: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
-2020-12-26 19:57:14.384745: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
-2020-12-26 19:57:14.388363: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
-2020-12-26 19:57:14.390125: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
-2020-12-26 19:57:14.397849: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
-2020-12-26 19:57:14.400550: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
-2020-12-26 19:57:14.401686: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+2020-12-26 20:14:12.376793: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-26 20:14:12.390177: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-26 20:14:12.393519: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-26 20:14:12.394009: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-26 20:14:12.397682: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-26 20:14:12.399461: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-26 20:14:12.407009: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-26 20:14:12.409658: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-26 20:14:12.411077: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2020-12-26 19:57:14.420775: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2200000000 Hz
-2020-12-26 19:57:14.423886: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x606d070 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-12-26 19:57:14.423914: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-12-26 19:57:14.533048: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x606fd00 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-12-26 19:57:14.533117: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
-2020-12-26 19:57:14.534766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+2020-12-26 20:14:12.426090: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2200000000 Hz
+2020-12-26 20:14:12.429615: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5108740 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-26 20:14:12.429642: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-26 20:14:12.555769: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x510b3d0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-26 20:14:12.555802: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2020-12-26 20:14:12.557170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
 pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
 coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
-2020-12-26 19:57:14.534837: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
-2020-12-26 19:57:14.534890: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
-2020-12-26 19:57:14.534911: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
-2020-12-26 19:57:14.534937: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
-2020-12-26 19:57:14.534965: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
-2020-12-26 19:57:14.534995: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
-2020-12-26 19:57:14.535014: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
-2020-12-26 19:57:14.537641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
-2020-12-26 19:57:14.537757: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
-2020-12-26 19:57:15.259895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-12-26 19:57:15.259958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
-2020-12-26 19:57:15.259969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
-2020-12-26 19:57:15.262729: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13970 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
+2020-12-26 20:14:12.557216: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-26 20:14:12.557244: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-26 20:14:12.557259: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2020-12-26 20:14:12.557274: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2020-12-26 20:14:12.557295: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2020-12-26 20:14:12.557309: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2020-12-26 20:14:12.557324: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2020-12-26 20:14:12.559664: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-12-26 20:14:12.559706: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2020-12-26 20:14:13.220979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-26 20:14:13.221022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-12-26 20:14:13.221032: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-12-26 20:14:13.223382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13970 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
 [DataReader] read_events_from_dir(): reading 10000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
 
 num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  1
@@ -127,57 +127,2453 @@ Trainable params: 240,973
 Non-trainable params: 0
 _________________________________________________________________
 
-### [26.12 19:58:56] Start of epoch 0
-2020-12-26 19:59:22.411780: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
-2020-12-26 19:59:25.070706: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
-Step 0: mean reco loss 55870.9297, KL loss 1.9352 (in one batch)
+### [26.12 20:15:50] Start of epoch 0
+2020-12-26 20:16:15.123627: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2020-12-26 20:16:15.370499: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+Step 0: mean reco loss 57224.2969, KL loss 2.0210 (in one batch)
 Seen so far: 256 samples
 [DataGenerator]: __call__() yielded 100000 samples
-### [Epoch 0 - 58.33 sec]: train loss reco 16109.143 kl 3322.152, val loss reco 2456.510 kl 4136.536 (mean / batch) ###
+### [Epoch 0 - 40.47 sec]: train loss reco 14431.917 kl 1870.283, val loss reco 2297.483 kl 1935.921 (mean / batch) ###
 
-### [26.12 19:59:54] Start of epoch 1
-Step 0: mean reco loss 2431.8125, KL loss 3939.9048 (in one batch)
+### [26.12 20:16:30] Start of epoch 1
+Step 0: mean reco loss 2200.7280, KL loss 1902.6012 (in one batch)
 Seen so far: 256 samples
 [DataGenerator]: __call__() yielded 100000 samples
-### [Epoch 1 - 33.28 sec]: train loss reco 1911.330 kl 3720.670, val loss reco 1384.542 kl 3514.650 (mean / batch) ###
+### [Epoch 1 - 32.96 sec]: train loss reco 1898.864 kl 2107.796, val loss reco 1533.008 kl 2270.344 (mean / batch) ###
 
-### [26.12 20:0:28] Start of epoch 2
-Step 0: mean reco loss 1287.2296, KL loss 3509.9504 (in one batch)
+### [26.12 20:17:3] Start of epoch 2
+Step 0: mean reco loss 1269.6758, KL loss 2217.1655 (in one batch)
 Seen so far: 256 samples
 [DataGenerator]: __call__() yielded 100000 samples
-### [Epoch 2 - 36.71 sec]: train loss reco 1162.843 kl 3078.938, val loss reco 1057.714 kl 2933.527 (mean / batch) ###
+### [Epoch 2 - 33.63 sec]: train loss reco 1348.192 kl 1995.555, val loss reco 1322.219 kl 1780.814 (mean / batch) ###
 
-### [26.12 20:1:4] Start of epoch 3
-Step 0: mean reco loss 1073.7537, KL loss 3023.3987 (in one batch)
+### [26.12 20:17:37] Start of epoch 3
+Step 0: mean reco loss 1817.7815, KL loss 1973.9874 (in one batch)
 Seen so far: 256 samples
 [DataGenerator]: __call__() yielded 100000 samples
-### [Epoch 3 - 36.06 sec]: train loss reco 923.941 kl 2818.150, val loss reco 847.469 kl 2631.869 (mean / batch) ###
+### [Epoch 3 - 35.00 sec]: train loss reco 1178.993 kl 1706.500, val loss reco 1144.089 kl 1598.229 (mean / batch) ###
 
-### [26.12 20:1:40] Start of epoch 4
-Step 0: mean reco loss 896.6184, KL loss 2795.6704 (in one batch)
+### [26.12 20:18:12] Start of epoch 4
+Step 0: mean reco loss 984.7084, KL loss 1549.5459 (in one batch)
 Seen so far: 256 samples
 [DataGenerator]: __call__() yielded 100000 samples
-### [Epoch 4 - 34.88 sec]: train loss reco 809.090 kl 2463.727, val loss reco 923.361 kl 2365.258 (mean / batch) ###
-saving best so far model with valid loss 923.361328125 and kl loss 2365.25830078125 to /eos/home-k/kiwoznia/data/VAE_models/run_106
-saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far_e4.h5
-Traceback (most recent call last):
-  File "main_train_particle_vae.py", line 62, in <module>
-    losses_reco, losses_valid = trainer.train(vae=vae, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
-  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/vande/training.py", line 142, in train
-    vae.save(os.path.join(model_dir,'best_so_far_e'+str(epoch)+'.h5'))
-  File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/vande/vae/vae_base.py", line 90, in save
-    self.encoder.save(os.path.join(path, 'encoder.h5'))
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/engine/training.py", line 1979, in save
-    signatures, options)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/saving/save.py", line 131, in save_model
-    model, filepath, overwrite, include_optimizer)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow/python/keras/saving/hdf5_format.py", line 102, in save_model_to_hdf5
-    f = h5py.File(filepath, mode='w')
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/h5py/_hl/files.py", line 408, in __init__
-    swmr=swmr)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/h5py/_hl/files.py", line 179, in make_fid
-    fid = h5f.create(name, h5f.ACC_TRUNC, fapl=fapl, fcpl=fcpl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 108, in h5py.h5f.create
-OSError: Unable to create file (unable to open file: name = '/eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far_e4.h5/encoder.h5', errno = 2, error message = 'No such file or directory', flags = 13, o_flags = 242)
+### [Epoch 4 - 32.86 sec]: train loss reco 1052.364 kl 1544.243, val loss reco 1010.548 kl 1550.871 (mean / batch) ###
+saving best so far model with valid loss 1010.5484619140625 and kl loss 1550.871337890625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:18:45] Start of epoch 5
+Step 0: mean reco loss 1112.9817, KL loss 1507.8182 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 5 - 31.57 sec]: train loss reco 932.495 kl 1483.008, val loss reco 895.512 kl 1461.756 (mean / batch) ###
+saving best so far model with valid loss 895.5116577148438 and kl loss 1461.7564697265625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:19:18] Start of epoch 6
+Step 0: mean reco loss 971.7605, KL loss 1478.0923 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 6 - 32.67 sec]: train loss reco 854.920 kl 1439.023, val loss reco 790.871 kl 1434.055 (mean / batch) ###
+saving best so far model with valid loss 790.8705444335938 and kl loss 1434.05517578125 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:19:51] Start of epoch 7
+Step 0: mean reco loss 931.4001, KL loss 1454.5188 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 7 - 33.49 sec]: train loss reco 642.754 kl 1518.402, val loss reco 405.505 kl 1748.137 (mean / batch) ###
+saving best so far model with valid loss 405.5052490234375 and kl loss 1748.137451171875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:20:24] Start of epoch 8
+Step 0: mean reco loss 387.8279, KL loss 1684.2565 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 8 - 35.12 sec]: train loss reco 388.242 kl 1719.893, val loss reco 331.164 kl 1747.644 (mean / batch) ###
+saving best so far model with valid loss 331.1641540527344 and kl loss 1747.6444091796875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:21:0] Start of epoch 9
+Step 0: mean reco loss 375.9090, KL loss 1790.2052 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 9 - 32.37 sec]: train loss reco 316.784 kl 1730.427, val loss reco 432.738 kl 1665.403 (mean / batch) ###
+
+### [26.12 20:21:32] Start of epoch 10
+Step 0: mean reco loss 454.3761, KL loss 1636.5598 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 10 - 31.77 sec]: train loss reco 286.648 kl 1662.789, val loss reco 246.965 kl 1690.417 (mean / batch) ###
+saving best so far model with valid loss 246.9647979736328 and kl loss 1690.41650390625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:22:4] Start of epoch 11
+Step 0: mean reco loss 263.7900, KL loss 1743.1543 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 11 - 32.52 sec]: train loss reco 331.826 kl 1575.779, val loss reco 225.259 kl 1604.161 (mean / batch) ###
+saving best so far model with valid loss 225.25885009765625 and kl loss 1604.160888671875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:22:37] Start of epoch 12
+Step 0: mean reco loss 218.1643, KL loss 1569.6973 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 12 - 32.78 sec]: train loss reco 226.178 kl 1577.642, val loss reco 277.942 kl 1576.787 (mean / batch) ###
+
+### [26.12 20:23:10] Start of epoch 13
+Step 0: mean reco loss 288.6178, KL loss 1650.3777 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 13 - 34.87 sec]: train loss reco 232.343 kl 1531.121, val loss reco 204.749 kl 1497.878 (mean / batch) ###
+saving best so far model with valid loss 204.7491455078125 and kl loss 1497.8780517578125 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:23:45] Start of epoch 14
+Step 0: mean reco loss 207.3941, KL loss 1482.4827 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 14 - 35.23 sec]: train loss reco 235.903 kl 1465.784, val loss reco 223.593 kl 1444.750 (mean / batch) ###
+
+### [26.12 20:24:20] Start of epoch 15
+Step 0: mean reco loss 261.1071, KL loss 1517.6344 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 15 - 34.69 sec]: train loss reco 648.225 kl 1374.614, val loss reco 1035.039 kl 1481.900 (mean / batch) ###
+
+### [26.12 20:24:55] Start of epoch 16
+Step 0: mean reco loss 1093.6958, KL loss 1384.9080 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 16 - 33.67 sec]: train loss reco 392.295 kl 1677.330, val loss reco 205.355 kl 1715.273 (mean / batch) ###
+
+### [26.12 20:25:28] Start of epoch 17
+Step 0: mean reco loss 188.9493, KL loss 1727.2428 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 17 - 32.86 sec]: train loss reco 199.218 kl 1654.237, val loss reco 196.215 kl 1610.253 (mean / batch) ###
+saving best so far model with valid loss 196.21536254882812 and kl loss 1610.2529296875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:26:1] Start of epoch 18
+Step 0: mean reco loss 187.6213, KL loss 1618.8055 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 18 - 32.32 sec]: train loss reco 252.832 kl 1523.082, val loss reco 185.587 kl 1511.475 (mean / batch) ###
+saving best so far model with valid loss 185.58738708496094 and kl loss 1511.47509765625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:26:34] Start of epoch 19
+Step 0: mean reco loss 172.9251, KL loss 1360.4346 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 19 - 33.68 sec]: train loss reco 200.979 kl 1469.476, val loss reco 167.428 kl 1455.513 (mean / batch) ###
+saving best so far model with valid loss 167.427734375 and kl loss 1455.5126953125 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:27:8] Start of epoch 20
+Step 0: mean reco loss 164.4631, KL loss 1406.1882 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 20 - 34.22 sec]: train loss reco 202.013 kl 1418.784, val loss reco 199.529 kl 1399.714 (mean / batch) ###
+
+### [26.12 20:27:42] Start of epoch 21
+Step 0: mean reco loss 185.2587, KL loss 1364.4723 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 21 - 37.67 sec]: train loss reco 207.570 kl 1367.383, val loss reco 165.028 kl 1357.011 (mean / batch) ###
+saving best so far model with valid loss 165.02774047851562 and kl loss 1357.010986328125 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:28:20] Start of epoch 22
+Step 0: mean reco loss 159.6626, KL loss 1341.6439 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 22 - 36.99 sec]: train loss reco 237.398 kl 1331.890, val loss reco 166.383 kl 1333.127 (mean / batch) ###
+
+### [26.12 20:28:57] Start of epoch 23
+Step 0: mean reco loss 164.0297, KL loss 1372.3900 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 23 - 34.66 sec]: train loss reco 267.543 kl 1284.546, val loss reco 178.069 kl 1261.432 (mean / batch) ###
+
+### [26.12 20:29:31] Start of epoch 24
+Step 0: mean reco loss 180.1082, KL loss 1265.9448 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 24 - 32.01 sec]: train loss reco 167.108 kl 1281.215, val loss reco 158.616 kl 1270.526 (mean / batch) ###
+saving best so far model with valid loss 158.61587524414062 and kl loss 1270.5260009765625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:30:5] Start of epoch 25
+Step 0: mean reco loss 155.9649, KL loss 1265.0831 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 25 - 32.16 sec]: train loss reco 176.063 kl 1223.200, val loss reco 242.501 kl 1193.683 (mean / batch) ###
+
+### [26.12 20:30:37] Start of epoch 26
+Step 0: mean reco loss 228.4097, KL loss 1193.4215 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 26 - 31.35 sec]: train loss reco 235.511 kl 1196.225, val loss reco 164.814 kl 1216.334 (mean / batch) ###
+
+### [26.12 20:31:9] Start of epoch 27
+Step 0: mean reco loss 156.3593, KL loss 1193.3276 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 27 - 31.77 sec]: train loss reco 163.913 kl 1203.139, val loss reco 255.577 kl 1179.499 (mean / batch) ###
+
+### [26.12 20:31:40] Start of epoch 28
+Step 0: mean reco loss 262.9191, KL loss 1130.7346 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 28 - 34.33 sec]: train loss reco 191.833 kl 1169.307, val loss reco 131.581 kl 1176.311 (mean / batch) ###
+saving best so far model with valid loss 131.5809326171875 and kl loss 1176.310546875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:32:15] Start of epoch 29
+Step 0: mean reco loss 135.5197, KL loss 1144.8468 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 29 - 32.13 sec]: train loss reco 152.782 kl 1151.831, val loss reco 313.149 kl 1156.200 (mean / batch) ###
+
+### [26.12 20:32:47] Start of epoch 30
+Step 0: mean reco loss 290.4976, KL loss 1172.0713 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 30 - 34.15 sec]: train loss reco 164.942 kl 1112.712, val loss reco 148.334 kl 1103.486 (mean / batch) ###
+
+### [26.12 20:33:22] Start of epoch 31
+Step 0: mean reco loss 144.9094, KL loss 1061.1265 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 31 - 32.83 sec]: train loss reco 156.064 kl 1089.607, val loss reco 123.608 kl 1075.968 (mean / batch) ###
+saving best so far model with valid loss 123.60841369628906 and kl loss 1075.9683837890625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:33:55] Start of epoch 32
+Step 0: mean reco loss 115.1656, KL loss 1126.6375 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 32 - 33.80 sec]: train loss reco 150.532 kl 1045.075, val loss reco 149.671 kl 1042.625 (mean / batch) ###
+
+### [26.12 20:34:28] Start of epoch 33
+Step 0: mean reco loss 165.5185, KL loss 1035.8430 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 33 - 33.11 sec]: train loss reco 150.561 kl 1006.407, val loss reco 593.567 kl 987.009 (mean / batch) ###
+
+### [26.12 20:35:2] Start of epoch 34
+Step 0: mean reco loss 568.4289, KL loss 961.9032 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 34 - 33.06 sec]: train loss reco 149.427 kl 988.781, val loss reco 131.928 kl 967.277 (mean / batch) ###
+
+### [26.12 20:35:35] Start of epoch 35
+Step 0: mean reco loss 138.1306, KL loss 1034.8827 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 35 - 33.75 sec]: train loss reco 782.125 kl 1022.747, val loss reco 474.836 kl 1137.334 (mean / batch) ###
+
+### [26.12 20:36:8] Start of epoch 36
+Step 0: mean reco loss 538.1759, KL loss 1377.4480 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 36 - 33.27 sec]: train loss reco 381.623 kl 1123.165, val loss reco 353.318 kl 1074.994 (mean / batch) ###
+
+### [26.12 20:36:42] Start of epoch 37
+Step 0: mean reco loss 400.1428, KL loss 1042.6456 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 37 - 31.77 sec]: train loss reco 320.002 kl 1039.872, val loss reco 347.415 kl 1001.930 (mean / batch) ###
+
+### [26.12 20:37:13] Start of epoch 38
+Step 0: mean reco loss 360.7063, KL loss 1016.3072 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 38 - 32.22 sec]: train loss reco 289.742 kl 1006.515, val loss reco 289.508 kl 1013.444 (mean / batch) ###
+
+### [26.12 20:37:46] Start of epoch 39
+Step 0: mean reco loss 257.1260, KL loss 1013.1815 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 39 - 33.40 sec]: train loss reco 293.771 kl 1014.958, val loss reco 201.845 kl 1071.870 (mean / batch) ###
+
+### [26.12 20:38:19] Start of epoch 40
+Step 0: mean reco loss 187.2040, KL loss 1140.5594 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 40 - 33.57 sec]: train loss reco 189.381 kl 1053.278, val loss reco 177.867 kl 1046.257 (mean / batch) ###
+
+### [26.12 20:38:53] Start of epoch 41
+Step 0: mean reco loss 172.9249, KL loss 1020.3147 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 41 - 32.83 sec]: train loss reco 184.241 kl 1024.744, val loss reco 151.791 kl 1025.961 (mean / batch) ###
+
+### [26.12 20:39:25] Start of epoch 42
+Step 0: mean reco loss 155.1099, KL loss 1042.4982 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 42 - 33.30 sec]: train loss reco 180.349 kl 1009.144, val loss reco 189.646 kl 1011.432 (mean / batch) ###
+
+### [26.12 20:39:59] Start of epoch 43
+Step 0: mean reco loss 204.0523, KL loss 1047.7617 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 43 - 35.01 sec]: train loss reco 227.245 kl 998.064, val loss reco 187.497 kl 1028.587 (mean / batch) ###
+
+### [26.12 20:40:34] Start of epoch 44
+Step 0: mean reco loss 202.1794, KL loss 1068.8397 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 44 - 33.54 sec]: train loss reco 154.194 kl 1036.738, val loss reco 147.191 kl 1038.908 (mean / batch) ###
+
+### [26.12 20:41:7] Start of epoch 45
+Step 0: mean reco loss 153.1815, KL loss 1034.9764 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 45 - 32.31 sec]: train loss reco 175.489 kl 1038.829, val loss reco 120.012 kl 1037.997 (mean / batch) ###
+saving best so far model with valid loss 120.01156616210938 and kl loss 1037.9969482421875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:41:40] Start of epoch 46
+Step 0: mean reco loss 112.5692, KL loss 980.5181 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 46 - 33.03 sec]: train loss reco 117.849 kl 1040.041, val loss reco 123.110 kl 1030.345 (mean / batch) ###
+
+### [26.12 20:42:13] Start of epoch 47
+Step 0: mean reco loss 129.1414, KL loss 1076.5475 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 47 - 32.33 sec]: train loss reco 132.831 kl 1007.292, val loss reco 119.402 kl 999.705 (mean / batch) ###
+saving best so far model with valid loss 119.4023208618164 and kl loss 999.7049560546875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:42:45] Start of epoch 48
+Step 0: mean reco loss 106.2003, KL loss 997.2340 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 48 - 31.78 sec]: train loss reco 130.818 kl 991.839, val loss reco 163.508 kl 982.324 (mean / batch) ###
+
+### [26.12 20:43:17] Start of epoch 49
+Step 0: mean reco loss 149.6178, KL loss 970.7859 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 49 - 32.71 sec]: train loss reco 117.891 kl 976.105, val loss reco 97.217 kl 984.140 (mean / batch) ###
+saving best so far model with valid loss 97.21703338623047 and kl loss 984.14013671875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:43:50] Start of epoch 50
+Step 0: mean reco loss 91.9998, KL loss 987.0322 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 50 - 33.21 sec]: train loss reco 139.825 kl 965.900, val loss reco 206.625 kl 965.975 (mean / batch) ###
+
+### [26.12 20:44:23] Start of epoch 51
+Step 0: mean reco loss 202.1514, KL loss 940.3365 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 51 - 32.74 sec]: train loss reco 120.632 kl 1014.850, val loss reco 150.270 kl 1027.403 (mean / batch) ###
+
+### [26.12 20:44:56] Start of epoch 52
+Step 0: mean reco loss 147.5002, KL loss 978.7485 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 52 - 33.90 sec]: train loss reco 131.548 kl 1036.777, val loss reco 80.314 kl 1038.616 (mean / batch) ###
+saving best so far model with valid loss 80.31414031982422 and kl loss 1038.615966796875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:45:30] Start of epoch 53
+Step 0: mean reco loss 76.0921, KL loss 986.8594 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 53 - 32.53 sec]: train loss reco 100.360 kl 1019.496, val loss reco 78.862 kl 1019.461 (mean / batch) ###
+saving best so far model with valid loss 78.86172485351562 and kl loss 1019.4605102539062 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:46:3] Start of epoch 54
+Step 0: mean reco loss 78.1626, KL loss 984.8794 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 54 - 32.68 sec]: train loss reco 168.070 kl 1020.617, val loss reco 84.755 kl 1105.182 (mean / batch) ###
+
+### [26.12 20:46:36] Start of epoch 55
+Step 0: mean reco loss 81.6877, KL loss 1109.9781 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 55 - 31.36 sec]: train loss reco 81.680 kl 1053.111, val loss reco 84.725 kl 1010.457 (mean / batch) ###
+
+### [26.12 20:47:7] Start of epoch 56
+Step 0: mean reco loss 85.1567, KL loss 998.9219 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 56 - 32.41 sec]: train loss reco 159.259 kl 997.862, val loss reco 212.652 kl 1038.676 (mean / batch) ###
+
+### [26.12 20:47:39] Start of epoch 57
+Step 0: mean reco loss 207.0403, KL loss 1021.8844 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 57 - 33.65 sec]: train loss reco 85.659 kl 1005.483, val loss reco 80.906 kl 996.119 (mean / batch) ###
+
+### [26.12 20:48:13] Start of epoch 58
+Step 0: mean reco loss 82.7418, KL loss 1000.8817 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 58 - 33.08 sec]: train loss reco 83.425 kl 984.239, val loss reco 84.678 kl 974.163 (mean / batch) ###
+
+### [26.12 20:48:46] Start of epoch 59
+Step 0: mean reco loss 83.1635, KL loss 983.1268 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 59 - 37.07 sec]: train loss reco 127.625 kl 970.551, val loss reco 75.238 kl 979.862 (mean / batch) ###
+saving best so far model with valid loss 75.238037109375 and kl loss 979.8624877929688 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 20:49:23] Start of epoch 60
+Step 0: mean reco loss 75.1271, KL loss 996.1534 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 60 - 36.07 sec]: train loss reco 85.588 kl 968.797, val loss reco 117.275 kl 971.507 (mean / batch) ###
+
+### [26.12 20:49:59] Start of epoch 61
+Step 0: mean reco loss 119.2000, KL loss 973.9146 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 61 - 34.38 sec]: train loss reco 99.047 kl 954.162, val loss reco 87.339 kl 953.676 (mean / batch) ###
+
+### [26.12 20:50:34] Start of epoch 62
+Step 0: mean reco loss 82.3409, KL loss 915.6158 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 62 - 34.12 sec]: train loss reco 124.938 kl 954.160, val loss reco 82.592 kl 932.149 (mean / batch) ###
+
+### [26.12 20:51:8] Start of epoch 63
+Step 0: mean reco loss 80.9164, KL loss 931.2636 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 63 - 32.94 sec]: train loss reco 95.062 kl 931.013, val loss reco 144.080 kl 926.826 (mean / batch) ###
+
+### [26.12 20:51:41] Start of epoch 64
+Step 0: mean reco loss 143.9334, KL loss 938.6888 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 64 - 32.01 sec]: train loss reco 91.890 kl 917.227, val loss reco 96.534 kl 919.022 (mean / batch) ###
+
+### [26.12 20:52:13] Start of epoch 65
+Step 0: mean reco loss 89.1043, KL loss 900.6250 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 65 - 32.04 sec]: train loss reco 94.055 kl 911.802, val loss reco 144.604 kl 922.158 (mean / batch) ###
+
+### [26.12 20:52:45] Start of epoch 66
+Step 0: mean reco loss 146.0707, KL loss 929.5802 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 66 - 32.21 sec]: train loss reco 154.421 kl 907.756, val loss reco 437.480 kl 891.925 (mean / batch) ###
+
+### [26.12 20:53:17] Start of epoch 67
+Step 0: mean reco loss 396.3437, KL loss 864.8914 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 67 - 32.13 sec]: train loss reco 107.542 kl 946.188, val loss reco 78.394 kl 895.094 (mean / batch) ###
+
+### [26.12 20:53:49] Start of epoch 68
+Step 0: mean reco loss 80.4227, KL loss 900.3255 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 68 - 32.45 sec]: train loss reco 100.993 kl 894.679, val loss reco 110.031 kl 896.849 (mean / batch) ###
+
+### [26.12 20:54:22] Start of epoch 69
+Step 0: mean reco loss 109.5158, KL loss 895.9466 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 69 - 32.57 sec]: train loss reco 87.963 kl 886.038, val loss reco 78.919 kl 882.985 (mean / batch) ###
+
+### [26.12 20:54:54] Start of epoch 70
+Step 0: mean reco loss 79.9524, KL loss 893.4553 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 70 - 32.67 sec]: train loss reco 102.010 kl 882.202, val loss reco 103.512 kl 881.289 (mean / batch) ###
+
+### [26.12 20:55:27] Start of epoch 71
+Step 0: mean reco loss 102.8916, KL loss 899.3593 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 71 - 32.51 sec]: train loss reco 97.641 kl 876.155, val loss reco 110.366 kl 896.300 (mean / batch) ###
+
+### [26.12 20:55:59] Start of epoch 72
+Step 0: mean reco loss 111.7805, KL loss 920.5038 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 72 - 33.40 sec]: train loss reco 106.000 kl 873.245, val loss reco 90.180 kl 868.393 (mean / batch) ###
+
+### [26.12 20:56:33] Start of epoch 73
+Step 0: mean reco loss 96.1578, KL loss 855.2136 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 73 - 32.67 sec]: train loss reco 97.305 kl 864.708, val loss reco 112.526 kl 874.193 (mean / batch) ###
+
+### [26.12 20:57:6] Start of epoch 74
+Step 0: mean reco loss 111.6971, KL loss 868.0162 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 74 - 33.31 sec]: train loss reco 92.574 kl 857.089, val loss reco 82.066 kl 865.361 (mean / batch) ###
+
+### [26.12 20:57:39] Start of epoch 75
+Step 0: mean reco loss 78.9859, KL loss 829.3018 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 75 - 33.36 sec]: train loss reco 142.858 kl 892.629, val loss reco 82.840 kl 851.700 (mean / batch) ###
+
+### [26.12 20:58:12] Start of epoch 76
+Step 0: mean reco loss 86.7747, KL loss 847.1280 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 76 - 33.83 sec]: train loss reco 82.001 kl 840.578, val loss reco 90.495 kl 829.552 (mean / batch) ###
+
+### [26.12 20:58:46] Start of epoch 77
+Step 0: mean reco loss 95.0629, KL loss 840.7368 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 77 - 32.70 sec]: train loss reco 98.306 kl 827.494, val loss reco 87.148 kl 838.935 (mean / batch) ###
+
+### [26.12 20:59:19] Start of epoch 78
+Step 0: mean reco loss 86.9684, KL loss 858.7146 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 78 - 33.70 sec]: train loss reco 93.930 kl 817.981, val loss reco 86.153 kl 814.278 (mean / batch) ###
+
+### [26.12 20:59:52] Start of epoch 79
+Step 0: mean reco loss 80.9103, KL loss 800.3919 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 79 - 33.27 sec]: train loss reco 101.237 kl 816.529, val loss reco 91.252 kl 813.518 (mean / batch) ###
+
+### [26.12 21:0:26] Start of epoch 80
+Step 0: mean reco loss 94.2393, KL loss 826.4736 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 80 - 33.56 sec]: train loss reco 91.459 kl 809.638, val loss reco 96.943 kl 792.760 (mean / batch) ###
+
+### [26.12 21:0:59] Start of epoch 81
+Step 0: mean reco loss 101.5982, KL loss 816.4855 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 81 - 32.70 sec]: train loss reco 94.004 kl 801.811, val loss reco 81.054 kl 791.991 (mean / batch) ###
+
+### [26.12 21:1:32] Start of epoch 82
+Step 0: mean reco loss 87.0413, KL loss 798.9418 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 82 - 33.25 sec]: train loss reco 150.658 kl 815.854, val loss reco 74.786 kl 802.304 (mean / batch) ###
+saving best so far model with valid loss 74.78628540039062 and kl loss 802.3043212890625 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 21:2:6] Start of epoch 83
+Step 0: mean reco loss 70.6590, KL loss 795.1462 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 83 - 33.74 sec]: train loss reco 79.021 kl 794.661, val loss reco 76.309 kl 786.868 (mean / batch) ###
+
+### [26.12 21:2:39] Start of epoch 84
+Step 0: mean reco loss 76.0138, KL loss 770.6737 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 84 - 33.56 sec]: train loss reco 94.134 kl 793.325, val loss reco 94.479 kl 772.210 (mean / batch) ###
+
+### [26.12 21:3:13] Start of epoch 85
+Step 0: mean reco loss 97.8777, KL loss 764.5721 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 85 - 33.90 sec]: train loss reco 97.569 kl 784.843, val loss reco 77.705 kl 781.548 (mean / batch) ###
+
+### [26.12 21:3:47] Start of epoch 86
+Step 0: mean reco loss 78.3030, KL loss 792.6556 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 86 - 32.81 sec]: train loss reco 112.908 kl 789.055, val loss reco 72.287 kl 775.563 (mean / batch) ###
+saving best so far model with valid loss 72.28671264648438 and kl loss 775.563232421875 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 21:4:20] Start of epoch 87
+Step 0: mean reco loss 79.6014, KL loss 762.8875 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 87 - 33.58 sec]: train loss reco 86.974 kl 776.103, val loss reco 105.573 kl 770.989 (mean / batch) ###
+
+### [26.12 21:4:53] Start of epoch 88
+Step 0: mean reco loss 109.0474, KL loss 798.0071 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 88 - 33.67 sec]: train loss reco 95.195 kl 783.703, val loss reco 77.801 kl 778.017 (mean / batch) ###
+
+### [26.12 21:5:27] Start of epoch 89
+Step 0: mean reco loss 79.9052, KL loss 774.7758 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 89 - 33.51 sec]: train loss reco 90.801 kl 778.419, val loss reco 72.634 kl 781.131 (mean / batch) ###
+
+### [26.12 21:6:1] Start of epoch 90
+Step 0: mean reco loss 72.4147, KL loss 771.2985 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 90 - 32.95 sec]: train loss reco 92.381 kl 776.289, val loss reco 72.227 kl 772.740 (mean / batch) ###
+saving best so far model with valid loss 72.22711181640625 and kl loss 772.7404174804688 to /eos/home-k/kiwoznia/data/VAE_models/run_106
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106/best_so_far
+
+### [26.12 21:6:34] Start of epoch 91
+Step 0: mean reco loss 69.7691, KL loss 748.1030 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 91 - 33.14 sec]: train loss reco 91.339 kl 776.534, val loss reco 88.154 kl 779.345 (mean / batch) ###
+
+### [26.12 21:7:7] Start of epoch 92
+Step 0: mean reco loss 86.7837, KL loss 790.7149 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 92 - 32.79 sec]: train loss reco 92.985 kl 775.153, val loss reco 86.688 kl 776.284 (mean / batch) ###
+
+### [26.12 21:7:40] Start of epoch 93
+Step 0: mean reco loss 85.6610, KL loss 788.3174 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 93 - 32.66 sec]: train loss reco 90.424 kl 779.348, val loss reco 80.010 kl 765.827 (mean / batch) ###
+
+### [26.12 21:8:12] Start of epoch 94
+Step 0: mean reco loss 75.3924, KL loss 781.9639 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 94 - 34.12 sec]: train loss reco 99.733 kl 774.078, val loss reco 173.244 kl 769.213 (mean / batch) ###
+
+### [26.12 21:8:46] Start of epoch 95
+Step 0: mean reco loss 162.8944, KL loss 753.3181 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 95 - 32.85 sec]: train loss reco 91.567 kl 775.337, val loss reco 134.681 kl 787.282 (mean / batch) ###
+
+### [26.12 21:9:19] Start of epoch 96
+Step 0: mean reco loss 143.5753, KL loss 795.5827 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 96 - 33.69 sec]: train loss reco 649.793 kl 767.414, val loss reco 11185.297 kl 680.187 (mean / batch) ###
+
+### [26.12 21:9:53] Start of epoch 97
+Step 0: mean reco loss 9986.2793, KL loss 667.7542 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 97 - 33.22 sec]: train loss reco 973.653 kl 1123.894, val loss reco 346.719 kl 1357.564 (mean / batch) ###
+
+### [26.12 21:10:26] Start of epoch 98
+Step 0: mean reco loss 382.9536, KL loss 1286.7031 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 98 - 32.50 sec]: train loss reco 313.942 kl 1350.443, val loss reco 282.650 kl 1347.392 (mean / batch) ###
+
+### [26.12 21:10:59] Start of epoch 99
+Step 0: mean reco loss 260.1417, KL loss 1248.8215 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 99 - 35.75 sec]: train loss reco 287.771 kl 1299.032, val loss reco 281.368 kl 1272.974 (mean / batch) ###
+
+### [26.12 21:11:34] Start of epoch 100
+Step 0: mean reco loss 326.2817, KL loss 1318.6807 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 100 - 37.66 sec]: train loss reco 266.246 kl 1242.997, val loss reco 221.302 kl 1242.475 (mean / batch) ###
+
+### [26.12 21:12:12] Start of epoch 101
+Step 0: mean reco loss 210.5504, KL loss 1220.0884 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 101 - 35.51 sec]: train loss reco 214.365 kl 1208.935, val loss reco 189.044 kl 1201.952 (mean / batch) ###
+
+### [26.12 21:12:48] Start of epoch 102
+Step 0: mean reco loss 176.5643, KL loss 1107.1616 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 102 - 33.92 sec]: train loss reco 200.713 kl 1177.476, val loss reco 203.357 kl 1162.454 (mean / batch) ###
+
+### [26.12 21:13:21] Start of epoch 103
+Step 0: mean reco loss 208.5086, KL loss 1148.0205 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 103 - 31.77 sec]: train loss reco 199.325 kl 1149.669, val loss reco 180.892 kl 1141.635 (mean / batch) ###
+
+### [26.12 21:13:53] Start of epoch 104
+Step 0: mean reco loss 171.8191, KL loss 1174.7584 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 104 - 32.25 sec]: train loss reco 240.885 kl 1124.088, val loss reco 181.203 kl 1123.481 (mean / batch) ###
+
+### [26.12 21:14:25] Start of epoch 105
+Step 0: mean reco loss 162.5413, KL loss 1054.5402 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 105 - 32.55 sec]: train loss reco 189.202 kl 1112.633, val loss reco 178.006 kl 1099.785 (mean / batch) ###
+
+### [26.12 21:14:58] Start of epoch 106
+Step 0: mean reco loss 180.4675, KL loss 1098.2484 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 106 - 31.90 sec]: train loss reco 185.985 kl 1091.284, val loss reco 177.069 kl 1077.487 (mean / batch) ###
+
+### [26.12 21:15:30] Start of epoch 107
+Step 0: mean reco loss 213.6189, KL loss 1122.5066 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 107 - 32.22 sec]: train loss reco 190.887 kl 1066.965, val loss reco 184.570 kl 1064.762 (mean / batch) ###
+
+### [26.12 21:16:2] Start of epoch 108
+Step 0: mean reco loss 167.8221, KL loss 1050.0156 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 108 - 32.90 sec]: train loss reco 186.510 kl 1049.219, val loss reco 174.871 kl 1035.495 (mean / batch) ###
+
+### [26.12 21:16:35] Start of epoch 109
+Step 0: mean reco loss 191.3898, KL loss 1098.6482 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 109 - 33.25 sec]: train loss reco 187.374 kl 1035.898, val loss reco 181.261 kl 1044.911 (mean / batch) ###
+
+### [26.12 21:17:8] Start of epoch 110
+Step 0: mean reco loss 201.4688, KL loss 1019.2241 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 110 - 32.74 sec]: train loss reco 186.709 kl 1018.934, val loss reco 172.364 kl 1012.493 (mean / batch) ###
+
+### [26.12 21:17:41] Start of epoch 111
+Step 0: mean reco loss 169.4773, KL loss 1053.1641 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 111 - 32.30 sec]: train loss reco 223.754 kl 1005.065, val loss reco 173.529 kl 1016.543 (mean / batch) ###
+
+### [26.12 21:18:13] Start of epoch 112
+Step 0: mean reco loss 166.9743, KL loss 1005.5781 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 112 - 32.90 sec]: train loss reco 171.735 kl 990.263, val loss reco 166.360 kl 980.601 (mean / batch) ###
+
+### [26.12 21:18:46] Start of epoch 113
+Step 0: mean reco loss 151.7554, KL loss 955.6920 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 113 - 33.82 sec]: train loss reco 174.452 kl 959.022, val loss reco 188.298 kl 952.788 (mean / batch) ###
+
+### [26.12 21:19:20] Start of epoch 114
+Step 0: mean reco loss 245.3987, KL loss 954.7841 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 114 - 32.56 sec]: train loss reco 177.495 kl 963.839, val loss reco 159.907 kl 950.664 (mean / batch) ###
+
+### [26.12 21:19:53] Start of epoch 115
+Step 0: mean reco loss 154.7561, KL loss 927.4660 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 115 - 33.09 sec]: train loss reco 196.142 kl 960.339, val loss reco 152.720 kl 955.267 (mean / batch) ###
+
+### [26.12 21:20:26] Start of epoch 116
+Step 0: mean reco loss 141.2363, KL loss 954.3328 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 116 - 33.09 sec]: train loss reco 158.081 kl 946.563, val loss reco 213.160 kl 935.334 (mean / batch) ###
+
+### [26.12 21:20:59] Start of epoch 117
+Step 0: mean reco loss 196.7037, KL loss 882.9423 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 117 - 33.17 sec]: train loss reco 165.939 kl 932.819, val loss reco 151.718 kl 920.138 (mean / batch) ###
+
+### [26.12 21:21:32] Start of epoch 118
+Step 0: mean reco loss 160.5964, KL loss 918.1854 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 118 - 32.59 sec]: train loss reco 162.500 kl 920.378, val loss reco 150.399 kl 921.135 (mean / batch) ###
+
+### [26.12 21:22:5] Start of epoch 119
+Step 0: mean reco loss 143.3621, KL loss 919.3561 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 119 - 32.10 sec]: train loss reco 198.757 kl 906.714, val loss reco 299.835 kl 905.329 (mean / batch) ###
+
+### [26.12 21:22:37] Start of epoch 120
+Step 0: mean reco loss 275.8814, KL loss 902.4339 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 120 - 32.77 sec]: train loss reco 150.609 kl 923.309, val loss reco 149.508 kl 909.847 (mean / batch) ###
+
+### [26.12 21:23:9] Start of epoch 121
+Step 0: mean reco loss 164.9252, KL loss 881.1578 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 121 - 32.85 sec]: train loss reco 135.330 kl 913.091, val loss reco 122.877 kl 938.259 (mean / batch) ###
+
+### [26.12 21:23:42] Start of epoch 122
+Step 0: mean reco loss 116.0364, KL loss 944.7679 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 122 - 33.06 sec]: train loss reco 120.881 kl 933.224, val loss reco 114.572 kl 943.135 (mean / batch) ###
+
+### [26.12 21:24:15] Start of epoch 123
+Step 0: mean reco loss 114.5823, KL loss 954.5964 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 123 - 33.21 sec]: train loss reco 116.467 kl 929.612, val loss reco 129.635 kl 933.557 (mean / batch) ###
+
+### [26.12 21:24:49] Start of epoch 124
+Step 0: mean reco loss 128.0766, KL loss 937.4969 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 124 - 32.51 sec]: train loss reco 113.732 kl 920.737, val loss reco 106.278 kl 928.121 (mean / batch) ###
+
+### [26.12 21:25:21] Start of epoch 125
+Step 0: mean reco loss 99.7651, KL loss 933.3399 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 125 - 31.87 sec]: train loss reco 115.944 kl 916.190, val loss reco 129.769 kl 920.917 (mean / batch) ###
+
+### [26.12 21:25:53] Start of epoch 126
+Step 0: mean reco loss 137.4590, KL loss 941.6963 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 126 - 33.16 sec]: train loss reco 138.138 kl 912.463, val loss reco 103.856 kl 901.984 (mean / batch) ###
+
+### [26.12 21:26:26] Start of epoch 127
+Step 0: mean reco loss 93.0890, KL loss 896.0116 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 127 - 32.85 sec]: train loss reco 102.856 kl 896.385, val loss reco 104.722 kl 890.629 (mean / batch) ###
+
+### [26.12 21:26:59] Start of epoch 128
+Step 0: mean reco loss 101.6164, KL loss 895.2966 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 128 - 32.31 sec]: train loss reco 116.026 kl 888.134, val loss reco 104.793 kl 875.461 (mean / batch) ###
+
+### [26.12 21:27:31] Start of epoch 129
+Step 0: mean reco loss 94.1485, KL loss 879.6092 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 129 - 32.67 sec]: train loss reco 112.899 kl 860.207, val loss reco 103.552 kl 847.509 (mean / batch) ###
+
+### [26.12 21:28:4] Start of epoch 130
+Step 0: mean reco loss 104.6007, KL loss 823.1021 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 130 - 33.14 sec]: train loss reco 116.798 kl 865.991, val loss reco 102.832 kl 874.147 (mean / batch) ###
+
+### [26.12 21:28:37] Start of epoch 131
+Step 0: mean reco loss 99.5408, KL loss 880.3712 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 131 - 32.97 sec]: train loss reco 113.939 kl 866.279, val loss reco 112.002 kl 856.868 (mean / batch) ###
+
+### [26.12 21:29:10] Start of epoch 132
+Step 0: mean reco loss 114.1995, KL loss 865.7733 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 132 - 32.86 sec]: train loss reco 131.842 kl 864.652, val loss reco 102.801 kl 858.354 (mean / batch) ###
+
+### [26.12 21:29:43] Start of epoch 133
+Step 0: mean reco loss 107.7162, KL loss 894.5491 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 133 - 33.71 sec]: train loss reco 132.294 kl 853.706, val loss reco 137.860 kl 885.692 (mean / batch) ###
+
+### [26.12 21:30:17] Start of epoch 134
+Step 0: mean reco loss 141.4592, KL loss 875.3361 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 134 - 33.55 sec]: train loss reco 105.200 kl 855.553, val loss reco 118.552 kl 842.053 (mean / batch) ###
+
+### [26.12 21:30:50] Start of epoch 135
+Step 0: mean reco loss 123.8612, KL loss 830.2174 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 135 - 32.22 sec]: train loss reco 104.812 kl 834.242, val loss reco 108.296 kl 827.983 (mean / batch) ###
+
+### [26.12 21:31:22] Start of epoch 136
+Step 0: mean reco loss 113.5082, KL loss 815.7727 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 136 - 31.99 sec]: train loss reco 113.690 kl 823.032, val loss reco 169.492 kl 825.200 (mean / batch) ###
+
+### [26.12 21:31:54] Start of epoch 137
+Step 0: mean reco loss 172.7583, KL loss 867.6119 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 137 - 32.59 sec]: train loss reco 116.732 kl 816.958, val loss reco 110.564 kl 814.368 (mean / batch) ###
+
+### [26.12 21:32:27] Start of epoch 138
+Step 0: mean reco loss 108.3247, KL loss 831.6480 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 138 - 34.65 sec]: train loss reco 109.737 kl 810.468, val loss reco 115.002 kl 806.582 (mean / batch) ###
+
+### [26.12 21:33:2] Start of epoch 139
+Step 0: mean reco loss 111.9759, KL loss 803.0327 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 139 - 34.93 sec]: train loss reco 113.136 kl 803.477, val loss reco 219.616 kl 807.045 (mean / batch) ###
+
+### [26.12 21:33:37] Start of epoch 140
+Step 0: mean reco loss 220.1602, KL loss 804.2412 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 140 - 34.49 sec]: train loss reco 144.789 kl 823.689, val loss reco 102.477 kl 804.475 (mean / batch) ###
+
+### [26.12 21:34:11] Start of epoch 141
+Step 0: mean reco loss 104.5519, KL loss 800.4258 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 141 - 35.92 sec]: train loss reco 105.179 kl 800.118, val loss reco 107.657 kl 792.968 (mean / batch) ###
+
+### [26.12 21:34:47] Start of epoch 142
+Step 0: mean reco loss 121.4545, KL loss 785.5317 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 142 - 54.90 sec]: train loss reco 131.756 kl 811.774, val loss reco 103.261 kl 794.993 (mean / batch) ###
+
+### [26.12 21:35:42] Start of epoch 143
+Step 0: mean reco loss 99.5864, KL loss 811.6371 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 143 - 32.54 sec]: train loss reco 102.697 kl 789.254, val loss reco 109.482 kl 793.210 (mean / batch) ###
+
+### [26.12 21:36:14] Start of epoch 144
+Step 0: mean reco loss 105.6823, KL loss 784.5480 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 144 - 31.90 sec]: train loss reco 116.852 kl 791.037, val loss reco 102.926 kl 788.138 (mean / batch) ###
+
+### [26.12 21:36:46] Start of epoch 145
+Step 0: mean reco loss 105.2358, KL loss 804.0374 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 145 - 32.09 sec]: train loss reco 107.151 kl 784.480, val loss reco 101.016 kl 780.415 (mean / batch) ###
+
+### [26.12 21:37:18] Start of epoch 146
+Step 0: mean reco loss 99.8326, KL loss 779.7005 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 146 - 33.04 sec]: train loss reco 119.214 kl 787.614, val loss reco 166.621 kl 797.016 (mean / batch) ###
+
+### [26.12 21:37:51] Start of epoch 147
+Step 0: mean reco loss 150.6484, KL loss 775.3697 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 147 - 33.57 sec]: train loss reco 105.102 kl 773.972, val loss reco 104.559 kl 775.523 (mean / batch) ###
+
+### [26.12 21:38:25] Start of epoch 148
+Step 0: mean reco loss 98.3887, KL loss 783.4616 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 148 - 33.05 sec]: train loss reco 115.675 kl 770.852, val loss reco 115.731 kl 757.355 (mean / batch) ###
+
+### [26.12 21:38:58] Start of epoch 149
+Step 0: mean reco loss 115.0833, KL loss 767.2373 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 149 - 31.87 sec]: train loss reco 111.700 kl 754.674, val loss reco 110.788 kl 788.564 (mean / batch) ###
+
+### [26.12 21:39:30] Start of epoch 150
+Step 0: mean reco loss 110.5418, KL loss 771.6437 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 150 - 32.41 sec]: train loss reco 127.145 kl 768.439, val loss reco 271.381 kl 801.823 (mean / batch) ###
+
+### [26.12 21:40:2] Start of epoch 151
+Step 0: mean reco loss 266.8235, KL loss 789.5523 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 151 - 33.76 sec]: train loss reco 107.085 kl 762.456, val loss reco 134.726 kl 746.563 (mean / batch) ###
+
+### [26.12 21:40:36] Start of epoch 152
+Step 0: mean reco loss 129.7041, KL loss 729.3773 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 152 - 32.37 sec]: train loss reco 107.838 kl 744.283, val loss reco 105.562 kl 738.967 (mean / batch) ###
+
+### [26.12 21:41:9] Start of epoch 153
+Step 0: mean reco loss 97.8543, KL loss 728.5468 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 153 - 32.06 sec]: train loss reco 112.814 kl 743.677, val loss reco 109.444 kl 745.573 (mean / batch) ###
+
+### [26.12 21:41:41] Start of epoch 154
+Step 0: mean reco loss 106.2506, KL loss 721.0473 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 154 - 31.78 sec]: train loss reco 112.037 kl 735.514, val loss reco 102.284 kl 723.439 (mean / batch) ###
+
+### [26.12 21:42:12] Start of epoch 155
+Step 0: mean reco loss 97.6906, KL loss 735.0929 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 155 - 32.51 sec]: train loss reco 113.628 kl 731.435, val loss reco 103.578 kl 724.374 (mean / batch) ###
+
+### [26.12 21:42:45] Start of epoch 156
+Step 0: mean reco loss 104.4216, KL loss 721.8255 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 156 - 32.72 sec]: train loss reco 109.687 kl 722.014, val loss reco 106.093 kl 718.973 (mean / batch) ###
+
+### [26.12 21:43:18] Start of epoch 157
+Step 0: mean reco loss 116.6418, KL loss 695.0980 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 157 - 32.24 sec]: train loss reco 113.622 kl 724.071, val loss reco 126.705 kl 727.701 (mean / batch) ###
+
+### [26.12 21:43:50] Start of epoch 158
+Step 0: mean reco loss 128.0398, KL loss 725.3262 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 158 - 32.11 sec]: train loss reco 122.189 kl 753.578, val loss reco 114.006 kl 749.008 (mean / batch) ###
+
+### [26.12 21:44:22] Start of epoch 159
+Step 0: mean reco loss 113.7816, KL loss 721.1811 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 159 - 32.22 sec]: train loss reco 105.577 kl 742.512, val loss reco 104.752 kl 738.331 (mean / batch) ###
+
+### [26.12 21:44:54] Start of epoch 160
+Step 0: mean reco loss 104.6886, KL loss 712.0147 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 160 - 32.19 sec]: train loss reco 113.389 kl 747.901, val loss reco 271.147 kl 717.191 (mean / batch) ###
+
+### [26.12 21:45:26] Start of epoch 161
+Step 0: mean reco loss 281.2544, KL loss 714.4301 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 161 - 32.53 sec]: train loss reco 115.968 kl 726.484, val loss reco 118.837 kl 724.788 (mean / batch) ###
+
+### [26.12 21:45:59] Start of epoch 162
+Step 0: mean reco loss 121.1625, KL loss 737.9686 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 162 - 31.16 sec]: train loss reco 123.702 kl 723.371, val loss reco 102.629 kl 716.893 (mean / batch) ###
+
+### [26.12 21:46:30] Start of epoch 163
+Step 0: mean reco loss 107.3927, KL loss 725.1793 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 163 - 32.04 sec]: train loss reco 102.886 kl 709.549, val loss reco 105.915 kl 708.365 (mean / batch) ###
+
+### [26.12 21:47:2] Start of epoch 164
+Step 0: mean reco loss 109.2314, KL loss 714.0714 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 164 - 31.16 sec]: train loss reco 111.052 kl 708.563, val loss reco 109.672 kl 701.162 (mean / batch) ###
+
+### [26.12 21:47:33] Start of epoch 165
+Step 0: mean reco loss 101.3870, KL loss 706.1916 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 165 - 31.70 sec]: train loss reco 113.406 kl 709.250, val loss reco 109.764 kl 731.621 (mean / batch) ###
+
+### [26.12 21:48:5] Start of epoch 166
+Step 0: mean reco loss 103.5773, KL loss 753.1663 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 166 - 31.55 sec]: train loss reco 109.779 kl 708.649, val loss reco 158.652 kl 729.997 (mean / batch) ###
+
+### [26.12 21:48:37] Start of epoch 167
+Step 0: mean reco loss 159.4964, KL loss 715.2009 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 167 - 32.16 sec]: train loss reco 110.865 kl 706.163, val loss reco 134.487 kl 703.496 (mean / batch) ###
+
+### [26.12 21:49:9] Start of epoch 168
+Step 0: mean reco loss 135.1675, KL loss 686.6695 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 168 - 31.09 sec]: train loss reco 112.642 kl 706.311, val loss reco 108.847 kl 718.681 (mean / batch) ###
+
+### [26.12 21:49:40] Start of epoch 169
+Step 0: mean reco loss 96.7694, KL loss 723.9066 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 169 - 32.10 sec]: train loss reco 122.706 kl 713.241, val loss reco 107.026 kl 715.071 (mean / batch) ###
+
+### [26.12 21:50:12] Start of epoch 170
+Step 0: mean reco loss 92.6571, KL loss 691.6718 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 170 - 31.21 sec]: train loss reco 145.867 kl 711.994, val loss reco 240.941 kl 810.875 (mean / batch) ###
+
+### [26.12 21:50:43] Start of epoch 171
+Step 0: mean reco loss 238.2711, KL loss 815.4163 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 171 - 32.95 sec]: train loss reco 107.393 kl 731.831, val loss reco 101.284 kl 704.172 (mean / batch) ###
+
+### [26.12 21:51:16] Start of epoch 172
+Step 0: mean reco loss 105.8058, KL loss 725.9380 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 172 - 32.43 sec]: train loss reco 103.189 kl 691.731, val loss reco 114.846 kl 691.800 (mean / batch) ###
+
+### [26.12 21:51:48] Start of epoch 173
+Step 0: mean reco loss 107.1600, KL loss 688.5031 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 173 - 32.16 sec]: train loss reco 113.084 kl 693.528, val loss reco 101.436 kl 691.177 (mean / batch) ###
+
+### [26.12 21:52:21] Start of epoch 174
+Step 0: mean reco loss 107.4685, KL loss 673.7526 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 174 - 31.71 sec]: train loss reco 111.194 kl 691.603, val loss reco 103.717 kl 697.347 (mean / batch) ###
+
+### [26.12 21:52:52] Start of epoch 175
+Step 0: mean reco loss 99.6360, KL loss 699.4030 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 175 - 32.38 sec]: train loss reco 149.279 kl 699.539, val loss reco 110.737 kl 789.276 (mean / batch) ###
+
+### [26.12 21:53:25] Start of epoch 176
+Step 0: mean reco loss 104.2796, KL loss 789.4453 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 176 - 32.88 sec]: train loss reco 103.456 kl 703.401, val loss reco 101.769 kl 690.461 (mean / batch) ###
+
+### [26.12 21:53:58] Start of epoch 177
+Step 0: mean reco loss 106.4360, KL loss 689.8766 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 177 - 31.84 sec]: train loss reco 105.542 kl 687.255, val loss reco 119.641 kl 682.914 (mean / batch) ###
+
+### [26.12 21:54:29] Start of epoch 178
+Step 0: mean reco loss 120.8401, KL loss 673.2076 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 178 - 34.71 sec]: train loss reco 113.261 kl 692.402, val loss reco 103.593 kl 743.535 (mean / batch) ###
+
+### [26.12 21:55:4] Start of epoch 179
+Step 0: mean reco loss 97.3153, KL loss 703.7205 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 179 - 34.89 sec]: train loss reco 123.515 kl 712.109, val loss reco 101.194 kl 681.244 (mean / batch) ###
+
+### [26.12 21:55:39] Start of epoch 180
+Step 0: mean reco loss 102.5607, KL loss 675.4236 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 180 - 34.23 sec]: train loss reco 105.380 kl 680.996, val loss reco 110.468 kl 709.309 (mean / batch) ###
+
+### [26.12 21:56:13] Start of epoch 181
+Step 0: mean reco loss 106.2207, KL loss 715.4417 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 181 - 53.44 sec]: train loss reco 115.302 kl 685.511, val loss reco 106.358 kl 693.231 (mean / batch) ###
+
+### [26.12 21:57:7] Start of epoch 182
+Step 0: mean reco loss 101.5205, KL loss 669.1498 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 182 - 32.85 sec]: train loss reco 132.443 kl 691.856, val loss reco 170.261 kl 726.905 (mean / batch) ###
+
+### [26.12 21:57:40] Start of epoch 183
+Step 0: mean reco loss 160.3333, KL loss 756.6038 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 183 - 32.15 sec]: train loss reco 200.101 kl 771.534, val loss reco 178.141 kl 742.764 (mean / batch) ###
+
+### [26.12 21:58:12] Start of epoch 184
+Step 0: mean reco loss 176.3001, KL loss 730.5067 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 184 - 32.32 sec]: train loss reco 182.475 kl 705.895, val loss reco 172.187 kl 688.824 (mean / batch) ###
+
+### [26.12 21:58:44] Start of epoch 185
+Step 0: mean reco loss 185.0427, KL loss 684.6537 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 185 - 31.33 sec]: train loss reco 180.212 kl 673.737, val loss reco 181.672 kl 663.063 (mean / batch) ###
+
+### [26.12 21:59:15] Start of epoch 186
+Step 0: mean reco loss 187.7149, KL loss 671.1057 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 186 - 31.66 sec]: train loss reco 185.038 kl 662.866, val loss reco 170.999 kl 676.063 (mean / batch) ###
+
+### [26.12 21:59:47] Start of epoch 187
+Step 0: mean reco loss 181.1007, KL loss 668.5366 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 187 - 35.48 sec]: train loss reco 175.945 kl 658.457, val loss reco 178.240 kl 662.117 (mean / batch) ###
+
+### [26.12 22:0:23] Start of epoch 188
+Step 0: mean reco loss 213.5329, KL loss 661.3061 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 188 - 32.02 sec]: train loss reco 196.405 kl 666.116, val loss reco 173.422 kl 648.865 (mean / batch) ###
+
+### [26.12 22:0:55] Start of epoch 189
+Step 0: mean reco loss 165.3299, KL loss 655.1943 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 189 - 32.56 sec]: train loss reco 176.301 kl 650.125, val loss reco 168.934 kl 655.401 (mean / batch) ###
+
+### [26.12 22:1:27] Start of epoch 190
+Step 0: mean reco loss 164.3652, KL loss 646.2394 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 190 - 33.12 sec]: train loss reco 174.981 kl 647.459, val loss reco 169.624 kl 649.878 (mean / batch) ###
+
+### [26.12 22:2:0] Start of epoch 191
+Step 0: mean reco loss 146.3460, KL loss 642.2297 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 191 - 31.81 sec]: train loss reco 188.424 kl 654.163, val loss reco 168.318 kl 645.593 (mean / batch) ###
+
+### [26.12 22:2:32] Start of epoch 192
+Step 0: mean reco loss 161.0417, KL loss 637.0739 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 192 - 33.25 sec]: train loss reco 176.395 kl 645.203, val loss reco 186.622 kl 646.460 (mean / batch) ###
+
+### [26.12 22:3:5] Start of epoch 193
+Step 0: mean reco loss 210.6450, KL loss 632.3325 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 193 - 31.72 sec]: train loss reco 173.945 kl 642.470, val loss reco 198.702 kl 648.708 (mean / batch) ###
+
+### [26.12 22:3:37] Start of epoch 194
+Step 0: mean reco loss 202.7477, KL loss 637.3465 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 194 - 32.35 sec]: train loss reco 175.823 kl 644.088, val loss reco 199.233 kl 642.725 (mean / batch) ###
+
+### [26.12 22:4:9] Start of epoch 195
+Step 0: mean reco loss 195.6151, KL loss 657.8259 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 195 - 32.31 sec]: train loss reco 174.283 kl 642.347, val loss reco 166.960 kl 634.160 (mean / batch) ###
+
+### [26.12 22:4:42] Start of epoch 196
+Step 0: mean reco loss 152.6975, KL loss 628.9215 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 196 - 33.62 sec]: train loss reco 171.046 kl 635.357, val loss reco 161.859 kl 639.859 (mean / batch) ###
+
+### [26.12 22:5:15] Start of epoch 197
+Step 0: mean reco loss 157.6679, KL loss 639.0867 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 197 - 32.31 sec]: train loss reco 168.812 kl 636.097, val loss reco 182.982 kl 635.675 (mean / batch) ###
+
+### [26.12 22:5:48] Start of epoch 198
+Step 0: mean reco loss 175.9198, KL loss 618.2071 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 198 - 32.97 sec]: train loss reco 167.546 kl 634.816, val loss reco 159.915 kl 636.596 (mean / batch) ###
+
+### [26.12 22:6:21] Start of epoch 199
+Step 0: mean reco loss 140.3819, KL loss 635.9976 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 199 - 32.35 sec]: train loss reco 168.421 kl 643.968, val loss reco 155.314 kl 656.540 (mean / batch) ###
+
+### [26.12 22:6:53] Start of epoch 200
+Step 0: mean reco loss 149.4633, KL loss 644.1687 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 200 - 32.39 sec]: train loss reco 156.100 kl 635.378, val loss reco 157.911 kl 659.247 (mean / batch) ###
+
+### [26.12 22:7:25] Start of epoch 201
+Step 0: mean reco loss 168.8673, KL loss 694.5266 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 201 - 32.14 sec]: train loss reco 160.247 kl 636.956, val loss reco 148.844 kl 637.230 (mean / batch) ###
+
+### [26.12 22:7:57] Start of epoch 202
+Step 0: mean reco loss 157.3742, KL loss 623.6136 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 202 - 31.96 sec]: train loss reco 157.064 kl 632.734, val loss reco 151.013 kl 636.381 (mean / batch) ###
+
+### [26.12 22:8:29] Start of epoch 203
+Step 0: mean reco loss 152.2017, KL loss 625.1568 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 203 - 32.08 sec]: train loss reco 158.180 kl 632.566, val loss reco 149.538 kl 646.100 (mean / batch) ###
+
+### [26.12 22:9:1] Start of epoch 204
+Step 0: mean reco loss 157.3282, KL loss 689.8825 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 204 - 32.23 sec]: train loss reco 160.643 kl 637.611, val loss reco 151.493 kl 632.198 (mean / batch) ###
+
+### [26.12 22:9:34] Start of epoch 205
+Step 0: mean reco loss 140.0857, KL loss 605.3551 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 205 - 32.59 sec]: train loss reco 153.897 kl 618.615, val loss reco 174.495 kl 634.192 (mean / batch) ###
+
+### [26.12 22:10:6] Start of epoch 206
+Step 0: mean reco loss 175.1544, KL loss 637.1864 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 206 - 33.30 sec]: train loss reco 154.735 kl 629.820, val loss reco 146.917 kl 628.340 (mean / batch) ###
+
+### [26.12 22:10:40] Start of epoch 207
+Step 0: mean reco loss 141.2936, KL loss 653.7363 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 207 - 33.28 sec]: train loss reco 155.563 kl 615.890, val loss reco 150.881 kl 602.643 (mean / batch) ###
+
+### [26.12 22:11:13] Start of epoch 208
+Step 0: mean reco loss 147.5804, KL loss 616.6755 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 208 - 31.47 sec]: train loss reco 158.444 kl 606.410, val loss reco 225.927 kl 605.549 (mean / batch) ###
+
+### [26.12 22:11:44] Start of epoch 209
+Step 0: mean reco loss 225.0644, KL loss 580.0935 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 209 - 32.04 sec]: train loss reco 154.006 kl 607.617, val loss reco 142.173 kl 609.145 (mean / batch) ###
+
+### [26.12 22:12:16] Start of epoch 210
+Step 0: mean reco loss 137.0710, KL loss 617.5897 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 210 - 32.05 sec]: train loss reco 176.790 kl 635.758, val loss reco 175.625 kl 674.231 (mean / batch) ###
+
+### [26.12 22:12:48] Start of epoch 211
+Step 0: mean reco loss 212.3002, KL loss 685.4749 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 211 - 33.48 sec]: train loss reco 1387.482 kl 900.295, val loss reco 1170.489 kl 997.713 (mean / batch) ###
+
+### [26.12 22:13:22] Start of epoch 212
+Step 0: mean reco loss 1023.0987, KL loss 947.0075 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 212 - 32.25 sec]: train loss reco 1116.695 kl 938.297, val loss reco 1117.561 kl 904.901 (mean / batch) ###
+
+### [26.12 22:13:54] Start of epoch 213
+Step 0: mean reco loss 1017.5844, KL loss 931.9203 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 213 - 34.22 sec]: train loss reco 1056.119 kl 849.743, val loss reco 1069.526 kl 817.012 (mean / batch) ###
+
+### [26.12 22:14:28] Start of epoch 214
+Step 0: mean reco loss 959.2599, KL loss 814.0375 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 214 - 32.13 sec]: train loss reco 994.208 kl 808.104, val loss reco 998.246 kl 798.910 (mean / batch) ###
+
+### [26.12 22:15:1] Start of epoch 215
+Step 0: mean reco loss 1141.8624, KL loss 890.2651 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 215 - 32.41 sec]: train loss reco 972.494 kl 785.748, val loss reco 986.017 kl 784.715 (mean / batch) ###
+
+### [26.12 22:15:33] Start of epoch 216
+Step 0: mean reco loss 1082.1254, KL loss 767.5811 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 216 - 33.03 sec]: train loss reco 961.699 kl 780.446, val loss reco 997.744 kl 773.996 (mean / batch) ###
+
+### [26.12 22:16:6] Start of epoch 217
+Step 0: mean reco loss 1120.8871, KL loss 780.5795 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 217 - 33.15 sec]: train loss reco 963.849 kl 782.898, val loss reco 968.882 kl 801.559 (mean / batch) ###
+
+### [26.12 22:16:39] Start of epoch 218
+Step 0: mean reco loss 899.2150, KL loss 779.7424 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 218 - 34.41 sec]: train loss reco 947.197 kl 798.546, val loss reco 977.000 kl 798.510 (mean / batch) ###
+
+### [26.12 22:17:14] Start of epoch 219
+Step 0: mean reco loss 1108.7745, KL loss 817.8757 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 219 - 35.77 sec]: train loss reco 939.562 kl 805.980, val loss reco 1047.630 kl 803.308 (mean / batch) ###
+
+### [26.12 22:17:49] Start of epoch 220
+Step 0: mean reco loss 900.7231, KL loss 809.2905 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 220 - 51.44 sec]: train loss reco 931.099 kl 811.873, val loss reco 958.427 kl 831.907 (mean / batch) ###
+
+### [26.12 22:18:41] Start of epoch 221
+Step 0: mean reco loss 943.4810, KL loss 823.3570 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 221 - 32.66 sec]: train loss reco 930.545 kl 814.059, val loss reco 972.960 kl 826.079 (mean / batch) ###
+
+### [26.12 22:19:13] Start of epoch 222
+Step 0: mean reco loss 892.9684, KL loss 818.4801 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 222 - 32.26 sec]: train loss reco 923.597 kl 827.961, val loss reco 959.579 kl 826.485 (mean / batch) ###
+
+### [26.12 22:19:46] Start of epoch 223
+Step 0: mean reco loss 849.7563, KL loss 801.4420 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 223 - 31.99 sec]: train loss reco 909.648 kl 818.409, val loss reco 925.149 kl 812.808 (mean / batch) ###
+
+### [26.12 22:20:18] Start of epoch 224
+Step 0: mean reco loss 751.3563, KL loss 805.9730 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 224 - 32.13 sec]: train loss reco 893.524 kl 832.978, val loss reco 953.252 kl 980.975 (mean / batch) ###
+
+### [26.12 22:20:50] Start of epoch 225
+Step 0: mean reco loss 802.0815, KL loss 918.4761 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 225 - 32.15 sec]: train loss reco 345.065 kl 1206.364, val loss reco 198.157 kl 1213.266 (mean / batch) ###
+
+### [26.12 22:21:22] Start of epoch 226
+Step 0: mean reco loss 188.5324, KL loss 1196.3108 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 226 - 31.86 sec]: train loss reco 191.102 kl 1174.126, val loss reco 201.518 kl 1130.073 (mean / batch) ###
+
+### [26.12 22:21:54] Start of epoch 227
+Step 0: mean reco loss 200.9493, KL loss 1096.0408 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 227 - 31.85 sec]: train loss reco 184.019 kl 1101.193, val loss reco 199.514 kl 1067.524 (mean / batch) ###
+
+### [26.12 22:22:26] Start of epoch 228
+Step 0: mean reco loss 189.6198, KL loss 1137.3917 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 228 - 32.11 sec]: train loss reco 180.460 kl 1045.619, val loss reco 177.142 kl 1019.755 (mean / batch) ###
+
+### [26.12 22:22:58] Start of epoch 229
+Step 0: mean reco loss 165.3029, KL loss 1004.4331 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 229 - 31.64 sec]: train loss reco 184.985 kl 1000.304, val loss reco 190.928 kl 984.874 (mean / batch) ###
+
+### [26.12 22:23:29] Start of epoch 230
+Step 0: mean reco loss 200.8309, KL loss 997.2086 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 230 - 31.38 sec]: train loss reco 202.061 kl 971.809, val loss reco 806.968 kl 937.935 (mean / batch) ###
+
+### [26.12 22:24:1] Start of epoch 231
+Step 0: mean reco loss 737.9085, KL loss 916.7512 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 231 - 31.24 sec]: train loss reco 200.619 kl 1094.865, val loss reco 178.022 kl 1067.990 (mean / batch) ###
+
+### [26.12 22:24:32] Start of epoch 232
+Step 0: mean reco loss 179.2337, KL loss 1081.9225 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 232 - 31.80 sec]: train loss reco 191.251 kl 1010.837, val loss reco 1033.683 kl 1028.524 (mean / batch) ###
+
+### [26.12 22:25:4] Start of epoch 233
+Step 0: mean reco loss 1122.1614, KL loss 1059.6283 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 233 - 32.63 sec]: train loss reco 189.491 kl 966.855, val loss reco 184.103 kl 957.015 (mean / batch) ###
+
+### [26.12 22:25:37] Start of epoch 234
+Step 0: mean reco loss 218.9374, KL loss 966.6148 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 234 - 31.59 sec]: train loss reco 176.129 kl 939.817, val loss reco 174.227 kl 930.576 (mean / batch) ###
+
+### [26.12 22:26:8] Start of epoch 235
+Step 0: mean reco loss 190.5334, KL loss 914.6257 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 235 - 32.76 sec]: train loss reco 183.090 kl 917.213, val loss reco 167.693 kl 905.166 (mean / batch) ###
+
+### [26.12 22:26:41] Start of epoch 236
+Step 0: mean reco loss 155.1355, KL loss 880.8289 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 236 - 32.43 sec]: train loss reco 183.868 kl 900.294, val loss reco 171.335 kl 891.244 (mean / batch) ###
+
+### [26.12 22:27:13] Start of epoch 237
+Step 0: mean reco loss 153.2529, KL loss 890.9760 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 237 - 32.09 sec]: train loss reco 189.040 kl 888.952, val loss reco 216.157 kl 878.895 (mean / batch) ###
+
+### [26.12 22:27:45] Start of epoch 238
+Step 0: mean reco loss 214.2109, KL loss 932.7435 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 238 - 31.73 sec]: train loss reco 178.847 kl 875.110, val loss reco 181.555 kl 874.668 (mean / batch) ###
+
+### [26.12 22:28:17] Start of epoch 239
+Step 0: mean reco loss 157.4467, KL loss 869.3115 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 239 - 32.47 sec]: train loss reco 176.369 kl 851.744, val loss reco 172.707 kl 832.786 (mean / batch) ###
+
+### [26.12 22:28:50] Start of epoch 240
+Step 0: mean reco loss 165.5929, KL loss 841.0429 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 240 - 31.83 sec]: train loss reco 198.489 kl 843.391, val loss reco 175.081 kl 829.687 (mean / batch) ###
+
+### [26.12 22:29:21] Start of epoch 241
+Step 0: mean reco loss 179.2120, KL loss 898.0853 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 241 - 32.18 sec]: train loss reco 180.192 kl 806.908, val loss reco 182.833 kl 798.286 (mean / batch) ###
+
+### [26.12 22:29:54] Start of epoch 242
+Step 0: mean reco loss 193.9654, KL loss 832.5338 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 242 - 31.74 sec]: train loss reco 180.143 kl 805.725, val loss reco 185.165 kl 803.831 (mean / batch) ###
+
+### [26.12 22:30:25] Start of epoch 243
+Step 0: mean reco loss 171.9316, KL loss 824.8712 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 243 - 31.39 sec]: train loss reco 200.128 kl 809.447, val loss reco 172.734 kl 840.894 (mean / batch) ###
+
+### [26.12 22:30:57] Start of epoch 244
+Step 0: mean reco loss 174.6425, KL loss 799.6448 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 244 - 32.33 sec]: train loss reco 173.303 kl 801.283, val loss reco 177.101 kl 794.892 (mean / batch) ###
+
+### [26.12 22:31:29] Start of epoch 245
+Step 0: mean reco loss 197.3286, KL loss 790.7452 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 245 - 31.83 sec]: train loss reco 177.013 kl 788.270, val loss reco 173.217 kl 790.307 (mean / batch) ###
+
+### [26.12 22:32:1] Start of epoch 246
+Step 0: mean reco loss 164.6250, KL loss 783.5654 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 246 - 31.93 sec]: train loss reco 185.227 kl 778.026, val loss reco 192.737 kl 788.967 (mean / batch) ###
+
+### [26.12 22:32:33] Start of epoch 247
+Step 0: mean reco loss 183.7259, KL loss 774.4559 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 247 - 31.75 sec]: train loss reco 178.221 kl 769.435, val loss reco 183.129 kl 753.257 (mean / batch) ###
+
+### [26.12 22:33:5] Start of epoch 248
+Step 0: mean reco loss 159.4144, KL loss 734.9225 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 248 - 32.30 sec]: train loss reco 184.631 kl 757.394, val loss reco 178.448 kl 763.749 (mean / batch) ###
+
+### [26.12 22:33:37] Start of epoch 249
+Step 0: mean reco loss 167.3036, KL loss 748.5172 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 249 - 33.06 sec]: train loss reco 179.470 kl 746.721, val loss reco 167.431 kl 753.602 (mean / batch) ###
+
+### [26.12 22:34:10] Start of epoch 250
+Step 0: mean reco loss 154.4303, KL loss 761.5505 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 250 - 32.23 sec]: train loss reco 178.802 kl 730.941, val loss reco 169.314 kl 721.175 (mean / batch) ###
+
+### [26.12 22:34:42] Start of epoch 251
+Step 0: mean reco loss 185.7945, KL loss 724.3741 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 251 - 33.42 sec]: train loss reco 186.138 kl 720.509, val loss reco 172.505 kl 711.211 (mean / batch) ###
+
+### [26.12 22:35:16] Start of epoch 252
+Step 0: mean reco loss 170.8759, KL loss 711.9742 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 252 - 32.45 sec]: train loss reco 179.122 kl 699.203, val loss reco 170.594 kl 707.379 (mean / batch) ###
+
+### [26.12 22:35:48] Start of epoch 253
+Step 0: mean reco loss 157.7965, KL loss 712.8587 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 253 - 32.33 sec]: train loss reco 177.965 kl 688.883, val loss reco 177.733 kl 688.468 (mean / batch) ###
+
+### [26.12 22:36:20] Start of epoch 254
+Step 0: mean reco loss 179.8293, KL loss 680.0750 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 254 - 33.02 sec]: train loss reco 180.009 kl 676.791, val loss reco 171.185 kl 656.753 (mean / batch) ###
+
+### [26.12 22:36:53] Start of epoch 255
+Step 0: mean reco loss 182.7322, KL loss 682.2943 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 255 - 32.17 sec]: train loss reco 209.933 kl 680.109, val loss reco 172.285 kl 674.291 (mean / batch) ###
+
+### [26.12 22:37:26] Start of epoch 256
+Step 0: mean reco loss 185.3910, KL loss 695.8050 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 256 - 31.84 sec]: train loss reco 171.473 kl 665.202, val loss reco 178.273 kl 660.317 (mean / batch) ###
+
+### [26.12 22:37:57] Start of epoch 257
+Step 0: mean reco loss 167.7147, KL loss 640.9570 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 257 - 33.60 sec]: train loss reco 176.275 kl 669.920, val loss reco 178.736 kl 679.268 (mean / batch) ###
+
+### [26.12 22:38:31] Start of epoch 258
+Step 0: mean reco loss 165.3969, KL loss 659.1290 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 258 - 34.58 sec]: train loss reco 189.724 kl 672.104, val loss reco 186.768 kl 664.814 (mean / batch) ###
+
+### [26.12 22:39:6] Start of epoch 259
+Step 0: mean reco loss 204.7703, KL loss 687.4708 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 259 - 34.65 sec]: train loss reco 179.993 kl 658.195, val loss reco 171.419 kl 673.369 (mean / batch) ###
+
+### [26.12 22:39:40] Start of epoch 260
+Step 0: mean reco loss 169.7939, KL loss 667.6151 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 260 - 70.09 sec]: train loss reco 178.289 kl 653.727, val loss reco 170.021 kl 652.201 (mean / batch) ###
+
+### [26.12 22:40:50] Start of epoch 261
+Step 0: mean reco loss 182.5102, KL loss 668.9282 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 261 - 32.81 sec]: train loss reco 176.768 kl 648.888, val loss reco 166.737 kl 648.021 (mean / batch) ###
+
+### [26.12 22:41:23] Start of epoch 262
+Step 0: mean reco loss 162.3442, KL loss 654.9313 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 262 - 32.48 sec]: train loss reco 186.759 kl 654.190, val loss reco 169.644 kl 684.032 (mean / batch) ###
+
+### [26.12 22:41:56] Start of epoch 263
+Step 0: mean reco loss 161.7260, KL loss 655.7656 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 263 - 31.37 sec]: train loss reco 193.336 kl 679.592, val loss reco 169.247 kl 667.477 (mean / batch) ###
+
+### [26.12 22:42:27] Start of epoch 264
+Step 0: mean reco loss 144.5641, KL loss 661.9957 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 264 - 31.45 sec]: train loss reco 170.670 kl 656.522, val loss reco 165.371 kl 649.255 (mean / batch) ###
+
+### [26.12 22:42:58] Start of epoch 265
+Step 0: mean reco loss 163.0750, KL loss 649.8499 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 265 - 31.92 sec]: train loss reco 181.225 kl 651.591, val loss reco 167.757 kl 649.831 (mean / batch) ###
+
+### [26.12 22:43:30] Start of epoch 266
+Step 0: mean reco loss 164.0225, KL loss 654.4260 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 266 - 31.84 sec]: train loss reco 176.705 kl 646.867, val loss reco 176.119 kl 641.582 (mean / batch) ###
+
+### [26.12 22:44:2] Start of epoch 267
+Step 0: mean reco loss 202.3758, KL loss 648.3550 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 267 - 31.57 sec]: train loss reco 187.194 kl 648.487, val loss reco 177.487 kl 625.105 (mean / batch) ###
+
+### [26.12 22:44:34] Start of epoch 268
+Step 0: mean reco loss 224.3127, KL loss 644.6651 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 268 - 32.25 sec]: train loss reco 174.298 kl 634.618, val loss reco 165.998 kl 631.922 (mean / batch) ###
+
+### [26.12 22:45:6] Start of epoch 269
+Step 0: mean reco loss 167.3698, KL loss 656.3480 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 269 - 31.89 sec]: train loss reco 174.786 kl 631.179, val loss reco 172.213 kl 634.019 (mean / batch) ###
+
+### [26.12 22:45:38] Start of epoch 270
+Step 0: mean reco loss 181.0821, KL loss 627.7039 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 270 - 33.60 sec]: train loss reco 175.761 kl 633.601, val loss reco 158.724 kl 623.303 (mean / batch) ###
+
+### [26.12 22:46:11] Start of epoch 271
+Step 0: mean reco loss 158.1507, KL loss 629.7067 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 271 - 33.74 sec]: train loss reco 164.529 kl 628.746, val loss reco 229.012 kl 641.196 (mean / batch) ###
+
+### [26.12 22:46:45] Start of epoch 272
+Step 0: mean reco loss 223.1143, KL loss 646.3011 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 272 - 32.45 sec]: train loss reco 166.693 kl 633.815, val loss reco 151.843 kl 629.059 (mean / batch) ###
+
+### [26.12 22:47:18] Start of epoch 273
+Step 0: mean reco loss 131.6697, KL loss 631.9087 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 273 - 31.96 sec]: train loss reco 164.599 kl 626.225, val loss reco 160.587 kl 630.778 (mean / batch) ###
+
+### [26.12 22:47:50] Start of epoch 274
+Step 0: mean reco loss 145.5093, KL loss 620.2051 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 274 - 31.89 sec]: train loss reco 158.515 kl 625.676, val loss reco 150.140 kl 612.721 (mean / batch) ###
+
+### [26.12 22:48:22] Start of epoch 275
+Step 0: mean reco loss 139.2648, KL loss 592.7877 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 275 - 32.12 sec]: train loss reco 162.285 kl 626.098, val loss reco 154.084 kl 625.207 (mean / batch) ###
+
+### [26.12 22:48:54] Start of epoch 276
+Step 0: mean reco loss 145.2546, KL loss 614.7610 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 276 - 31.73 sec]: train loss reco 157.365 kl 620.258, val loss reco 172.255 kl 628.205 (mean / batch) ###
+
+### [26.12 22:49:25] Start of epoch 277
+Step 0: mean reco loss 174.0963, KL loss 627.8508 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 277 - 32.48 sec]: train loss reco 158.355 kl 623.435, val loss reco 170.721 kl 626.355 (mean / batch) ###
+
+### [26.12 22:49:58] Start of epoch 278
+Step 0: mean reco loss 191.1433, KL loss 629.6899 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 278 - 32.16 sec]: train loss reco 158.969 kl 618.439, val loss reco 197.981 kl 636.612 (mean / batch) ###
+
+### [26.12 22:50:30] Start of epoch 279
+Step 0: mean reco loss 220.6496, KL loss 645.3540 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 279 - 31.96 sec]: train loss reco 184.616 kl 638.642, val loss reco 172.343 kl 704.294 (mean / batch) ###
+
+### [26.12 22:51:2] Start of epoch 280
+Step 0: mean reco loss 170.3293, KL loss 717.2367 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 280 - 32.05 sec]: train loss reco 151.263 kl 665.103, val loss reco 144.941 kl 643.757 (mean / batch) ###
+
+### [26.12 22:51:34] Start of epoch 281
+Step 0: mean reco loss 149.9190, KL loss 653.7194 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 281 - 32.17 sec]: train loss reco 151.956 kl 623.152, val loss reco 147.183 kl 624.563 (mean / batch) ###
+
+### [26.12 22:52:6] Start of epoch 282
+Step 0: mean reco loss 159.1172, KL loss 629.3849 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 282 - 31.61 sec]: train loss reco 157.075 kl 616.724, val loss reco 146.170 kl 612.251 (mean / batch) ###
+
+### [26.12 22:52:38] Start of epoch 283
+Step 0: mean reco loss 141.1463, KL loss 610.0043 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 283 - 32.15 sec]: train loss reco 153.078 kl 612.957, val loss reco 146.880 kl 605.794 (mean / batch) ###
+
+### [26.12 22:53:10] Start of epoch 284
+Step 0: mean reco loss 130.5663, KL loss 609.3326 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 284 - 32.18 sec]: train loss reco 157.408 kl 617.068, val loss reco 161.806 kl 627.241 (mean / batch) ###
+
+### [26.12 22:53:42] Start of epoch 285
+Step 0: mean reco loss 151.5511, KL loss 622.7446 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 285 - 31.82 sec]: train loss reco 155.883 kl 630.812, val loss reco 144.294 kl 625.195 (mean / batch) ###
+
+### [26.12 22:54:14] Start of epoch 286
+Step 0: mean reco loss 135.2263, KL loss 601.0964 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 286 - 32.40 sec]: train loss reco 155.407 kl 622.683, val loss reco 160.516 kl 610.027 (mean / batch) ###
+
+### [26.12 22:54:46] Start of epoch 287
+Step 0: mean reco loss 177.6156, KL loss 623.1565 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 287 - 31.58 sec]: train loss reco 156.765 kl 616.047, val loss reco 149.729 kl 615.334 (mean / batch) ###
+
+### [26.12 22:55:18] Start of epoch 288
+Step 0: mean reco loss 154.0030, KL loss 660.1265 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 288 - 32.44 sec]: train loss reco 172.256 kl 622.150, val loss reco 144.650 kl 612.560 (mean / batch) ###
+
+### [26.12 22:55:50] Start of epoch 289
+Step 0: mean reco loss 140.7523, KL loss 626.7590 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 289 - 31.74 sec]: train loss reco 147.010 kl 609.673, val loss reco 143.895 kl 612.759 (mean / batch) ###
+
+### [26.12 22:56:22] Start of epoch 290
+Step 0: mean reco loss 173.6922, KL loss 609.6995 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 290 - 32.01 sec]: train loss reco 153.391 kl 612.170, val loss reco 154.012 kl 610.375 (mean / batch) ###
+
+### [26.12 22:56:54] Start of epoch 291
+Step 0: mean reco loss 149.9991, KL loss 594.0340 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 291 - 32.01 sec]: train loss reco 154.601 kl 617.589, val loss reco 150.780 kl 619.511 (mean / batch) ###
+
+### [26.12 22:57:26] Start of epoch 292
+Step 0: mean reco loss 154.6760, KL loss 612.9079 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 292 - 31.76 sec]: train loss reco 153.124 kl 612.613, val loss reco 143.064 kl 603.493 (mean / batch) ###
+
+### [26.12 22:57:58] Start of epoch 293
+Step 0: mean reco loss 148.1121, KL loss 599.9798 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 293 - 31.62 sec]: train loss reco 157.299 kl 619.006, val loss reco 156.398 kl 621.562 (mean / batch) ###
+
+### [26.12 22:58:30] Start of epoch 294
+Step 0: mean reco loss 150.8855, KL loss 618.6869 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 294 - 31.75 sec]: train loss reco 154.643 kl 611.611, val loss reco 147.843 kl 615.903 (mean / batch) ###
+
+### [26.12 22:59:1] Start of epoch 295
+Step 0: mean reco loss 144.8234, KL loss 603.2614 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 295 - 31.37 sec]: train loss reco 156.018 kl 620.105, val loss reco 164.887 kl 632.277 (mean / batch) ###
+
+### [26.12 22:59:33] Start of epoch 296
+Step 0: mean reco loss 165.6984, KL loss 623.1588 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 296 - 32.68 sec]: train loss reco 160.733 kl 624.250, val loss reco 149.036 kl 625.571 (mean / batch) ###
+
+### [26.12 23:0:5] Start of epoch 297
+Step 0: mean reco loss 189.5706, KL loss 633.2607 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 297 - 34.25 sec]: train loss reco 150.149 kl 611.383, val loss reco 144.380 kl 618.815 (mean / batch) ###
+
+### [26.12 23:0:40] Start of epoch 298
+Step 0: mean reco loss 141.6200, KL loss 608.4127 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 298 - 33.34 sec]: train loss reco 173.039 kl 631.893, val loss reco 148.268 kl 612.656 (mean / batch) ###
+
+### [26.12 23:1:13] Start of epoch 299
+Step 0: mean reco loss 155.0452, KL loss 616.4130 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 299 - 34.35 sec]: train loss reco 147.188 kl 610.075, val loss reco 145.209 kl 606.682 (mean / batch) ###
+
+### [26.12 23:1:47] Start of epoch 300
+Step 0: mean reco loss 141.4196, KL loss 619.3849 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 300 - 53.06 sec]: train loss reco 154.014 kl 610.037, val loss reco 146.622 kl 608.541 (mean / batch) ###
+
+### [26.12 23:2:40] Start of epoch 301
+Step 0: mean reco loss 162.8875, KL loss 617.6541 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 301 - 31.14 sec]: train loss reco 155.154 kl 610.737, val loss reco 144.895 kl 626.796 (mean / batch) ###
+
+### [26.12 23:3:12] Start of epoch 302
+Step 0: mean reco loss 141.1453, KL loss 598.6963 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 302 - 32.46 sec]: train loss reco 158.937 kl 614.435, val loss reco 153.004 kl 619.384 (mean / batch) ###
+
+### [26.12 23:3:44] Start of epoch 303
+Step 0: mean reco loss 138.2722, KL loss 601.1927 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 303 - 31.38 sec]: train loss reco 151.018 kl 609.091, val loss reco 147.836 kl 606.181 (mean / batch) ###
+
+### [26.12 23:4:15] Start of epoch 304
+Step 0: mean reco loss 160.1559, KL loss 624.9980 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 304 - 31.48 sec]: train loss reco 153.937 kl 608.593, val loss reco 217.236 kl 617.477 (mean / batch) ###
+
+### [26.12 23:4:47] Start of epoch 305
+Step 0: mean reco loss 208.3930, KL loss 600.4388 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 305 - 31.26 sec]: train loss reco 155.503 kl 617.938, val loss reco 142.727 kl 603.137 (mean / batch) ###
+
+### [26.12 23:5:18] Start of epoch 306
+Step 0: mean reco loss 145.7994, KL loss 618.3158 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 306 - 31.22 sec]: train loss reco 154.427 kl 615.317, val loss reco 146.222 kl 609.077 (mean / batch) ###
+
+### [26.12 23:5:49] Start of epoch 307
+Step 0: mean reco loss 153.4658, KL loss 620.1544 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 307 - 32.18 sec]: train loss reco 154.703 kl 611.366, val loss reco 392.702 kl 604.537 (mean / batch) ###
+
+### [26.12 23:6:22] Start of epoch 308
+Step 0: mean reco loss 382.2397, KL loss 602.3130 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 308 - 32.34 sec]: train loss reco 153.933 kl 612.676, val loss reco 146.738 kl 608.780 (mean / batch) ###
+
+### [26.12 23:6:54] Start of epoch 309
+Step 0: mean reco loss 152.2000, KL loss 617.6637 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 309 - 31.30 sec]: train loss reco 152.574 kl 611.058, val loss reco 159.655 kl 603.862 (mean / batch) ###
+
+### [26.12 23:7:25] Start of epoch 310
+Step 0: mean reco loss 150.3948, KL loss 619.5132 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 310 - 31.18 sec]: train loss reco 155.024 kl 621.896, val loss reco 150.577 kl 612.082 (mean / batch) ###
+
+### [26.12 23:7:56] Start of epoch 311
+Step 0: mean reco loss 168.8799, KL loss 613.0416 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 311 - 31.79 sec]: train loss reco 154.025 kl 616.225, val loss reco 144.082 kl 608.528 (mean / batch) ###
+
+### [26.12 23:8:28] Start of epoch 312
+Step 0: mean reco loss 152.3486, KL loss 591.9891 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 312 - 31.20 sec]: train loss reco 156.103 kl 616.314, val loss reco 143.720 kl 610.179 (mean / batch) ###
+
+### [26.12 23:8:59] Start of epoch 313
+Step 0: mean reco loss 121.3923, KL loss 598.9556 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 313 - 31.73 sec]: train loss reco 155.652 kl 612.534, val loss reco 158.752 kl 607.526 (mean / batch) ###
+
+### [26.12 23:9:31] Start of epoch 314
+Step 0: mean reco loss 152.8245, KL loss 609.5228 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 314 - 31.59 sec]: train loss reco 152.547 kl 606.433, val loss reco 144.259 kl 611.023 (mean / batch) ###
+
+### [26.12 23:10:3] Start of epoch 315
+Step 0: mean reco loss 154.3177, KL loss 609.6722 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 315 - 32.90 sec]: train loss reco 153.546 kl 608.860, val loss reco 154.332 kl 619.162 (mean / batch) ###
+
+### [26.12 23:10:36] Start of epoch 316
+Step 0: mean reco loss 158.7612, KL loss 589.9730 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 316 - 31.33 sec]: train loss reco 154.421 kl 607.620, val loss reco 144.797 kl 615.883 (mean / batch) ###
+
+### [26.12 23:11:7] Start of epoch 317
+Step 0: mean reco loss 135.0131, KL loss 612.4017 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 317 - 31.04 sec]: train loss reco 168.136 kl 624.027, val loss reco 146.050 kl 606.408 (mean / batch) ###
+
+### [26.12 23:11:38] Start of epoch 318
+Step 0: mean reco loss 147.2331, KL loss 616.3104 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 318 - 30.99 sec]: train loss reco 145.773 kl 601.340, val loss reco 155.974 kl 601.633 (mean / batch) ###
+
+### [26.12 23:12:9] Start of epoch 319
+Step 0: mean reco loss 157.3113, KL loss 600.3920 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 319 - 31.76 sec]: train loss reco 152.506 kl 605.918, val loss reco 144.545 kl 600.864 (mean / batch) ###
+
+### [26.12 23:12:41] Start of epoch 320
+Step 0: mean reco loss 142.7429, KL loss 576.7137 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 320 - 31.91 sec]: train loss reco 153.764 kl 604.205, val loss reco 144.126 kl 603.122 (mean / batch) ###
+
+### [26.12 23:13:13] Start of epoch 321
+Step 0: mean reco loss 140.1139, KL loss 576.0406 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 321 - 31.75 sec]: train loss reco 152.340 kl 601.983, val loss reco 148.642 kl 599.576 (mean / batch) ###
+
+### [26.12 23:13:44] Start of epoch 322
+Step 0: mean reco loss 150.6690, KL loss 594.2863 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 322 - 31.39 sec]: train loss reco 154.670 kl 602.280, val loss reco 142.864 kl 596.222 (mean / batch) ###
+
+### [26.12 23:14:16] Start of epoch 323
+Step 0: mean reco loss 131.2311, KL loss 602.7614 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 323 - 31.90 sec]: train loss reco 155.273 kl 602.829, val loss reco 143.265 kl 594.297 (mean / batch) ###
+
+### [26.12 23:14:48] Start of epoch 324
+Step 0: mean reco loss 137.0418, KL loss 608.0737 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 324 - 31.01 sec]: train loss reco 151.331 kl 597.542, val loss reco 151.752 kl 615.315 (mean / batch) ###
+
+### [26.12 23:15:19] Start of epoch 325
+Step 0: mean reco loss 151.2991, KL loss 603.6959 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 325 - 31.89 sec]: train loss reco 172.337 kl 603.982, val loss reco 177.238 kl 676.830 (mean / batch) ###
+
+### [26.12 23:15:51] Start of epoch 326
+Step 0: mean reco loss 165.9661, KL loss 658.9734 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 326 - 31.34 sec]: train loss reco 147.674 kl 606.798, val loss reco 151.646 kl 587.280 (mean / batch) ###
+
+### [26.12 23:16:22] Start of epoch 327
+Step 0: mean reco loss 153.3540, KL loss 585.7324 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 327 - 32.06 sec]: train loss reco 148.186 kl 592.023, val loss reco 165.267 kl 596.400 (mean / batch) ###
+
+### [26.12 23:16:54] Start of epoch 328
+Step 0: mean reco loss 168.4929, KL loss 586.3203 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 328 - 31.83 sec]: train loss reco 153.295 kl 592.503, val loss reco 158.099 kl 591.023 (mean / batch) ###
+
+### [26.12 23:17:26] Start of epoch 329
+Step 0: mean reco loss 158.1135, KL loss 556.3359 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 329 - 32.03 sec]: train loss reco 156.245 kl 600.503, val loss reco 149.704 kl 595.089 (mean / batch) ###
+
+### [26.12 23:17:58] Start of epoch 330
+Step 0: mean reco loss 143.6436, KL loss 589.2414 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 330 - 31.65 sec]: train loss reco 154.301 kl 590.971, val loss reco 166.525 kl 619.253 (mean / batch) ###
+
+### [26.12 23:18:29] Start of epoch 331
+Step 0: mean reco loss 178.4337, KL loss 625.9876 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 331 - 31.51 sec]: train loss reco 152.059 kl 595.471, val loss reco 142.134 kl 588.099 (mean / batch) ###
+
+### [26.12 23:19:1] Start of epoch 332
+Step 0: mean reco loss 135.9662, KL loss 571.7178 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 332 - 32.10 sec]: train loss reco 157.079 kl 592.433, val loss reco 144.231 kl 631.436 (mean / batch) ###
+
+### [26.12 23:19:33] Start of epoch 333
+Step 0: mean reco loss 138.4381, KL loss 593.4429 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 333 - 32.51 sec]: train loss reco 152.300 kl 593.200, val loss reco 178.041 kl 614.059 (mean / batch) ###
+
+### [26.12 23:20:6] Start of epoch 334
+Step 0: mean reco loss 185.6027, KL loss 609.3813 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 334 - 32.62 sec]: train loss reco 154.792 kl 590.569, val loss reco 145.880 kl 597.604 (mean / batch) ###
+
+### [26.12 23:20:38] Start of epoch 335
+Step 0: mean reco loss 152.9919, KL loss 661.1332 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 335 - 32.08 sec]: train loss reco 150.001 kl 590.250, val loss reco 153.471 kl 589.683 (mean / batch) ###
+
+### [26.12 23:21:10] Start of epoch 336
+Step 0: mean reco loss 169.0420, KL loss 597.1262 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 336 - 32.52 sec]: train loss reco 184.026 kl 607.998, val loss reco 141.862 kl 592.305 (mean / batch) ###
+
+### [26.12 23:21:43] Start of epoch 337
+Step 0: mean reco loss 148.5945, KL loss 598.7593 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 337 - 35.15 sec]: train loss reco 146.214 kl 589.901, val loss reco 143.627 kl 580.833 (mean / batch) ###
+
+### [26.12 23:22:18] Start of epoch 338
+Step 0: mean reco loss 154.6021, KL loss 575.6728 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 338 - 34.34 sec]: train loss reco 148.680 kl 583.023, val loss reco 186.841 kl 588.494 (mean / batch) ###
+
+### [26.12 23:22:52] Start of epoch 339
+Step 0: mean reco loss 168.1994, KL loss 566.8093 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 339 - 53.57 sec]: train loss reco 154.576 kl 589.519, val loss reco 149.196 kl 592.078 (mean / batch) ###
+
+### [26.12 23:23:46] Start of epoch 340
+Step 0: mean reco loss 143.0191, KL loss 592.4730 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 340 - 32.13 sec]: train loss reco 152.805 kl 586.760, val loss reco 152.055 kl 582.457 (mean / batch) ###
+
+### [26.12 23:24:18] Start of epoch 341
+Step 0: mean reco loss 146.6810, KL loss 582.3544 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 341 - 31.91 sec]: train loss reco 151.071 kl 585.290, val loss reco 145.596 kl 576.094 (mean / batch) ###
+
+### [26.12 23:24:50] Start of epoch 342
+Step 0: mean reco loss 179.1025, KL loss 573.1453 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 342 - 32.11 sec]: train loss reco 154.861 kl 584.851, val loss reco 153.517 kl 588.384 (mean / batch) ###
+
+### [26.12 23:25:22] Start of epoch 343
+Step 0: mean reco loss 170.2898, KL loss 589.6778 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 343 - 32.03 sec]: train loss reco 153.358 kl 586.751, val loss reco 141.872 kl 589.249 (mean / batch) ###
+
+### [26.12 23:25:54] Start of epoch 344
+Step 0: mean reco loss 135.1233, KL loss 584.7491 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 344 - 31.35 sec]: train loss reco 154.903 kl 591.388, val loss reco 159.684 kl 631.442 (mean / batch) ###
+
+### [26.12 23:26:25] Start of epoch 345
+Step 0: mean reco loss 187.6467, KL loss 661.5035 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 345 - 31.46 sec]: train loss reco 151.773 kl 591.095, val loss reco 148.486 kl 581.493 (mean / batch) ###
+
+### [26.12 23:26:57] Start of epoch 346
+Step 0: mean reco loss 152.2079, KL loss 583.9174 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 346 - 31.77 sec]: train loss reco 154.018 kl 586.646, val loss reco 147.536 kl 580.945 (mean / batch) ###
+
+### [26.12 23:27:29] Start of epoch 347
+Step 0: mean reco loss 160.4846, KL loss 591.2855 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 347 - 30.73 sec]: train loss reco 157.818 kl 589.106, val loss reco 144.216 kl 575.534 (mean / batch) ###
+
+### [26.12 23:27:59] Start of epoch 348
+Step 0: mean reco loss 141.1449, KL loss 563.5757 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 348 - 31.22 sec]: train loss reco 148.331 kl 579.440, val loss reco 149.323 kl 575.757 (mean / batch) ###
+
+### [26.12 23:28:31] Start of epoch 349
+Step 0: mean reco loss 130.3648, KL loss 580.1428 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 349 - 32.01 sec]: train loss reco 155.920 kl 587.731, val loss reco 161.199 kl 612.075 (mean / batch) ###
+
+### [26.12 23:29:3] Start of epoch 350
+Step 0: mean reco loss 175.1740, KL loss 616.9513 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 350 - 31.40 sec]: train loss reco 150.092 kl 591.987, val loss reco 147.835 kl 590.503 (mean / batch) ###
+
+### [26.12 23:29:34] Start of epoch 351
+Step 0: mean reco loss 154.0647, KL loss 633.5789 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 351 - 31.87 sec]: train loss reco 156.552 kl 583.360, val loss reco 152.738 kl 604.161 (mean / batch) ###
+
+### [26.12 23:30:6] Start of epoch 352
+Step 0: mean reco loss 143.4092, KL loss 598.7292 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 352 - 33.57 sec]: train loss reco 154.477 kl 582.740, val loss reco 148.796 kl 604.704 (mean / batch) ###
+
+### [26.12 23:30:39] Start of epoch 353
+Step 0: mean reco loss 127.9537, KL loss 587.4861 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 353 - 31.92 sec]: train loss reco 153.428 kl 585.068, val loss reco 156.884 kl 578.830 (mean / batch) ###
+
+### [26.12 23:31:11] Start of epoch 354
+Step 0: mean reco loss 164.2837, KL loss 598.8470 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 354 - 31.52 sec]: train loss reco 171.400 kl 589.934, val loss reco 149.514 kl 618.876 (mean / batch) ###
+
+### [26.12 23:31:43] Start of epoch 355
+Step 0: mean reco loss 157.4492, KL loss 620.9519 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 355 - 31.31 sec]: train loss reco 147.827 kl 579.759, val loss reco 146.366 kl 577.210 (mean / batch) ###
+
+### [26.12 23:32:14] Start of epoch 356
+Step 0: mean reco loss 140.4648, KL loss 574.1541 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 356 - 32.01 sec]: train loss reco 150.503 kl 578.314, val loss reco 147.106 kl 581.941 (mean / batch) ###
+
+### [26.12 23:32:46] Start of epoch 357
+Step 0: mean reco loss 152.3955, KL loss 573.7462 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 357 - 32.37 sec]: train loss reco 152.275 kl 580.658, val loss reco 151.213 kl 570.783 (mean / batch) ###
+
+### [26.12 23:33:19] Start of epoch 358
+Step 0: mean reco loss 144.3054, KL loss 559.8669 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 358 - 31.75 sec]: train loss reco 155.609 kl 582.024, val loss reco 173.631 kl 579.530 (mean / batch) ###
+
+### [26.12 23:33:50] Start of epoch 359
+Step 0: mean reco loss 185.1911, KL loss 595.9356 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 359 - 31.89 sec]: train loss reco 155.417 kl 586.928, val loss reco 193.424 kl 585.988 (mean / batch) ###
+
+### [26.12 23:34:22] Start of epoch 360
+Step 0: mean reco loss 187.3845, KL loss 605.9164 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 360 - 31.51 sec]: train loss reco 159.190 kl 589.639, val loss reco 151.680 kl 581.879 (mean / batch) ###
+
+### [26.12 23:34:54] Start of epoch 361
+Step 0: mean reco loss 131.0093, KL loss 565.6146 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 361 - 32.04 sec]: train loss reco 151.245 kl 580.666, val loss reco 143.714 kl 582.189 (mean / batch) ###
+
+### [26.12 23:35:26] Start of epoch 362
+Step 0: mean reco loss 129.0751, KL loss 579.8257 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 362 - 32.40 sec]: train loss reco 153.832 kl 584.282, val loss reco 144.108 kl 587.186 (mean / batch) ###
+
+### [26.12 23:35:58] Start of epoch 363
+Step 0: mean reco loss 135.0762, KL loss 581.5160 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 363 - 31.48 sec]: train loss reco 153.385 kl 586.036, val loss reco 152.595 kl 581.639 (mean / batch) ###
+
+### [26.12 23:36:30] Start of epoch 364
+Step 0: mean reco loss 149.2667, KL loss 582.4741 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 364 - 32.03 sec]: train loss reco 156.858 kl 586.214, val loss reco 146.632 kl 585.321 (mean / batch) ###
+
+### [26.12 23:37:2] Start of epoch 365
+Step 0: mean reco loss 144.1986, KL loss 580.1490 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 365 - 32.27 sec]: train loss reco 160.118 kl 584.523, val loss reco 152.585 kl 588.492 (mean / batch) ###
+
+### [26.12 23:37:34] Start of epoch 366
+Step 0: mean reco loss 147.6411, KL loss 574.1805 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 366 - 32.12 sec]: train loss reco 149.791 kl 581.062, val loss reco 145.430 kl 575.506 (mean / batch) ###
+
+### [26.12 23:38:6] Start of epoch 367
+Step 0: mean reco loss 154.2103, KL loss 605.1238 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 367 - 32.14 sec]: train loss reco 153.970 kl 581.990, val loss reco 148.483 kl 572.802 (mean / batch) ###
+
+### [26.12 23:38:38] Start of epoch 368
+Step 0: mean reco loss 144.5810, KL loss 555.5208 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 368 - 31.45 sec]: train loss reco 166.982 kl 588.536, val loss reco 215.611 kl 620.674 (mean / batch) ###
+
+### [26.12 23:39:10] Start of epoch 369
+Step 0: mean reco loss 181.9614, KL loss 585.3239 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 369 - 32.41 sec]: train loss reco 151.134 kl 585.393, val loss reco 144.853 kl 578.607 (mean / batch) ###
+
+### [26.12 23:39:42] Start of epoch 370
+Step 0: mean reco loss 128.7433, KL loss 567.4254 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 370 - 34.04 sec]: train loss reco 150.799 kl 577.092, val loss reco 157.151 kl 574.865 (mean / batch) ###
+
+### [26.12 23:40:16] Start of epoch 371
+Step 0: mean reco loss 147.1572, KL loss 560.9733 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 371 - 31.80 sec]: train loss reco 151.006 kl 581.036, val loss reco 143.383 kl 580.290 (mean / batch) ###
+
+### [26.12 23:40:48] Start of epoch 372
+Step 0: mean reco loss 140.2361, KL loss 599.6202 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 372 - 32.18 sec]: train loss reco 158.036 kl 594.179, val loss reco 181.234 kl 613.373 (mean / batch) ###
+
+### [26.12 23:41:20] Start of epoch 373
+Step 0: mean reco loss 184.1931, KL loss 613.2949 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 373 - 32.05 sec]: train loss reco 151.091 kl 581.409, val loss reco 148.525 kl 590.120 (mean / batch) ###
+
+### [26.12 23:41:52] Start of epoch 374
+Step 0: mean reco loss 158.6767, KL loss 590.6245 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 374 - 32.33 sec]: train loss reco 155.999 kl 583.288, val loss reco 151.261 kl 625.688 (mean / batch) ###
+
+### [26.12 23:42:25] Start of epoch 375
+Step 0: mean reco loss 159.5948, KL loss 642.4349 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 375 - 31.95 sec]: train loss reco 151.568 kl 585.723, val loss reco 169.628 kl 594.523 (mean / batch) ###
+
+### [26.12 23:42:56] Start of epoch 376
+Step 0: mean reco loss 155.6920, KL loss 587.2250 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 376 - 31.90 sec]: train loss reco 157.953 kl 585.738, val loss reco 160.100 kl 566.438 (mean / batch) ###
+
+### [26.12 23:43:28] Start of epoch 377
+Step 0: mean reco loss 169.9497, KL loss 563.6195 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 377 - 34.70 sec]: train loss reco 154.355 kl 584.479, val loss reco 193.899 kl 584.484 (mean / batch) ###
+
+### [26.12 23:44:3] Start of epoch 378
+Step 0: mean reco loss 220.4842, KL loss 578.5892 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 378 - 33.79 sec]: train loss reco 153.309 kl 579.884, val loss reco 155.053 kl 581.898 (mean / batch) ###
+
+### [26.12 23:44:37] Start of epoch 379
+Step 0: mean reco loss 168.8197, KL loss 606.7368 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 379 - 45.54 sec]: train loss reco 152.683 kl 580.302, val loss reco 142.670 kl 579.973 (mean / batch) ###
+
+### [26.12 23:45:22] Start of epoch 380
+Step 0: mean reco loss 137.8392, KL loss 578.8264 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 380 - 51.87 sec]: train loss reco 156.616 kl 584.016, val loss reco 152.943 kl 603.222 (mean / batch) ###
+
+### [26.12 23:46:14] Start of epoch 381
+Step 0: mean reco loss 148.8918, KL loss 576.5593 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 381 - 31.80 sec]: train loss reco 154.607 kl 587.358, val loss reco 154.197 kl 579.224 (mean / batch) ###
+
+### [26.12 23:46:46] Start of epoch 382
+Step 0: mean reco loss 145.5179, KL loss 565.9595 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 382 - 31.75 sec]: train loss reco 164.218 kl 586.093, val loss reco 147.467 kl 579.375 (mean / batch) ###
+
+### [26.12 23:47:18] Start of epoch 383
+Step 0: mean reco loss 134.0842, KL loss 561.9593 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 383 - 31.11 sec]: train loss reco 149.894 kl 576.193, val loss reco 144.152 kl 574.313 (mean / batch) ###
+
+### [26.12 23:47:49] Start of epoch 384
+Step 0: mean reco loss 128.2265, KL loss 559.0483 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 384 - 31.59 sec]: train loss reco 155.264 kl 581.726, val loss reco 150.767 kl 583.412 (mean / batch) ###
+
+### [26.12 23:48:21] Start of epoch 385
+Step 0: mean reco loss 137.9547, KL loss 550.7626 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 385 - 31.30 sec]: train loss reco 156.895 kl 580.226, val loss reco 150.440 kl 572.989 (mean / batch) ###
+
+### [26.12 23:48:52] Start of epoch 386
+Step 0: mean reco loss 160.0943, KL loss 573.4244 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 386 - 32.40 sec]: train loss reco 151.766 kl 577.147, val loss reco 144.885 kl 579.506 (mean / batch) ###
+
+### [26.12 23:49:24] Start of epoch 387
+Step 0: mean reco loss 138.4146, KL loss 575.5369 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 387 - 31.41 sec]: train loss reco 155.153 kl 582.026, val loss reco 150.875 kl 574.863 (mean / batch) ###
+
+### [26.12 23:49:56] Start of epoch 388
+Step 0: mean reco loss 127.0569, KL loss 561.9400 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 388 - 31.93 sec]: train loss reco 155.699 kl 577.204, val loss reco 147.592 kl 600.133 (mean / batch) ###
+
+### [26.12 23:50:28] Start of epoch 389
+Step 0: mean reco loss 137.5482, KL loss 594.9811 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 389 - 32.91 sec]: train loss reco 154.437 kl 579.659, val loss reco 142.698 kl 578.911 (mean / batch) ###
+
+### [26.12 23:51:1] Start of epoch 390
+Step 0: mean reco loss 145.4077, KL loss 591.2585 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 390 - 31.23 sec]: train loss reco 167.046 kl 577.565, val loss reco 159.933 kl 615.579 (mean / batch) ###
+
+### [26.12 23:51:32] Start of epoch 391
+Step 0: mean reco loss 169.7295, KL loss 604.8865 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 391 - 32.21 sec]: train loss reco 151.663 kl 578.687, val loss reco 152.774 kl 574.510 (mean / batch) ###
+
+### [26.12 23:52:4] Start of epoch 392
+Step 0: mean reco loss 142.7832, KL loss 551.8297 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 392 - 31.65 sec]: train loss reco 152.066 kl 577.592, val loss reco 149.080 kl 575.119 (mean / batch) ###
+
+### [26.12 23:52:36] Start of epoch 393
+Step 0: mean reco loss 146.2748, KL loss 570.4346 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 393 - 31.50 sec]: train loss reco 156.379 kl 581.792, val loss reco 204.703 kl 575.049 (mean / batch) ###
+
+### [26.12 23:53:7] Start of epoch 394
+Step 0: mean reco loss 210.4849, KL loss 582.3013 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 394 - 31.54 sec]: train loss reco 165.045 kl 585.976, val loss reco 151.263 kl 583.309 (mean / batch) ###
+
+### [26.12 23:53:39] Start of epoch 395
+Step 0: mean reco loss 164.0223, KL loss 572.4438 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 395 - 31.98 sec]: train loss reco 151.489 kl 577.465, val loss reco 152.478 kl 561.316 (mean / batch) ###
+
+### [26.12 23:54:11] Start of epoch 396
+Step 0: mean reco loss 137.4601, KL loss 565.5805 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 396 - 32.58 sec]: train loss reco 181.104 kl 594.886, val loss reco 149.418 kl 576.988 (mean / batch) ###
+
+### [26.12 23:54:43] Start of epoch 397
+Step 0: mean reco loss 143.2768, KL loss 562.1597 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 397 - 32.38 sec]: train loss reco 149.215 kl 573.941, val loss reco 144.914 kl 577.581 (mean / batch) ###
+
+### [26.12 23:55:16] Start of epoch 398
+Step 0: mean reco loss 136.5697, KL loss 571.9814 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 398 - 33.46 sec]: train loss reco 150.928 kl 573.315, val loss reco 148.076 kl 577.946 (mean / batch) ###
+
+### [26.12 23:55:49] Start of epoch 399
+Step 0: mean reco loss 151.7061, KL loss 579.3600 (in one batch)
+Seen so far: 256 samples
+[DataGenerator]: __call__() yielded 100000 samples
+### [Epoch 399 - 32.02 sec]: train loss reco 155.645 kl 572.646, val loss reco 222.542 kl 585.169 (mean / batch) ###
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_106

@@ -46,9 +46,9 @@ class DataGenerator():
         generator.close()
 
 
-    def get_mean_and_stdev(self): # -> float, float
+    def get_mean_and_stdev(self): # -> nd.array [num-features], nd.array [num-features]
         '''
-            get mean and standard deviation of input samples constituents (first 1 million events) 
+            get mean and standard deviation of input samples constituents (first 1 million events) for each feature
         '''
         data_reader = dare.DataReader(self.path)
 

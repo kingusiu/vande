@@ -60,7 +60,7 @@ class VAE(ABC):
         encoder, decoder, model = cls.load(path)
         with h5py.File(os.path.join(path,'model_params.h5'),'r') as f: 
             params = f.get('params')
-            beta = params.attrs['beta']
+            beta = float(params.attrs['beta'])
         instance = cls(beta=beta)
         instance.encoder = encoder
         instance.decoder = decoder
@@ -104,16 +104,6 @@ class VAE(ABC):
         model = tf.keras.models.load_model(os.path.join(path,'vae.h5'), custom_objects=custom_objects, compile=False)
         return encoder, decoder, model
 
-    def plot_training(self, fig_dir='fig'):
-        plt.figure()
-        plt.semilogy(self.history.history['loss'])
-        plt.semilogy(self.history.history['val_loss'])
-        plt.title('training and validation loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['training','validation'], loc='upper right')
-        plt.savefig(os.path.join(fig_dir,'loss.png'))
-        plt.close()
 
     def sample_pixels_from_dist(self,dist):
         return np.random.exponential(1. / dist)  # numpy exponential dist takes 1/k param instead of k param

@@ -1,7 +1,6 @@
 import tensorflow as tf
 
 import numpy as np
-import config.config as co
 
 # ********************************************************
 #                   training losses
@@ -55,17 +54,17 @@ def exponential_prob_loss(inputs,outputs):
     return k_times_x_loss(inputs,outputs) - log_k_loss(inputs,outputs)
 
 
-def exponential_prob_kl_loss( z_mean, z_log_var ):
+def exponential_prob_kl_loss( z_mean, z_log_var, beta ):
 
     def loss( inputs, outputs ):
-        return exponential_prob_loss(inputs,outputs) + co.config['beta'] * kl_loss( z_mean, z_log_var )
+        return exponential_prob_loss(inputs,outputs) + beta * kl_loss( z_mean, z_log_var )
 
     return loss
 
 
 ### 3D LOSS
 @tf.function
-def threeD_loss(inputs, outputs): #[batch_size x 100 x 3]
+def threeD_loss(inputs, outputs): #[batch_size x 100 x 3] -> [batch_size]
     expand_inputs = tf.expand_dims(inputs, 2) # add broadcasting dim [batch_size x 100 x 1 x 3]
     expand_outputs = tf.expand_dims(outputs, 1) # add broadcasting dim [batch_size x 1 x 100 x 3]
     # => broadcasting [batch_size x 100 x 100 x 3] => reduce over last dimension (eta,phi,pt) => [batch_size x 100 x 100] where 100x100 is distance matrix D[i,j] for i all inputs and j all outputs

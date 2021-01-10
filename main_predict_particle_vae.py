@@ -18,21 +18,21 @@ import training as train
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSideExt','qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+test_samples = ['qcdSideExt', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
 #test_samples = ['qcdSig', 'GtoWW35na']
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 104
+run_n = 106
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
-batch_n = 2048
-
+batch_n = 4096*8
+	
 # ********************************************
 #               load model
 # ********************************************
 
-vae = VAEparticle.from_saved_model(path=experiment.model_dir)
+vae = VAEparticle.from_saved_model(path=os.path.join(experiment.model_dir, 'best_so_far'))
 print('beta factor: ', vae.beta)
 loss_fn = losses.threeD_loss
 
@@ -49,14 +49,14 @@ for sample_id in test_samples:
 
     list_ds = tf.data.Dataset.list_files(input_paths.sample_dir_path(sample_id)+'/*')
 
-    for file_path in list_ds[:5]:
+    for file_path in list_ds.take(5):
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
         test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))
         test_evts_j1, test_evts_j2 = test_sample.get_particles()
         print('{}: {} j1 evts, {} j2 evts'.format(file_path.numpy().decode('utf-8'), len(test_evts_j1), len(test_evts_j2)))
-        test_j1_ds = tf.Dataset.from_tensor_slices(test_evts_j1).batch(batch_n, drop_remainder=True)
-        test_j2_ds = tf.Dataset.from_tensor_slices(test_evts_j2).batch(batch_n, drop_remainder=True)
+        test_j1_ds = tf.data.Dataset.from_tensor_slices(test_evts_j1).batch(batch_n)
+        test_j2_ds = tf.data.Dataset.from_tensor_slices(test_evts_j2).batch(batch_n)
 
         # *******************************************************
         #         forward pass test data -> reco and losses
@@ -75,6 +75,7 @@ for sample_id in test_samples:
         reco_sample = es.EventSample(sample_id + 'Reco', particles=[reco_j1, reco_j2], jet_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
 
         for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
+            # import ipdb; ipdb.set_trace()    
             reco_sample.add_event_feature(label, loss)
         for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
             reco_sample.add_event_feature(label, loss)
@@ -85,3 +86,4 @@ for sample_id in test_samples:
 
         print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][reco_sample.name], os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name)))
         reco_sample.dump(os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name))
+

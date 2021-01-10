@@ -1,0 +1,313 @@
+setGPU: Setting GPU to: 0
+2021-01-09 20:20:54.097581: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+tensorflow version:  2.3.1
+2021-01-09 20:21:05.660433: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2021-01-09 20:21:09.117215: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2021-01-09 20:21:09.117345: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-09 20:21:10.825610: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-09 20:21:10.832650: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2021-01-09 20:21:10.833802: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2021-01-09 20:21:10.841344: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2021-01-09 20:21:10.844876: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2021-01-09 20:21:10.860048: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2021-01-09 20:21:10.864578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2021-01-09 20:21:10.867431: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-01-09 20:21:10.901761: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2200000000 Hz
+2021-01-09 20:21:10.906991: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x550ac90 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-01-09 20:21:10.907034: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-01-09 20:21:11.041302: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x550d920 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2021-01-09 20:21:11.041395: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2021-01-09 20:21:11.045162: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:18:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.75GiB deviceMemoryBandwidth: 298.08GiB/s
+2021-01-09 20:21:11.045262: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-09 20:21:11.045335: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-09 20:21:11.045378: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2021-01-09 20:21:11.045419: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2021-01-09 20:21:11.045459: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2021-01-09 20:21:11.045499: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2021-01-09 20:21:11.045540: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2021-01-09 20:21:11.051182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2021-01-09 20:21:11.051274: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-09 20:21:11.905048: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-01-09 20:21:11.905100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2021-01-09 20:21:11.905126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2021-01-09 20:21:11.907405: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13970 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:18:00.0, compute capability: 7.5)
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  2
+[DataReader] read_events_from_dir(): reading 1000000 events from /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
+
+num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  2
+computed mean [-2.5694157e-04  3.9219353e-07  3.1619492e+00] and std-dev [ 0.23610476  0.23951028 14.948415  ]
+Model: "encoder"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+encoder_input (InputLayer)      [(None, 100, 3)]     0                                            
+__________________________________________________________________________________________________
+lambda (Lambda)                 (None, 100, 3)       0           encoder_input[0][0]              
+__________________________________________________________________________________________________
+lambda_1 (Lambda)               (None, 100, 3, 1)    0           lambda[0][0]                     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 98, 1, 6)     60          lambda_1[0][0]                   
+__________________________________________________________________________________________________
+lambda_2 (Lambda)               (None, 98, 6)        0           conv2d[0][0]                     
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 96, 10)       190         lambda_2[0][0]                   
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 94, 14)       434         conv1d[0][0]                     
+__________________________________________________________________________________________________
+average_pooling1d (AveragePooli (None, 47, 14)       0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 658)          0           average_pooling1d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 170)          112030      flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 40)           6840        dense[0][0]                      
+__________________________________________________________________________________________________
+z_mean (Dense)                  (None, 10)           410         dense_1[0][0]                    
+__________________________________________________________________________________________________
+z_log_var (Dense)               (None, 10)           410         dense_1[0][0]                    
+__________________________________________________________________________________________________
+sampling (Sampling)             (None, 10)           0           z_mean[0][0]                     
+                                                                 z_log_var[0][0]                  
+==================================================================================================
+Total params: 120,374
+Trainable params: 120,374
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Model: "decoder"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+z_sampling (InputLayer)      [(None, 10)]              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 40)                440       
+_________________________________________________________________
+dense_3 (Dense)              (None, 170)               6970      
+_________________________________________________________________
+dense_4 (Dense)              (None, 658)               112518    
+_________________________________________________________________
+reshape (Reshape)            (None, 47, 14)            0         
+_________________________________________________________________
+up_sampling1d (UpSampling1D) (None, 94, 14)            0         
+_________________________________________________________________
+conv1d_transpose (Conv1DTran (None, 96, 10)            430       
+_________________________________________________________________
+conv1d_transpose_1 (Conv1DTr (None, 98, 6)             186       
+_________________________________________________________________
+lambda_7 (Lambda)            (None, 98, 1, 6)          0         
+_________________________________________________________________
+conv_2d_transpose (Conv2DTra (None, 100, 3, 1)         55        
+_________________________________________________________________
+lambda_8 (Lambda)            (None, 100, 3)            0         
+_________________________________________________________________
+un_normalized_decoder_out (L (None, 100, 3)            0         
+=================================================================
+Total params: 120,599
+Trainable params: 120,599
+Non-trainable params: 0
+_________________________________________________________________
+Model: "vae"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+model_input (InputLayer)     [(None, 100, 3)]          0         
+_________________________________________________________________
+encoder (Functional)         [(None, 10), (None, 10),  120374    
+_________________________________________________________________
+decoder (Functional)         (None, 100, 3)            120599    
+=================================================================
+Total params: 240,973
+Trainable params: 240,973
+Non-trainable params: 0
+_________________________________________________________________
+
+### [9.1 20:26:5] Start of epoch 0
+2021-01-09 20:26:32.942110: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-09 20:26:35.191038: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+Step 0: mean reco loss 235.4858, KL loss 0.0116 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.5667, KL loss 6.0085 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.2728, KL loss 5.6713 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.2657, KL loss 5.0925 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.3039, KL loss 4.8777 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 0 - 7274.79 sec]: train loss reco 1.074 kl 5.412, val loss reco 0.243 kl 4.842 (mean / batch) ###
+
+### [9.1 22:27:20] Start of epoch 1
+Step 0: mean reco loss 0.2407, KL loss 4.8408 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.2108, KL loss 4.7966 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.2113, KL loss 4.7088 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1907, KL loss 4.7383 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1743, KL loss 4.7547 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 1 - 7216.73 sec]: train loss reco 0.210 kl 4.765, val loss reco 0.229 kl 4.636 (mean / batch) ###
+
+### [10.1 0:27:36] Start of epoch 2
+Step 0: mean reco loss 0.2279, KL loss 4.6511 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1792, KL loss 4.5628 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1972, KL loss 4.5357 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1917, KL loss 4.5220 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1739, KL loss 4.4926 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 2 - 7289.40 sec]: train loss reco 0.179 kl 4.535, val loss reco 0.167 kl 4.415 (mean / batch) ###
+
+### [10.1 2:29:6] Start of epoch 3
+Step 0: mean reco loss 0.1664, KL loss 4.4718 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.2637, KL loss 4.3190 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1808, KL loss 4.3512 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1681, KL loss 4.3021 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1598, KL loss 4.2288 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 3 - 7228.28 sec]: train loss reco 0.173 kl 4.323, val loss reco 0.193 kl 4.232 (mean / batch) ###
+
+### [10.1 4:29:34] Start of epoch 4
+Step 0: mean reco loss 0.1947, KL loss 4.2345 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1702, KL loss 4.1664 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1587, KL loss 4.0950 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1601, KL loss 4.0575 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1557, KL loss 4.0520 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 4 - 7280.32 sec]: train loss reco 0.169 kl 4.116, val loss reco 0.158 kl 4.018 (mean / batch) ###
+saving best so far model with valid loss 0.158 and kl loss 4.018
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [10.1 6:30:55] Start of epoch 5
+Step 0: mean reco loss 0.1541, KL loss 4.0209 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1616, KL loss 3.9611 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1568, KL loss 3.9599 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1595, KL loss 3.9409 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1590, KL loss 3.8930 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 5 - 7387.40 sec]: train loss reco 0.166 kl 3.928, val loss reco 0.163 kl 3.869 (mean / batch) ###
+
+### [10.1 8:34:3] Start of epoch 6
+Step 0: mean reco loss 0.1718, KL loss 3.9192 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1561, KL loss 3.8817 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1523, KL loss 3.8196 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1580, KL loss 3.7943 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1641, KL loss 3.7608 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 6 - 7353.49 sec]: train loss reco 0.164 kl 3.801, val loss reco 0.157 kl 3.763 (mean / batch) ###
+saving best so far model with valid loss 0.157 and kl loss 3.763
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [10.1 10:36:37] Start of epoch 7
+Step 0: mean reco loss 0.1585, KL loss 3.7644 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1531, KL loss 3.7061 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1582, KL loss 3.6941 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1572, KL loss 3.6857 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1543, KL loss 3.6790 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 7 - 8570.55 sec]: train loss reco 0.162 kl 3.725, val loss reco 0.154 kl 3.677 (mean / batch) ###
+saving best so far model with valid loss 0.154 and kl loss 3.677
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [10.1 12:59:30] Start of epoch 8
+Step 0: mean reco loss 0.1511, KL loss 3.6391 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1571, KL loss 3.6517 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1780, KL loss 3.6345 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1596, KL loss 3.7027 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1523, KL loss 3.6393 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 8 - 10616.22 sec]: train loss reco 0.160 kl 3.672, val loss reco 0.158 kl 3.655 (mean / batch) ###
+
+### [10.1 15:56:26] Start of epoch 9
+Step 0: mean reco loss 0.1558, KL loss 3.6667 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1543, KL loss 3.6660 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1508, KL loss 3.6349 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1623, KL loss 3.6115 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1851, KL loss 3.5253 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 9 - 7242.76 sec]: train loss reco 0.159 kl 3.626, val loss reco 0.153 kl 3.583 (mean / batch) ###
+saving best so far model with valid loss 0.153 and kl loss 3.583
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [10.1 17:57:9] Start of epoch 10
+Step 0: mean reco loss 0.1556, KL loss 3.6381 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1738, KL loss 3.6058 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1532, KL loss 3.5840 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1513, KL loss 3.5468 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1483, KL loss 3.5866 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 10 - 7222.39 sec]: train loss reco 0.158 kl 3.583, val loss reco 0.158 kl 3.561 (mean / batch) ###
+
+### [10.1 19:57:32] Start of epoch 11
+Step 0: mean reco loss 0.1532, KL loss 3.5418 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1504, KL loss 3.5203 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1526, KL loss 3.5692 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1554, KL loss 3.5538 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1891, KL loss 3.4926 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 11 - 7078.88 sec]: train loss reco 0.157 kl 3.546, val loss reco 0.150 kl 3.523 (mean / batch) ###
+saving best so far model with valid loss 0.150 and kl loss 3.523
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [10.1 21:55:31] Start of epoch 12
+Step 0: mean reco loss 0.1503, KL loss 3.4974 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1549, KL loss 3.5169 (in one batch)
