@@ -1,7 +1,7 @@
 setGPU: Setting GPU to: 0
-2020-11-21 20:58:03.238167: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
-2020-11-21 20:58:03.239923: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
-2020-11-21 20:58:03.239941: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-11-20 18:24:56.473597: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-11-20 18:24:56.476731: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.1/lib64::/afs/cern.ch/user/k/kiwoznia/.local/lib:/afs/cern.ch/user/k/kiwoznia/software/cuda/lib64:/eos/home-k/kiwoznia/software/cuda-10.1/lib64:/usr/local/cuda-10.1/lib64
+2020-11-20 18:24:56.476767: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
 tensorflow version:  2.1.0
 reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
 
@@ -10,40 +10,40 @@ computed mean [-3.0852025e-04 -8.0044811e-06  2.8349175e+00] and std-dev [ 0.208
 reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts
 
 num files read in dir  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_EXT_sideband_parts :  1
-2020-11-21 21:00:01.951768: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-11-21 21:00:06.922488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+2020-11-20 18:26:57.142568: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-11-20 18:27:02.081812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
 coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
-2020-11-21 21:00:06.923160: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-21 21:00:11.621978: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-11-21 21:00:11.627706: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-11-21 21:00:11.628473: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-11-21 21:00:11.634347: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-11-21 21:00:11.637240: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-11-21 21:00:11.693657: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-11-21 21:00:11.697004: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-11-21 21:00:11.698309: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2020-11-21 21:00:11.723544: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199845000 Hz
-2020-11-21 21:00:11.732220: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xb2aa8a0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-11-21 21:00:11.732264: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-11-21 21:00:11.857792: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x92d32f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-11-21 21:00:11.857873: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
-2020-11-21 21:00:11.859749: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+2020-11-20 18:27:02.082498: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-20 18:27:02.092258: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-11-20 18:27:02.095380: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-11-20 18:27:02.096313: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-11-20 18:27:02.099375: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-11-20 18:27:02.100874: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-11-20 18:27:02.108455: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-20 18:27:02.110750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-11-20 18:27:02.112130: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-11-20 18:27:02.133794: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199845000 Hz
+2020-11-20 18:27:02.141547: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0xa4f7150 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-11-20 18:27:02.141593: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-11-20 18:27:02.267099: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4db3250 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-11-20 18:27:02.267177: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-11-20 18:27:02.269611: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
 pciBusID: 0000:05:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
 coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 10.92GiB deviceMemoryBandwidth: 451.17GiB/s
-2020-11-21 21:00:11.859833: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-21 21:00:11.859867: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-11-21 21:00:11.859896: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-11-21 21:00:11.859923: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-11-21 21:00:11.859951: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-11-21 21:00:11.859978: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-11-21 21:00:11.860006: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-11-21 21:00:11.863129: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-11-21 21:00:11.863206: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-21 21:00:11.866230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-11-21 21:00:11.866263: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
-2020-11-21 21:00:11.866281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
-2020-11-21 21:00:11.869606: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
+2020-11-20 18:27:02.269707: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-20 18:27:02.269741: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-11-20 18:27:02.269769: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-11-20 18:27:02.269796: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-11-20 18:27:02.269822: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-11-20 18:27:02.269849: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-11-20 18:27:02.269876: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-20 18:27:02.273308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+2020-11-20 18:27:02.273381: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-11-20 18:27:02.276464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-20 18:27:02.276496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+2020-11-20 18:27:02.276515: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+2020-11-20 18:27:02.280130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10489 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:05:00.0, compute capability: 6.1)
 Model: "encoder"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
@@ -156,14 +156,14 @@ Epoch 1/300
 reading /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts
 
 num files read for file part from  /eos/user/k/kiwoznia/data/VAE_data/events/qcd_sqrtshatTeV_13TeV_PU40_NEW_sideband_parts :  1
-2020-11-21 21:00:45.341305: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-11-21 21:00:45.516694: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-20 18:27:34.988636: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-11-20 18:27:35.215997: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
 Epoch 1/300
 Traceback (most recent call last):
   File "main_train_particle_vae.py", line 48, in <module>
     vae.fit(data_train, epochs=300, validation_data=data_valid, verbose=2)
   File "/eos/home-k/kiwoznia/dev/autoencoder_for_anomaly/convolutional_VAE/vae/vae_particle.py", line 122, in fit
-    self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, validation_steps=100, callbacks=callbacks)
+    self.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_data=validation_data, callbacks=callbacks)
   File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 819, in fit
     use_multiprocessing=use_multiprocessing)
   File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_generator.py", line 694, in fit
@@ -172,12 +172,16 @@ Traceback (most recent call last):
     steps_name='validation_steps')
   File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_generator.py", line 265, in model_iteration
     batch_outs = batch_function(*batch_data)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 1190, in test_on_batch
-    x, y, sample_weight=sample_weight, extract_tensors_from_dataset=True)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 2383, in _standardize_user_data
-    batch_size=batch_size)
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 2410, in _standardize_tensors
-    exception_prefix='input')
-  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training_utils.py", line 573, in standardize_input_data
-    'with shape ' + str(data_shape))
-ValueError: Error when checking input: expected encoder_input to have 3 dimensions, but got array with shape (100, 3)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/engine/training.py", line 1211, in test_on_batch
+    outputs = self.test_function(inputs)  # pylint: disable=not-callable
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/keras/backend.py", line 3727, in __call__
+    outputs = self._graph_fn(*converted_inputs)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/function.py", line 1551, in __call__
+    return self._call_impl(args, kwargs)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/function.py", line 1591, in _call_impl
+    return self._call_flat(args, self.captured_inputs, cancellation_manager)
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/function.py", line 1692, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager))
+  File "/afs/cern.ch/user/k/kiwoznia/.local/lib/python3.6/site-packages/tensorflow_core/python/eager/function.py", line 527, in call
+    (len(args), len(list(self.signature.input_arg))))
+ValueError: Arguments and signature arguments do not match. got: 31, expected: 32 
