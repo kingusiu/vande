@@ -2,7 +2,7 @@
 Variational Autoencoding for Anomaly Detection
 
 ### setup
-requires Python3 and TF 2.1
+requires Python3 and TF 2.X
 
 ## Particle VAE
 
