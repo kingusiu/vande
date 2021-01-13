@@ -21,7 +21,7 @@ class DataGenerator():
         self.sample_max_n = int(sample_max_n) if sample_max_n else None
 
 
-    def __call__(self): # -> generator object yielding (np.ndarray, np.ndarray)
+    def __call__(self): # -> generator object yielding np.ndarray, np.ndarray
         '''
             generate single(!) data-sample (batching done in tf.Dataset)
         '''

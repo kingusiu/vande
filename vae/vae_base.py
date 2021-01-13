@@ -7,7 +7,6 @@ import h5py
 import tensorflow as tf
 from collections import namedtuple
 
-import config.config as co
 import vae.losses as losses
 
 

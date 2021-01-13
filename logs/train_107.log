@@ -311,3 +311,175 @@ saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
 Step 0: mean reco loss 0.1503, KL loss 3.4974 (in one batch)
 Seen so far: 256 samples
 Step 4000: mean reco loss 0.1549, KL loss 3.5169 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1512, KL loss 3.4950 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1525, KL loss 3.5181 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1514, KL loss 3.4821 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 12 - 7429.02 sec]: train loss reco 0.156 kl 3.515, val loss reco 0.150 kl 3.509 (mean / batch) ###
+
+### [10.1 23:59:20] Start of epoch 13
+Step 0: mean reco loss 0.1515, KL loss 3.4995 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1599, KL loss 3.4849 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.2011, KL loss 3.4934 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1553, KL loss 3.4515 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1702, KL loss 3.5394 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 13 - 7235.09 sec]: train loss reco 0.156 kl 3.492, val loss reco 0.152 kl 3.489 (mean / batch) ###
+
+### [11.1 1:59:56] Start of epoch 14
+Step 0: mean reco loss 0.1567, KL loss 3.4989 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1521, KL loss 3.4868 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1823, KL loss 3.4167 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1517, KL loss 3.4277 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1532, KL loss 3.4634 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 14 - 7216.72 sec]: train loss reco 0.155 kl 3.474, val loss reco 0.153 kl 3.481 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.18533324, 0.1855767, 0.18704388, 0.1877643]-------
+decreasing learning rate from 1.000e-03 to 3.000e-04
+
+### [11.1 4:0:12] Start of epoch 15
+Step 0: mean reco loss 0.1501, KL loss 3.4761 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1491, KL loss 3.5075 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1466, KL loss 3.4818 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1482, KL loss 3.4643 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1484, KL loss 3.4709 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 15 - 7126.95 sec]: train loss reco 0.147 kl 3.478, val loss reco 0.147 kl 3.486 (mean / batch) ###
+saving best so far model with valid loss 0.147 and kl loss 3.486
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [11.1 5:59:0] Start of epoch 16
+Step 0: mean reco loss 0.1450, KL loss 3.5006 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1514, KL loss 3.5163 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1469, KL loss 3.4430 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1493, KL loss 3.4560 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1465, KL loss 3.4551 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 16 - 7234.50 sec]: train loss reco 0.147 kl 3.466, val loss reco 0.147 kl 3.461 (mean / batch) ###
+
+### [11.1 7:59:35] Start of epoch 17
+Step 0: mean reco loss 0.1464, KL loss 3.5403 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1458, KL loss 3.4119 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1448, KL loss 3.4192 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1454, KL loss 3.4186 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1463, KL loss 3.4961 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 17 - 7154.79 sec]: train loss reco 0.147 kl 3.456, val loss reco 0.146 kl 3.454 (mean / batch) ###
+saving best so far model with valid loss 0.146 and kl loss 3.454
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [11.1 9:58:51] Start of epoch 18
+Step 0: mean reco loss 0.1467, KL loss 3.4834 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1473, KL loss 3.4219 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1488, KL loss 3.4220 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1481, KL loss 3.4590 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1467, KL loss 3.4280 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 18 - 7293.01 sec]: train loss reco 0.147 kl 3.450, val loss reco 0.146 kl 3.443 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.18151632, 0.18172708, 0.18053642, 0.18073401]-------
+decreasing learning rate from 3.000e-04 to 9.000e-05
+
+### [11.1 12:0:24] Start of epoch 19
+Step 0: mean reco loss 0.1474, KL loss 3.4727 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1447, KL loss 3.5056 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1464, KL loss 3.4284 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1422, KL loss 3.4335 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1424, KL loss 3.4368 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 19 - 7307.37 sec]: train loss reco 0.145 kl 3.452, val loss reco 0.145 kl 3.445 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.18172708, 0.18053642, 0.18073401, 0.17962612]-------
+decreasing learning rate from 9.000e-05 to 2.700e-05
+saving best so far model with valid loss 0.145 and kl loss 3.445
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [11.1 14:2:12] Start of epoch 20
+Step 0: mean reco loss 0.1472, KL loss 3.4613 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1414, KL loss 3.4718 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1474, KL loss 3.4960 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1464, KL loss 3.4674 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1422, KL loss 3.4447 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 20 - 7493.48 sec]: train loss reco 0.145 kl 3.453, val loss reco 0.145 kl 3.457 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.18053642, 0.18073401, 0.17962612, 0.17922287]-------
+decreasing learning rate from 2.700e-05 to 8.100e-06
+saving best so far model with valid loss 0.145 and kl loss 3.457
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [11.1 16:7:6] Start of epoch 21
+Step 0: mean reco loss 0.1446, KL loss 3.4202 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1441, KL loss 3.4574 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1434, KL loss 3.4371 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1471, KL loss 3.4394 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1430, KL loss 3.4361 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 21 - 7425.03 sec]: train loss reco 0.145 kl 3.453, val loss reco 0.145 kl 3.451 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.18073401, 0.17962612, 0.17922287, 0.1791187]-------
+decreasing learning rate from 8.100e-06 to 2.430e-06
+saving best so far model with valid loss 0.145 and kl loss 3.451
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107/best_so_far
+
+### [11.1 18:10:52] Start of epoch 22
+Step 0: mean reco loss 0.1442, KL loss 3.4214 (in one batch)
+Seen so far: 256 samples
+Step 4000: mean reco loss 0.1451, KL loss 3.4371 (in one batch)
+Seen so far: 1024256 samples
+Step 8000: mean reco loss 0.1447, KL loss 3.4869 (in one batch)
+Seen so far: 2048256 samples
+Step 12000: mean reco loss 0.1433, KL loss 3.4499 (in one batch)
+Seen so far: 3072256 samples
+Step 16000: mean reco loss 0.1442, KL loss 3.4389 (in one batch)
+Seen so far: 4096256 samples
+[DataGenerator]: __call__() yielded 10000000 samples
+### [Epoch 22 - 8524.00 sec]: train loss reco 0.144 kl 3.454, val loss reco 0.145 kl 3.455 (mean / batch) ###
+------- Early stopping for last 4 validation losses [0.17962612, 0.17922287, 0.1791187, 0.17905138]-------
+!!! stopping training !!!
+saving model to /eos/home-k/kiwoznia/data/VAE_models/run_107

@@ -7,14 +7,14 @@ from matplotlib import pyplot as plt
 import vande.vae.losses as losses
 
 class Stopper():
-    def __init__(self, optimizer, min_delta=0.01, patience=4, max_lr_decay=5):
+    def __init__(self, optimizer, min_delta=0.01, patience=4, max_lr_decay=10):
         self.optimizer = optimizer
         self.min_delta = min_delta
         self.patience = patience
         self.max_lr_decay = max_lr_decay
         self.lr_decay_n = 0
 
-    def callback_early_stopping(self, loss_list, min_delta=0.1, patience=5):
+    def callback_early_stopping(self, loss_list, min_delta=0.1, patience=4):
         if len(loss_list) < patience:
             return False
         # compute difference of the last #patience epoch losses
