@@ -44,7 +44,7 @@ mean_stdev = data_train_generator.get_mean_and_stdev()
 #                       training options
 # *******************************************************
 
-learning_rate = 0.0001
+learning_rate = 0.001
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
 loss_fn = losses.threeD_loss
 

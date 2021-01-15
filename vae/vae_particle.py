@@ -38,8 +38,8 @@ class Conv1DTranspose(tf.keras.layers.Layer):
 
 class VAEparticle(vbase.VAE):
 
-	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, beta=0.01):
-		super().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, beta=beta)
+	def __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, beta=0.01, activation='relu', initializer='glorot_uniform'):
+		super().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, beta=beta, activation=activation, initializer=initializer)
 
 	def build_encoder(self, mean, stdev):
 		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
@@ -48,14 +48,14 @@ class VAEparticle(vbase.VAE):
 		# add channel dim
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(normalized) # [B x 100 x 3] => [B x 100 x 3 x 1]
 		# 2D Conv
-		x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu')(x)
+		x = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x)
 		# Squeeze
 		x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]
 		# 1D Conv * 2
 		self.filter_n += 4
-		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu')(x) # [ B x 96 x 10 ]
+		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 96 x 10 ]
 		self.filter_n += 4
-		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu')(x) # [ B x 94 x 14 ]
+		x = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 94 x 14 ]
 		# Pool
 		x = tf.keras.layers.AveragePooling1D()(x) # [ B x 47 x 14 ]
 		# shape info needed to build decoder model
@@ -63,9 +63,9 @@ class VAEparticle(vbase.VAE):
 		# Flatten
 		x = tf.keras.layers.Flatten()(x) #[B x 658]
 		# Dense * 3
-		x = tf.keras.layers.Dense(int(self.params.z_sz*17), activation='relu')(x)  # reduce convolution output
-		x = tf.keras.layers.Dense(int(self.params.z_sz*4), activation='relu')(x)  # reduce again
-		# x = Dense(8, activation='relu')(x)
+		x = tf.keras.layers.Dense(int(self.params.z_sz*17), activation=self.params.activation, kernel_initializer=self.params.initializer)(x)  # reduce convolution output
+		x = tf.keras.layers.Dense(int(self.params.z_sz*4), activation=self.params.activation, kernel_initializer=self.params.initializer)(x)  # reduce again
+		# x = Dense(8, activation=self.params.activation, kernel_initializer=self.params.initializer)(x)
 
 		# *****************************
 		#         latent space
@@ -86,18 +86,18 @@ class VAEparticle(vbase.VAE):
 	def build_decoder(self, mean, stdev):
 		latent_inputs = tf.keras.layers.Input(shape=(self.params.z_sz,), name='z_sampling')
 		# Dense * 3
-		x = tf.keras.layers.Dense(int(self.params.z_sz*4), activation='relu')(latent_inputs)  # inflate to input-shape/200
-		x = tf.keras.layers.Dense(int(self.params.z_sz*17), activation='relu')(x)  # double size
-		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]), activation='relu')(x)
+		x = tf.keras.layers.Dense(int(self.params.z_sz*4), activation=self.params.activation, kernel_initializer=self.params.initializer)(latent_inputs)  # inflate to input-shape/200
+		x = tf.keras.layers.Dense(int(self.params.z_sz*17), activation=self.params.activation, kernel_initializer=self.params.initializer)(x)  # double size
+		x = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]), activation=self.params.activation, kernel_initializer=self.params.initializer)(x)
 		# Reshape
 		x = tf.keras.layers.Reshape(tuple(self.shape_convolved[1:]))(x)
 		# Upsample
 		x = tf.keras.layers.UpSampling1D()(x) # [ B x 94 x 16 ]
 		# 1D Conv Transpose * 2
 		self.filter_n -= 4
-		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
+		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
 		self.filter_n -= 4
-		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu')(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
+		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
 		# Expand
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
 		# 2D Conv Transpose
