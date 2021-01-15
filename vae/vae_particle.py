@@ -7,33 +7,8 @@ import matplotlib.pyplot as plt
 
 import vae.losses as losses
 import vae.vae_base as vbase
+import vae.layers as layers
 
-
-# custom 1d transposed convolution that expands to 2d output for vae decoder
-class Conv1DTranspose(tf.keras.layers.Layer):
-
-	def __init__(self, filters, kernel_sz, activation, **kwargs):
-		super(Conv1DTranspose,self).__init__(**kwargs)
-		self.kernel_sz = kernel_sz
-		self.filters = filters
-		self.activation = activation
-		self.ExpandChannel = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=2))
-		self.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=self.filters, kernel_size=(self.kernel_sz,1), activation=self.activation)
-		self.SqueezeChannel = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))
-
-	def call(self, inputs):
-		# expand input and kernel to 2D
-		x = self.ExpandChannel(inputs) # [ B x 98 x 4 ] -> [ B x 98 x 1 x 4 ]
-		# call Conv2DTranspose
-		x = self.ConvTranspose(x)
-		# squeeze back to 1D and return
-		x = self.SqueezeChannel(x)
-		return x
-
-	def get_config(self):
-		config = super(Conv1DTranspose, self).get_config()
-		config.update({'kernel_sz': self.kernel_sz, 'filters': self.filters, 'activation': self.activation,})
-		return config
 
 
 class VAEparticle(vbase.VAE):
@@ -44,7 +19,7 @@ class VAEparticle(vbase.VAE):
 	def build_encoder(self, mean, stdev):
 		inputs = tf.keras.layers.Input(shape=self.params.input_shape, dtype=tf.float32, name='encoder_input')
 		# normalize
-		normalized = tf.keras.layers.Lambda(lambda xx: (xx-mean)/stdev)(inputs)
+		normalized = layers.StdNormalization(mean_x=mean, std_x=stdev)(inputs)
 		# add channel dim
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(normalized) # [B x 100 x 3] => [B x 100 x 3 x 1]
 		# 2D Conv
@@ -75,7 +50,7 @@ class VAEparticle(vbase.VAE):
 		self.z_log_var = tf.keras.layers.Dense(self.params.z_sz, name='z_log_var')(x)
 
 		# use reparameterization trick to push the sampling out as input
-		self.z = vbase.Sampling()((self.z_mean, self.z_log_var))
+		self.z = layers.Sampling()((self.z_mean, self.z_log_var))
 
 		# instantiate encoder model
 		encoder = tf.keras.Model(inputs, [self.z, self.z_mean, self.z_log_var], name='encoder')
@@ -95,15 +70,15 @@ class VAEparticle(vbase.VAE):
 		x = tf.keras.layers.UpSampling1D()(x) # [ B x 94 x 16 ]
 		# 1D Conv Transpose * 2
 		self.filter_n -= 4
-		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
+		x = layers.Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]
 		self.filter_n -= 4
-		x = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
+		x = layers.Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation=self.params.activation, kernel_initializer=self.params.initializer)(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]
 		# Expand
 		x = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]
 		# 2D Conv Transpose
 		x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.params.kernel_sz, activation=tf.keras.activations.elu, name='conv_2d_transpose')(x)
 		x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3))(x) # [B x 100 x 3 x 1] -> [B x 100 x 3]
-		outputs_decoder = tf.keras.layers.Lambda(lambda xx: (xx*stdev)+mean, name='un_normalized_decoder_out')(x)
+		outputs_decoder = layers.StdUnnormalization(mean_x=mean, std_x=std)(x)
 
 		# instantiate decoder model
 		decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')
@@ -114,5 +89,5 @@ class VAEparticle(vbase.VAE):
 
 	@classmethod
 	def load(cls, path):
-		custom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}
+		custom_objects = {'Sampling': layers.Sampling, 'Conv1DTranspose': layers.Conv1DTranspose, 'StdNormalization': layers.StdNormalization, 'StdUnnormalization': layers.StdUnnormalization}
 		return super().load(path=path, custom_objects=custom_objects)

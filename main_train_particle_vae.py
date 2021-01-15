@@ -20,8 +20,22 @@ import training as tra
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz lambda_reg')
-params = Parameters(run_n=108, input_shape=(100,3), beta=0.01, epochs=400, train_total_n=int(10e6), valid_total_n=int(1e6), gen_part_n=int(5e5), batch_n=256, z_sz=10, lambda_reg=0.0) # 'L1L2'
+Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation kernel_init learning_rate max_lr_decay lambda_reg')
+params = Parameters(run_n=109, 
+                    input_shape=(100,3), 
+                    beta=0.01, 
+                    epochs=400, 
+                    train_total_n=int(10e6), 
+                    valid_total_n=int(1e6), 
+                    gen_part_n=int(5e5), 
+                    batch_n=256, 
+                    z_sz=12,
+                    activation='elu',
+                    kernel_init='he_uniform',
+                    learning_rate=0.001,
+                    max_lr_decay=10, 
+                    lambda_reg=0.0) # 'L1L2'
+
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
 paths = safa.SamplePathDirFactory(sdi.path_dict)
 
@@ -44,22 +58,21 @@ mean_stdev = data_train_generator.get_mean_and_stdev()
 #                       training options
 # *******************************************************
 
-learning_rate = 0.001
-optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+optimizer = tf.keras.optimizers.Adam(learning_rate=params.learning_rate)
 loss_fn = losses.threeD_loss
 
 # *******************************************************
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3)
+vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3, activation=params.activation, kernel_init=params.kernel_init)
 vae.build(mean_stdev)
 
 # *******************************************************
 #                       train and save
 # *******************************************************
 
-trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=4, min_delta=0.01, max_lr_decay=10, lambda_reg=params.lambda_reg)
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=4, min_delta=0.01, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
 losses_reco, losses_valid = trainer.train(vae=vae, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
 tra.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
 
