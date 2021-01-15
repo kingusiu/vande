@@ -1,4 +1,6 @@
 import setGPU
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import unittest
 import vae.layers as lays
 import numpy as np
@@ -21,9 +23,9 @@ class StdNormalizationTest(unittest.TestCase):
             mean = np.nanmean(inputs, axis=(0,1))
             std = np.nanstd(inputs, axis=(0,1))
             # import ipdb; ipdb.set_trace()
-            normalize = lays.StdNormalize(mean, std)
+            normalize = lays.StdNormalization(mean, std)
             
-            unnormalize = lays.StdUnnormalize(mean, std)
+            unnormalize = lays.StdUnnormalization(mean, std)
             x = normalize(inputs)
             y = unnormalize(x)
 
@@ -37,10 +39,22 @@ class StdNormalizationTest(unittest.TestCase):
         mean = np.nanmean(self.in_uni, axis=(0,1))
         std = np.nanstd(self.in_uni, axis=(0,1))
         # import ipdb; ipdb.set_trace()
-        normalize = lays.StdNormalize(mean, std)
-        unnormalize = lays.StdUnnormalize(mean, std)
+        normalize = lays.StdNormalization(mean, std)
+        unnormalize = lays.StdUnnormalization(mean, std)
         self.assertFalse(normalize.trainable)        
         self.assertFalse(unnormalize.trainable)        
+
+
+
+class SamplingLayerClass(unittest.TestCase):
+
+    def test_normal_output_from_zmu_zstd(self):
+        pass
+
+    def test_kl_loss_zero_normal_zmu_zstd(self):
+        ''' test that KL loss for sampled data from a N(0,1) dist = 0 '''
+        z_mean = np.array(0.) # zero mean
+        z_std = np.array(1.) # unit std-dev
 
 
 if __name__ == '__main__':

@@ -2,8 +2,8 @@ import os
 import setGPU
 import numpy as np
 from collections import namedtuple
-import tensorflow as tf
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+import tensorflow as tf
 print('tensorflow version: ', tf.__version__)
 
 import vae.vae_particle as vap
@@ -20,7 +20,7 @@ import training as tra
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation kernel_init learning_rate max_lr_decay lambda_reg')
+Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation initializer learning_rate max_lr_decay lambda_reg')
 params = Parameters(run_n=109, 
                     input_shape=(100,3), 
                     beta=0.01, 
@@ -31,7 +31,7 @@ params = Parameters(run_n=109,
                     batch_n=256, 
                     z_sz=12,
                     activation='elu',
-                    kernel_init='he_uniform',
+                    initializer='he_uniform',
                     learning_rate=0.001,
                     max_lr_decay=10, 
                     lambda_reg=0.0) # 'L1L2'
@@ -65,7 +65,7 @@ loss_fn = losses.threeD_loss
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3, activation=params.activation, kernel_init=params.kernel_init)
+vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3, activation=params.activation, initializer=params.initializer)
 vae.build(mean_stdev)
 
 # *******************************************************
