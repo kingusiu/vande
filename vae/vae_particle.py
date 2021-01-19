@@ -78,7 +78,7 @@ class VAEparticle(vbase.VAE):
 		# 2D Conv Transpose
 		x = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.params.kernel_sz, activation=tf.keras.activations.elu, name='conv_2d_transpose')(x)
 		x = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3))(x) # [B x 100 x 3 x 1] -> [B x 100 x 3]
-		outputs_decoder = layers.StdUnnormalization(mean_x=mean, std_x=std)(x)
+		outputs_decoder = layers.StdUnnormalization(mean_x=mean, std_x=stdev)(x)
 
 		# instantiate decoder model
 		decoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')

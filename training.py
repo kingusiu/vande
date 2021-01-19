@@ -11,11 +11,14 @@ class Stopper():
         self.optimizer = optimizer
         self.min_delta = min_delta
         self.patience = patience
+        self.patience_curr = 0
         self.max_lr_decay = max_lr_decay
         self.lr_decay_n = 0
 
     def callback_early_stopping(self, loss_list, min_delta=0.1, patience=4):
-        if len(loss_list) < patience:
+        # increase loss-window width at each epoch
+        self.patience_curr += 1
+        if self.patience_curr < patience:
             return False
         # compute difference of the last #patience epoch losses
         mean = np.mean(loss_list[-patience:])
@@ -27,11 +30,15 @@ class Stopper():
         if self.callback_early_stopping(losses, min_delta=self.min_delta, patience=self.patience):
             print('-'*7 + ' Early stopping for last '+ str(self.patience)+ ' validation losses ' + str([l.numpy() for l in losses[-self.patience:]]) + '-'*7)
             if self.lr_decay_n >= self.max_lr_decay:
+                # stop the training
                 return True
-            else:
+            else: 
+                # decrease the learning rate
                 curr_lr = self.optimizer.learning_rate.numpy()
                 self.optimizer.learning_rate.assign(curr_lr * 0.3)
                 self.lr_decay_n += 1
+                # reset patience window each time lr has been decreased
+                self.patience_curr = 0
                 print('decreasing learning rate from {:.3e} to {:.3e}'.format(curr_lr, self.optimizer.learning_rate.numpy()))
         return False
 
