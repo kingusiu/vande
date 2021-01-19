@@ -570,3 +570,9 @@ Step 20000: mean reco loss 0.1319, KL loss 2.9606 (in one batch)
 Seen so far: 5120256 samples
 Step 24000: mean reco loss 0.1314, KL loss 2.9408 (in one batch)
 Seen so far: 6144256 samples
+Step 28000: mean reco loss 0.1319, KL loss 3.0104 (in one batch)
+Seen so far: 7168256 samples
+Step 32000: mean reco loss 0.1330, KL loss 3.0348 (in one batch)
+Seen so far: 8192256 samples
+Step 36000: mean reco loss 0.1334, KL loss 2.9708 (in one batch)
+Seen so far: 9216256 samples

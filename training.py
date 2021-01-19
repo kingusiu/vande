@@ -7,12 +7,13 @@ from matplotlib import pyplot as plt
 import vande.vae.losses as losses
 
 class Stopper():
-    def __init__(self, optimizer, min_delta=0.01, patience=4, max_lr_decay=10):
+    def __init__(self, optimizer, min_delta=0.01, patience=4, max_lr_decay=10, lr_decay_factor=0.3):
         self.optimizer = optimizer
         self.min_delta = min_delta
         self.patience = patience
         self.patience_curr = 0
         self.max_lr_decay = max_lr_decay
+        self.lr_decay_factor = lr_decay_factor
         self.lr_decay_n = 0
 
     def callback_early_stopping(self, loss_list, min_delta=0.1, patience=4):
@@ -35,7 +36,7 @@ class Stopper():
             else: 
                 # decrease the learning rate
                 curr_lr = self.optimizer.learning_rate.numpy()
-                self.optimizer.learning_rate.assign(curr_lr * 0.3)
+                self.optimizer.learning_rate.assign(curr_lr * self.lr_decay_factor)
                 self.lr_decay_n += 1
                 # reset patience window each time lr has been decreased
                 self.patience_curr = 0
