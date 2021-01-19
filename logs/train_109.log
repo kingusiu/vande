@@ -614,3 +614,5 @@ saving model to /eos/home-k/kiwoznia/data/VAE_models/run_109/best_so_far
 ### [19.1 13:56:23] Start of epoch 20
 Step 0: mean reco loss 0.1318, KL loss 3.0097 (in one batch)
 Seen so far: 256 samples
+Step 4000: mean reco loss 0.1305, KL loss 2.9731 (in one batch)
+Seen so far: 1024256 samples
