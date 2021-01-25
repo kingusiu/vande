@@ -13,6 +13,7 @@ import pofah.util.experiment as expe
 import pofah.util.sample_factory as safa
 import util.data_generator as dage
 import sarewt.data_reader as dare
+import pofah.phase_space.cut_constants as cuts
 import training as tra
 
 
@@ -21,7 +22,7 @@ import training as tra
 # ********************************************************
 
 Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation initializer learning_rate max_lr_decay lambda_reg')
-params = Parameters(run_n=110, 
+params = Parameters(run_n=111, 
                     input_shape=(100,3), 
                     beta=0.01, 
                     epochs=400, 
@@ -33,7 +34,7 @@ params = Parameters(run_n=110,
                     activation='elu',
                     initializer='he_uniform',
                     learning_rate=0.001,
-                    max_lr_decay=7, 
+                    max_lr_decay=8, 
                     lambda_reg=0.0) # 'L1L2'
 
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
@@ -44,11 +45,12 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 # ********************************************************
 
 # train (generator)
-data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), sample_part_n=params.gen_part_n, sample_max_n=params.train_total_n) # generate 10 M jet samples
+data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), sample_part_n=params.gen_part_n, sample_max_n=params.train_total_n, **cuts.global_cuts) # generate 10 M jet samples
 train_ds = tf.data.Dataset.from_generator(data_train_generator, output_types=tf.float32, output_shapes=params.input_shape).batch(params.batch_n, drop_remainder=True) # already shuffled
 
 # validation (full tensor, 1M events -> 2M samples)
-data_valid = dage.constituents_to_input_samples(dare.DataReader(path=paths.sample_dir_path('qcdSideExt')).read_constituents_from_dir(read_n=params.valid_total_n))
+const_valid, _, features_valid, _ = dare.DataReader(path=paths.sample_dir_path('qcdSideExt')).read_events_from_dir(read_n=params.valid_total_n, **cuts.global_cuts)
+data_valid = dage.constituents_to_input_samples(const_valid, features_valid)
 valid_ds = tf.data.Dataset.from_tensor_slices(data_valid).batch(params.batch_n, drop_remainder=True)
 
 # stats for normalization layer
