@@ -1,5 +1,5 @@
 import tensorflow as tf
-import vae.losses as losses
+import vande.vae.losses as losses
 
 
 class Sampling(tf.keras.layers.Layer):

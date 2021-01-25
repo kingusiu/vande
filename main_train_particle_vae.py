@@ -21,7 +21,7 @@ import training as tra
 # ********************************************************
 
 Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation initializer learning_rate max_lr_decay lambda_reg')
-params = Parameters(run_n=109, 
+params = Parameters(run_n=110, 
                     input_shape=(100,3), 
                     beta=0.01, 
                     epochs=400, 
@@ -33,7 +33,7 @@ params = Parameters(run_n=109,
                     activation='elu',
                     initializer='he_uniform',
                     learning_rate=0.001,
-                    max_lr_decay=10, 
+                    max_lr_decay=7, 
                     lambda_reg=0.0) # 'L1L2'
 
 experiment = expe.Experiment(params.run_n).setup(model_dir=True, fig_dir=True)
@@ -72,7 +72,7 @@ vae.build(mean_stdev)
 #                       train and save
 # *******************************************************
 
-trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=4, min_delta=0.01, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=3, min_delta=0.01, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
 losses_reco, losses_valid = trainer.train(vae=vae, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
 tra.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
 

@@ -145,14 +145,14 @@ class Trainer():
             if self.train_stop.check_stop_training(losses_valid):
                 print('!!! stopping training !!!')
                 break
-            if epoch > 3 and self.check_best_model(validation_loss_reco):
+            if epoch > 4 and self.check_best_model(validation_loss_reco):
                 print('saving best so far model with valid loss {:.3f} and kl loss {:.3f}'.format(validation_loss_reco, validation_loss_kl))
                 vae.save(os.path.join(model_dir, 'best_so_far'))
         return losses_reco, losses_valid
 
 
 # plot training results
-def plot_training_results(losses_train, losses_valid, fig_dir):
+def plot_training_results(losses_train, losses_valid, fig_dir, plot_suffix=''):
     plt.figure()
     plt.semilogy(losses_train)
     plt.semilogy(losses_valid)
@@ -160,7 +160,7 @@ def plot_training_results(losses_train, losses_valid, fig_dir):
     plt.ylabel('loss')
     plt.xlabel('epoch')
     plt.legend(['training','validation'], loc='upper right')
-    plt.savefig(os.path.join(fig_dir,'loss.png'))
+    plt.savefig(os.path.join(fig_dir,'loss'+plot_suffix+'.png'))
     plt.close()
 
 ### routine for prediction

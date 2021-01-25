@@ -1,13 +1,23 @@
 import numpy as np
 import sarewt.data_reader as dare
 import pofah.util.utility_fun as utfu
+import pofah.phase_space.cut_constants as cuts
 
 
-def constituents_to_input_samples(constituents): # -> np.ndarray
-        samples = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])
+def constituents_to_input_samples(constituents, mask_j1, mask_j2): # -> np.ndarray
+        const_j1 = constituents[:,0,:,:][mask_j1]
+        const_j2 = constituents[:,1,:,:][mask_j2]
+        samples = np.vstack([const_j1, const_j2])
         np.random.shuffle(samples)
         return samples  
 
+def mask_training_cuts(constituents, features):
+    ''' get mask for training cuts requiring a jet-pt > 200'''
+    jetPt_cut = 200.
+    idx_j1Pt, idx_j2Pt = 1, 6
+    mask_j1 = features[:, idx_j1Pt] > jetPt_cut
+    mask_j2 = features[:, idx_j2Pt] > jetPt_cut
+    return mask_j1, mask_j2
 
 class DataGenerator():
 
@@ -27,12 +37,13 @@ class DataGenerator():
         '''
         
         # create new file data-reader, each time data-generator is called (otherwise file-data-reader generation not reset)
-        generator = dare.DataReader(self.path).generate_constituents_parts_from_dir(parts_n=self.sample_part_n)
+        generator = dare.DataReader(self.path).generate_events_parts_from_dir(parts_n=self.sample_part_n, **cuts.global_cuts)
 
         samples_read_n = 0
         # loop through whole dataset, reading sample_part_n events at a time
-        for constituents in generator:
-            samples = constituents_to_input_samples(constituents)
+        for constituents, features in generator:
+            mask_j1, mask_j2 = mask_training_cuts(constituents, features)
+            samples = constituents_to_input_samples(constituents, mask_j1, mask_j2)
             indices = list(range(len(samples)))
             samples_read_n += len(samples)
             while indices:

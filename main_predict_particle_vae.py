@@ -1,4 +1,5 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import setGPU
 import tensorflow as tf
 
@@ -6,7 +7,6 @@ import pofah.util.experiment as ex
 import pofah.util.event_sample as es
 import vae.losses as losses
 from vae.vae_particle import VAEparticle
-import config.config as co
 import pofah.util.sample_factory as sf
 import pofah.path_constants.sample_dict_file_parts_input as sdi 
 import pofah.path_constants.sample_dict_file_parts_reco as sdr 
@@ -23,7 +23,7 @@ test_samples = ['qcdSideExt', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', '
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 106
+run_n = 109
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 batch_n = 4096*8
