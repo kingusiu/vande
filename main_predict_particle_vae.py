@@ -11,6 +11,7 @@ import pofah.util.sample_factory as sf
 import pofah.path_constants.sample_dict_file_parts_input as sdi 
 import pofah.path_constants.sample_dict_file_parts_reco as sdr 
 import sarewt.data_reader as dare
+import pofah.phase_space.cut_constants as cuts
 import training as train
 
 
@@ -23,7 +24,8 @@ test_samples = ['qcdSideExt', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', '
 #test_samples = ['qcdSig']
 #test_samples = ['qcdSigBis']
 
-run_n = 109
+run_n = 110
+cuts = {} #**cuts.signalregion_cuts
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
 batch_n = 4096*8
@@ -52,7 +54,7 @@ for sample_id in test_samples:
     for file_path in list_ds.take(5):
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
-        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'))
+        test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'), **cuts)
         test_evts_j1, test_evts_j2 = test_sample.get_particles()
         print('{}: {} j1 evts, {} j2 evts'.format(file_path.numpy().decode('utf-8'), len(test_evts_j1), len(test_evts_j2)))
         test_j1_ds = tf.data.Dataset.from_tensor_slices(test_evts_j1).batch(batch_n)

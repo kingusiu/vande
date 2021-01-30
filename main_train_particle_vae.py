@@ -45,12 +45,14 @@ paths = safa.SamplePathDirFactory(sdi.path_dict)
 # ********************************************************
 
 # train (generator)
+print('>>> Preparing training dataset generator')
 data_train_generator = dage.DataGenerator(path=paths.sample_dir_path('qcdSide'), sample_part_n=params.gen_part_n, sample_max_n=params.train_total_n, **cuts.global_cuts) # generate 10 M jet samples
 train_ds = tf.data.Dataset.from_generator(data_train_generator, output_types=tf.float32, output_shapes=params.input_shape).batch(params.batch_n, drop_remainder=True) # already shuffled
 
 # validation (full tensor, 1M events -> 2M samples)
+print('>>> Preparing validation dataset')
 const_valid, _, features_valid, _ = dare.DataReader(path=paths.sample_dir_path('qcdSideExt')).read_events_from_dir(read_n=params.valid_total_n, **cuts.global_cuts)
-data_valid = dage.constituents_to_input_samples(const_valid, features_valid)
+data_valid = dage.events_to_input_samples(const_valid, features_valid)
 valid_ds = tf.data.Dataset.from_tensor_slices(data_valid).batch(params.batch_n, drop_remainder=True)
 
 # stats for normalization layer
@@ -73,8 +75,8 @@ vae.build(mean_stdev)
 # *******************************************************
 #                       train and save
 # *******************************************************
-
-trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=3, min_delta=0.01, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
+print('>>> Launching Training')
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=3, min_delta=0.005, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
 losses_reco, losses_valid = trainer.train(vae=vae, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
 tra.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
 

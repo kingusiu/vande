@@ -35,6 +35,7 @@ class DataGenerator():
         self.path = path
         self.sample_part_n = int(sample_part_n) # sample_part_n events from file parts
         self.sample_max_n = int(sample_max_n) if sample_max_n else None
+        self.cuts = cuts
 
 
     def __call__(self): # -> generator object yielding np.ndarray, np.ndarray
@@ -43,7 +44,7 @@ class DataGenerator():
         '''
         
         # create new file data-reader, each time data-generator is called (otherwise file-data-reader generation not reset)
-        generator = dare.DataReader(self.path).generate_event_parts_from_dir(parts_n=self.sample_part_n, **cuts)
+        generator = dare.DataReader(self.path).generate_event_parts_from_dir(parts_n=self.sample_part_n, **self.cuts)
 
         samples_read_n = 0
         # loop through whole dataset, reading sample_part_n events at a time
