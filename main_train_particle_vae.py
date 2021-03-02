@@ -21,9 +21,11 @@ import training as tra
 #       runtime params
 # ********************************************************
 
-Parameters = namedtuple('Parameters', 'run_n input_shape beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation initializer learning_rate max_lr_decay lambda_reg')
-params = Parameters(run_n=111, 
-                    input_shape=(100,3), 
+Parameters = namedtuple('Parameters', 'run_n input_shape kernel_sz kernel_ini_n beta epochs train_total_n gen_part_n valid_total_n batch_n z_sz activation initializer learning_rate max_lr_decay lambda_reg')
+params = Parameters(run_n=113, 
+                    input_shape=(100,3),
+                    kernel_sz=(1,3), 
+                    kernel_ini_n=12,
                     beta=0.01, 
                     epochs=400, 
                     train_total_n=int(10e6), 
@@ -69,14 +71,14 @@ loss_fn = losses.threeD_loss
 #                       build model
 # *******************************************************
 
-vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, filter_ini_n=6, kernel_sz=3, activation=params.activation, initializer=params.initializer)
+vae = vap.VAEparticle(input_shape=params.input_shape, z_sz=params.z_sz, kernel_ini_n=params.kernel_ini_n, kernel_sz=params.kernel_sz, activation=params.activation, initializer=params.initializer)
 vae.build(mean_stdev)
 
 # *******************************************************
 #                       train and save
 # *******************************************************
 print('>>> Launching Training')
-trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=3, min_delta=0.005, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
+trainer = tra.Trainer(optimizer=optimizer, beta=params.beta, patience=3, min_delta=0.03, max_lr_decay=params.max_lr_decay, lambda_reg=params.lambda_reg)
 losses_reco, losses_valid = trainer.train(vae=vae, loss_fn=loss_fn, train_ds=train_ds, valid_ds=valid_ds, epochs=params.epochs, model_dir=experiment.model_dir)
 tra.plot_training_results(losses_reco, losses_valid, experiment.fig_dir)
 

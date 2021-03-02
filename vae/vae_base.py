@@ -16,7 +16,7 @@ class VAE(ABC):
     def __init__(self, **params):
         Parameters = namedtuple('Parameters', sorted(params))
         self.params = Parameters(**params)
-        self.filter_n = self.params.filter_ini_n
+        self.kernel_n = self.params.kernel_ini_n
 
     def build(self, x_mean_stdev):
         # build encoder and decoder

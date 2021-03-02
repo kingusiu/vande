@@ -19,16 +19,15 @@ import training as train
 #               runtime params
 # ********************************************************
 
-test_samples = ['qcdSideExt', 'qcdSig', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
+# test_samples = ['qcdSig', 'qcdSigExt', 'GtoWW15na', 'GtoWW15br', 'GtoWW25na', 'GtoWW25br', 'GtoWW35na', 'GtoWW35br', 'GtoWW45na', 'GtoWW45br']
 #test_samples = ['qcdSig', 'GtoWW35na']
-#test_samples = ['qcdSig']
-#test_samples = ['qcdSigBis']
+test_samples = ['qcdSideExt']
 
-run_n = 110
-cuts = {} #**cuts.signalregion_cuts
+run_n = 113
+cuts = cuts.sideband_cuts if 'qcdSideExt' in test_samples else cuts.signalregion_cuts #{}
 
 experiment = ex.Experiment(run_n=run_n).setup(model_dir=True)
-batch_n = 4096*8
+batch_n = 4096*16
 	
 # ********************************************
 #               load model
@@ -51,7 +50,7 @@ for sample_id in test_samples:
 
     list_ds = tf.data.Dataset.list_files(input_paths.sample_dir_path(sample_id)+'/*')
 
-    for file_path in list_ds.take(5):
+    for file_path in list_ds.take(10):
 
         file_name = file_path.numpy().decode('utf-8').split(os.sep)[-1]
         test_sample = es.EventSample.from_input_file(sample_id, file_path.numpy().decode('utf-8'), **cuts)
@@ -85,7 +84,6 @@ for sample_id in test_samples:
         # *******************************************************
         #               write predicted data
         # *******************************************************
-
         print('writing results for {} to {}'.format(sdr.path_dict['sample_name'][reco_sample.name], os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name)))
-        reco_sample.dump(os.path.join(result_paths.sample_dir_path(reco_sample.name), file_name))
+        reco_sample.dump(os.path.join(result_paths.sample_dir_path(reco_sample.name, mkdir=True), file_name))
 
