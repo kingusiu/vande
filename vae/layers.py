@@ -25,7 +25,7 @@ class Sampling(tf.keras.layers.Layer):
 class Conv1DTranspose(tf.keras.layers.Layer):
 
     def __init__(self, filters, kernel_sz, activation, kernel_initializer, **kwargs):
-        super(Conv1DTranspose,self).__init__(**kwargs)
+        super(Conv1DTranspose, self).__init__(**kwargs)
         self.kernel_sz = kernel_sz
         self.filters = filters
         self.activation = activation

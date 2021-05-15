@@ -94,38 +94,40 @@
 			}
 		},
 		{
-			"contents": "import os\nimport setGPU\nimport numpy as np\nimport tensorflow as tf\nprint('tensorflow version: ', tf.__version__)\n\nimport vae.vae_particle as vap\nimport vae.losses as losses\nimport pofah.path_constants.sample_dict_file_parts_input as sdi\nimport pofah.util.experiment as expe\nimport pofah.util.sample_factory as safa\nimport util.data_generator as dage\n\n# ********************************************************\n#       runtime params\n# ********************************************************\n\nrun_n = 103\nbeta = 0.01\nloss = losses.make_threeD_kl_loss #losses.make_mse_kl_loss\nreco_loss = losses.threeD_loss #losses.mse_loss\nexperiment = expe.Experiment(run_n).setup(model_dir=True, fig_dir=True)\npaths = safa.SamplePathDirFactory(sdi.path_dict)\n\n# ********************************************************\n#       prepare training set generator\n# ********************************************************\nsample_id = 'qcdSideAll'\ndata_generator = dage.DataGenerator(paths.sample_dir_path(sample_id))\nmean_stdev = data_generator.get_mean_and_stdev(train_evts)\n\n# *******************************************************\n#                       build model\n# *******************************************************\n\nvae = vap.VAEparticle(input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=loss, reco_loss=reco_loss, batch_sz=128, beta=beta, regularizer='L1L2')\nvae.build(mean_stdev)\n\n# *******************************************************\n#                       train and save\n# *******************************************************\n\nvae.fit(tf.data.Dataset.from_generator(data_generator, output_shapes=(None,100,3)), epochs=300, verbose=2)\nvae.plot_training(experiment.fig_dir)\nvae.save(path=experiment.model_dir)",
 			"file": "main_train_particle_vae.py",
-			"file_size": 1728,
-			"file_write_time": 132500882730000000,
 			"settings":
 			{
-				"buffer_size": 1728,
+				"buffer_size": 4018,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "import unittest\nimport pofah.path_constants.sample_dict_file_parts_input_baby as sdi\nimport util.data_generator as dage\n\nclass DataGeneratorTestCase(unittest.TestCase):\n\n\t\n\ndef setup():\n\tpass\n\ndef test_num_events_read():\n",
+			"contents": "import unittest\nimport os\nimport math\nimport pofah.path_constants.sample_dict_file_parts_input_baby as sdi\nimport util.data_generator as dage\n\n\n'''\ntest obsolete: generator returns only one sample at a time\n'''\n\nclass DataGeneratorTestCase(unittest.TestCase):\n\n\tdef setUp(self):\n\t\tsample_id = 'qcdSig'\n\t\tself.path = os.path.join(sdi.path_dict['base_dir'], sdi.path_dict['sample_dir'][sample_id])\n\t\tself.batch_sz = 1024\n\t\tself.samples_n_total = 116096*2 # 116096 events * 2 jets\n\t\tself.generator = dage.DataGenerator(path=self.path, batch_sz=self.batch_sz)\n\t\n\tdef test_num_events_read(self):\n\t\tn_total_read = 0\n\t\tfor (constituents, _) in self.generator():\n\t\t\tn_batch_read = len(constituents)\n\t\t\tn_total_read += n_batch_read\n\t\t\t# check batch_sz samples in each batch\n\t\t\tself.assertEqual(n_batch_read, self.batch_sz)\n\t\t# check all samples read\n\t\tself.assertGreaterEqual(n_total_read, self.samples_n_total)\n\t\t# check batch padding\n\t\tself.assertEqual(math.ceil(self.samples_n_total/self.batch_sz)*self.batch_sz, n_total_read)\n\n\n\tdef test_shape_events_read(self):\n\t\tfor (constituents, _) in self.generator():\n\t\t\tself.assertEqual(constituents.shape, (self.batch_sz, 100, 3))\n\n\tdef test_num_events_read_max_n(self):\n\t\tmax_n = 3000\n\t\tmax_n_generator = dage.DataGenerator(path=self.path, batch_sz=self.batch_sz, max_n=max_n)\n\t\tn_total_read = 0\n\t\tfor (constituents, _) in max_n_generator():\n\t\t\tn_total_read += len(constituents)\n\t\tself.assertLess(max_n-n_total_read, self.batch_sz)\n\t\tself.assertEqual(n_total_read%self.batch_sz,0)\n\t\tself.assertGreater(n_total_read, 0)\n\n\nif __name__ == '__main__':\n\tunittest.main()\n",
 			"file": "tests/test_data_generator.py",
-			"file_size": 154,
-			"file_write_time": 132500884260000000,
+			"file_size": 1603,
+			"file_write_time": 132514817300000000,
 			"settings":
 			{
-				"buffer_size": 221,
+				"buffer_size": 1603,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "import os\nos.environ[\"CUDA_DEVICE_ORDER\"] = \"PCI_BUS_ID\"\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"1\"\nimport numpy as np\nimport tensorflow as tf\n#tf.compat.v1.disable_eager_execution()\n#tf.config.experimental_run_functions_eagerly(True)\nfrom collections import namedtuple\nimport matplotlib.pyplot as plt\n\nimport vae.losses as losses\nimport vae.vae_base as vbase\n\n\n# custom 1d transposed convolution that expands to 2d output for vae decoder\nclass Conv1DTranspose(tf.keras.layers.Layer):\n\n\tdef __init__(self, filters, kernel_sz, activation, regularizer=None, **kwargs):\n\t\tsuper(Conv1DTranspose,self).__init__(**kwargs)\n\t\tself.kernel_sz = kernel_sz\n\t\tself.filters = filters\n\t\tself.activation = activation\n\t\tself.regularizer = regularizer\n\t\tself.ExpandChannel = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=2))\n\t\tself.ConvTranspose = tf.keras.layers.Conv2DTranspose(filters=self.filters, kernel_size=(self.kernel_sz,1), activation=self.activation, kernel_regularizer=self.regularizer)\n\t\tself.SqueezeChannel = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))\n\n\tdef call(self, inputs):\n\t\t# expand input and kernel to 2D\n\t\tx = self.ExpandChannel(inputs) # [ B x 98 x 4 ] -> [ B x 98 x 1 x 4 ]\n\t\t# call Conv2DTranspose\n\t\tx = self.ConvTranspose(x)\n\t\t# squeeze back to 1D and return\n\t\tx = self.SqueezeChannel(x)\n\t\treturn x\n\n\tdef get_config(self):\n\t\tconfig = super(Conv1DTranspose, self).get_config()\n\t\tconfig.update({'kernel_sz': self.kernel_sz, 'filters': self.filters, 'activation': self.activation, 'regularizer': self.regularizer})\n\t\treturn config\n\n\nclass VAEparticle(vbase.VAE):\n\n\tdef __init__(self, input_shape=(100,3), z_sz=10, filter_ini_n=6, kernel_sz=3, loss=losses.make_threeD_kl_loss, reco_loss=losses.threeD_loss, batch_sz=128, beta=0.01, regularizer=None):\n\t\tsuper().__init__(input_shape=input_shape, z_sz=z_sz, filter_ini_n=filter_ini_n, kernel_sz=kernel_sz, loss=loss, reco_loss=reco_loss, regularizer=regularizer, beta=beta, batch_sz=batch_sz)\n\n\tdef build_encoder(self, inputs, mean, stdev):\n\t\t# normalize\n\t\tnormalized = tf.keras.layers.Lambda(lambda xx: (xx-mean)/stdev)(inputs)\n\t\t# add channel dim\n\t\tx = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x, axis=3))(normalized) # [B x 100 x 3] => [B x 100 x 3 x 1]\n\t\t# 2D Conv\n\t\tx = tf.keras.layers.Conv2D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.regularizer)(x)\n\t\t# Squeeze\n\t\tx = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=2))(x)  # remove width axis for 1D Conv [ B x 98 x 1 x filter_n ] -> [ B x 98 x filter_n ]\n\t\t# 1D Conv * 2\n\t\tself.filter_n += 4\n\t\tx = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 96 x 10 ]\n\t\tself.filter_n += 4\n\t\tx = tf.keras.layers.Conv1D(filters=self.filter_n, kernel_size=self.params.kernel_sz, activation='relu', kernel_regularizer=self.regularizer)(x) # [ B x 94 x 14 ]\n\t\t# Pool\n\t\tx = tf.keras.layers.AveragePooling1D()(x) # [ B x 47 x 14 ]\n\t\t# shape info needed to build decoder model\n\t\tself.shape_convolved = x.get_shape().as_list()\n\t\t# Flatten\n\t\tx = tf.keras.layers.Flatten()(x)\n\t\t# Dense * 3\n\t\tx = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce convolution output\n\t\tx = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(x)  # reduce again\n\t\t# x = Dense(8, activation='relu')(x)\n\n\t\t# *****************************\n\t\t#         latent space\n\t\t# generate latent vector Q(z|X)\n\n\t\tself.z_mean = tf.keras.layers.Dense(self.params.z_sz, name='z_mean', kernel_regularizer=self.regularizer)(x)\n\t\tself.z_log_var = tf.keras.layers.Dense(self.params.z_sz, name='z_log_var', kernel_regularizer=self.regularizer)(x)\n\n\t\t# use reparameterization trick to push the sampling out as input\n\t\tself.z = vbase.Sampling()((self.z_mean, self.z_log_var))\n\n\t\t# instantiate encoder model\n\t\tencoder = tf.keras.Model(inputs, [self.z_mean, self.z_log_var, self.z], name='encoder')\n\t\tencoder.summary()\n\t\t# plot_model(encoder, to_file=CONFIG['plotdir']+'vae_cnn_encoder.png', show_shapes=True)\n\t\treturn encoder\n\n\tdef build_decoder(self, mean, stdev):\n\t\tlatent_inputs = tf.keras.layers.Input(shape=(self.params.z_sz,), name='z_sampling')\n\t\t# Dense * 3\n\t\tx = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 42, activation='relu', kernel_regularizer=self.regularizer)(latent_inputs)  # inflate to input-shape/200\n\t\tx = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]) // 17, activation='relu', kernel_regularizer=self.regularizer)(x)  # double size\n\t\tx = tf.keras.layers.Dense(np.prod(self.shape_convolved[1:]), activation='relu', kernel_regularizer=self.regularizer)(x)\n\t\t# Reshape\n\t\tx = tf.keras.layers.Reshape(tuple(self.shape_convolved[1:]))(x)\n\t\t# Upsample\n\t\tx = tf.keras.layers.UpSampling1D()(x) # [ B x 94 x 16 ]\n\t\t# 1D Conv Transpose * 2\n\t\tself.filter_n -= 4\n\t\tx = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu', regularizer=self.regularizer)(x) # [ B x 94 x 16 ] -> [ B x 96 x 8 ]\n\t\tself.filter_n -= 4\n\t\tx = Conv1DTranspose(filters=self.filter_n, kernel_sz=self.params.kernel_sz, activation='relu', regularizer=self.regularizer)(x) # [ B x 96 x 8 ] -> [ B x 98 x 4 ]\n\t\t# Expand\n\t\tx = tf.keras.layers.Lambda(lambda x: tf.expand_dims(x,axis=2))(x) #  [ B x 98 x 1 x 4 ]\n\t\t# 2D Conv Transpose\n\t\tx = tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=self.params.kernel_sz, activation=tf.keras.activations.elu, kernel_regularizer=self.regularizer, name='conv_2d_transpose')(x)\n\t\tx = tf.keras.layers.Lambda(lambda x: tf.squeeze(x, axis=3))(x) # [B x 100 x 3 x 1] -> [B x 100 x 3]\n\t\toutputs_decoder = tf.keras.layers.Lambda(lambda xx: (xx*stdev)+mean, name='un_normalized_decoder_out')(x)\n\n\t\t# instantiate decoder model\n\t\tdecoder = tf.keras.Model(latent_inputs, outputs_decoder, name='decoder')\n\t\tdecoder.summary()\n\t\t# plot_model(decoder, to_file=CONFIG['plotdir'] + 'vae_cnn_decoder.png', show_shapes=True)\n\t\treturn decoder\n\n\tdef fit(self, x_train, epochs=100, verbose=2, validation_data=None):\n\t\tcallbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7, verbose=1),tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=2, verbose=1),tf.keras.callbacks.TerminateOnNaN()] #TensorBoard(log_dir=self.log_dir, histogram_freq=1)\n\t\tif isinstance(x_train, np.ndarray): # if input is numpy array\n\t\t\tself.history = self.model.fit(x_train, x_train, epochs=epochs, batch_size=self.params.batch_sz, verbose=verbose, validation_split=0.25, callbacks=callbacks)\n\t\telse: # else if input is a generator\n\t\t\tself.history = self.model.fit(x_train, epochs=epochs, verbose=verbose, validation_split=0.25, callbacks=callbacks)\n\n\t@classmethod\n\tdef load(cls, path):\n\t\tcustom_objects = {'Sampling': vbase.Sampling, 'Conv1DTranspose': Conv1DTranspose}\n\t\treturn super().load(path=path, custom_objects=custom_objects)\n",
 			"file": "vae/vae_particle.py",
-			"file_size": 6996,
-			"file_write_time": 132500422590000000,
 			"settings":
 			{
-				"buffer_size": 6996,
+				"buffer_size": 5233,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vae/vae_base.py",
+			"settings":
+			{
+				"buffer_size": 3726,
 				"line_ending": "Unix"
 			}
 		},
@@ -144,7 +146,7 @@
 			"contents": "# Copyright 2018 The TensorFlow Authors. All Rights Reserved.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n# ==============================================================================\n\"\"\"Part of the Keras training engine related to Python generators of array data.\n\"\"\"\n# pylint: disable=protected-access\nfrom __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\n\nimport functools\nimport math\n\nimport numpy as np\n\nfrom tensorflow.python.data.ops import dataset_ops\nfrom tensorflow.python.data.ops import iterator_ops\nfrom tensorflow.python.eager import context\nfrom tensorflow.python.framework import errors\nfrom tensorflow.python.keras import backend\nfrom tensorflow.python.keras import callbacks as cbks\nfrom tensorflow.python.keras.engine import training_utils\nfrom tensorflow.python.keras.utils import data_utils\nfrom tensorflow.python.keras.utils import generic_utils\nfrom tensorflow.python.keras.utils.mode_keys import ModeKeys\nfrom tensorflow.python.platform import tf_logging as logging\nfrom tensorflow.python.util import nest\n\n\ndef model_iteration(model,\n                    data,\n                    steps_per_epoch=None,\n                    epochs=1,\n                    verbose=1,\n                    callbacks=None,\n                    validation_data=None,\n                    validation_steps=None,\n                    validation_freq=1,\n                    class_weight=None,\n                    max_queue_size=10,\n                    workers=1,\n                    use_multiprocessing=False,\n                    shuffle=False,\n                    initial_epoch=0,\n                    mode=ModeKeys.TRAIN,\n                    batch_size=None,\n                    steps_name='steps',\n                    **kwargs):\n  \"\"\"Loop function for arrays of data with modes TRAIN/TEST/PREDICT.\n\n  Arguments:\n      model: Keras Model instance.\n      data: Either a tuple of NumPy/Tensor inputs (i.e. `(x,)` or `(x, y)` or\n        `(x, y, sample_weights)`) or a generator or\n        `keras.utils.data_utils.Sequence` object or Eager Iterator or Dataset.\n      steps_per_epoch: Total number of steps (batches of samples) before\n        declaring one epoch finished and starting the next epoch. Ignored with\n        the default value of `None`.\n      epochs: Number of times to iterate over the data.\n      verbose: 0, 1, or 2. Verbosity mode.\n        0 = silent, 1 = progress bar, 2 = one line per epoch.\n        Note that the progress bar is not particularly useful when\n        logged to a file, so verbose=2 is recommended when not running\n        interactively (eg, in a production environment).\n      callbacks: List of callbacks to be called during training.\n      validation_data: Either a tuple of NumPy/Tensor inputs (i.e. `(x,)` or\n        `(x, y)` or `(x, y, sample_weights)`) or a generator or\n        `keras.utils.data_utils.Sequence` object or Eager Iterator or Dataset.\n      validation_steps: Total number of steps (batches of samples) before\n        declaring validation finished.\n      validation_freq: Only relevant if validation data is provided. Integer or\n        `collections.abc.Container` instance (e.g. list, tuple, etc.). If an\n        integer, specifies how many training epochs to run before a new\n        validation run is performed, e.g. `validation_freq=2` runs\n        validation every 2 epochs. If a Container, specifies the epochs on\n        which to run validation, e.g. `validation_freq=[1, 2, 10]` runs\n        validation at the end of the 1st, 2nd, and 10th epochs.\n      class_weight: Dictionary mapping class indices to a weight for the class.\n      max_queue_size: Integer. Maximum size for the generator queue. If\n        unspecified, `max_queue_size` will default to 10.\n      workers: Integer. Maximum number of processes to spin up when using\n        process-based threading. If unspecified, `workers` will default to 1. If\n        0, will execute the generator on the main thread.\n      use_multiprocessing: Boolean. If `True`, use process-based threading. If\n        unspecified, `use_multiprocessing` will default to `False`. Note that\n        because this implementation relies on multiprocessing, you should not\n        pass non-picklable arguments to the generator as they can't be passed\n        easily to children processes.\n      shuffle: Boolean. Whether to shuffle the order of the batches at the\n        beginning of each epoch. Only used with instances of `Sequence`\n        (`keras.utils.Sequence`). Has no effect when `steps_per_epoch` is not\n        `None`.\n      initial_epoch: Epoch at which to start training (useful for resuming a\n        previous training run).\n      mode: One of ModeKeys.TRAIN/ModeKeys.TEST/ModeKeys.PREDICT.\n      batch_size: Integer batch size or None if unknown. Will only be used if\n        `data` is in NumPy/Tensor format.\n      steps_name: The string name of the steps argument, either `steps`,\n        `validation_steps`, or `steps_per_epoch`. Only used for error message\n        formatting.\n      **kwargs: Additional arguments for backwards compatibility. `steps` is\n        accepted as an alias for `steps_per_epoch`.\n\n  Returns:\n      - In TRAIN mode: `History` object.\n      - In TEST mode: Evaluation metrics.\n      - In PREDICT mode: Outputs of the Model called on inputs.\n\n  Raises:\n      ValueError: in case of invalid arguments.\n  \"\"\"\n  if 'steps' in kwargs:\n    steps_per_epoch = kwargs['steps']\n\n  # Determine the number of steps per epoch and whether we should reset the\n  # dataset at the end of each epoch.\n  reset_dataset_after_each_epoch = False\n  original_dataset = None\n  is_dataset = isinstance(data, (dataset_ops.DatasetV2, dataset_ops.DatasetV1))\n  if is_dataset:\n    original_dataset = data\n    if steps_per_epoch is None:\n      reset_dataset_after_each_epoch = True\n      steps_per_epoch = training_utils.infer_steps_for_dataset(\n          model, data, steps_per_epoch, epochs=epochs, steps_name=steps_name)\n\n  # Convert to a format that supports `next(generator)`.\n  generator, steps_per_epoch = convert_to_generator_like(\n      data,\n      steps_per_epoch=steps_per_epoch,\n      batch_size=batch_size,\n      epochs=epochs - initial_epoch,\n      shuffle=shuffle)\n\n  do_validation = validation_data is not None\n  is_sequence = isinstance(generator, data_utils.Sequence)\n  _validate_arguments(is_sequence, is_dataset, use_multiprocessing, workers,\n                      steps_per_epoch, validation_data, validation_steps, mode,\n                      kwargs)\n\n  batch_function = _make_execution_function(\n      model, mode, class_weight=class_weight)\n\n  # Create the queue for the generator.\n  enqueuer = None\n  if not is_dataset:\n    generator, enqueuer = _make_enqueued_generator(\n        generator,\n        workers=workers,\n        use_multiprocessing=use_multiprocessing,\n        max_queue_size=max_queue_size,\n        shuffle=shuffle)\n\n  num_samples_or_steps, use_steps = _get_num_samples_or_steps(\n      data, steps_per_epoch)\n\n  count_mode = 'steps' if use_steps else 'samples'\n  callbacks = cbks.configure_callbacks(\n      callbacks,\n      model,\n      do_validation=do_validation,\n      epochs=epochs,\n      steps_per_epoch=steps_per_epoch,\n      batch_size=batch_size,\n      samples=num_samples_or_steps,\n      count_mode=count_mode,\n      verbose=verbose,\n      mode=mode)\n\n  if mode == ModeKeys.PREDICT:\n    aggregator = training_utils.OutputsAggregator(True, steps=steps_per_epoch)\n  else:\n    aggregator = training_utils.MetricsAggregator(True, steps=steps_per_epoch)\n\n  should_set_learning_phase = context.executing_eagerly() and model.run_eagerly\n  if should_set_learning_phase:\n    learning_phase_scope = backend.eager_learning_phase_scope(\n        1 if mode == ModeKeys.TRAIN else 0)\n    learning_phase_scope.__enter__()\n\n  callbacks.model.stop_training = False\n  callbacks._call_begin_hook(mode)\n\n  initial_epoch = model._maybe_load_initial_epoch_from_ckpt(initial_epoch, mode)\n\n  for epoch in range(initial_epoch, epochs):\n    if callbacks.model.stop_training:\n      break\n\n    # Setup work for each epoch.\n    model.reset_metrics()\n    epoch_logs = {}\n    if mode == ModeKeys.TRAIN:\n      callbacks.on_epoch_begin(epoch, epoch_logs)\n\n    if steps_per_epoch is None:\n      # Loop over dataset until `OutOfRangeError` is raised.\n      target_steps = np.inf\n    else:\n      # Loop over dataset for the specified number of steps.\n      target_steps = steps_per_epoch\n\n    step = 0\n    while step < target_steps:\n      batch_data = _get_next_batch(generator)\n      if batch_data is None:\n        if is_dataset:\n          # The dataset passed by the user ran out of batches.\n          # Now we know the cardinality of the dataset.\n          # If steps_per_epoch was specified, then running out of data is\n          # unexpected, so we stop training and inform the user.\n          if steps_per_epoch:\n            callbacks.model.stop_training = True\n            logging.warning(\n                'Your dataset ran out of data; interrupting training. '\n                'Make sure that your dataset can generate at least '\n                '`%s * epochs` batches (in this case, %d batches). '\n                'You may need to use the repeat() function when '\n                'building your dataset.'\n                % (steps_name, steps_per_epoch * epochs))\n          elif step > 0:\n            steps_per_epoch = step\n            aggregator.steps = steps_per_epoch\n        else:\n          # We ran out of batches while the user passed an iterator (legacy).\n          callbacks.model.stop_training = True\n          logging.warning(\n              'Your dataset iterator ran out of data; '\n              'interrupting training. Make sure that your iterator '\n              'can generate at least `%s * epochs` '\n              'batches (in this case, %d batches). You may need to'\n              'use the repeat() function when building your '\n              'dataset.' % (steps_name, steps_per_epoch * epochs))\n        break\n\n      # `batch_size` used for validation data if validation\n      # data is NumPy/EagerTensors.\n      batch_size = int(nest.flatten(batch_data)[0].shape[0])\n\n      # Callbacks batch begin.\n      batch_logs = {'batch': step, 'size': batch_size}\n      callbacks._call_batch_hook(mode, 'begin', step, batch_logs)\n\n      is_deferred = not model._is_compiled\n      batch_outs = batch_function(*batch_data)\n      if not isinstance(batch_outs, list):\n        batch_outs = [batch_outs]\n\n      if step == 0:\n        aggregator.create(batch_outs)\n\n        if is_deferred:\n          # Set callbacks params. We do this here when model is compiled only\n          # in the first iteration of this loop (deferred build scenario).\n          cbks.set_callback_parameters(\n              callbacks,\n              model,\n              do_validation=do_validation,\n              batch_size=batch_size,\n              epochs=epochs,\n              steps_per_epoch=steps_per_epoch,\n              samples=num_samples_or_steps,\n              verbose=verbose,\n              mode=mode)\n\n      # Aggregate results.\n      aggregator.aggregate(batch_outs)\n\n      # Callbacks batch end.\n      batch_logs = cbks.make_logs(model, batch_logs, batch_outs, mode)\n      callbacks._call_batch_hook(mode, 'end', step, batch_logs)\n      step += 1\n\n      if callbacks.model.stop_training:\n        break\n\n    aggregator.finalize()\n    results = aggregator.results\n    epoch_logs = cbks.make_logs(model, epoch_logs, results, mode)\n    if len(results) == 1:\n      results = results[0]\n\n    # Run the test loop every epoch during training.\n    if (do_validation and\n        training_utils.should_run_validation(validation_freq, epoch) and\n        not callbacks.model.stop_training):\n      val_results = model_iteration(\n          model,\n          validation_data,\n          steps_per_epoch=validation_steps,\n          batch_size=batch_size,\n          class_weight=class_weight,\n          workers=workers,\n          use_multiprocessing=use_multiprocessing,\n          max_queue_size=max_queue_size,\n          callbacks=callbacks,\n          verbose=verbose,\n          mode=ModeKeys.TEST,\n          steps_name='validation_steps')\n\n      if not isinstance(val_results, list):\n        val_results = [val_results]\n      epoch_logs = cbks.make_logs(\n          model, epoch_logs, val_results, mode, prefix='val_')\n\n    if mode == ModeKeys.TRAIN:\n      # Epochs only apply to `fit`.\n      callbacks.on_epoch_end(epoch, epoch_logs)\n\n    # Recreate dataset iterator for the next epoch.\n    if reset_dataset_after_each_epoch and epoch < epochs - 1:\n      generator = dataset_ops.make_one_shot_iterator(original_dataset)\n\n  model._successful_loop_finish = True\n  callbacks._call_end_hook(mode)\n\n  if enqueuer is not None:\n    enqueuer.stop()\n\n  if should_set_learning_phase:\n    learning_phase_scope.__exit__(None, None, None)\n\n  if mode == ModeKeys.TRAIN:\n    return model.history\n  return results\n\n\n# Maintain compatibility with the existing names.\nfit_generator = functools.partial(model_iteration, mode=ModeKeys.TRAIN)\nevaluate_generator = functools.partial(\n    model_iteration, mode=ModeKeys.TEST, shuffle=False)\npredict_generator = functools.partial(\n    model_iteration, mode=ModeKeys.PREDICT, shuffle=False)\n\n\ndef _get_next_batch(generator):\n  \"\"\"Retrieves the next batch of input data.\"\"\"\n  try:\n    generator_output = next(generator)\n  except (StopIteration, errors.OutOfRangeError):\n    return None\n\n  if not isinstance(generator_output, tuple):\n    # Always wrap in a tuple.\n    generator_output = (generator_output,)\n  if len(generator_output) not in [1, 2, 3]:\n    raise ValueError(\n        'Output of generator should be a tuple of 1 or 2 or 3 '\n        'elements: (input,) or (input, target) or '\n        '(input, target, sample_weights). Received {}'.format(generator_output))\n  return generator_output\n\n\ndef _validate_arguments(is_sequence, is_dataset, use_multiprocessing, workers,\n                        steps_per_epoch, validation_data, validation_steps,\n                        mode, kwargs):\n  \"\"\"Raises errors if arguments are invalid.\n\n  Arguments:\n    is_sequence: Boolean, whether data is a `keras.utils.data_utils.Sequence`\n      instance.\n    is_dataset: Boolean, whether data is a dataset instance.\n    use_multiprocessing: Boolean. If `True`, use process-based threading. If\n      unspecified, `use_multiprocessing` will default to `False`. Note that\n      because this implementation relies on multiprocessing, you should not pass\n      non-picklable arguments to the generator as they can't be passed easily to\n      children processes.\n    workers: Integer. Maximum number of processes to spin up when using\n      process-based threading. If unspecified, `workers` will default to 1. If\n      0, will execute the generator on the main thread.\n    steps_per_epoch: Total number of steps (batches of samples) before declaring\n      one epoch finished and starting the next epoch. Ignored with the default\n      value of `None`.\n    validation_data: Either a tuple of NumPy/Tensor inputs (i.e. `(x,)` or `(x,\n      y)` or `(x, y, sample_weights)`) or a generator or\n      `keras.utils.data_utils.Sequence` object or Eager Iterator or Dataset.\n    validation_steps: Total number of steps (batches of samples) before\n      declaring validation finished.\n    mode: One of ModeKeys.TRAIN/ModeKeys.TEST/ModeKeys.PREDICT.\n    kwargs: Additional arguments for backwards compatibility.\n\n  Raises:\n    ValueError: If `steps_per_epoch` or `validation_steps` are not passed\n      for data types that require them, or if unrecognized keyword\n      arguments are passed.\n  \"\"\"\n  if not is_sequence and use_multiprocessing and workers > 1:\n    logging.warning(\n        UserWarning('Using a generator with `use_multiprocessing=True`'\n                    ' and multiple workers may duplicate your data.'\n                    ' Please consider using the `keras.utils.Sequence`'\n                    ' class.'))\n\n  if steps_per_epoch is None and not is_dataset:\n    arg_name = 'steps_per_epoch' if mode == ModeKeys.TRAIN else 'steps'\n    raise ValueError('Please specify the number of steps via the '\n                     '`{}` argument.'.format(arg_name))\n\n  val_gen = (\n      data_utils.is_generator_or_sequence(validation_data) or\n      isinstance(validation_data, iterator_ops.OwnedIterator))\n  if (val_gen and not isinstance(validation_data, data_utils.Sequence) and\n      not validation_steps):\n    raise ValueError('Please specify the `validation_steps` argument.')\n\n  if any(k != 'steps' for k in kwargs):\n    raise ValueError('Invalid arguments passed: {}'.format(\n        [k for k in kwargs if k != 'steps']))\n\n\ndef convert_to_generator_like(data,\n                              batch_size=None,\n                              steps_per_epoch=None,\n                              epochs=1,\n                              shuffle=False):\n  \"\"\"Make a generator out of NumPy or EagerTensor inputs.\n\n  Arguments:\n    data: Either a generator or `keras.utils.data_utils.Sequence` object or\n      `Dataset`, `Iterator`, or a {1,2,3}-tuple of NumPy arrays or EagerTensors.\n      If a tuple, the elements represent `(x, y, sample_weights)` and may be\n      `None` or `[None]`.\n    batch_size: Used when creating a generator out of tuples of NumPy arrays or\n      EagerTensors.\n    steps_per_epoch: Steps of the generator to run each epoch. If `None` the\n      number of steps will be read from the data (for\n      `keras.utils.data_utils.Sequence` types).\n    epochs: Total number of epochs to run.\n    shuffle: Whether the data should be shuffled.\n\n  Returns:\n    - Generator, `keras.utils.data_utils.Sequence`, or `Iterator`.\n\n  Raises:\n    - ValueError: If `batch_size` is not provided for NumPy or EagerTensor\n      inputs.\n  \"\"\"\n  if isinstance(data, tuple):\n    # Scrub `Nones` that might have been passed for `targets`, `sample_weights`.\n    data = tuple(\n        ele for ele in data if not all(e is None for e in nest.flatten(ele)))\n\n  if data_utils.is_generator_or_sequence(data) or isinstance(\n      data, iterator_ops.OwnedIterator):\n    if isinstance(data, data_utils.Sequence):\n      if steps_per_epoch is None:\n        steps_per_epoch = len(data)\n    return data, steps_per_epoch\n  if isinstance(data, dataset_ops.DatasetV2):\n    return dataset_ops.make_one_shot_iterator(data), steps_per_epoch\n\n  # Create generator from NumPy or EagerTensor Input.\n  num_samples = int(nest.flatten(data)[0].shape[0])\n  if batch_size is None:\n    raise ValueError(\n        'When passing input data as arrays, do not specify '\n        '`steps_per_epoch`/`steps` argument. Please use `batch_size` instead.')\n  steps_per_epoch = int(math.ceil(num_samples / batch_size))\n\n  def _gen(data):\n    \"\"\"Makes a generator out of a structure of NumPy/EagerTensors.\"\"\"\n    index_array = np.arange(num_samples)\n    for _ in range(epochs):\n      if shuffle:\n        np.random.shuffle(index_array)\n      batches = generic_utils.make_batches(num_samples, batch_size)\n      for (batch_start, batch_end) in batches:\n        batch_ids = index_array[batch_start:batch_end]\n        flat_batch_data = training_utils.slice_arrays(\n            nest.flatten(data), batch_ids, contiguous=(not shuffle))\n        yield nest.pack_sequence_as(data, flat_batch_data)\n\n  return _gen(data), steps_per_epoch\n\n\ndef _make_enqueued_generator(generator,\n                             workers=1,\n                             use_multiprocessing=False,\n                             max_queue_size=10,\n                             shuffle=False):\n  \"\"\"Create a buffered queue of next elements of the generator.\"\"\"\n  is_sequence = isinstance(generator, data_utils.Sequence)\n  enqueuer = None\n  if workers > 0:\n    if is_sequence:\n      enqueuer = data_utils.OrderedEnqueuer(\n          generator, use_multiprocessing=use_multiprocessing, shuffle=shuffle)\n    else:\n      enqueuer = data_utils.GeneratorEnqueuer(\n          generator, use_multiprocessing=use_multiprocessing)\n    enqueuer.start(workers=workers, max_queue_size=max_queue_size)\n    output_generator = enqueuer.get()\n  else:\n    if is_sequence:\n      output_generator = data_utils.iter_sequence_infinite(generator)\n    else:\n      output_generator = generator\n  return output_generator, enqueuer\n\n\ndef _make_execution_function(model, mode, class_weight=None):\n  \"\"\"Makes function to run one step of model execution.\"\"\"\n  if mode == ModeKeys.TRAIN:\n    f = functools.partial(model.train_on_batch, class_weight=class_weight)\n  elif mode == ModeKeys.TEST:\n    f = model.test_on_batch\n  else:\n    # Match signature of other modes to allow\n    # 1, 2, or 3-tuples from generator\n    def predict_on_batch(x, y=None, sample_weights=None):  # pylint: disable=unused-argument\n      return model.predict_on_batch(x)\n\n    f = predict_on_batch\n\n  # Maintain stateful metrics across batch-level calls.\n  if mode != ModeKeys.PREDICT:\n    f = functools.partial(f, reset_metrics=False)\n\n  return f\n\n\ndef _get_num_samples_or_steps(data, steps_per_epoch):\n  \"\"\"Returns number of samples or steps, and whether to use steps count mode.\"\"\"\n  flat_inputs = nest.flatten(data)\n  if hasattr(flat_inputs[0], 'shape'):\n    return int(flat_inputs[0].shape[0]), False\n  return steps_per_epoch, True\n\n\nclass GeneratorOrSequenceTrainingLoop(training_utils.TrainingLoop):\n  \"\"\"Generator-like.\n\n  Input is Python generator, or Sequence object.\n\n  The difference between this class and `GeneratorLikeTrainingFunction` is that\n  this class only handles inputs that with x, y and sample_weight fused into one\n  param.\n  \"\"\"\n\n  def fit(self,\n          model,\n          x=None,\n          y=None,\n          batch_size=None,\n          epochs=1,\n          verbose=1,\n          callbacks=None,\n          validation_split=0.,\n          validation_data=None,\n          shuffle=True,\n          class_weight=None,\n          sample_weight=None,\n          initial_epoch=0,\n          steps_per_epoch=None,\n          validation_steps=None,\n          validation_freq=1,\n          max_queue_size=10,\n          workers=1,\n          use_multiprocessing=False):\n    model._validate_or_infer_batch_size(batch_size, steps_per_epoch, x)\n    training_utils.check_generator_arguments(\n        y, sample_weight, validation_split=validation_split)\n    return fit_generator(\n        model,\n        x,\n        steps_per_epoch=steps_per_epoch,\n        epochs=epochs,\n        verbose=verbose,\n        callbacks=callbacks,\n        validation_data=validation_data,\n        validation_steps=validation_steps,\n        validation_freq=validation_freq,\n        class_weight=class_weight,\n        max_queue_size=max_queue_size,\n        workers=workers,\n        use_multiprocessing=use_multiprocessing,\n        shuffle=shuffle,\n        initial_epoch=initial_epoch,\n        steps_name='steps_per_epoch')\n\n  def evaluate(self,\n               model,\n               x=None,\n               y=None,\n               batch_size=None,\n               verbose=1,\n               sample_weight=None,\n               steps=None,\n               callbacks=None,\n               max_queue_size=10,\n               workers=1,\n               use_multiprocessing=False):\n    model._validate_or_infer_batch_size(batch_size, steps, x)\n    training_utils.check_generator_arguments(y, sample_weight)\n    return evaluate_generator(\n        model,\n        x,\n        steps=steps,\n        verbose=verbose,\n        callbacks=callbacks,\n        max_queue_size=max_queue_size,\n        workers=workers,\n        use_multiprocessing=use_multiprocessing)\n\n  def predict(self,\n              model,\n              x,\n              batch_size=None,\n              verbose=0,\n              steps=None,\n              callbacks=None,\n              max_queue_size=10,\n              workers=1,\n              use_multiprocessing=False):\n    model._validate_or_infer_batch_size(batch_size, steps, x)\n    return predict_generator(\n        model,\n        x,\n        steps=steps,\n        verbose=verbose,\n        callbacks=callbacks,\n        max_queue_size=max_queue_size,\n        workers=workers,\n        use_multiprocessing=use_multiprocessing)\n\n\nclass EagerDatasetOrIteratorTrainingLoop(training_utils.TrainingLoop):\n  \"\"\"A non-distributed Dataset or iterator in eager execution.\"\"\"\n\n  def fit(self,\n          model,\n          x=None,\n          y=None,\n          batch_size=None,\n          epochs=1,\n          verbose=1,\n          callbacks=None,\n          validation_split=0.,\n          validation_data=None,\n          shuffle=True,\n          class_weight=None,\n          sample_weight=None,\n          initial_epoch=0,\n          steps_per_epoch=None,\n          validation_steps=None,\n          validation_freq=1,\n          **kwargs):\n    model._validate_or_infer_batch_size(batch_size, steps_per_epoch, x)\n    # Make sure that y, sample_weights, validation_split are not passed.\n    training_utils.validate_dataset_input(x, y, sample_weight, validation_split)\n    if (isinstance(x, (dataset_ops.DatasetV1, dataset_ops.DatasetV2)) and\n        shuffle):\n      training_utils.verify_dataset_shuffled(x)\n\n    return fit_generator(\n        model,\n        x,\n        steps_per_epoch=steps_per_epoch,\n        epochs=epochs,\n        verbose=verbose,\n        callbacks=callbacks,\n        validation_data=validation_data,\n        validation_steps=validation_steps,\n        validation_freq=validation_freq,\n        class_weight=class_weight,\n        workers=0,\n        shuffle=shuffle,\n        initial_epoch=initial_epoch,\n        steps_name='steps_per_epoch')\n\n  def evaluate(self,\n               model,\n               x=None,\n               y=None,\n               batch_size=None,\n               verbose=1,\n               sample_weight=None,\n               steps=None,\n               callbacks=None,\n               **kwargs):\n    model._validate_or_infer_batch_size(batch_size, steps, x)\n    # Make sure that y, sample_weights, validation_split are not passed.\n    training_utils.validate_dataset_input(x, y, sample_weight)\n    return evaluate_generator(\n        model, x, steps=steps, verbose=verbose, workers=0, callbacks=callbacks)\n\n  def predict(self,\n              model,\n              x,\n              batch_size=None,\n              verbose=0,\n              steps=None,\n              callbacks=None,\n              **kwargs):\n    model._validate_or_infer_batch_size(batch_size, steps, x)\n    return predict_generator(\n        model, x, steps=steps, verbose=verbose, workers=0, callbacks=callbacks)\n\n\nclass GeneratorLikeTrainingLoop(training_utils.TrainingLoop):\n  \"\"\"TrainingLoop that handle inputs like python generator.\n\n  This is the default handler for most of the input data types, includes\n  symbolic tensors or Numpy array-like, Datasets and iterators in graph mode\n  (since they generate symbolic tensors). This Function is used to handle model\n  with `run_eagerly` = True.\n  \"\"\"\n\n  def fit(self,\n          model,\n          x=None,\n          y=None,\n          batch_size=None,\n          epochs=1,\n          verbose=1,\n          callbacks=None,\n          validation_split=0.,\n          validation_data=None,\n          shuffle=True,\n          class_weight=None,\n          sample_weight=None,\n          initial_epoch=0,\n          steps_per_epoch=None,\n          validation_steps=None,\n          validation_freq=1,\n          **kwargs):\n    batch_size = model._validate_or_infer_batch_size(batch_size,\n                                                     steps_per_epoch, x)\n    x, y, sample_weights = model._standardize_user_data(\n        x,\n        y,\n        sample_weight=sample_weight,\n        class_weight=class_weight,\n        batch_size=batch_size,\n        check_steps=True,\n        steps_name='steps_per_epoch',\n        steps=steps_per_epoch,\n        validation_split=validation_split,\n        shuffle=shuffle)\n\n    if validation_data:\n      validation_data = model._prepare_validation_data(validation_data,\n                                                       batch_size,\n                                                       validation_steps)\n    elif validation_split and 0. < validation_split < 1.:\n      (x, y, sample_weights, val_x, val_y,\n       val_sample_weights) = training_utils.split_training_and_validation_data(\n           x, y, sample_weights, validation_split)\n      validation_data = (val_x, val_y, val_sample_weights)\n    else:\n      if validation_steps:\n        raise ValueError('`validation_steps` should not be specified if '\n                         '`validation_data` is None.')\n\n    return fit_generator(\n        model, (x, y, sample_weights),\n        steps_per_epoch=steps_per_epoch,\n        batch_size=batch_size,\n        epochs=epochs,\n        verbose=verbose,\n        callbacks=callbacks,\n        validation_data=validation_data,\n        validation_steps=validation_steps,\n        validation_freq=validation_freq,\n        workers=0,\n        shuffle=shuffle,\n        initial_epoch=initial_epoch,\n        steps_name='steps_per_epoch')\n\n  def evaluate(self,\n               model,\n               x=None,\n               y=None,\n               batch_size=None,\n               verbose=1,\n               sample_weight=None,\n               steps=None,\n               callbacks=None,\n               **kwargs):\n    batch_size = model._validate_or_infer_batch_size(batch_size, steps, x)\n    x, y, sample_weights = model._standardize_user_data(\n        x,\n        y,\n        sample_weight=sample_weight,\n        batch_size=batch_size,\n        check_steps=True,\n        steps_name='steps',\n        steps=steps)\n    return evaluate_generator(\n        model, (x, y, sample_weights),\n        steps=steps,\n        batch_size=batch_size,\n        verbose=verbose,\n        workers=0,\n        callbacks=callbacks)\n\n  def predict(self,\n              model,\n              x,\n              batch_size=None,\n              verbose=0,\n              steps=None,\n              callbacks=None,\n              **kwargs):\n    batch_size = model._validate_or_infer_batch_size(batch_size, steps, x)\n    x, _, _ = model._standardize_user_data(\n        x, check_steps=True, steps_name='steps', steps=steps)\n    return predict_generator(\n        model,\n        x,\n        steps=steps,\n        batch_size=batch_size,\n        verbose=verbose,\n        workers=0,\n        callbacks=callbacks)\n",
 			"file": "venv/lib/python3.6/site-packages/tensorflow/python/keras/engine/training_generator.py",
 			"file_size": 30736,
-			"file_write_time": 132394892070000000,
+			"file_write_time": 132508117590000000,
 			"settings":
 			{
 				"buffer_size": 30736,
@@ -163,25 +165,14 @@
 			}
 		},
 		{
-			"contents": "import numpy as np\nimport sarewt.data_reader as dare\nimport pofah.util.utility_fun as utfu\n\n\nclass DataGenerator():\n\n\tdef __init__(self, path, batch_sz=1024):\n\t\tself.data_reader = dare.DataReader(path)\n\t\tself.batch_sz = batch_sz\n\n\tdef __call__():\n\t\t'''\n\t\t\tgenerate data samples of size batch_sz\n\t\t'''\n\t\tsamples = []\n\t\tfor constituents in self.data_reader.read_constituents_parts_from_dir(max_sz_mb=1000):\n\t\t\tsamples_file = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])\n\t\t\tsamples.extend(samples_file)\n\t\t\twhile len(samples) >= batch_sz:\n\t\t\t\tsamples_batch, samples = np.asarray(samples[:batch_sz]), samples[batch_sz:]\n\t\t\t\tnp.random.shuffle(samples_batch)\n\t\t\t\tyield (samples_batch, samples_batch) # x == y in autoencoder\n\n\tdef get_mean_and_stdev(self):\n\t\t'''\n\t\t\tget mean and standard deviation of input samples constituents (first 1 million events) \n\t\t'''\n\t\tconstituents = self.data_reader.read_constituents_from_dir(max_n=1e6)\n\t\tconstituents_j1j2 = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])\n\t\treturn utfu.get_mean_and_stdev(constituents_j1j2)\n",
+			"contents": "import numpy as np\nimport sarewt.data_reader as dare\nimport pofah.util.utility_fun as utfu\n\n\n\n\ndef mask_training_cuts(constituents, features):\n    ''' get mask for training cuts requiring a jet-pt > 200'''\n    jetPt_cut = 200.\n    idx_j1Pt, idx_j2Pt = 1, 6\n    mask_j1 = features[:, idx_j1Pt] > jetPt_cut\n    mask_j2 = features[:, idx_j2Pt] > jetPt_cut\n    return mask_j1, mask_j2\n\ndef constituents_to_input_samples(constituents, mask_j1, mask_j2): # -> np.ndarray\n        const_j1 = constituents[:,0,:,:][mask_j1]\n        const_j2 = constituents[:,1,:,:][mask_j2]\n        samples = np.vstack([const_j1, const_j2])\n        np.random.shuffle(samples)\n        return samples  \n\ndef events_to_input_samples(constituents, features):\n    mask_j1, mask_j2 = mask_training_cuts(constituents, features)\n    return constituents_to_input_samples(constituents, mask_j1, mask_j2)\n\n\nclass DataGenerator():\n\n    def __init__(self, path, sample_part_n=1e4, sample_max_n=None, **cuts):\n        ''' \n            sample_part_n ... number of events(!) read as chunk from file-data-generator (TODO: change to event_part_n)\n            sample_max_n ... number of single jet samples as input into VAE (unpacked dijets)\n        '''\n        self.path = path\n        self.sample_part_n = int(sample_part_n) # sample_part_n events from file parts\n        self.sample_max_n = int(sample_max_n) if sample_max_n else None\n        self.cuts = cuts\n\n\n    def __call__(self): # -> generator object yielding np.ndarray, np.ndarray\n        '''\n            generate single(!) data-sample (batching done in tf.Dataset)\n        '''\n        \n        # create new file data-reader, each time data-generator is called (otherwise file-data-reader generation not reset)\n        generator = dare.DataReader(self.path).generate_event_parts_from_dir(parts_n=self.sample_part_n, **self.cuts)\n\n        samples_read_n = 0\n        # loop through whole dataset, reading sample_part_n events at a time\n        for constituents, features in generator:\n            samples = events_to_input_samples(constituents, features)\n            indices = list(range(len(samples)))\n            samples_read_n += len(samples)\n            while indices:\n                index = indices.pop(0)\n                next_sample = samples[index] #.copy() \n                yield next_sample\n            if self.sample_max_n is not None and (samples_read_n >= self.sample_max_n):\n                break\n        \n        print('[DataGenerator]: __call__() yielded {} samples'.format(samples_read_n))\n        generator.close()\n\n\n    def get_mean_and_stdev(self): # -> nd.array [num-features], nd.array [num-features]\n        '''\n            get mean and standard deviation of input samples constituents (first 1 million events) for each feature\n        '''\n        data_reader = dare.DataReader(self.path)\n\n        constituents = data_reader.read_constituents_from_dir(read_n=int(1e6))\n        constituents_j1j2 = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])\n        return utfu.get_mean_and_stdev(constituents_j1j2)\n\n\nclass DataGeneratorMixedBgSig():\n\n    def __init__(self, path_bg, path_sig, sample_bg_part_n, sample_sig_part_n, sample_bg_total_n=None, sample_sig_total_n=None):\n        self.path_bg = path_bg\n        self.path_sig = path_sig\n        self.sample_bg_part_n = int(sample_bg_part_n)\n        self.sample_sig_part_n = int(sample_sig_part_n)\n        self.sample_bg_total_n = int(sample_bg_total_n) if sample_bg_total_n else None\n        self.sample_sig_total_n = int(sample_sig_total_n) if sample_sig_total_n else None\n\n\n    def __call__(self): # -> generator object yielding (np.ndarray, np.ndarray)\n\n        # make background and signal sample generators\n        generator_bg = dare.DataReader(self.path_bg).generate_constituents_parts_from_dir(parts_n=self.sample_bg_part_n) \n        generator_sig = dare.DataReader(self.path_sig).generate_constituents_parts_from_dir(parts_n=self.sample_sig_part_n)\n\n        sig_every_n_bg_samples = sample_bg_total_n//sample_sig_total_n\n \n        samples_read_bg_n, samples_read_sig_n = 0\n\n        while True:\n            bg_constituents = constituents_to_input_samples(next(generator_bg))\n            sig_constituents = constituents_to_input_samples(next(generator_sig))\n",
 			"file": "util/data_generator.py",
-			"file_size": 1069,
-			"file_write_time": 132500419310000000,
+			"file_size": 4258,
+			"file_write_time": 132560643210000000,
 			"settings":
 			{
-				"buffer_size": 1069,
+				"buffer_size": 4258,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "import os\nimport POfAH.util.experiment as ex\nimport util.event_sample as es\nimport analysis.analysis_constituents as ac\nfrom config import *\n\n\nexperiment = ex.Experiment(run_n=0)\n\n# read in data\ntest_sample = es.EventSample.from_input_file('RS Graviton WW br 3.0TeV','/home/kinga/mnt/data/events/RSGraviton_WW_NARROW_13TeV_PU40_3.0TeV_concat_10K.h5')\ntest_evts_j1, test_evts_j2 = test_sample.get_particles()\n\n# setup analysis\nparticle_analysis = ac.AnalysisConstituents('RS Graviton WW br 3.0TeV', fig_dir='/home/kinga/mnt/fig/run_0/analysis_event')\nparticle_analysis.analyze( [test_evts_j1, test_evts_j2] )\n\n# dump sample\nout_path = os.path.join('/home/kinga/mnt/results/run_0')\ntest_sample.dump(out_path)\n\n# read back\ntest_sample = es.EventSample.from_input_file('RS Graviton WW br 3.0TeV dumped', os.path.join(out_path,test_sample.file_name))\ntest_evts_j1, test_evts_j2 = test_sample.get_particles()\n\n# setup analysis\nparticle_analysis = ac.AnalysisConstituents('RS Graviton WW br 3.0TeV dumped', fig_dir='/home/kinga/mnt/fig/run_0/analysis_event')\nparticle_analysis.analyze( [test_evts_j1, test_evts_j2] )",
-			"file": "tests/test_event_sample_dump.py",
-			"file_size": 1109,
-			"file_write_time": 132411175860000000,
-			"settings":
-			{
-				"buffer_size": 1109,
 				"line_ending": "Unix"
 			}
 		},
@@ -189,7 +180,7 @@
 			"contents": "import tensorflow as tf\n\n@tf.function\ndef bar(vv):\n\tprint(vv)\n\treturn vv\n\t\n\ndef foo(v):\n\tfor vv in v:\n\t\tprint(vv.numpy())\n\nv = tf.random.uniform([4, 10], minval=1, maxval=10, dtype=tf.int32)\ndataset = tf.data.Dataset.from_tensor_slices(v)\ndataset.map(bar)\nfoo(dataset)\n",
 			"file": "playground/tf_test.py",
 			"file_size": 269,
-			"file_write_time": 132427501850000000,
+			"file_write_time": 132545248260000000,
 			"settings":
 			{
 				"buffer_size": 269,
@@ -281,7 +272,8 @@
 	},
 	"expanded_folders":
 	[
-		"/home/kinga/mnt"
+		"/home/kinga/mnt/vande",
+		"/home/kinga/mnt/vande/vae"
 	],
 	"file_history":
 	[
@@ -406,7 +398,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -438,7 +430,7 @@
 						"translation.y": 499.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -482,7 +474,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1728,
+						"buffer_size": 4018,
 						"regions":
 						{
 						},
@@ -496,16 +488,17 @@
 						"settings":
 						{
 							"auto_complete": false,
-							"git_gutter_is_enabled": false,
+							"git_gutter_is_enabled": true,
+							"show_definitions": false,
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tabs_extra_last_activated": 1605614790.08,
+							"tabs_extra_last_activated": 1614700162.2,
 							"tabs_extra_last_activated_sheet_index": 2
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -514,7 +507,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 221,
+						"buffer_size": 1603,
 						"regions":
 						{
 						},
@@ -528,22 +521,18 @@
 						"settings":
 						{
 							"auto_complete": false,
-							"git_gutter_is_enabled": true,
+							"git_gutter_is_enabled": false,
 							"open_with_edit": true,
+							"show_definitions": false,
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tabs_extra_last_activated": 1605618969.53,
-							"tabs_extra_last_activated_sheet_index": 3,
-							"tabs_extra_moving":
-							[
-								3,
-								0
-							]
+							"tabs_extra_last_activated": 1614198551.02,
+							"tabs_extra_last_activated_sheet_index": 3
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -552,35 +541,70 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6996,
+						"buffer_size": 5233,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6789,
-								6789
+								1052,
+								1052
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"git_gutter_is_enabled": true,
+							"show_definitions": false,
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tabs_extra_last_activated": 1605610827.87,
+							"tabs_extra_last_activated": 1614698059.7,
 							"tabs_extra_last_activated_sheet_index": 4,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1530.0,
+						"translation.y": 306.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "vae/vae_base.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3531,
+								3531
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"show_definitions": false,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"tabs_extra_last_activated": 1614264143.32,
+							"tabs_extra_last_activated_sheet_index": 5,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "venv/lib/python3.6/site-packages/tensorflow/python/keras/engine/training_v1.py",
 					"semi_transient": false,
 					"settings":
@@ -598,6 +622,7 @@
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 2,
@@ -609,11 +634,11 @@
 						"translation.y": 12983.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "venv/lib/python3.6/site-packages/tensorflow/python/keras/engine/training_generator.py",
 					"semi_transient": false,
 					"settings":
@@ -631,6 +656,7 @@
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 2,
@@ -642,11 +668,11 @@
 						"translation.y": 10229.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "venv/lib/python3.6/site-packages/tensorflow/python/keras/engine/training_utils.py",
 					"semi_transient": false,
 					"settings":
@@ -664,6 +690,7 @@
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 2,
@@ -675,16 +702,16 @@
 						"translation.y": 25614.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "util/data_generator.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1069,
+						"buffer_size": 4258,
 						"regions":
 						{
 						},
@@ -698,48 +725,18 @@
 						"settings":
 						{
 							"auto_complete": false,
-							"git_gutter_is_enabled": true,
+							"git_gutter_is_enabled": false,
 							"open_with_edit": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tabs_extra_last_activated": 1605614601.09,
-							"tabs_extra_last_activated_sheet_index": 8
+							"tabs_extra_last_activated_sheet_index": 8,
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "tests/test_event_sample_dump.py",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1109,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tabs_extra_last_activated": 1605614746.97,
-							"tabs_extra_last_activated_sheet_index": 9
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -772,7 +769,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

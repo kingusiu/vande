@@ -76,7 +76,6 @@ for sample_id in test_samples:
         reco_sample = es.EventSample(sample_id + 'Reco', particles=[reco_j1, reco_j2], jet_features=test_sample.get_event_features(), particle_feature_names=test_sample.particle_feature_names)
 
         for loss, label in zip( losses_j1, ['j1TotalLoss', 'j1RecoLoss', 'j1KlLoss']):
-            # import ipdb; ipdb.set_trace()    
             reco_sample.add_event_feature(label, loss)
         for loss, label in zip( losses_j2, ['j2TotalLoss', 'j2RecoLoss', 'j2KlLoss']):
             reco_sample.add_event_feature(label, loss)

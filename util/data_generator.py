@@ -3,8 +3,6 @@ import sarewt.data_reader as dare
 import pofah.util.utility_fun as utfu
 
 
-
-
 def mask_training_cuts(constituents, features):
     ''' get mask for training cuts requiring a jet-pt > 200'''
     jetPt_cut = 200.
