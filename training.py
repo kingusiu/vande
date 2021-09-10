@@ -118,7 +118,7 @@ class Trainer():
         validation_loss_kl = 0.
 
         for step, x_batch_val in enumerate(valid_ds):
-            reco_loss, kl_loss = self.validation_step(model, loss_fn, x_batch_val)
+            reco_loss, kl_loss = self.validation_step(model, loss_fn, x_batch_val[:,:,:3])
             validation_loss_reco += reco_loss
             validation_loss_kl += kl_loss
 
