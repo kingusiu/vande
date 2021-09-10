@@ -119,7 +119,7 @@ class CaseDataGenerator():
         '''
         data_reader = dare.CaseDataReader(self.path)
 
-        constituents = data_reader.read_constituents_from_dir(read_n=int(1e3))
+        constituents = data_reader.read_constituents_from_dir(read_n=int(1e5))
         constituents_j1j2 = np.vstack([constituents[:,0,:,:3], constituents[:,1,:,:3]])
 
         return utfu.get_mean_and_stdev(constituents_j1j2)
