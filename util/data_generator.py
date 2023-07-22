@@ -69,6 +69,57 @@ class DataGenerator():
 
         constituents = data_reader.read_constituents_from_dir(read_n=int(1e6))
         constituents_j1j2 = np.vstack([constituents[:,0,:,:], constituents[:,1,:,:]])
+        utfu.get_mean_and_stdev(constituents_j1j2)
+        return utfu.get_mean_and_stdev(constituents_j1j2)
+
+
+class CaseDataGenerator():
+
+    def __init__(self, path, sample_part_n=1e4, sample_max_n=None, **cuts):
+        ''' 
+            sample_part_n ... number of events(!) read as chunk from file-data-generator (TODO: change to event_part_n)
+            sample_max_n ... number of single jet samples as input into VAE (unpacked dijets)
+        '''
+        self.path = path
+        self.sample_part_n = int(sample_part_n) # sample_part_n events from file parts
+        self.sample_max_n = int(sample_max_n) if sample_max_n else None
+        self.cuts = cuts
+
+
+    def __call__(self): # -> generator object yielding np.ndarray, np.ndarray
+        '''
+            generate single(!) data-sample (batching done in tf.Dataset)
+        '''
+        
+        # create new file data-reader, each time data-generator is called (otherwise file-data-reader generation not reset)
+        generator = dare.CaseDataReader(self.path).generate_event_parts_from_dir(parts_n=self.sample_part_n, **self.cuts)
+
+        samples_read_n = 0
+        # loop through whole dataset, reading sample_part_n events at a time
+        for constituents, features in generator:
+            samples = events_to_input_samples(constituents[:,:,:,:3], features)
+            indices = list(range(len(samples)))
+            samples_read_n += len(samples)
+            while indices:
+                index = indices.pop(0)
+                next_sample = samples[index] #.copy() 
+                yield next_sample
+            if self.sample_max_n is not None and (samples_read_n >= self.sample_max_n):
+                break
+        
+        print('[DataGenerator]: __call__() yielded {} samples'.format(samples_read_n))
+        generator.close()
+
+
+    def get_mean_and_stdev(self): # -> nd.array [num-features], nd.array [num-features]
+        '''
+            get mean and standard deviation of input samples constituents (first 1 million events) for each feature
+        '''
+        data_reader = dare.CaseDataReader(self.path)
+
+        constituents = data_reader.read_constituents_from_dir(read_n=int(1e5))
+        constituents_j1j2 = np.vstack([constituents[:,0,:,:3], constituents[:,1,:,:3]])
+
         return utfu.get_mean_and_stdev(constituents_j1j2)
 
 
